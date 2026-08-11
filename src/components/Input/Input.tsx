@@ -1,0 +1,59 @@
+import { forwardRef } from 'react'
+import type { InputHTMLAttributes, ReactNode } from 'react'
+import { cva, type VariantProps } from 'class-variance-authority'
+import { cn } from '@/lib/utils'
+
+// Mirrors the Input component set (Core page): Size x State, plus the
+// "Leading icon" boolean slot. Focus/Disabled are real browser states here;
+// Error has no reliable native CSS hook for arbitrary business-logic
+// validity, so it's a real prop, same as the Figma State=Error variant.
+
+const inputVariants = cva(
+  'flex w-full items-center gap-8px border bg-surface-subtle text-text-primary outline-none transition-colors ' +
+    'placeholder:text-text-secondary ' +
+    'focus-visible:border-focus-ring ' +
+    'disabled:cursor-not-allowed disabled:bg-interactive-disabled disabled:text-text-disabled disabled:placeholder:text-text-disabled disabled:border-border-subtle',
+  {
+    variants: {
+      size: {
+        sm: 'rounded-sm px-10px py-6px text-sm',
+        md: 'rounded-md px-12px py-8px text-base',
+        lg: 'rounded-md px-16px py-12px text-lg',
+      },
+      error: {
+        true: 'border-semantic-error',
+        false: 'border-border-default',
+      },
+    },
+    defaultVariants: {
+      size: 'md',
+      error: false,
+    },
+  },
+)
+
+export interface InputProps
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>,
+    VariantProps<typeof inputVariants> {
+  /** Icon rendered before the value — maps to Figma's "Leading icon" slot. */
+  leadingIcon?: ReactNode
+}
+
+export const Input = forwardRef<HTMLInputElement, InputProps>(
+  ({ className, size, error, leadingIcon, ...props }, ref) => {
+    if (!leadingIcon) {
+      return <input ref={ref} className={cn(inputVariants({ size, error }), className)} {...props} />
+    }
+    return (
+      <div className={cn(inputVariants({ size, error }), 'has-[:disabled]:cursor-not-allowed', className)}>
+        <span className="shrink-0 text-icon-muted [&>svg]:size-4">{leadingIcon}</span>
+        <input
+          ref={ref}
+          className="w-full bg-transparent outline-none placeholder:text-inherit disabled:cursor-not-allowed"
+          {...props}
+        />
+      </div>
+    )
+  },
+)
+Input.displayName = 'Input'

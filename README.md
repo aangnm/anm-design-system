@@ -4,7 +4,7 @@ Tokens and React components generated from [Iankha-Design-System-New](https://ww
 
 ## Status
 
-🚧 Early. Token pipeline is live and pulling real values from Figma. One component (`Button`) is built end-to-end as the reference pattern for the rest. See [Roadmap](#roadmap).
+🚧 Early. Token pipeline is live. Core category complete: Button, Input, Select, Search, Checkbox, Radio, Switch, Tag, Badge, Avatar, Tooltip, Form Field. See [Roadmap](#roadmap).
 
 ## Stack
 
@@ -77,18 +77,18 @@ src/index.ts                 package barrel export
 When porting a component from Figma:
 
 1. Match the Figma variant axes to a real API — `State=Hover/Focus/Disabled` usually become CSS pseudo-classes (`:hover`, `:focus-visible`, `:disabled`), not props; `State=Loading` (no native equivalent) becomes a real prop.
-2. Build with Tailwind utilities from the generated token classes only — no raw hex, no magic numbers.
-3. Write a `.stories.tsx` that reproduces the same grid the Figma component page shows, so a visual diff against Figma is a straight comparison.
-4. Add the `.figma.tsx` Code Connect mapping.
-5. `npm run changeset` to record what shipped.
+2. Build with Tailwind utilities from the generated token classes only — no raw hex, no magic numbers. **For spacing specifically, use the `Npx`-suffixed classes** (`px-16px`, `gap-8px`, `py-6px`) for any value that has to match a real Figma spacing token — bare `p-4`/`gap-2`/etc. are a *different*, unrelated Tailwind scale (see the note in `scripts/transform-tokens.mjs`). Radius (`rounded-md`), breakpoints, and font sizes (`text-sm`) don't have this problem — use them bare.
+3. For a custom control that isn't backed by a real `<input>` visually (Checkbox, Radio, Switch), the pattern is: a visually-hidden native input with the `peer` class, then the visible box/knob/icon elements as its **direct siblings** (not nested inside each other) using `peer-checked:`/`peer-disabled:`/etc. — Tailwind's `peer-*` only reaches true siblings, not a sibling's descendants.
+4. Write a `.stories.tsx` that reproduces the same grid the Figma component page shows, so a visual diff against Figma is a straight comparison.
+5. Add the `.figma.tsx` Code Connect mapping.
+6. `npm run changeset` to record what shipped.
 
 ## Roadmap
 
 Mirrors the Figma file's own Core → Navigation → Data Display → Feedback & Overlays structure:
 
 - [x] Token pipeline
-- [x] Button (reference pattern)
-- [ ] Core: Input, Select, Search, Checkbox, Radio, Switch, Tag, Badge, Avatar, Tooltip, Form Field
+- [x] Core: Button, Input, Select, Search, Checkbox, Radio, Switch, Tag, Badge, Avatar, Tooltip, Form Field
 - [ ] Navigation: Tabs, Breadcrumb, Pagination, Menu Item, Menu, Dropdown Menu, Navbar, Sidebar, Topbar
 - [ ] Data Display: Card, Stat, List, Table, Bar Chart, Sparkline (each with Empty/Loading/Error states)
 - [ ] Feedback & Overlays: Banner, Progress, Toast, Popover, Modal, Drawer
