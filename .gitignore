@@ -12,6 +12,7 @@ pnpm-debug.log*
 dist/
 build/
 .cache/
+storybook-static/
 
 # Environment
 .env

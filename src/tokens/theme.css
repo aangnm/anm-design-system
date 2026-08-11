@@ -1,0 +1,111 @@
+/**
+ * GENERATED FILE — do not edit by hand.
+ * Source: tokens/figma-export.json (exported 2026-08-11T15:09:19.670Z)
+ * Regenerate: node scripts/transform-tokens.mjs
+ */
+
+@theme {
+  --color-surface-page: var(--surface-page);
+  --color-surface-default: var(--surface-default);
+  --color-surface-container: var(--surface-container);
+  --color-surface-emphasis: var(--surface-emphasis);
+  --color-surface-subtle: var(--surface-subtle);
+  --color-surface-muted: var(--surface-muted);
+  --color-surface-inverted: var(--surface-inverted);
+  --color-surface-info: var(--surface-info);
+  --color-surface-success: var(--surface-success);
+  --color-surface-warning: var(--surface-warning);
+  --color-surface-error: var(--surface-error);
+  --color-border-default: var(--border-default);
+  --color-border-muted: var(--border-muted);
+  --color-border-subtle: var(--border-subtle);
+  --color-border-emphasis: var(--border-emphasis);
+  --color-text-primary: var(--text-primary);
+  --color-text-emphasis: var(--text-emphasis);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-disabled: var(--text-disabled);
+  --color-text-inverse: var(--text-inverse);
+  --color-text-info: var(--text-info);
+  --color-text-success: var(--text-success);
+  --color-text-warning: var(--text-warning);
+  --color-text-error: var(--text-error);
+  --color-interactive-default: var(--interactive-default);
+  --color-interactive-hover: var(--interactive-hover);
+  --color-interactive-active: var(--interactive-active);
+  --color-interactive-disabled: var(--interactive-disabled);
+  --color-focus-ring: var(--focus-ring);
+  --color-brand-accent: var(--brand-accent);
+  --color-brand-accent-foreground: var(--brand-accent-foreground);
+  --color-interactive-primary: var(--interactive-primary);
+  --color-interactive-primary-foreground: var(--interactive-primary-foreground);
+  --color-semantic-success: var(--semantic-success);
+  --color-semantic-success-foreground: var(--semantic-success-foreground);
+  --color-semantic-success-surface: var(--semantic-success-surface);
+  --color-semantic-warning: var(--semantic-warning);
+  --color-semantic-warning-foreground: var(--semantic-warning-foreground);
+  --color-semantic-warning-surface: var(--semantic-warning-surface);
+  --color-semantic-error: var(--semantic-error);
+  --color-semantic-error-foreground: var(--semantic-error-foreground);
+  --color-semantic-error-surface: var(--semantic-error-surface);
+  --color-semantic-info: var(--semantic-info);
+  --color-semantic-info-foreground: var(--semantic-info-foreground);
+  --color-semantic-info-surface: var(--semantic-info-surface);
+  --color-data-low: var(--data-low);
+  --color-data-mid: var(--data-mid);
+  --color-data-high: var(--data-high);
+  --color-interactive-primary-hover: var(--interactive-primary-hover);
+  --color-interactive-primary-active: var(--interactive-primary-active);
+  --color-icon-default: var(--icon-default);
+  --color-icon-muted: var(--icon-muted);
+  --color-icon-inverse: var(--icon-inverse);
+
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-3xl: 24px;
+  --radius-full: 32px;
+  --radius-pill: 9999px;
+
+  --spacing-0px: 0px;
+  --spacing-2px: 2px;
+  --spacing-4px: 4px;
+  --spacing-6px: 6px;
+  --spacing-8px: 8px;
+  --spacing-10px: 10px;
+  --spacing-12px: 12px;
+  --spacing-14px: 14px;
+  --spacing-16px: 16px;
+  --spacing-20px: 20px;
+  --spacing-24px: 24px;
+  --spacing-28px: 28px;
+  --spacing-32px: 32px;
+  --spacing-36px: 36px;
+  --spacing-40px: 40px;
+  --spacing-44px: 44px;
+  --spacing-48px: 48px;
+  --spacing-56px: 56px;
+  --spacing-64px: 64px;
+  --spacing-80px: 80px;
+  --spacing-96px: 96px;
+  --spacing-112px: 112px;
+  --spacing-128px: 128px;
+
+  --text-text-min: var(--font-size-text-min);
+  --text-text-xxs: var(--font-size-text-xxs);
+  --text-text-xs: var(--font-size-text-xs);
+  --text-text-sm: var(--font-size-text-sm);
+  --text-text-base: var(--font-size-text-base);
+  --text-text-lg: var(--font-size-text-lg);
+  --text-text-xl: var(--font-size-text-xl);
+  --text-text-2xl: var(--font-size-text-2xl);
+  --text-caption: var(--font-size-caption);
+
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+}
