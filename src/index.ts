@@ -19,6 +19,13 @@ export * from './components/DropdownMenu'
 export * from './components/Navbar'
 export * from './components/Sidebar'
 
+export * from './components/Card'
+export * from './components/Stat'
+export * from './components/List'
+export * from './components/Table'
+export * from './components/BarChart'
+export * from './components/Sparkline'
+
 export * from './lib/utils'
 export * as tokens from './tokens'
 

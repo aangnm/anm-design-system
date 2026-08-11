@@ -92,7 +92,7 @@ Mirrors the Figma file's own Core → Navigation → Data Display → Feedback &
 - [x] Token pipeline
 - [x] Core: Button, Input, Select, Search, Checkbox, Radio, Switch, Tag, Badge, Avatar, Tooltip, Form Field
 - [x] Navigation: Tabs, Breadcrumb, Pagination, Menu Item, Menu, Dropdown Menu, Navbar, Sidebar
-- [ ] Data Display: Card, Stat, List, Table, Bar Chart, Sparkline (each with Empty/Loading/Error states)
+- [x] Data Display: Card, Stat, List, Table, Bar Chart, Sparkline (each with Empty/Loading/Error states)
 - [ ] Feedback & Overlays: Banner, Progress, Toast, Popover, Modal, Drawer
 - [ ] Code Connect published for every component
 
