@@ -1,0 +1,99 @@
+import { createContext, forwardRef, useContext } from 'react'
+import type { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from 'react'
+import { cn } from '@/lib/utils'
+
+// Mirrors the Sidebar component set (Navigation page): State=Expanded (240px)
+// / Collapsed (72px, icon-only). Collapsed hides labels rather than removing
+// items, same as the Figma variant.
+//
+// `collapsed` goes through context instead of being passed to each item —
+// callers set it once on <Sidebar>, and SidebarItem/SidebarBrand/
+// SidebarFooter read it. Prop-drilling it through every child would make
+// the collapsed state easy to get half-applied.
+
+const SidebarContext = createContext<{ collapsed: boolean }>({ collapsed: false })
+
+export interface SidebarProps extends HTMLAttributes<HTMLElement> {
+  collapsed?: boolean
+  brand?: ReactNode
+  footer?: ReactNode
+}
+
+export function Sidebar({ className, collapsed = false, brand, footer, children, ...props }: SidebarProps) {
+  return (
+    <SidebarContext.Provider value={{ collapsed }}>
+      <aside
+        className={cn(
+          'flex h-full flex-col gap-8px bg-surface-subtle px-16px py-20px transition-[width]',
+          collapsed ? 'w-[72px]' : 'w-[240px]',
+          className,
+        )}
+        {...props}
+      >
+        {brand ? (
+          <div className={cn('flex items-center gap-8px pb-12px', collapsed ? 'justify-center' : 'pl-8px')}>
+            {brand}
+          </div>
+        ) : null}
+
+        <div className="flex flex-col gap-8px">{children}</div>
+
+        {/* Spacer — pins the footer to the bottom, matching the empty
+            flex-fill frame Figma uses between the nav list and the footer. */}
+        <div className="flex-1" />
+
+        {footer ? (
+          <div className={cn('flex items-center', collapsed ? 'justify-center' : 'justify-between pl-8px')}>
+            {footer}
+          </div>
+        ) : null}
+      </aside>
+    </SidebarContext.Provider>
+  )
+}
+
+/** Brand lockup: hides the wordmark when collapsed, keeps the mark. */
+export function SidebarBrand({ logo, name }: { logo: ReactNode; name?: string }) {
+  const { collapsed } = useContext(SidebarContext)
+  return (
+    <>
+      <span className="shrink-0">{logo}</span>
+      {!collapsed && name ? <span className="text-sm font-semibold text-text-primary">{name}</span> : null}
+    </>
+  )
+}
+
+export interface SidebarItemProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  icon?: ReactNode
+  active?: boolean
+}
+
+export const SidebarItem = forwardRef<HTMLButtonElement, SidebarItemProps>(
+  ({ className, icon, active, children, ...props }, ref) => {
+    const { collapsed } = useContext(SidebarContext)
+    return (
+      <button
+        ref={ref}
+        type="button"
+        aria-current={active ? 'page' : undefined}
+        title={collapsed && typeof children === 'string' ? children : undefined}
+        className={cn(
+          'flex items-center gap-10px rounded-sm px-10px py-8px text-sm font-medium outline-none transition-colors',
+          'focus-visible:ring-1 focus-visible:ring-focus-ring',
+          collapsed ? 'justify-center' : 'w-full text-left',
+          active ? 'bg-interactive-default text-text-primary' : 'text-text-secondary hover:text-text-primary',
+          className,
+        )}
+        {...props}
+      >
+        {icon ? (
+          <span className={cn('shrink-0 [&>svg]:size-[18px]', active ? 'text-text-primary' : 'text-icon-muted')}>
+            {icon}
+          </span>
+        ) : null}
+        {!collapsed ? <span className="flex-1">{children}</span> : null}
+      </button>
+    )
+  },
+)
+SidebarItem.displayName = 'SidebarItem'

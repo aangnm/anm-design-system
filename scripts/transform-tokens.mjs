@@ -18,7 +18,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 const root = join(__dirname, '..')
 
 const raw = JSON.parse(readFileSync(join(root, 'tokens/figma-export.json'), 'utf-8'))
-const { collections } = raw
+const { collections, effectStyles = [] } = raw
 
 /** "surface/page" -> "surface-page" (valid CSS custom property segment) */
 function cssName(name) {
@@ -167,6 +167,27 @@ const breakpointTheme = collections.Layout.variables
   .filter((v) => v.name.startsWith('breakpoint/'))
   .map((v) => `  --breakpoint-${cssName(v.name).replace('breakpoint-', '')}: ${cssValue(v.name, v.valuesByMode.Value, v.type)};`)
 
+// Elevation comes from Figma EFFECT STYLES, not variables — Figma variables
+// can't hold effects at all, so these are exported separately from the
+// collections above. They land in Tailwind's own --shadow-* namespace, which
+// intentionally OVERRIDES Tailwind's default shadow scale: unlike the spacing
+// collision, "shadow-lg" means the same concept in both systems, so replacing
+// the values with ours is the correct outcome rather than a name clash.
+function shadowCss(effects) {
+  return effects
+    .filter((e) => e.type === 'DROP_SHADOW')
+    .map((e) => {
+      const { r, g, b, a } = e.color
+      const rgb = [r, g, b].map((c) => Math.round(c * 255)).join(' ')
+      return `${e.offsetX}px ${e.offsetY}px ${e.radius}px ${e.spread}px rgb(${rgb} / ${a})`
+    })
+    .join(', ')
+}
+
+const shadowTheme = effectStyles.map(
+  (s) => `  --shadow-${s.name.replace('elevation/shadow-', '')}: ${shadowCss(s.effects)};`,
+)
+
 const themeCss = `/**
  * GENERATED FILE — do not edit by hand.
  * Source: tokens/figma-export.json (exported ${raw.exportedAt})
@@ -183,6 +204,8 @@ ${spacingTheme.join('\n')}
 ${fontSizeTheme.join('\n')}
 
 ${breakpointTheme.join('\n')}
+
+${shadowTheme.join('\n')}
 }
 `
 

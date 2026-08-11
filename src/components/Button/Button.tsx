@@ -52,10 +52,17 @@ export interface ButtonProps
   loading?: boolean
   /** Icon rendered before the label — maps to Figma's "Leading icon" slot. */
   leadingIcon?: ReactNode
+  /**
+   * Icon rendered after the label. Figma only models a leading slot, but a
+   * trailing affordance is required by real triggers (a dropdown chevron),
+   * so this is an additive extension rather than something the design
+   * contradicts.
+   */
+  trailingIcon?: ReactNode
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild, loading, leadingIcon, disabled, children, ...props }, ref) => {
+  ({ className, variant, size, asChild, loading, leadingIcon, trailingIcon, disabled, children, ...props }, ref) => {
     const Comp = asChild ? Slot : 'button'
     return (
       <Comp
@@ -70,6 +77,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           leadingIcon
         )}
         <span className={cn(loading && 'opacity-70')}>{children}</span>
+        {trailingIcon}
       </Comp>
     )
   },

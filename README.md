@@ -4,7 +4,7 @@ Tokens and React components generated from [Iankha-Design-System-New](https://ww
 
 ## Status
 
-🚧 Early. Token pipeline is live. Core category complete: Button, Input, Select, Search, Checkbox, Radio, Switch, Tag, Badge, Avatar, Tooltip, Form Field. See [Roadmap](#roadmap).
+🚧 In progress. Token pipeline is live (color, spacing, radius, type, motion, breakpoints, elevation). Core and Navigation categories are built. See [Roadmap](#roadmap).
 
 ## Stack
 
@@ -43,6 +43,8 @@ Pure Node, no Figma access needed — reads `tokens/figma-export.json`, writes:
 - `src/tokens/tokens.css` — raw CSS custom properties. Colors are theme-aware (`:root` = dark, `[data-theme="light"]` overrides); everything else (radius, spacing, motion, breakpoints) is a single constant.
 - `src/tokens/theme.css` — the Tailwind v4 `@theme` block that turns those tokens into real utility classes (`bg-surface-page`, `rounded-md`, `p-16`, `text-sm`, …).
 - `src/tokens/index.ts` — the same tokens as typed TS constants (`color.text.primary`, `radius.md`, …), for the cases a Tailwind class isn't the right tool (canvas/chart colors, inline styles).
+
+**Elevation is exported separately.** Figma variables cannot hold effects, so the shadow scale lives in Figma as *effect styles* and comes through as a top-level `effectStyles` array in `figma-export.json` rather than inside `collections`. The transform turns it into Tailwind's `--shadow-*` namespace, which deliberately overrides Tailwind's default shadows — `shadow-lg` means the same concept in both systems, so replacing the values is the intended outcome (unlike the spacing case below, where the two scales meant different things).
 
 **Both files are generated — never hand-edit `src/tokens/*`.** If a value looks wrong, fix it at the source (Figma) and re-run the pipeline, or fix the transform script if it's a mapping bug.
 
@@ -89,7 +91,16 @@ Mirrors the Figma file's own Core → Navigation → Data Display → Feedback &
 
 - [x] Token pipeline
 - [x] Core: Button, Input, Select, Search, Checkbox, Radio, Switch, Tag, Badge, Avatar, Tooltip, Form Field
-- [ ] Navigation: Tabs, Breadcrumb, Pagination, Menu Item, Menu, Dropdown Menu, Navbar, Sidebar, Topbar
+- [x] Navigation: Tabs, Breadcrumb, Pagination, Menu Item, Menu, Dropdown Menu, Navbar, Sidebar
 - [ ] Data Display: Card, Stat, List, Table, Bar Chart, Sparkline (each with Empty/Loading/Error states)
 - [ ] Feedback & Overlays: Banner, Progress, Toast, Popover, Modal, Drawer
 - [ ] Code Connect published for every component
+
+### Deliberately not ported (yet)
+
+Four things on the Figma Navigation page were skipped, with reasons rather than by oversight:
+
+- **Date Indicator** — shows a farm week number (`SEM 32`). That's Field Work domain vocabulary, not a generic navigation primitive; it probably belongs on an App Ref page in Figma rather than in a product-agnostic library. Worth resolving in Figma before porting.
+- **Topbar / Alt** — a composition of Breadcrumb + Date Indicator + search/bell. Blocked on the Date Indicator question above, and otherwise assemblable from parts that already exist.
+- **Sidebar / Alt** — a layout rearrangement (profile on top, brand bar at the bottom) rather than a distinct component. Reachable today by passing different `brand`/`footer` slots to `Sidebar`.
+- **Navbar / Mobile** — the responsive form of Navbar. Best added as a real responsive behaviour on `Navbar` once breakpoint usage is settled, rather than as a second component that callers must swap manually.

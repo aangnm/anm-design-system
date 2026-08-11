@@ -10,6 +10,15 @@ export * from './components/Badge'
 export * from './components/Avatar'
 export * from './components/Tooltip'
 export * from './components/FormField'
+
+export * from './components/Tabs'
+export * from './components/Breadcrumb'
+export * from './components/Pagination'
+export * from './components/Menu'
+export * from './components/DropdownMenu'
+export * from './components/Navbar'
+export * from './components/Sidebar'
+
 export * from './lib/utils'
 export * as tokens from './tokens'
 

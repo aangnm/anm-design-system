@@ -158,5 +158,39 @@
         { "name": "easing/emphasized", "type": "STRING", "valuesByMode": { "Value": "cubic-bezier(0.2, 0, 0, 1)" } }
       ]
     }
-  }
+  },
+  "effectStyles": [
+    {
+      "name": "elevation/shadow-xs",
+      "effects": [{ "type": "DROP_SHADOW", "radius": 2, "offsetX": 0, "offsetY": 1, "spread": 0, "color": { "r": 0, "g": 0, "b": 0, "a": 0.05 } }]
+    },
+    {
+      "name": "elevation/shadow-sm",
+      "effects": [
+        { "type": "DROP_SHADOW", "radius": 3, "offsetX": 0, "offsetY": 1, "spread": 0, "color": { "r": 0, "g": 0, "b": 0, "a": 0.1 } },
+        { "type": "DROP_SHADOW", "radius": 2, "offsetX": 0, "offsetY": 1, "spread": 0, "color": { "r": 0, "g": 0, "b": 0, "a": 0.06 } }
+      ]
+    },
+    {
+      "name": "elevation/shadow-md",
+      "effects": [
+        { "type": "DROP_SHADOW", "radius": 6, "offsetX": 0, "offsetY": 4, "spread": -1, "color": { "r": 0, "g": 0, "b": 0, "a": 0.07 } },
+        { "type": "DROP_SHADOW", "radius": 4, "offsetX": 0, "offsetY": 2, "spread": -1, "color": { "r": 0, "g": 0, "b": 0, "a": 0.06 } }
+      ]
+    },
+    {
+      "name": "elevation/shadow-lg",
+      "effects": [
+        { "type": "DROP_SHADOW", "radius": 15, "offsetX": 0, "offsetY": 10, "spread": -3, "color": { "r": 0, "g": 0, "b": 0, "a": 0.1 } },
+        { "type": "DROP_SHADOW", "radius": 6, "offsetX": 0, "offsetY": 4, "spread": -2, "color": { "r": 0, "g": 0, "b": 0, "a": 0.05 } }
+      ]
+    },
+    {
+      "name": "elevation/shadow-xl",
+      "effects": [
+        { "type": "DROP_SHADOW", "radius": 25, "offsetX": 0, "offsetY": 20, "spread": -5, "color": { "r": 0, "g": 0, "b": 0, "a": 0.1 } },
+        { "type": "DROP_SHADOW", "radius": 10, "offsetX": 0, "offsetY": 10, "spread": -5, "color": { "r": 0, "g": 0, "b": 0, "a": 0.04 } }
+      ]
+    }
+  ]
 }
