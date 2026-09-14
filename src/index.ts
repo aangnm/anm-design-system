@@ -50,6 +50,11 @@ export * from './components/ChartTooltip'
 export * from './components/LineChart'
 export * from './components/AreaChart'
 
+export * from './components/MetricCard'
+export * from './components/ContentPanel'
+export * from './components/PageHeader'
+export * from './components/BenchmarkTable'
+
 export * from './lib/utils'
 export * as tokens from './tokens'
 

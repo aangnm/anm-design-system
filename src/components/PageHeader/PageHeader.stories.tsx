@@ -1,0 +1,34 @@
+import type { Meta, StoryObj } from '@storybook/react-vite'
+import { Bell } from 'lucide-react'
+import { PageHeader } from './PageHeader'
+import { IconButton } from '@/components/IconButton'
+import { Button } from '@/components/Button'
+
+const meta: Meta<typeof PageHeader> = {
+  title: 'Product Patterns/Page Header',
+  component: PageHeader,
+  tags: ['autodocs'],
+  decorators: [
+    (Story) => (
+      <div className="w-[800px] bg-surface-page p-8">
+        <Story />
+      </div>
+    ),
+  ],
+}
+export default meta
+
+type Story = StoryObj<typeof PageHeader>
+
+export const Playground: Story = {
+  args: {
+    title: 'Radiometría',
+    subtitle: 'Hacienda Santa Clara · 61.91 ha · Semana 22',
+    actions: (
+      <>
+        <IconButton variant="secondary" icon={<Bell />} aria-label="Notificaciones" />
+        <Button variant="primary">Nuevo registro</Button>
+      </>
+    ),
+  },
+}

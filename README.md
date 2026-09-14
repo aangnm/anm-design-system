@@ -4,7 +4,7 @@ Tokens and React components generated from [Iankha-Design-System-New](https://ww
 
 ## Status
 
-🚧 In progress. Token pipeline is live (color, spacing, radius, type, motion, breakpoints, elevation). Core (including the additions below), Navigation, Data Display, and Feedback & Overlays categories are built. See [Roadmap](#roadmap).
+🚧 In progress. Token pipeline is live (color, spacing, radius, type, motion, breakpoints, elevation, opacity, z-index). Every component category Figma has (Core, Navigation, Data Display, Feedback & Overlays, Product Patterns) is now built. See [Roadmap](#roadmap).
 
 ## Stack
 
@@ -93,19 +93,16 @@ This section used to duplicate that list and drifted badly out of date, so it no
 
 ### Ported to code
 
-- [x] Token pipeline (color, spacing, radius, type, motion, breakpoints, elevation)
+- [x] Token pipeline (color, spacing, radius, type, motion, breakpoints, elevation, opacity, z-index)
 - [x] Core: Button, Input, Select, Search, Checkbox, Radio, Switch, Tag, Badge, Avatar, Tooltip, Form Field, Divider, Textarea, Segmented Control, Skeleton, Spinner, Icon Button, Slider, Stepper, Multi-select, Date Picker, File Upload
 - [x] Navigation: Tabs, Breadcrumb, Pagination, Menu Item, Menu, Dropdown Menu, Navbar, Sidebar
 - [x] Data Display: Card, Stat, List, Table, Bar Chart, Sparkline (each with Empty/Loading/Error states), Legend, Chart Tooltip, Line Chart, Area Chart
 - [x] Feedback & Overlays: Banner, Progress, Toast, Popover, Modal, Drawer
+- [x] Product Patterns: Metric Card, Content Panel, Page Header, Benchmark Table
 
 ### Designed in Figma, not yet in code
 
-Figma is well ahead of this repo. As of v0.10 the file carries ~50 components; roughly four have no code counterpart, including:
-
-- **Product patterns**: Metric Card, Content Panel, Page Header, Benchmark Table
-
-Also note that some already-ported components may gain states in Figma after this snapshot — re-check a component against Figma before assuming the code is current.
+As of v0.10 every component category in the file has a code counterpart. Nothing is currently known to be missing — but Figma is still the source of truth, so re-check a component against it before assuming the code is current; components can gain states or new siblings between snapshots (Icon Button went from 9 to 36 variants this way once already).
 
 ### Not ported, on purpose
 
