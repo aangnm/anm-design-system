@@ -4,7 +4,7 @@ Tokens and React components generated from [Iankha-Design-System-New](https://ww
 
 ## Status
 
-🚧 In progress. Token pipeline is live (color, spacing, radius, type, motion, breakpoints, elevation). Core and Navigation categories are built. See [Roadmap](#roadmap).
+🚧 In progress. Token pipeline is live (color, spacing, radius, type, motion, breakpoints, elevation). Core, Navigation, Data Display, and Feedback & Overlays categories are built. See [Roadmap](#roadmap).
 
 ## Stack
 
@@ -97,12 +97,12 @@ This section used to duplicate that list and drifted badly out of date, so it no
 - [x] Core: Button, Input, Select, Search, Checkbox, Radio, Switch, Tag, Badge, Avatar, Tooltip, Form Field
 - [x] Navigation: Tabs, Breadcrumb, Pagination, Menu Item, Menu, Dropdown Menu, Navbar, Sidebar
 - [x] Data Display: Card, Stat, List, Table, Bar Chart, Sparkline (each with Empty/Loading/Error states)
+- [x] Feedback & Overlays: Banner, Progress, Toast, Popover, Modal, Drawer
 
 ### Designed in Figma, not yet in code
 
-Figma is well ahead of this repo. As of v0.10 the file carries ~50 components; roughly twenty have no code counterpart, including:
+Figma is well ahead of this repo. As of v0.10 the file carries ~50 components; roughly fourteen have no code counterpart, including:
 
-- **Feedback & Overlays** in full: Banner, Progress, Toast, Popover, Modal, Drawer
 - **Core additions**: Divider, Textarea, Segmented Control, Skeleton, Spinner, Icon Button, Slider, Stepper, Multi-select, Date Picker, File Upload
 - **Data-viz**: Legend, Chart Tooltip, Line Chart, Area Chart
 - **Product patterns**: Metric Card, Content Panel, Page Header, Benchmark Table

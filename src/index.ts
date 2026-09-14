@@ -26,6 +26,13 @@ export * from './components/Table'
 export * from './components/BarChart'
 export * from './components/Sparkline'
 
+export * from './components/Banner'
+export * from './components/Progress'
+export * from './components/Toast'
+export * from './components/Popover'
+export * from './components/Modal'
+export * from './components/Drawer'
+
 export * from './lib/utils'
 export * as tokens from './tokens'
 
