@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-08-11T15:09:19.670Z",
+  "exportedAt": "2026-09-14T00:00:00.000Z",
   "figmaFileKey": "OSexn3GQ7oIOo7X2sGVlSb",
   "collections": {
     "Themes": {
@@ -57,7 +57,15 @@
         { "name": "interactive/primary-active", "type": "COLOR", "valuesByMode": { "Dark Mode": "#bfbcb7", "Light Mode": "#585651" } },
         { "name": "icon/default", "type": "COLOR", "valuesByMode": { "Dark Mode": "#e4e0da", "Light Mode": "#31302d" } },
         { "name": "icon/muted", "type": "COLOR", "valuesByMode": { "Dark Mode": "#8c8c8c", "Light Mode": "#737373" } },
-        { "name": "icon/inverse", "type": "COLOR", "valuesByMode": { "Dark Mode": "#131313", "Light Mode": "#ffffff" } }
+        { "name": "icon/inverse", "type": "COLOR", "valuesByMode": { "Dark Mode": "#131313", "Light Mode": "#ffffff" } },
+        { "name": "chart/series-1", "type": "COLOR", "valuesByMode": { "Dark Mode": "#3987e5", "Light Mode": "#2a78d6" } },
+        { "name": "chart/series-2", "type": "COLOR", "valuesByMode": { "Dark Mode": "#d95926", "Light Mode": "#eb6834" } },
+        { "name": "chart/series-3", "type": "COLOR", "valuesByMode": { "Dark Mode": "#199e70", "Light Mode": "#1baf7a" } },
+        { "name": "chart/series-4", "type": "COLOR", "valuesByMode": { "Dark Mode": "#c98500", "Light Mode": "#eda100" } },
+        { "name": "chart/series-5", "type": "COLOR", "valuesByMode": { "Dark Mode": "#d55181", "Light Mode": "#e87ba4" } },
+        { "name": "chart/series-6", "type": "COLOR", "valuesByMode": { "Dark Mode": "#008300", "Light Mode": "#008300" } },
+        { "name": "chart/series-7", "type": "COLOR", "valuesByMode": { "Dark Mode": "#9085e9", "Light Mode": "#4a3aa7" } },
+        { "name": "chart/series-8", "type": "COLOR", "valuesByMode": { "Dark Mode": "#e66767", "Light Mode": "#e34948" } }
       ]
     },
     "Dimension": {
@@ -156,6 +164,22 @@
         { "name": "duration/slow", "type": "FLOAT", "valuesByMode": { "Value": 320 } },
         { "name": "easing/standard", "type": "STRING", "valuesByMode": { "Value": "cubic-bezier(0.4, 0, 0.2, 1)" } },
         { "name": "easing/emphasized", "type": "STRING", "valuesByMode": { "Value": "cubic-bezier(0.2, 0, 0, 1)" } }
+      ]
+    },
+    "Effects": {
+      "modes": ["Value"],
+      "variables": [
+        { "name": "opacity/loading", "type": "FLOAT", "valuesByMode": { "Value": 70 } },
+        { "name": "opacity/chart-fill", "type": "FLOAT", "valuesByMode": { "Value": 18 } },
+        { "name": "opacity/scrim", "type": "FLOAT", "valuesByMode": { "Value": 60 } },
+        { "name": "z-index/base", "type": "FLOAT", "valuesByMode": { "Value": 0 } },
+        { "name": "z-index/sticky", "type": "FLOAT", "valuesByMode": { "Value": 100 } },
+        { "name": "z-index/dropdown", "type": "FLOAT", "valuesByMode": { "Value": 200 } },
+        { "name": "z-index/scrim", "type": "FLOAT", "valuesByMode": { "Value": 300 } },
+        { "name": "z-index/modal", "type": "FLOAT", "valuesByMode": { "Value": 400 } },
+        { "name": "z-index/popover", "type": "FLOAT", "valuesByMode": { "Value": 500 } },
+        { "name": "z-index/toast", "type": "FLOAT", "valuesByMode": { "Value": 600 } },
+        { "name": "z-index/tooltip", "type": "FLOAT", "valuesByMode": { "Value": 700 } }
       ]
     }
   },

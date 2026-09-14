@@ -1,6 +1,6 @@
 /**
  * GENERATED FILE — do not edit by hand.
- * Source: tokens/figma-export.json (exported 2026-08-11T15:09:19.670Z)
+ * Source: tokens/figma-export.json (exported 2026-09-14T00:00:00.000Z)
  * Regenerate: node scripts/transform-tokens.mjs
  */
 
@@ -58,6 +58,14 @@
   --icon-default: #e4e0da;
   --icon-muted: #8c8c8c;
   --icon-inverse: #131313;
+  --chart-series-1: #3987e5;
+  --chart-series-2: #d95926;
+  --chart-series-3: #199e70;
+  --chart-series-4: #c98500;
+  --chart-series-5: #d55181;
+  --chart-series-6: #008300;
+  --chart-series-7: #9085e9;
+  --chart-series-8: #e66767;
 
   --border-width-sm: 1px;
   --border-width-md: 2px;
@@ -73,6 +81,17 @@
   --grid-margin-tablet: 24px;
   --grid-margin-desktop: 64px;
   --container-max-width: 1280px;
+  --opacity-loading: 0.7;
+  --opacity-chart-fill: 0.18;
+  --opacity-scrim: 0.6;
+  --z-index-base: 0;
+  --z-index-sticky: 100;
+  --z-index-dropdown: 200;
+  --z-index-scrim: 300;
+  --z-index-modal: 400;
+  --z-index-popover: 500;
+  --z-index-toast: 600;
+  --z-index-tooltip: 700;
 
   --font-size-text-min: 10px;
   --font-family-base: Inter;
@@ -157,4 +176,12 @@
   --icon-default: #31302d;
   --icon-muted: #737373;
   --icon-inverse: #ffffff;
+  --chart-series-1: #2a78d6;
+  --chart-series-2: #eb6834;
+  --chart-series-3: #1baf7a;
+  --chart-series-4: #eda100;
+  --chart-series-5: #e87ba4;
+  --chart-series-6: #008300;
+  --chart-series-7: #4a3aa7;
+  --chart-series-8: #e34948;
 }

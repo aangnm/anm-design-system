@@ -96,14 +96,13 @@ This section used to duplicate that list and drifted badly out of date, so it no
 - [x] Token pipeline (color, spacing, radius, type, motion, breakpoints, elevation)
 - [x] Core: Button, Input, Select, Search, Checkbox, Radio, Switch, Tag, Badge, Avatar, Tooltip, Form Field, Divider, Textarea, Segmented Control, Skeleton, Spinner, Icon Button, Slider, Stepper, Multi-select, Date Picker, File Upload
 - [x] Navigation: Tabs, Breadcrumb, Pagination, Menu Item, Menu, Dropdown Menu, Navbar, Sidebar
-- [x] Data Display: Card, Stat, List, Table, Bar Chart, Sparkline (each with Empty/Loading/Error states)
+- [x] Data Display: Card, Stat, List, Table, Bar Chart, Sparkline (each with Empty/Loading/Error states), Legend, Chart Tooltip, Line Chart, Area Chart
 - [x] Feedback & Overlays: Banner, Progress, Toast, Popover, Modal, Drawer
 
 ### Designed in Figma, not yet in code
 
-Figma is well ahead of this repo. As of v0.10 the file carries ~50 components; roughly eight have no code counterpart, including:
+Figma is well ahead of this repo. As of v0.10 the file carries ~50 components; roughly four have no code counterpart, including:
 
-- **Data-viz**: Legend, Chart Tooltip, Line Chart, Area Chart
 - **Product patterns**: Metric Card, Content Panel, Page Header, Benchmark Table
 
 Also note that some already-ported components may gain states in Figma after this snapshot — re-check a component against Figma before assuming the code is current.

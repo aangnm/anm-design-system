@@ -76,7 +76,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ) : (
           leadingIcon
         )}
-        <span className={cn(loading && 'opacity-70')}>{children}</span>
+        <span className={cn(loading && 'opacity-loading')}>{children}</span>
         {trailingIcon}
       </Comp>
     )

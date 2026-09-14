@@ -53,6 +53,12 @@ function cssValue(name, v, type) {
   if (type !== 'FLOAT') return String(v)
   if (UNITLESS_FLOATS.has(name)) return `${v}`
   if (name.startsWith(MS_FLOATS_PREFIX)) return `${v}ms`
+  // opacity/* is stored in Figma as a percent (70 = 70%, a hard-won gotcha —
+  // binding the raw 70 renders at 0.7% everywhere). z-index/* has no Figma
+  // property at all (scopes: []) — it's a code-only contract, so it stays a
+  // bare integer for arbitrary `z-[var(--z-index-modal)]` usage.
+  if (name.startsWith('opacity/')) return `${v / 100}`
+  if (name.startsWith('z-index/')) return `${v}`
   return `${v}px`
 }
 
@@ -81,7 +87,7 @@ const NAMESPACE_COLLIDES_WITH_TAILWIND = (name) =>
   name.startsWith('radius/') || name.startsWith('spacing/') || name.startsWith('breakpoint/')
 
 const flatLines = []
-for (const colName of ['Dimension', 'Motion', 'Layout']) {
+for (const colName of ['Dimension', 'Motion', 'Layout', 'Effects']) {
   const col = collections[colName]
   if (!col) continue
   const mode = col.modes[0]
@@ -188,6 +194,15 @@ const shadowTheme = effectStyles.map(
   (s) => `  --shadow-${s.name.replace('elevation/shadow-', '')}: ${shadowCss(s.effects)};`,
 )
 
+// opacity/* gets a real Tailwind theme entry (powers e.g. `opacity-loading`),
+// same value already re-exported as a raw var in tokens.css above.
+// z-index/* deliberately does NOT — it has no Figma property (scopes: []),
+// so it's a code-only contract consumed via `z-[var(--z-index-modal)]`,
+// never a `z-modal` utility.
+const opacityTheme = (collections.Effects?.variables ?? [])
+  .filter((v) => v.name.startsWith('opacity/'))
+  .map((v) => `  --opacity-${cssName(v.name).replace('opacity-', '')}: var(--${cssName(v.name)});`)
+
 const themeCss = `/**
  * GENERATED FILE — do not edit by hand.
  * Source: tokens/figma-export.json (exported ${raw.exportedAt})
@@ -206,6 +221,8 @@ ${fontSizeTheme.join('\n')}
 ${breakpointTheme.join('\n')}
 
 ${shadowTheme.join('\n')}
+
+${opacityTheme.join('\n')}
 }
 `
 

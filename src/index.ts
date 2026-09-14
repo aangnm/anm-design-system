@@ -45,6 +45,11 @@ export * from './components/MultiSelect'
 export * from './components/DatePicker'
 export * from './components/FileUpload'
 
+export * from './components/Legend'
+export * from './components/ChartTooltip'
+export * from './components/LineChart'
+export * from './components/AreaChart'
+
 export * from './lib/utils'
 export * as tokens from './tokens'
 

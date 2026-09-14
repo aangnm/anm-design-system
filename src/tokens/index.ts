@@ -1,6 +1,6 @@
 /**
  * GENERATED FILE — do not edit by hand.
- * Source: tokens/figma-export.json (exported 2026-08-11T15:09:19.670Z)
+ * Source: tokens/figma-export.json (exported 2026-09-14T00:00:00.000Z)
  * Regenerate: node scripts/transform-tokens.mjs
  *
  * Every value is a CSS var() reference, not a raw value — these read the
@@ -79,6 +79,16 @@ export const color = {
     Default: 'var(--icon-default)',
     Muted: 'var(--icon-muted)',
     Inverse: 'var(--icon-inverse)',
+  },
+  chart: {
+    Series1: 'var(--chart-series-1)',
+    Series2: 'var(--chart-series-2)',
+    Series3: 'var(--chart-series-3)',
+    Series4: 'var(--chart-series-4)',
+    Series5: 'var(--chart-series-5)',
+    Series6: 'var(--chart-series-6)',
+    Series7: 'var(--chart-series-7)',
+    Series8: 'var(--chart-series-8)',
   },
 } as const
 
