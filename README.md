@@ -87,20 +87,34 @@ When porting a component from Figma:
 
 ## Roadmap
 
-Mirrors the Figma file's own Core → Navigation → Data Display → Feedback & Overlays structure:
+**The roadmap lives in Figma, not here** — the [Roadmap page](https://www.figma.com/design/OSexn3GQ7oIOo7X2sGVlSb/Iankha-Design-System-New?node-id=2357-2) (node `2357:2`, right after About & Guidelines) is the canonical list of open work, grouped Now / Next / Later / Accepted. Design and code both draw from it, and it is kept current as work ships.
 
-- [x] Token pipeline
+This section used to duplicate that list and drifted badly out of date, so it no longer tries. What follows is only the **code-side** state, which the Figma page does not track.
+
+### Ported to code
+
+- [x] Token pipeline (color, spacing, radius, type, motion, breakpoints, elevation)
 - [x] Core: Button, Input, Select, Search, Checkbox, Radio, Switch, Tag, Badge, Avatar, Tooltip, Form Field
 - [x] Navigation: Tabs, Breadcrumb, Pagination, Menu Item, Menu, Dropdown Menu, Navbar, Sidebar
 - [x] Data Display: Card, Stat, List, Table, Bar Chart, Sparkline (each with Empty/Loading/Error states)
-- [ ] Feedback & Overlays: Banner, Progress, Toast, Popover, Modal, Drawer
-- [ ] Code Connect published for every component
 
-### Deliberately not ported (yet)
+### Designed in Figma, not yet in code
 
-Four things on the Figma Navigation page were skipped, with reasons rather than by oversight:
+Figma is well ahead of this repo. As of v0.10 the file carries ~50 components; roughly twenty have no code counterpart, including:
 
-- **Date Indicator** — shows a farm week number (`SEM 32`). That's Field Work domain vocabulary, not a generic navigation primitive; it probably belongs on an App Ref page in Figma rather than in a product-agnostic library. Worth resolving in Figma before porting.
-- **Topbar / Alt** — a composition of Breadcrumb + Date Indicator + search/bell. Blocked on the Date Indicator question above, and otherwise assemblable from parts that already exist.
+- **Feedback & Overlays** in full: Banner, Progress, Toast, Popover, Modal, Drawer
+- **Core additions**: Divider, Textarea, Segmented Control, Skeleton, Spinner, Icon Button, Slider, Stepper, Multi-select, Date Picker, File Upload
+- **Data-viz**: Legend, Chart Tooltip, Line Chart, Area Chart
+- **Product patterns**: Metric Card, Content Panel, Page Header, Benchmark Table
+
+Also note that several already-ported components have gained states in Figma since they were built — Icon Button, for one, went from 9 variants to 36. Re-check a component against Figma before assuming the code is current.
+
+### Not ported, on purpose
+
 - **Sidebar / Alt** — a layout rearrangement (profile on top, brand bar at the bottom) rather than a distinct component. Reachable today by passing different `brand`/`footer` slots to `Sidebar`.
 - **Navbar / Mobile** — the responsive form of Navbar. Best added as a real responsive behaviour on `Navbar` once breakpoint usage is settled, rather than as a second component that callers must swap manually.
+- **Date Indicator / Topbar / Alt** — previously skipped over domain vocabulary (`SEM 32` farm weeks). Resolved in Figma as of v0.9: Date Indicator is now a generic date + optional swappable tag primitive, so both are portable whenever they are wanted.
+
+### Code Connect
+
+Mapping files exist for all 25 ported components, but are **not published** — that is a deliberate choice while the system is still being designed, not a missing prerequisite. Publishing needs `FIGMA_ACCESS_TOKEN` with Code Connect write scope.
