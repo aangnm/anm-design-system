@@ -9,12 +9,13 @@ figma.connect(
     props: {
       // Figma's State=Open/Closed is a static depiction of what the code
       // component tracks itself — mapped to the initial value only.
-      defaultOpen: figma.enum('State', { Open: true }),
+      defaultOpen: figma.enum('State', { Open: true, Searchable: true }),
+      searchable: figma.enum('State', { Searchable: true }),
     },
-    example: ({ defaultOpen }) => (
-      <DropdownMenu label="Opciones" defaultOpen={defaultOpen}>
-        <MenuItem>Elemento del menú</MenuItem>
-        <MenuItem>Elemento del menú</MenuItem>
+    example: ({ defaultOpen, searchable }) => (
+      <DropdownMenu label="Opciones" defaultOpen={defaultOpen} searchable={searchable}>
+        <MenuItem leadingIcon={!searchable}>Elemento del menú</MenuItem>
+        <MenuItem leadingIcon={!searchable}>Elemento del menú</MenuItem>
       </DropdownMenu>
     ),
   },

@@ -1,6 +1,6 @@
 /**
  * GENERATED FILE — do not edit by hand.
- * Source: tokens/figma-export.json (exported 2026-09-14T00:00:00.000Z)
+ * Source: tokens/figma-export.json (exported 2026-10-02T00:00:00.000Z)
  * Regenerate: node scripts/transform-tokens.mjs
  */
 
@@ -66,6 +66,8 @@
   --color-chart-series-6: var(--chart-series-6);
   --color-chart-series-7: var(--chart-series-7);
   --color-chart-series-8: var(--chart-series-8);
+  --color-brand-logo: var(--brand-logo);
+  --color-surface-scrim: var(--surface-scrim);
 
   --radius-xs: 2px;
   --radius-sm: 4px;
@@ -101,7 +103,6 @@
   --spacing-112px: 112px;
   --spacing-128px: 128px;
 
-  --text-text-min: var(--font-size-text-min);
   --text-text-xxs: var(--font-size-text-xxs);
   --text-text-xs: var(--font-size-text-xs);
   --text-text-sm: var(--font-size-text-sm);

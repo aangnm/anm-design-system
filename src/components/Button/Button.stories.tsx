@@ -22,29 +22,53 @@ export const Playground: Story = {
   args: { variant: 'primary', size: 'md' },
 }
 
+const types = ['primary', 'secondary', 'outline', 'ghost'] as const
+const sizes = ['sm', 'md', 'lg'] as const
+
+// Hover/Focus are CSS pseudo-states and can't be triggered from markup, so the
+// grid forces them with the same token classes the pseudo-states resolve to.
+const forcedHover = {
+  primary: 'bg-interactive-primary-hover',
+  secondary: 'bg-interactive-hover',
+  outline: 'bg-interactive-default',
+  ghost: 'bg-interactive-default',
+} as const
+const forcedFocus = 'ring-1 ring-focus-ring'
+
+/** Mirrors the Figma grid: Type x Size rows, State columns (Default, Hover, Focus, Disabled, Loading). */
 export const AllVariants: Story = {
   render: () => (
-    <div className="flex flex-col gap-6 bg-surface-page p-8">
-      {(['primary', 'secondary', 'outline', 'ghost'] as const).map((variant) => (
-        <div key={variant} className="flex items-center gap-4">
-          {(['sm', 'md', 'lg'] as const).map((size) => (
-            <Button key={size} variant={variant} size={size}>
-              Button
-            </Button>
-          ))}
-        </div>
-      ))}
+    <div className="flex flex-col gap-16px bg-surface-page p-8">
+      <div className="grid grid-cols-[96px_repeat(5,120px)] gap-x-16px text-text-caption leading-4 text-text-secondary">
+        <span />
+        {['Default', 'Hover', 'Focus', 'Disabled', 'Loading'].map((s) => (
+          <span key={s}>{s}</span>
+        ))}
+      </div>
+      {types.flatMap((variant) =>
+        sizes.map((size) => (
+          <div key={`${variant}-${size}`} className="grid grid-cols-[96px_repeat(5,120px)] items-center gap-x-16px">
+            <span className="text-text-caption leading-4 text-text-secondary">
+              {variant} / {size}
+            </span>
+            <div><Button variant={variant} size={size}>Button</Button></div>
+            <div><Button variant={variant} size={size} className={forcedHover[variant]}>Button</Button></div>
+            <div><Button variant={variant} size={size} className={forcedFocus}>Button</Button></div>
+            <div><Button variant={variant} size={size} disabled>Button</Button></div>
+            <div><Button variant={variant} size={size} loading>Button</Button></div>
+          </div>
+        )),
+      )}
     </div>
   ),
 }
 
-export const States: Story = {
+export const WithIcons: Story = {
   render: () => (
-    <div className="flex items-center gap-4 bg-surface-page p-8">
-      <Button>Default</Button>
-      <Button disabled>Disabled</Button>
-      <Button loading>Loading</Button>
-      <Button leadingIcon={<Plus className="size-4" />}>With icon</Button>
+    <div className="flex items-center gap-16px bg-surface-page p-8">
+      <Button size="sm" leadingIcon={<Plus className="size-4" />}>Nuevo</Button>
+      <Button leadingIcon={<Plus className="size-4" />}>Nuevo</Button>
+      <Button size="lg" leadingIcon={<Plus className="size-4" />}>Nuevo</Button>
     </div>
   ),
 }

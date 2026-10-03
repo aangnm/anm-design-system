@@ -6,12 +6,12 @@ import { cn } from '@/lib/utils'
 // via a border matching the surrounding surface — same technique as Figma
 // (a 2px stroke bound to surface/page).
 
-const avatarVariants = cva('relative inline-flex shrink-0 items-center justify-center rounded-full bg-surface-emphasis text-text-primary', {
+const avatarVariants = cva('relative inline-flex shrink-0 items-center justify-center rounded-full bg-surface-emphasis font-medium text-text-primary', {
   variants: {
     size: {
-      sm: 'size-6 text-text-min',
-      md: 'size-8 text-text-xxs',
-      lg: 'size-10 text-sm',
+      sm: 'size-24px text-text-xxs leading-4',
+      md: 'size-32px text-text-xxs leading-4',
+      lg: 'size-40px text-sm',
     },
   },
   defaultVariants: {

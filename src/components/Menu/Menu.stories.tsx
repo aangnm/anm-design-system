@@ -36,3 +36,19 @@ export const ItemStates: Story = {
     </div>
   ),
 }
+
+// Leading icon boolean: on by default, off for text-only lists.
+export const LeadingIcon: Story = {
+  render: () => (
+    <div className="flex gap-24px bg-surface-page p-8">
+      <Menu>
+        <MenuItem>Con icono</MenuItem>
+        <MenuItem>Con icono</MenuItem>
+      </Menu>
+      <Menu>
+        <MenuItem leadingIcon={false}>Sin icono</MenuItem>
+        <MenuItem leadingIcon={false}>Sin icono</MenuItem>
+      </Menu>
+    </div>
+  ),
+}

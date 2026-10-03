@@ -27,12 +27,15 @@ export const AllColors: Story = {
   ),
 }
 
+/** Color x Dismissible, mirroring the Figma set (the × has a 24x24 target). */
 export const Dismissible: Story = {
   render: () => (
-    <div className="flex gap-8px bg-surface-page p-8">
-      <Tag color="info" dismissible>
-        Etiqueta
-      </Tag>
+    <div className="flex flex-col items-start gap-8px bg-surface-page p-8">
+      {(['neutral', 'success', 'warning', 'error', 'info'] as const).map((color) => (
+        <Tag key={color} color={color} dismissible>
+          Etiqueta
+        </Tag>
+      ))}
     </div>
   ),
 }

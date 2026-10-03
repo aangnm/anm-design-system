@@ -8,8 +8,9 @@ figma.connect(
     props: {
       placeholder: figma.string('Placeholder'),
       size: figma.enum('Size', { SM: 'sm', MD: 'md', LG: 'lg' }),
-      error: figma.enum('State', { Error: true }),
-      disabled: figma.enum('State', { Disabled: true }),
+      // Hover/Focus are CSS pseudo-states (map to nothing); Error and 'Focus + Error' are the `error` prop.
+      error: figma.enum('State', { Default: undefined, Hover: undefined, Focus: undefined, Error: true, 'Focus + Error': true }),
+      disabled: figma.enum('State', { Default: undefined, Hover: undefined, Focus: undefined, Disabled: true }),
       leadingIcon: figma.boolean('Leading icon', {
         true: figma.instance('Leading icon'),
         false: undefined,

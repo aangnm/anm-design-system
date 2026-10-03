@@ -7,7 +7,7 @@ const meta: Meta<typeof Skeleton> = {
   tags: ['autodocs'],
   decorators: [
     (Story) => (
-      <div className="bg-surface-page p-8">
+      <div className="bg-surface-page p-24px">
         <Story />
       </div>
     ),
@@ -21,6 +21,7 @@ export const Playground: Story = {
   args: { shape: 'line' },
 }
 
+// Mirrors the Figma variant row: Shape = Line (200 x 12) / Block (200 x 64) / Circle (40).
 export const AllShapes: Story = {
   render: () => (
     <div className="flex items-center gap-24px">

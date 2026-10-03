@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Circle } from 'lucide-react'
 import { DropdownMenu } from './DropdownMenu'
@@ -38,4 +39,31 @@ export const Open: Story = {
       </DropdownMenu>
     </div>
   ),
+}
+
+// State=Searchable: search field on top, text-only items, Limpiar at the bottom.
+// Limpiar resets the query and the selection.
+function SearchableExample() {
+  const [selected, setSelected] = useState<string | null>(null)
+  const names = ['Cosecha', 'Riego', 'Fertilización', 'Poda']
+  return (
+    <div className="h-[340px] bg-surface-page p-8">
+      <DropdownMenu label={selected ?? 'Opciones'} defaultOpen searchable onClear={() => setSelected(null)}>
+        {names.map((name) => (
+          <MenuItem
+            key={name}
+            leadingIcon={false}
+            onClick={() => setSelected(name)}
+            className={selected === name ? 'bg-interactive-default' : undefined}
+          >
+            {name}
+          </MenuItem>
+        ))}
+      </DropdownMenu>
+    </div>
+  )
+}
+
+export const Searchable: Story = {
+  render: () => <SearchableExample />,
 }

@@ -8,7 +8,8 @@ import { cn } from '@/lib/utils'
 // borderless rather than rebuilt without a border, so chart fixes still
 // propagate. Same idea here: pass a chart/table `children` with its own
 // border/background classes stripped via `className` (twMerge dedupes it),
-// not a special "borderless" prop on the chart itself.
+// not a special "borderless" prop on the chart itself. Hit area — pointer: the
+// Segmented Control segments (32 high); on touch they extend to 48 high.
 
 export interface ContentPanelProps extends HTMLAttributes<HTMLDivElement> {
   title: string
@@ -19,10 +20,10 @@ export interface ContentPanelProps extends HTMLAttributes<HTMLDivElement> {
 export function ContentPanel({ title, controls, children, className, ...props }: ContentPanelProps) {
   return (
     <div
-      className={cn('flex w-[440px] flex-col items-start gap-12px rounded-lg border border-border-default bg-surface-container p-16px', className)}
+      className={cn('flex w-[440px] flex-col items-start gap-12px rounded-lg border border-border-subtle bg-surface-subtle p-16px', className)}
       {...props}
     >
-      <div className="flex w-full items-center">
+      <div className="flex min-h-36px w-full items-center">
         <p className="flex-1 text-base font-semibold leading-6 text-text-primary">{title}</p>
         {controls}
       </div>

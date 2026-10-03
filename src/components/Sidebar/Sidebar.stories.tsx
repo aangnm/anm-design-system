@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { ChevronUp, Circle } from 'lucide-react'
+import { ChevronUp, Circle, LayoutDashboard, ClipboardList, ChartLine, Map, Settings } from 'lucide-react'
 import { Sidebar, SidebarBrand, SidebarItem } from './Sidebar'
 import { Avatar } from '@/components/Avatar'
 
@@ -25,6 +25,20 @@ const nav = (
   </>
 )
 
+// Same rows with a distinct icon each — the per-item icon slot (Figma: Icon · Panel,
+// Registros, Análisis, Zonas, Ajustes).
+const navWithIcons = (
+  <>
+    <SidebarItem icon={<LayoutDashboard />} active>
+      Panel
+    </SidebarItem>
+    <SidebarItem icon={<ClipboardList />}>Registros</SidebarItem>
+    <SidebarItem icon={<ChartLine />}>Análisis</SidebarItem>
+    <SidebarItem icon={<Map />}>Zonas</SidebarItem>
+    <SidebarItem icon={<Settings />}>Ajustes</SidebarItem>
+  </>
+)
+
 function Footer({ collapsed }: { collapsed?: boolean }) {
   if (collapsed) return <Avatar initials="OA" size="sm" />
   return (
@@ -33,7 +47,7 @@ function Footer({ collapsed }: { collapsed?: boolean }) {
         <Avatar initials="OA" size="sm" />
         <div className="flex flex-col">
           <span className="text-sm text-text-primary">Oscar Andrade</span>
-          <span className="text-text-min text-text-secondary">Administrador</span>
+          <span className="text-text-xxs leading-4 text-text-secondary">Administrador</span>
         </div>
       </div>
       <ChevronUp className="size-4 text-icon-muted" />
@@ -77,6 +91,23 @@ export const SideBySide: Story = {
         footer={<Footer collapsed />}
       >
         {nav}
+      </Sidebar>
+    </div>
+  ),
+}
+
+export const WithIcons: Story = {
+  render: () => (
+    <div className="flex h-[600px] gap-24px bg-surface-page">
+      <Sidebar brand={<SidebarBrand logo={<Circle className="size-6 text-text-primary" />} name="Santa Fe" />} footer={<Footer />}>
+        {navWithIcons}
+      </Sidebar>
+      <Sidebar
+        collapsed
+        brand={<SidebarBrand logo={<Circle className="size-6 text-text-primary" />} name="Santa Fe" />}
+        footer={<Footer collapsed />}
+      >
+        {navWithIcons}
       </Sidebar>
     </div>
   ),

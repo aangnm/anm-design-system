@@ -19,7 +19,13 @@ export const Playground: Story = {
       brand={<span className="text-sm font-semibold text-text-primary">iankha</span>}
       actions={
         <>
-          <SearchIcon className="size-5 text-icon-muted" />
+          <button
+            type="button"
+            aria-label="Buscar"
+            className="inline-flex size-24px items-center justify-center rounded-xs text-icon-muted outline-none transition-colors hover:text-text-primary focus-visible:ring-1 focus-visible:ring-focus-ring"
+          >
+            <SearchIcon className="size-5" />
+          </button>
           <Avatar initials="IK" size="md" />
         </>
       }

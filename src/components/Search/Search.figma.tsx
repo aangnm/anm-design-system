@@ -6,8 +6,10 @@ figma.connect(
   'https://www.figma.com/design/OSexn3GQ7oIOo7X2sGVlSb/Iankha-Design-System-New?node-id=2107-27',
   {
     props: {
-      disabled: figma.enum('State', { Disabled: true }),
+      size: figma.enum('Size', { SM: 'sm', MD: 'md', LG: 'lg' }),
+      // Hover/Focus are CSS pseudo-states (map to nothing); Search has no Error.
+      disabled: figma.enum('State', { Default: undefined, Hover: undefined, Focus: undefined, Disabled: true }),
     },
-    example: ({ disabled }) => <Search disabled={disabled} />,
+    example: ({ size, disabled }) => <Search size={size} disabled={disabled} />,
   },
 )

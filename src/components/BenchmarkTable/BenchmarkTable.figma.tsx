@@ -8,10 +8,10 @@ figma.connect(
     example: () => (
       <BenchmarkTable
         rows={[
-          { lote: 'Lote 07', actividad: 'Cosecha', rate: 612, tier: 'moderado' },
-          { lote: 'Lote 12', actividad: 'Cosecha', rate: 340, tier: 'critico' },
-          { lote: 'Lote 15N', actividad: 'Cosecha', rate: 845, tier: 'saludable' },
-          { lote: 'Lote 18', actividad: 'Cosecha', rate: 810, tier: 'saludable' },
+          { lote: 'Lote 07', actividad: 'Cosecha', rate: 612 },
+          { lote: 'Lote 12', actividad: 'Cosecha', rate: 340 },
+          { lote: 'Lote 15N', actividad: 'Cosecha', rate: 845 },
+          { lote: 'Lote 18', actividad: 'Cosecha', rate: 810 },
         ]}
       />
     ),

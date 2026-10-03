@@ -4,6 +4,10 @@ import { cn } from '@/lib/utils'
 // Mirrors the Progress component (Feedback & Overlays page). Determinate only —
 // indeterminate progress is Spinner's job (per the component's Figma description);
 // a bar that doesn't represent a real proportion is a misleading affordance.
+// Track: a 1px border/default outline (inside) so the bar stays visible on any
+// surface, including grey ones where the soft track fill alone disappears.
+// The value prints as "65 %" with a no-break space (U+00A0) before the sign, so it never wraps
+// ("65 %"; Figma draws a plain space, the no-break space is the code-side guarantee).
 
 export interface ProgressProps extends HTMLAttributes<HTMLDivElement> {
   /** 0-100. */
@@ -25,13 +29,14 @@ export function Progress({ value, label = 'Progreso', showLabel = true, classNam
       {...props}
     >
       {showLabel ? (
-        <div className="flex w-full items-start justify-between text-[13px] font-medium leading-5">
+        <div className="flex w-full items-start justify-between text-text-xs font-medium leading-5">
           <p className="text-text-secondary">{label}</p>
-          <p className="text-text-primary">{clamped}%</p>
+          <p className="text-text-primary">{`${clamped}\u00A0%`}</p>
         </div>
       ) : null}
-      <div className="h-8px w-full shrink-0 overflow-clip rounded-pill bg-surface-emphasis">
-        <div className="h-8px rounded-pill bg-interactive-primary" style={{ width: `${clamped}%` }} />
+      <div className="relative h-8px w-full shrink-0 overflow-clip rounded-pill bg-interactive-default">
+        <div className="h-full rounded-pill bg-interactive-primary" style={{ width: `${clamped}%` }} />
+        <div className="pointer-events-none absolute inset-0 rounded-pill border border-border-default" aria-hidden />
       </div>
     </div>
   )

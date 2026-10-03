@@ -99,6 +99,18 @@ for (const colName of ['Dimension', 'Motion', 'Layout', 'Effects']) {
   }
 }
 
+// Icon: the one collection whose modes are icon SIZES (24/20/16/12), not
+// themes. Each size gets its own custom property — `--icon-stroke-width-16` —
+// because stroke width scales with size (2 / 1.67 / 1.33 / 1) so small icons
+// keep the same visual weight. Unitless on purpose: it feeds SVG strokeWidth.
+if (collections.Icon) {
+  for (const v of collections.Icon.variables) {
+    for (const mode of collections.Icon.modes) {
+      flatLines.push(`  --${cssName(v.name)}-${mode}: ${v.valuesByMode[mode]};`)
+    }
+  }
+}
+
 // Typography: "Default" mode only for now — Normal/Large exist in Figma as a
 // density switch and aren't wired to a CSS mechanism yet (see README notes).
 // font/weight/* values are Inter style names in Figma ("Semi Bold") — mapped

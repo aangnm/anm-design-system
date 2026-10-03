@@ -8,7 +8,8 @@ import { cn } from '@/lib/utils'
 // says drop target in a way a solid bordered field does not. The
 // accepted-formats hint stays, since it prevents the most common upload
 // error. States: Default / Dragging (border -> interactive/primary) /
-// Disabled, per the component's description.
+// Disabled, per the component's description. The whole drop zone is the
+// pointer target (well above 24x24); keyboard focus draws the 2px focus ring.
 
 export interface FileUploadProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'onChange'> {
   hint?: string
@@ -34,9 +35,9 @@ export function FileUpload({
   return (
     <label
       className={cn(
-        'flex w-[360px] cursor-pointer flex-col items-center justify-center gap-8px rounded-lg border border-dashed bg-surface-subtle px-24px py-28px text-center transition-colors',
+        'flex w-[360px] cursor-pointer flex-col items-center justify-center gap-8px rounded-lg border border-dashed bg-surface-subtle px-24px py-28px text-center transition-colors has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-focus-ring',
         dragging ? 'border-interactive-primary' : 'border-border-default',
-        disabled && 'cursor-not-allowed opacity-60',
+        disabled && 'cursor-not-allowed border-border-subtle bg-interactive-disabled opacity-60',
         className,
       )}
       onDragOver={(e) => {
@@ -50,9 +51,9 @@ export function FileUpload({
         if (!disabled) handleFiles(e.dataTransfer.files)
       }}
     >
-      <Upload className="size-24px text-text-secondary" aria-hidden />
-      <p className="text-sm font-medium text-text-secondary">Arrastra archivos o haz clic</p>
-      <p className="text-[13px] text-text-disabled">{hint}</p>
+      <Upload className="size-24px text-icon-muted" aria-hidden />
+      <p className="text-sm font-medium leading-5 text-text-secondary">Arrastra archivos o haz clic</p>
+      <p className="text-text-xs leading-5 text-text-secondary">{hint}</p>
       <input
         ref={inputRef}
         type="file"

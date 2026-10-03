@@ -10,6 +10,12 @@ import { cn } from '@/lib/utils'
 // callers set it once on <Sidebar>, and SidebarItem/SidebarBrand/
 // SidebarFooter read it. Prop-drilling it through every child would make
 // the collapsed state easy to get half-applied.
+//
+// Each nav item takes its own `icon` (Figma: one icon swap property per nav
+// item — Panel, Registros, Análisis, Zonas, Ajustes). Collapsed is a 72px
+// icon-only rail; labels are hidden, not removed.
+// Hit area — each nav item row is 36 high; on touch the target extends to
+// 48 x 48 without changing the visual.
 
 const SidebarContext = createContext<{ collapsed: boolean }>({ collapsed: false })
 
@@ -78,16 +84,17 @@ export const SidebarItem = forwardRef<HTMLButtonElement, SidebarItemProps>(
         aria-current={active ? 'page' : undefined}
         title={collapsed && typeof children === 'string' ? children : undefined}
         className={cn(
-          'flex items-center gap-10px rounded-sm px-10px py-8px text-sm font-medium outline-none transition-colors',
+          'relative flex w-full items-center gap-10px rounded-sm px-10px py-8px text-sm font-medium outline-none transition-colors',
+          'pointer-coarse:after:absolute pointer-coarse:after:inset-x-0 pointer-coarse:after:top-1/2 pointer-coarse:after:h-48px pointer-coarse:after:-translate-y-1/2',
           'focus-visible:ring-1 focus-visible:ring-focus-ring',
-          collapsed ? 'justify-center' : 'w-full text-left',
+          collapsed ? 'justify-center' : 'text-left',
           active ? 'bg-interactive-default text-text-primary' : 'text-text-secondary hover:text-text-primary',
           className,
         )}
         {...props}
       >
         {icon ? (
-          <span className={cn('shrink-0 [&>svg]:size-[18px]', active ? 'text-text-primary' : 'text-icon-muted')}>
+          <span className={cn('shrink-0 [&>svg]:size-5', active ? 'text-text-primary' : 'text-icon-muted')}>
             {icon}
           </span>
         ) : null}

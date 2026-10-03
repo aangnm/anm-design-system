@@ -6,6 +6,10 @@ import { cn } from '@/lib/utils'
 // composition (logo / three links / search + avatar); the port turns those
 // into slots so the shell is reusable, with NavbarLink carrying the
 // active-vs-inactive text treatment.
+// Hit area — each link has a 24px-high target (marked Hit area in Figma); icon
+// actions in the `actions` slot need a 24 x 24 target (the avatar is 32). On
+// touch, extend to 48 x 48 without changing the visual. Brand: the horizontal
+// lockup at 108px wide is supplied by the app (clear space 8px on every side).
 
 export interface NavbarProps extends HTMLAttributes<HTMLElement> {
   brand?: ReactNode
@@ -38,7 +42,8 @@ export const NavbarLink = forwardRef<HTMLAnchorElement, NavbarLinkProps>(
       ref={ref}
       aria-current={active ? 'page' : undefined}
       className={cn(
-        'rounded-xs text-sm font-medium outline-none transition-colors focus-visible:ring-1 focus-visible:ring-focus-ring',
+        'relative inline-flex h-24px items-center rounded-xs text-sm font-medium outline-none transition-colors focus-visible:ring-1 focus-visible:ring-focus-ring',
+        'pointer-coarse:after:absolute pointer-coarse:after:inset-x-0 pointer-coarse:after:top-1/2 pointer-coarse:after:h-48px pointer-coarse:after:-translate-y-1/2',
         active ? 'text-text-primary' : 'text-text-secondary hover:text-text-primary',
         className,
       )}

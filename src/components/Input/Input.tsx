@@ -4,25 +4,28 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from '@/lib/utils'
 
 // Mirrors the Input component set (Core page): Size x State, plus the
-// "Leading icon" boolean slot. Focus/Disabled are real browser states here;
+// "Leading icon" boolean slot. Hover/Focus/Disabled are real browser states
+// here (:hover -> border/emphasis, :focus-visible -> focus/ring border);
 // Error has no reliable native CSS hook for arbitrary business-logic
-// validity, so it's a real prop, same as the Figma State=Error variant.
+// validity, so it's a real prop (also exposed as aria-invalid), same as the
+// Figma State=Error variant. Focus + Error is the error border plus an outer
+// 2px focus ring. Heights: SM 32 / MD 36 / LG 48; text 13/20, 14/20, 16/24.
 
 const inputVariants = cva(
   'flex w-full items-center gap-8px border bg-surface-subtle text-text-primary outline-none transition-colors ' +
     'placeholder:text-text-secondary ' +
-    'focus-visible:border-focus-ring ' +
-    'disabled:cursor-not-allowed disabled:bg-interactive-disabled disabled:text-text-disabled disabled:placeholder:text-text-disabled disabled:border-border-subtle',
+    'disabled:cursor-not-allowed disabled:bg-interactive-disabled disabled:text-text-disabled disabled:placeholder:text-text-disabled disabled:border-border-subtle disabled:hover:border-border-subtle ' +
+    'has-[:disabled]:cursor-not-allowed has-[:disabled]:bg-interactive-disabled has-[:disabled]:text-text-disabled has-[:disabled]:border-border-subtle has-[:disabled]:hover:border-border-subtle',
   {
     variants: {
       size: {
-        sm: 'rounded-sm px-10px py-6px text-sm',
-        md: 'rounded-md px-12px py-8px text-base',
-        lg: 'rounded-md px-16px py-12px text-lg',
+        sm: 'h-32px rounded-sm px-10px text-text-xs leading-5',
+        md: 'h-36px rounded-md px-12px text-sm',
+        lg: 'h-48px rounded-md px-16px text-base',
       },
       error: {
-        true: 'border-semantic-error',
-        false: 'border-border-default',
+        true: 'border-semantic-error focus-visible:ring-2 focus-visible:ring-focus-ring has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-focus-ring',
+        false: 'border-border-default hover:border-border-emphasis focus-visible:border-focus-ring has-[:focus-visible]:border-focus-ring',
       },
     },
     defaultVariants: {
@@ -42,13 +45,14 @@ export interface InputProps
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ className, size, error, leadingIcon, ...props }, ref) => {
     if (!leadingIcon) {
-      return <input ref={ref} className={cn(inputVariants({ size, error }), className)} {...props} />
+      return <input ref={ref} aria-invalid={error || undefined} className={cn(inputVariants({ size, error }), className)} {...props} />
     }
     return (
       <div className={cn(inputVariants({ size, error }), 'has-[:disabled]:cursor-not-allowed', className)}>
         <span className="shrink-0 text-icon-muted [&>svg]:size-4">{leadingIcon}</span>
         <input
           ref={ref}
+          aria-invalid={error || undefined}
           className="w-full bg-transparent outline-none placeholder:text-inherit disabled:cursor-not-allowed"
           {...props}
         />

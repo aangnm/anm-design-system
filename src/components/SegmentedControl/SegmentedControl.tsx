@@ -22,7 +22,7 @@ export interface SegmentedControlProps {
 
 export function SegmentedControl({ options, value, onChange, className }: SegmentedControlProps) {
   return (
-    <div role="radiogroup" className={cn('inline-flex items-center gap-2px rounded-md bg-surface-subtle p-2px', className)}>
+    <div role="radiogroup" className={cn('inline-flex items-center gap-2px rounded-md bg-surface-muted p-2px', className)}>
       {options.map((option) => {
         const active = option.value === value
         return (
@@ -33,8 +33,8 @@ export function SegmentedControl({ options, value, onChange, className }: Segmen
             aria-checked={active}
             onClick={() => onChange(option.value)}
             className={cn(
-              'rounded-sm px-12px py-6px text-[13px] font-medium transition-colors',
-              active ? 'bg-surface-page text-text-primary' : 'text-text-secondary hover:text-text-primary',
+              'rounded-sm px-12px py-6px text-text-xs font-medium leading-5 transition-colors',
+              active ? 'bg-surface-default text-text-primary' : 'text-text-secondary hover:text-text-primary',
             )}
           >
             {option.label}

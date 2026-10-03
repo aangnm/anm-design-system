@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils'
 // Why (from Figma) — keeps a neutral surface with a coloured icon, deliberately unlike
 // Banner's tinted background: a toast overlays arbitrary content, so a neutral surface
 // stays legible wherever it lands and the icon alone carries the meaning.
+// The close icon is a 16px visual with a 24x24 target (extended with a pseudo-element).
 
 export type ToastColor = 'success' | 'info' | 'warning' | 'error'
 
@@ -44,14 +45,14 @@ export function Toast({ color = 'success', title, description, onDismiss, classN
     >
       <Icon className={cn('size-5 shrink-0', iconColors[color])} aria-hidden />
       <div className="flex min-w-px flex-1 flex-col gap-2px">
-        <p className="text-sm font-medium text-text-primary">{title}</p>
-        <p className="text-[13px] text-text-secondary">{description}</p>
+        <p className="text-sm font-medium leading-5 text-text-primary">{title}</p>
+        <p className="text-text-xs leading-5 text-text-secondary">{description}</p>
       </div>
       {onDismiss ? (
         <button
           type="button"
           onClick={onDismiss}
-          className="shrink-0 rounded-xs opacity-80 outline-none transition-opacity hover:opacity-100 focus-visible:opacity-100 focus-visible:ring-1 focus-visible:ring-focus-ring"
+          className="relative shrink-0 rounded-xs text-icon-muted outline-none transition-colors after:absolute after:left-1/2 after:top-1/2 after:size-24px after:-translate-x-1/2 after:-translate-y-1/2 hover:text-text-primary focus-visible:ring-1 focus-visible:ring-focus-ring"
           aria-label="Cerrar"
         >
           <X className="size-4" />

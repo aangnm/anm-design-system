@@ -9,9 +9,9 @@ figma.connect(
       <ChartTooltip
         heading="17 jun"
         rows={[
-          { label: 'NDVI', value: '0.86', series: 1 },
-          { label: 'GNDVI', value: '0.71', series: 2 },
-          { label: 'NDRE', value: '0.34', series: 3 },
+          { label: 'NDVI', value: '0,86', series: 1 },
+          { label: 'GNDVI', value: '0,71', series: 2 },
+          { label: 'NDRE', value: '0,34', series: 3 },
         ]}
       />
     ),

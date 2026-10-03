@@ -13,12 +13,14 @@ import { cn } from '@/lib/utils'
 
 // Sizes use the Figma spacing tokens directly (px-16px, not px-4 — see the
 // note in scripts/transform-tokens.mjs on why our numbered spacing scale
-// can't share Tailwind's bare h-*/p-*/gap-* namespace). Height is intrinsic
-// (padding + line-height), matching how the Figma component itself is built
-// as an auto-layout frame rather than a fixed-height box — SM/MD/LG land at
-// 32/36/48px as a result, same as the design.
+// can't share Tailwind's bare h-*/p-*/gap-* namespace). Height is
+// fixed per size (h-32px/36px/48px, border-box) so the 1px border on Secondary/
+// Outline sits inside the height, as the Figma stroke does — SM/MD/LG are
+// 32/36/48px for every Type. Label text is 13/20, 14/20
+// and 16/24 (SM/MD/LG) — one step below the first port, per the Figma ramp.
 const buttonVariants = cva(
-  'inline-flex items-center justify-center whitespace-nowrap font-medium transition-colors ' +
+  'relative inline-flex items-center justify-center whitespace-nowrap font-medium transition-colors ' +
+    'pointer-coarse:after:absolute pointer-coarse:after:left-1/2 pointer-coarse:after:top-1/2 pointer-coarse:after:size-full pointer-coarse:after:min-h-48px pointer-coarse:after:min-w-48px pointer-coarse:after:-translate-x-1/2 pointer-coarse:after:-translate-y-1/2 ' +
     'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-focus-ring ' +
     'disabled:pointer-events-none disabled:bg-interactive-disabled disabled:text-text-disabled',
   {
@@ -31,9 +33,9 @@ const buttonVariants = cva(
         ghost: 'bg-transparent text-text-primary hover:bg-interactive-default',
       },
       size: {
-        sm: 'gap-6px rounded-sm px-12px py-6px text-sm',
-        md: 'gap-8px rounded-md px-16px py-8px text-base',
-        lg: 'gap-8px rounded-md px-24px py-12px text-lg',
+        sm: 'gap-6px h-32px rounded-sm px-12px text-text-xs leading-5',
+        md: 'gap-8px h-36px rounded-md px-16px text-sm',
+        lg: 'gap-8px h-48px rounded-md px-24px text-base',
       },
     },
     defaultVariants: {

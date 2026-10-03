@@ -1,3 +1,4 @@
+import { useEffect, useId } from 'react'
 import type { HTMLAttributes, ReactNode } from 'react'
 import { X } from 'lucide-react'
 import { Button } from '../Button'
@@ -10,7 +11,12 @@ import { cn } from '@/lib/utils'
 // use case, not the contract, so it's exposed as a generic label/value `items`
 // list (falls back to arbitrary `children` for other bodies). The footer is
 // pinned to the bottom via a flex-1 spacer rather than a fixed height, so the
-// body can grow — same as Figma. Like Modal, no backdrop yet.
+// body can grow — same as Figma. Like Modal it sits on the Scrim ("Drawer over
+// scrim"), rendered by default (`overlay`, on): a fixed scrim (--z-index-scrim) with
+// the panel docked to the right edge above it (--z-index-modal); clicking the
+// scrim or pressing Escape calls `onClose`. Pass `overlay={false}` for the
+// body-only panel Figma documents.
+// Focus trapping is the host dialog's job. Close icon: 20px visual, 24x24 target.
 
 export interface DrawerItem {
   label: string
@@ -26,6 +32,8 @@ export interface DrawerProps extends HTMLAttributes<HTMLDivElement> {
   onCancel?: () => void
   onConfirm?: () => void
   onClose?: () => void
+  /** Render on the Scrim, docked right (fixed, full-height). Default false: body only. */
+  overlay?: boolean
 }
 
 export function Drawer({
@@ -37,22 +45,37 @@ export function Drawer({
   onCancel,
   onConfirm,
   onClose,
+  overlay = true,
   className,
   ...props
 }: DrawerProps) {
-  return (
+  const titleId = useId()
+
+  useEffect(() => {
+    if (!overlay || !onClose) return
+    const onKeyDown = (e: KeyboardEvent) => e.key === 'Escape' && onClose()
+    document.addEventListener('keydown', onKeyDown)
+    return () => document.removeEventListener('keydown', onKeyDown)
+  }, [overlay, onClose])
+
+  const panel = (
     <div
       role="dialog"
       aria-modal="true"
-      className={cn('flex h-[600px] w-[400px] flex-col items-start gap-16px rounded-lg bg-surface-subtle p-24px shadow-xl', className)}
+      aria-labelledby={titleId}
+      className={cn(
+        'flex w-[400px] flex-col items-start gap-16px rounded-lg bg-surface-subtle p-24px shadow-xl',
+        overlay ? 'h-full rounded-r-none' : 'h-[600px]',
+        className,
+      )}
       {...props}
     >
       <div className="flex w-full items-center justify-between">
-        <p className="text-xl font-semibold leading-7 text-text-primary">{title}</p>
+        <p id={titleId} className="text-xl font-semibold leading-7 text-text-primary">{title}</p>
         <button
           type="button"
           onClick={onClose}
-          className="rounded-xs text-text-primary opacity-80 outline-none transition-opacity hover:opacity-100 focus-visible:opacity-100 focus-visible:ring-1 focus-visible:ring-focus-ring"
+          className="relative rounded-xs text-icon-muted outline-none transition-colors after:absolute after:left-1/2 after:top-1/2 after:size-24px after:-translate-x-1/2 after:-translate-y-1/2 hover:text-text-primary focus-visible:ring-1 focus-visible:ring-focus-ring"
           aria-label="Cerrar"
         >
           <X className="size-5" />
@@ -62,7 +85,7 @@ export function Drawer({
         {items
           ? items.map((item) => (
               <div key={item.label} className="flex w-full flex-col gap-4px">
-                <p className="text-[11px] font-medium leading-4 text-text-secondary">{item.label}</p>
+                <p className="text-text-xxs font-medium leading-4 text-text-secondary">{item.label}</p>
                 <p className="w-full text-sm text-text-primary">{item.value}</p>
               </div>
             ))
@@ -78,5 +101,19 @@ export function Drawer({
         </Button>
       </div>
     </div>
+  )
+
+  if (!overlay) return panel
+  return (
+    <>
+      <div
+        aria-hidden
+        onClick={onClose}
+        className="fixed inset-0 z-[var(--z-index-scrim)] bg-surface-scrim opacity-scrim"
+      />
+      <div className="pointer-events-none fixed inset-y-0 right-0 z-[var(--z-index-modal)] flex">
+        <div className="pointer-events-auto flex">{panel}</div>
+      </div>
+    </>
   )
 }

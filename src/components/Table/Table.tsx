@@ -31,6 +31,8 @@ export interface TableProps extends Omit<HTMLAttributes<HTMLTableElement>, 'chil
 
 const alignClass = { left: 'text-left', right: 'text-right', center: 'text-center' } as const
 const cellPad = 'px-14px py-10px'
+// Loading keeps the real header and skeletons only the body; widths per column as in Figma.
+const SKELETON_WIDTHS = [24, 112, 72, 42, 42]
 
 export function Table({
   columns,
@@ -43,7 +45,15 @@ export function Table({
   ...props
 }: TableProps) {
   return (
-    <div className="w-full overflow-hidden rounded-lg border border-border-subtle bg-surface-container">
+    <div
+      className={cn(
+        'w-full overflow-hidden rounded-lg border border-border-subtle bg-surface-subtle',
+        // Every non-Default variant is padded to the Default's height (header 36
+        // + four 44px rows = 212px) on purpose, so swapping states never makes
+        // the container jump.
+        state !== 'default' && 'min-h-[212px]',
+      )}
+    >
       <table className={cn('w-full border-collapse', className)} {...props}>
         <thead>
           <tr className="bg-surface-emphasis">
@@ -78,10 +88,13 @@ export function Table({
         ) : state === 'loading' ? (
           <tbody className="divide-y divide-border-subtle" aria-busy="true">
             {Array.from({ length: loadingRows }).map((_, i) => (
-              <tr key={i}>
-                {columns.map((col) => (
-                  <td key={col.key} className={cellPad}>
-                    <div className="h-[12px] w-full max-w-[80px] rounded-sm bg-surface-emphasis" />
+              <tr key={i} className="h-44px">
+                {columns.map((col, c) => (
+                  <td key={col.key} className="px-14px">
+                    <div
+                      className="h-12px max-w-full rounded-sm bg-border-muted"
+                      style={{ width: SKELETON_WIDTHS[c % SKELETON_WIDTHS.length] }}
+                    />
                   </td>
                 ))}
               </tr>
@@ -90,12 +103,12 @@ export function Table({
         ) : (
           <tbody>
             <tr>
-              <td colSpan={columns.length} className="px-16px py-24px">
+              <td colSpan={columns.length} className="h-[176px] px-16px py-32px">
                 <div className="flex flex-col items-center justify-center gap-8px">
                   {state === 'error' ? (
-                    <CircleAlert className="size-5 text-semantic-error" aria-hidden />
+                    <CircleAlert className="size-20px text-semantic-error" aria-hidden />
                   ) : (
-                    <Inbox className="size-5 text-icon-muted" aria-hidden />
+                    <Inbox className="size-20px text-icon-muted" aria-hidden />
                   )}
                   <p className="text-text-xs leading-5 text-text-secondary">
                     {state === 'error' ? errorMessage : emptyMessage}

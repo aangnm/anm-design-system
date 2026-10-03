@@ -32,6 +32,24 @@ export const AllColors: Story = {
   ),
 }
 
+// Optional Title and Action (both off by default in Figma).
+export const TitleAndAction: Story = {
+  render: () => (
+    <div className="flex w-[440px] flex-col gap-8px bg-surface-page p-8">
+      {(['info', 'success', 'warning', 'error'] as const).map((color) => (
+        <Banner
+          key={color}
+          color={color}
+          title="Título del mensaje"
+          message="Mensaje para el usuario."
+          action={{ label: 'Deshacer', onClick: () => {} }}
+          onDismiss={() => {}}
+        />
+      ))}
+    </div>
+  ),
+}
+
 export const Dismissible: Story = {
   args: { color: 'warning', onDismiss: () => {} },
 }

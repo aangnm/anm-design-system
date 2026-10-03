@@ -8,7 +8,8 @@ import { cn } from '@/lib/utils'
 // category tag. Why (from Figma) — deliberately kept off Core and Data
 // Display: it's assembled entirely from Card + Tag so it inherits their
 // tokens rather than forking new ones. Use Stat instead for a compact
-// label/value/delta tile.
+// label/value/delta tile. Hit area — not interactive; the category Tag is a
+// label. If the whole card becomes a link, the card is the target.
 
 export interface MetricCardProps extends HTMLAttributes<HTMLDivElement> {
   title: string
@@ -24,11 +25,11 @@ export function MetricCard({ title, context, value, valueContext, tagLabel, tagC
     <Card className={cn('w-[300px] gap-16px', className)} {...props}>
       <div className="flex w-full flex-col gap-4px">
         <p className="text-base font-semibold leading-6 text-text-primary">{title}</p>
-        <p className="text-[13px] text-text-secondary">{context}</p>
+        <p className="text-text-xs leading-5 text-text-secondary">{context}</p>
       </div>
       <div className="flex w-full flex-col gap-2px">
-        <p className="text-[30px] font-semibold leading-9 text-text-primary">{value}</p>
-        <p className="text-[13px] text-text-secondary">{valueContext}</p>
+        <p className="text-3xl font-semibold text-text-primary">{value}</p>
+        <p className="text-text-xs leading-5 text-text-secondary">{valueContext}</p>
       </div>
       <div className="flex w-full items-start justify-end">
         <Tag color={tagColor}>{tagLabel}</Tag>

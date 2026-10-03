@@ -6,12 +6,12 @@
 
 **The Figma file is the source of truth, not this repo.** Tokens and component specs are decided in Figma and flow outward into code. Never "fix" a token value here to match a design; fix it in Figma and re-run the pipeline.
 
-**File:** [Iankha-Design-System-New](https://www.figma.com/design/OSexn3GQ7oIOo7X2sGVlSb/Iankha-Design-System-New) — fileKey `OSexn3GQ7oIOo7X2sGVlSb`
+**File:** Iankha Design System Beta (renamed from "Iankha-Design-System-New"; links to the old name still resolve) — [open](https://www.figma.com/design/OSexn3GQ7oIOo7X2sGVlSb/Iankha-Design-System-New) — fileKey `OSexn3GQ7oIOo7X2sGVlSb`
 
 **The canonical list of open work is the Roadmap page in Figma** (node `2357:2`, second page, right after About & Guidelines). It carries Now / Next / Later / Accepted, and each item says what it needs. Read it before planning work. It supersedes any task list in this repo.
 
 Two other Figma pages orient you fast:
-- **About & Guidelines** (`2081:2`) — purpose, file organisation, conventions, component status (Stable vs Beta), the **Decisions that apply everywhere** card, and a changelog running v0.1 → v0.10.
+- **About & Guidelines** (`2081:2`) — purpose, file organisation, conventions, the **Decisions that apply everywhere** card, and a changelog running v0.1 → v0.70.
 - **Elevation** (`2081:3`) — the depth page: shadows, plus the `z-index` stacking contract and `opacity` tokens.
 
 **Design rationale lives in the Figma file, not in this repo.** Every component's description carries a `Why —` note explaining the decision behind it; the rules that belong to no single component are on the Decisions card above. **Read a component's description before changing it** — several treatments that look like inconsistencies are deliberate and say so (Switch's raw knob colour, Badge's literal white label, Toast's neutral surface against Banner's tinted one).
@@ -60,7 +60,7 @@ Accumulated API gotchas, each found the hard way:
 - Figma variant axes map to a real API: `State=Hover/Focus/Disabled` become CSS pseudo-classes, not props. `State=Loading` has no native equivalent, so it becomes a real prop.
 - A component's Storybook grid should mirror the Figma variant grid, so a visual diff is a straight comparison.
 - Large Figma variant sets use a manual grid (`layoutMode = 'NONE'`), matching Button and Icon Button. Growing a set means shifting everything below it on the page.
-- Component status: **Stable** (survived a full review pass) vs **Beta** (amber Tag next to the section label). When work ships, delete the item from the Figma Roadmap page and add a line to the Changelog on About & Guidelines.
+- Component status: there are no status labels. Every component in the file has been through a full review pass (Beta tags were retired in changelog v0.68). When work ships, delete the item from the Figma Roadmap page and add a line to the Changelog on About & Guidelines.
 - **Record design decisions where the designer will find them** — as a `Why —` note in the Figma component's description, not only in a commit message or a changelog line. If the decision applies system-wide, it belongs on the Decisions card on About & Guidelines instead.
 - When adding text to a Figma documentation page, **bind the fill to a token**. Four changelog entries sat unbound at pure black on a dark card, effectively invisible, until a screenshot caught it.
 

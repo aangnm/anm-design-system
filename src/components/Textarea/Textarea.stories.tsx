@@ -20,10 +20,26 @@ type Story = StoryObj<typeof Textarea>
 
 export const Playground: Story = {}
 
-export const Error: Story = {
-  args: { error: true, defaultValue: 'Escribe una nota…' },
-}
+const states = [
+  { label: 'Default', props: {}, cls: '' },
+  { label: 'Hover', props: {}, cls: 'border-border-emphasis' },
+  { label: 'Focus', props: {}, cls: 'border-focus-ring' },
+  { label: 'Disabled', props: { disabled: true }, cls: '' },
+  { label: 'Error', props: { error: true }, cls: '' },
+  { label: 'Focus + Error', props: { error: true }, cls: 'ring-2 ring-focus-ring' },
+]
 
-export const Disabled: Story = {
-  args: { disabled: true },
+/** Mirrors the Figma State column (no Size axis; Hover/Focus forced with the same tokens). */
+export const States: Story = {
+  decorators: [],
+  render: () => (
+    <div className="flex flex-wrap gap-16px bg-surface-page p-8">
+      {states.map((s) => (
+        <div key={s.label} className="flex w-[280px] flex-col gap-4px">
+          <span className="text-text-caption leading-4 text-text-secondary">{s.label}</span>
+          <Textarea placeholder="Escribe una nota…" className={s.cls} {...s.props} />
+        </div>
+      ))}
+    </div>
+  ),
 }

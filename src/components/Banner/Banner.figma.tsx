@@ -12,7 +12,19 @@ figma.connect(
         Warning: 'warning',
         Error: 'error',
       }),
+      // "Title" / "Action" are booleans in Figma; the code props carry the text,
+      // so the text property is only passed through when its boolean is on.
+      title: figma.boolean('Title', { true: figma.string('Title text'), false: undefined }),
+      actionLabel: figma.boolean('Action', { true: figma.string('Action label'), false: undefined }),
     },
-    example: ({ color }) => <Banner color={color} message="Mensaje para el usuario." onDismiss={() => {}} />,
+    example: ({ color, title, actionLabel }) => (
+      <Banner
+        color={color}
+        title={title}
+        action={actionLabel ? { label: actionLabel, onClick: () => {} } : undefined}
+        message="Mensaje para el usuario."
+        onDismiss={() => {}}
+      />
+    ),
   },
 )

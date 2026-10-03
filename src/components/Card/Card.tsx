@@ -21,8 +21,11 @@ export interface CardProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 // bg + border + radius + padding are the shared surface, identical across
-// every state (--card / --secondary / --radius-lg / --spacing-20 in Figma).
-const surface = 'w-full rounded-lg border border-border-subtle bg-surface-container p-20px'
+// every state (surface/subtle, border/subtle, radius/lg, spacing/20 in Figma).
+const surface = 'w-full rounded-lg border border-border-subtle bg-surface-subtle p-20px'
+// Every non-Default variant is padded to the Default's height (108px) on purpose:
+// swapping a populated card for its Empty state must not collapse the container.
+const statePad = 'min-h-[108px]'
 
 export function Card({
   state = 'default',
@@ -34,11 +37,11 @@ export function Card({
 }: CardProps) {
   if (state === 'loading') {
     return (
-      <div className={cn(surface, 'flex flex-col items-start gap-10px', className)} aria-busy="true" {...props}>
-        {/* Skeleton bars — arbitrary dims (not tokens), fill = --secondary. */}
-        <div className="h-[16px] w-[140px] rounded-sm bg-surface-emphasis" />
-        <div className="h-[12px] w-[260px] rounded-sm bg-surface-emphasis" />
-        <div className="h-[12px] w-[180px] rounded-sm bg-surface-emphasis" />
+      <div className={cn(surface, statePad, 'flex flex-col items-start gap-10px', className)} aria-busy="true" {...props}>
+        {/* Skeleton bars — arbitrary dims (not tokens), fill = border/muted. */}
+        <div className="h-[16px] w-[140px] rounded-sm bg-border-muted" />
+        <div className="h-[12px] w-[260px] rounded-sm bg-border-muted" />
+        <div className="h-[12px] w-[180px] rounded-sm bg-border-muted" />
       </div>
     )
   }
@@ -47,8 +50,8 @@ export function Card({
     const isError = state === 'error'
     const Icon = isError ? CircleAlert : Inbox
     return (
-      <div className={cn(surface, 'flex flex-col items-center justify-center gap-8px', className)} {...props}>
-        <Icon className={cn('size-5', isError ? 'text-semantic-error' : 'text-icon-muted')} aria-hidden />
+      <div className={cn(surface, statePad, 'flex flex-col items-center justify-center gap-8px', className)} {...props}>
+        <Icon className={cn('size-20px', isError ? 'text-semantic-error' : 'text-icon-muted')} aria-hidden />
         <p className="text-text-xs leading-5 text-text-secondary">{isError ? errorMessage : emptyMessage}</p>
       </div>
     )

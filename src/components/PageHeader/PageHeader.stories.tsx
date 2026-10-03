@@ -10,7 +10,7 @@ const meta: Meta<typeof PageHeader> = {
   tags: ['autodocs'],
   decorators: [
     (Story) => (
-      <div className="w-[800px] bg-surface-page p-8">
+      <div className="w-[800px] bg-surface-page p-24px">
         <Story />
       </div>
     ),
@@ -23,7 +23,7 @@ type Story = StoryObj<typeof PageHeader>
 export const Playground: Story = {
   args: {
     title: 'Radiometría',
-    subtitle: 'Hacienda Santa Clara · 61.91 ha · Semana 22',
+    subtitle: 'Hacienda Santa Clara · 61,91 ha · Semana 22',
     actions: (
       <>
         <IconButton variant="secondary" icon={<Bell />} aria-label="Notificaciones" />

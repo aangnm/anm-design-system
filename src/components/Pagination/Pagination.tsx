@@ -8,9 +8,12 @@ import { cn } from '@/lib/utils'
 // drawing shortcut. Using the real Lucide chevrons here instead: the same
 // file uses Lucide chevron-right for Breadcrumb separators, so this is the
 // system's own iconography rather than a deviation from it.
+//
+// Hit area — each item is 32 x 32 (above the 24 floor); on touch the target
+// extends to 48 x 48 without changing the visual.
 
 const itemClass =
-  'inline-flex size-32px items-center justify-center rounded-sm text-sm font-medium outline-none transition-colors ' +
+  'relative inline-flex size-32px items-center pointer-coarse:after:absolute pointer-coarse:after:left-1/2 pointer-coarse:after:top-1/2 pointer-coarse:after:size-48px pointer-coarse:after:-translate-x-1/2 pointer-coarse:after:-translate-y-1/2  justify-center rounded-sm text-sm font-medium outline-none transition-colors ' +
   'focus-visible:ring-1 focus-visible:ring-focus-ring ' +
   'disabled:pointer-events-none disabled:text-text-disabled'
 

@@ -21,8 +21,8 @@ export const Playground: Story = {
   args: {
     title: 'Producción total',
     context: 'Captura global · Semana 22',
-    value: '1,284 t',
-    valueContext: '2.5 M tallos acumulados',
+    value: '1.284 Tallos',
+    valueContext: '2,5 M tallos acumulados',
     tagLabel: 'Global',
   },
 }

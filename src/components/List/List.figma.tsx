@@ -17,9 +17,9 @@ figma.connect(
       <List
         state={state}
         items={[
-          { title: 'Lote 07', subtitle: 'Cosecha · Sem 22', value: '1,284 t' },
+          { title: 'Lote 07', subtitle: 'Cosecha · Sem 22', value: '250 Tallos' },
           { title: 'Lote 12', subtitle: 'Fertilización · Sem 21', value: '—' },
-          { title: 'Lote 15N', subtitle: 'Monitoreo · Sem 22', value: '98 pts' },
+          { title: 'Lote 15N', subtitle: 'Monitoreo · Sem 22', value: '98 Plantas' },
         ]}
       />
     ),

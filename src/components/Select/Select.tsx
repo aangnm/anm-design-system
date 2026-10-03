@@ -4,42 +4,67 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import { ChevronDown } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
-// Mirrors the Select component (Core page): State only, one size (36px).
-// A native <select> + appearance-none + overlaid chevron — simplest fully
-// accessible pattern for a single-size, no-search dropdown. If a future
-// Figma revision adds a searchable/multi-select variant, that's a Radix
-// Select port instead, not an extension of this one.
+// Mirrors the Select component (Core page): Size (SM 32 / MD 36 / LG 48) x
+// State (Default / Hover / Focus / Disabled / Error / Focus + Error). Same
+// padding, radius and text as Input (13/20, 14/20, 16/24). Hover, Focus and
+// Disabled are real browser states; Error is a prop (also aria-invalid);
+// Focus + Error is the error border plus an outer 2px focus ring.
+// Why (Figma) — a native <select> with an overlaid chevron, so no open-list
+// state exists here. A searchable or multi-value picker is a separate
+// component (Multi-select), never a variant of this one.
+// Width is up to the caller (Figma shows 260 / 280 / 300).
 
 const selectVariants = cva(
-  'w-full appearance-none rounded-md border bg-surface-subtle py-8px pl-12px pr-32px text-base text-text-primary outline-none transition-colors ' +
-    'focus-visible:border-focus-ring ' +
-    'disabled:cursor-not-allowed disabled:bg-interactive-disabled disabled:text-text-disabled disabled:border-border-subtle',
+  'w-full appearance-none border bg-surface-subtle text-text-primary outline-none transition-colors ' +
+    'disabled:cursor-not-allowed disabled:bg-interactive-disabled disabled:text-text-disabled disabled:border-border-subtle disabled:hover:border-border-subtle',
   {
     variants: {
+      size: {
+        sm: 'h-32px rounded-sm pl-10px pr-32px text-text-xs leading-5',
+        md: 'h-36px rounded-md pl-12px pr-32px text-sm',
+        lg: 'h-48px rounded-md pl-16px pr-40px text-base',
+      },
       error: {
-        true: 'border-semantic-error',
-        false: 'border-border-default',
+        true: 'border-semantic-error focus-visible:ring-2 focus-visible:ring-focus-ring',
+        false: 'border-border-default hover:border-border-emphasis focus-visible:border-focus-ring',
       },
     },
     defaultVariants: {
+      size: 'md',
       error: false,
     },
   },
 )
 
+const chevronPosition = {
+  sm: 'right-10px',
+  md: 'right-12px',
+  lg: 'right-16px',
+} as const
+
 export interface SelectProps
   extends Omit<SelectHTMLAttributes<HTMLSelectElement>, 'size'>,
     VariantProps<typeof selectVariants> {}
 
-export const Select = forwardRef<HTMLSelectElement, SelectProps>(({ className, error, children, ...props }, ref) => (
-  <div className="relative w-full">
-    <select ref={ref} className={cn(selectVariants({ error }), className)} {...props}>
-      {children}
-    </select>
-    <ChevronDown
-      className="pointer-events-none absolute right-12px top-1/2 size-4 -translate-y-1/2 text-icon-muted"
-      aria-hidden
-    />
-  </div>
-))
+export const Select = forwardRef<HTMLSelectElement, SelectProps>(
+  ({ className, size, error, children, ...props }, ref) => (
+    <div className="relative w-full">
+      <select
+        ref={ref}
+        aria-invalid={error || undefined}
+        className={cn(selectVariants({ size, error }), className)}
+        {...props}
+      >
+        {children}
+      </select>
+      <ChevronDown
+        className={cn(
+          'pointer-events-none absolute top-1/2 size-4 -translate-y-1/2 text-icon-muted',
+          chevronPosition[size ?? 'md'],
+        )}
+        aria-hidden
+      />
+    </div>
+  ),
+)
 Select.displayName = 'Select'

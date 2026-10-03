@@ -11,8 +11,8 @@ const meta: Meta<typeof Stat> = {
   },
   args: {
     label: 'Producción total',
-    value: '1,284 t',
-    delta: '12.5%',
+    value: '1.284 Tallos',
+    delta: '12,5 %',
     trend: 'up',
     deltaCaption: 'vs. mes anterior',
     state: 'default',
@@ -35,7 +35,7 @@ export const States: Story = {
   render: () => (
     <div className="flex flex-wrap gap-16px bg-surface-page p-24px">
       <div className="w-[260px]">
-        <Stat label="Producción total" value="1,284 t" delta="12.5%" trend="up" deltaCaption="vs. mes anterior" />
+        <Stat label="Producción total" value="1.284 Tallos" delta="12,5 %" trend="up" deltaCaption="vs. mes anterior" />
       </div>
       <div className="w-[260px]">
         <Stat state="empty" />
@@ -54,13 +54,13 @@ export const Trends: Story = {
   render: () => (
     <div className="flex flex-wrap gap-16px bg-surface-page p-24px">
       <div className="w-[260px]">
-        <Stat label="Rendimiento" value="94%" delta="12.5%" trend="up" deltaCaption="vs. mes anterior" />
+        <Stat label="Rendimiento" value="94 %" delta="12,5 %" trend="up" deltaCaption="vs. mes anterior" />
       </div>
       <div className="w-[260px]">
-        <Stat label="Mermas" value="3.2%" delta="4.1%" trend="down" deltaCaption="vs. mes anterior" />
+        <Stat label="Mermas" value="3,2 %" delta="4,1 %" trend="down" deltaCaption="vs. mes anterior" />
       </div>
       <div className="w-[260px]">
-        <Stat label="Lotes activos" value="18" delta="0%" trend="neutral" deltaCaption="sin cambios" />
+        <Stat label="Lotes activos" value="18" delta="0 %" trend="neutral" deltaCaption="sin cambios" />
       </div>
     </div>
   ),

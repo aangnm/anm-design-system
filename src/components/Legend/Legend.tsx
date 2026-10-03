@@ -4,8 +4,8 @@ import { cn } from '@/lib/utils'
 // Mirrors the Legend component (Data Display page): the series key for any
 // multi-series chart. Why (from Figma) — one swatch (chart/series-N) + label
 // per series, in fixed slot order, so the same series keeps its colour
-// across every chart in a product; labels wear text/secondary, never the
-// series colour, and a legend should always ship with 2+ series since the
+// across every chart in a product; labels wear text/secondary (13/20
+// Medium), never the series colour, and a legend should always ship with 2+ series since the
 // categorical palette carries a documented light-mode contrast warning on a
 // few hues that the legend/direct labels mitigate.
 
@@ -44,6 +44,18 @@ export const CHART_SERIES_FILL: Record<ChartSeriesIndex, string> = {
   8: 'fill-chart-series-8',
 }
 
+/**
+ * Chart number format: decimal comma, thousands dot (es-EC), e.g. `0,86`,
+ * `1.284`. Shared by the axis/tooltip text of the whole chart family so no
+ * chart prints a US-style `0.86`.
+ */
+export function formatChartNumber(value: number, decimals?: number): string {
+  return new Intl.NumberFormat('de-DE', {
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals ?? 3,
+  }).format(value)
+}
+
 export interface LegendItem {
   label: string
   series: ChartSeriesIndex
@@ -59,7 +71,7 @@ export function Legend({ items, className, ...props }: LegendProps) {
       {items.map((item) => (
         <div key={item.series} className="flex items-center gap-6px">
           <div className={cn('size-10px shrink-0 rounded-sm', CHART_SERIES_BG[item.series])} />
-          <p className="whitespace-nowrap text-[13px] font-medium text-text-secondary">{item.label}</p>
+          <p className="whitespace-nowrap text-text-xs font-medium leading-5 text-text-secondary">{item.label}</p>
         </div>
       ))}
     </div>

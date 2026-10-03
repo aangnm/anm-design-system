@@ -4,8 +4,9 @@ import { cn } from '@/lib/utils'
 // Mirrors the Sparkline primitive (Data Display page): a compact inline trend
 // line, e.g. inside a Stat or table cell. Figma exports it as a static vector;
 // here it's data-driven — the polyline is computed from `data` so the same
-// component renders any series. Stroke follows currentColor (primary ink),
-// theme-aware in both light and dark.
+// component renders any series. Stroke is 2px and follows currentColor, which defaults to
+// interactive/primary (Figma binds the path to it); recolour via className.
+// Not interactive.
 
 export interface SparklineProps extends Omit<SVGAttributes<SVGSVGElement>, 'children'> {
   data: number[]
@@ -16,7 +17,7 @@ export interface SparklineProps extends Omit<SVGAttributes<SVGSVGElement>, 'chil
   strokeWidth?: number
 }
 
-export function Sparkline({ data, width = 160, height = 48, strokeWidth = 1.5, className, ...props }: SparklineProps) {
+export function Sparkline({ data, width = 160, height = 48, strokeWidth = 2, className, ...props }: SparklineProps) {
   const n = data.length
   const min = Math.min(...data)
   const max = Math.max(...data)
@@ -37,7 +38,7 @@ export function Sparkline({ data, width = 160, height = 48, strokeWidth = 1.5, c
       viewBox={`0 0 ${width} ${height}`}
       fill="none"
       role="img"
-      className={cn('text-text-primary', className)}
+      className={cn('text-interactive-primary', className)}
       {...props}
     >
       <polyline points={points} stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" />

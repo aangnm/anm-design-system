@@ -7,6 +7,9 @@ import { cn } from '@/lib/utils'
 // (text/primary, not a link, aria-current) is the whole behaviour of this
 // component, and deriving it from an array is more reliable than trusting
 // every caller to remember it.
+// Hit area — each link has a 24px-high target (links are 20px of text, so the
+// anchor is padded to 24 without moving the text); on touch it extends to 48.
+// The current page is not a link.
 
 export interface BreadcrumbItem {
   label: string
@@ -21,7 +24,7 @@ export interface BreadcrumbProps {
 export function Breadcrumb({ items, className }: BreadcrumbProps) {
   return (
     <nav aria-label="Breadcrumb" className={className}>
-      <ol className="flex items-center gap-8px text-sm">
+      <ol className="flex items-center gap-8px text-sm leading-5">
         {items.map((item, i) => {
           const isLast = i === items.length - 1
           return (
@@ -37,7 +40,7 @@ export function Breadcrumb({ items, className }: BreadcrumbProps) {
                 ) : (
                   <a
                     href={item.href}
-                    className="rounded-xs text-text-secondary outline-none transition-colors hover:text-text-primary focus-visible:ring-1 focus-visible:ring-focus-ring"
+                    className="relative inline-flex h-24px items-center rounded-xs text-text-secondary outline-none transition-colors hover:text-text-primary focus-visible:ring-1 focus-visible:ring-focus-ring pointer-coarse:after:absolute pointer-coarse:after:inset-x-0 pointer-coarse:after:top-1/2 pointer-coarse:after:h-48px pointer-coarse:after:-translate-y-1/2"
                   >
                     {item.label}
                   </a>
@@ -45,7 +48,7 @@ export function Breadcrumb({ items, className }: BreadcrumbProps) {
               </li>
               {!isLast ? (
                 <li aria-hidden className="flex items-center">
-                  <ChevronRight className="size-3.5 text-icon-muted" />
+                  <ChevronRight className="size-4 text-icon-muted" />
                 </li>
               ) : null}
             </Fragment>

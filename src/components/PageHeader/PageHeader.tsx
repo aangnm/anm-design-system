@@ -8,7 +8,8 @@ import { cn } from '@/lib/utils'
 // than fixed props, since real pages vary the action count/kind — but the
 // convention it sets (Icon Button for secondary actions, one primary Button)
 // is documented for callers to follow. Add a Breadcrumb above for nested
-// pages.
+// pages. Hit area — pointer: the Icon Button (36 x 36) and the Button (36 high);
+// on touch they extend to 48 x 48 (owned by those components).
 
 export interface PageHeaderProps extends HTMLAttributes<HTMLDivElement> {
   title: string
@@ -19,11 +20,11 @@ export interface PageHeaderProps extends HTMLAttributes<HTMLDivElement> {
 export function PageHeader({ title, subtitle, actions, className, ...props }: PageHeaderProps) {
   return (
     <div
-      className={cn('flex w-full items-center justify-between border-b border-border-default pb-16px', className)}
+      className={cn('flex w-full items-center justify-between border-b border-border-subtle pb-16px', className)}
       {...props}
     >
       <div className="flex flex-col gap-4px">
-        <p className="text-[30px] font-semibold leading-9 text-text-primary">{title}</p>
+        <p className="text-3xl font-semibold text-text-primary">{title}</p>
         {subtitle ? <p className="text-sm text-text-secondary">{subtitle}</p> : null}
       </div>
       {actions ? <div className="flex items-center gap-8px">{actions}</div> : null}

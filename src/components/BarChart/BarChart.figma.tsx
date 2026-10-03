@@ -5,15 +5,22 @@ figma.connect(
   BarChart,
   'https://www.figma.com/design/OSexn3GQ7oIOo7X2sGVlSb/Iankha-Design-System-New?node-id=2132-11',
   {
-    example: () => (
+    props: {
+      showValues: figma.boolean('Show values'),
+      highlightLatest: figma.boolean('Highlight latest'),
+    },
+    example: ({ showValues, highlightLatest }) => (
       <BarChart
+        max={300}
+        showValues={showValues}
+        highlightLatest={highlightLatest}
         data={[
-          { label: 'S1', value: 63 },
-          { label: 'S2', value: 95 },
-          { label: 'S3', value: 73 },
-          { label: 'S4', value: 118 },
-          { label: 'S5', value: 104 },
-          { label: 'S6', value: 134 },
+          { label: 'S1', value: 125 },
+          { label: 'S2', value: 190 },
+          { label: 'S3', value: 145 },
+          { label: 'S4', value: 235 },
+          { label: 'S5', value: 210 },
+          { label: 'S6', value: 255 },
         ]}
       />
     ),

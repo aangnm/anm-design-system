@@ -7,9 +7,12 @@ figma.connect(
   {
     props: {
       label: figma.string('Etiqueta'),
-      defaultChecked: figma.enum('State', { Checked: true }),
-      indeterminate: figma.enum('State', { Indeterminate: true }),
-      disabled: figma.enum('State', { Disabled: true }),
+      // Value axis = the real checked / indeterminate state.
+      defaultChecked: figma.enum('Value', { Checked: true }),
+      indeterminate: figma.enum('Value', { Indeterminate: true }),
+      // State axis: Hover and Focus are CSS pseudo-states (map to nothing);
+      // only Disabled is a real attribute.
+      disabled: figma.enum('State', { Default: undefined, Hover: undefined, Focus: undefined, Disabled: true }),
     },
     example: ({ label, defaultChecked, indeterminate, disabled }) => (
       <Checkbox label={label} defaultChecked={defaultChecked} indeterminate={indeterminate} disabled={disabled} />

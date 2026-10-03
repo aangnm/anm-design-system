@@ -13,8 +13,15 @@ export default meta
 
 type Story = StoryObj<typeof Breadcrumb>
 
-export const Playground: Story = {}
+export const Playground: Story = {
+  render: (args) => (
+    <div className="bg-surface-page p-24px">
+      <Breadcrumb {...args} />
+    </div>
+  ),
+}
 
 export const TwoLevels: Story = {
   args: { items: [{ label: 'Inicio', href: '#' }, { label: 'Página actual' }] },
+  render: Playground.render,
 }

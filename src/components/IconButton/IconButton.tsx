@@ -3,6 +3,8 @@ import type { ButtonHTMLAttributes, ReactNode } from 'react'
 import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from '@/lib/utils'
 
+// Hit area: the visual is 32/36/48 square (always >= 24); on a coarse pointer
+// a pseudo-element extends the target to 48x48 without changing the visual.
 // Mirrors the Icon Button component set (Core page): Type x Size x State.
 // Why (from Figma) — State mirrors Button exactly so the two never drift
 // (Hover shifts fill, Focus adds a focus-ring stroke over the default fill,
@@ -11,7 +13,8 @@ import { cn } from '@/lib/utils'
 // against the disabled fill, where icon/muted would read as still-enabled.
 
 const iconButtonVariants = cva(
-  'inline-flex shrink-0 items-center justify-center rounded-md transition-colors ' +
+  'relative inline-flex shrink-0 items-center justify-center rounded-md transition-colors ' +
+    'pointer-coarse:after:absolute pointer-coarse:after:left-1/2 pointer-coarse:after:top-1/2 pointer-coarse:after:size-full pointer-coarse:after:min-h-48px pointer-coarse:after:min-w-48px pointer-coarse:after:-translate-x-1/2 pointer-coarse:after:-translate-y-1/2 ' +
     'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-focus-ring ' +
     'disabled:pointer-events-none disabled:bg-interactive-disabled disabled:text-text-disabled',
   {

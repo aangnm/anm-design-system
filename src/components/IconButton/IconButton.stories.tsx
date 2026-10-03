@@ -23,20 +23,35 @@ export const Playground: Story = {
   args: { variant: 'primary', size: 'md' },
 }
 
+const forcedHover = {
+  primary: 'bg-interactive-primary-hover',
+  secondary: 'bg-interactive-hover',
+  ghost: 'bg-interactive-default',
+} as const
+
+/** Mirrors the Figma grid: Type x Size rows, State columns (Hover/Focus forced with the same tokens). */
 export const AllVariants: Story = {
   render: () => (
     <div className="flex flex-col gap-16px">
-      {(['primary', 'secondary', 'ghost'] as const).map((variant) => (
-        <div key={variant} className="flex items-center gap-8px">
-          {(['sm', 'md', 'lg'] as const).map((size) => (
-            <IconButton key={size} variant={variant} size={size} icon={<Bell />} aria-label="Notificaciones" />
-          ))}
-        </div>
-      ))}
+      <div className="grid grid-cols-[96px_repeat(4,56px)] text-text-caption leading-4 text-text-secondary">
+        <span />
+        {['Default', 'Hover', 'Focus', 'Disabled'].map((s) => (
+          <span key={s}>{s}</span>
+        ))}
+      </div>
+      {(['primary', 'secondary', 'ghost'] as const).flatMap((variant) =>
+        (['sm', 'md', 'lg'] as const).map((size) => (
+          <div key={`${variant}-${size}`} className="grid grid-cols-[96px_repeat(4,56px)] items-center">
+            <span className="text-text-caption leading-4 text-text-secondary">
+              {variant} / {size}
+            </span>
+            <div><IconButton variant={variant} size={size} icon={<Bell />} aria-label="Notificaciones" /></div>
+            <div><IconButton variant={variant} size={size} icon={<Bell />} aria-label="Notificaciones" className={forcedHover[variant]} /></div>
+            <div><IconButton variant={variant} size={size} icon={<Bell />} aria-label="Notificaciones" className="ring-1 ring-focus-ring" /></div>
+            <div><IconButton variant={variant} size={size} icon={<Bell />} aria-label="Notificaciones" disabled /></div>
+          </div>
+        )),
+      )}
     </div>
   ),
-}
-
-export const Disabled: Story = {
-  args: { disabled: true },
 }

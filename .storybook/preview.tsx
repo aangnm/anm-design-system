@@ -6,6 +6,9 @@ const withTheme = (Story: React.ComponentType, context: { globals: { theme?: str
   const theme = context.globals.theme ?? 'dark'
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
+    // The canvas itself follows the theme too, so stories shorter than the
+    // viewport do not show a dark strip under a light story (and vice versa).
+    document.body.style.backgroundColor = 'var(--surface-page)'
   }, [theme])
   return (
     <div className="bg-surface-page p-8 min-h-40">

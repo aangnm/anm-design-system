@@ -24,3 +24,14 @@ export const Playground: Story = {
     return <Slider min={0} max={100} value={value} onChange={(e) => setValue(Number(e.target.value))} />
   },
 }
+
+/** Rail outline: border/default around the rail, primary around the filled part. */
+export const Values: Story = {
+  render: () => (
+    <div className="flex flex-col gap-16px">
+      {[0, 40, 100].map((v) => (
+        <Slider key={v} value={v} onChange={() => {}} />
+      ))}
+    </div>
+  ),
+}

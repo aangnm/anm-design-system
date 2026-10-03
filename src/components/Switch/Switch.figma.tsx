@@ -7,8 +7,11 @@ figma.connect(
   {
     props: {
       label: figma.string('Etiqueta'),
-      defaultChecked: figma.enum('State', { On: true }),
-      disabled: figma.enum('State', { Disabled: true }),
+      // Value axis = the real checked state.
+      defaultChecked: figma.enum('Value', { On: true }),
+      // State axis: Hover and Focus are CSS pseudo-states (map to nothing);
+      // only Disabled is a real attribute.
+      disabled: figma.enum('State', { Default: undefined, Hover: undefined, Focus: undefined, Disabled: true }),
     },
     example: ({ label, defaultChecked, disabled }) => (
       <Switch label={label} defaultChecked={defaultChecked} disabled={disabled} />

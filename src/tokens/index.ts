@@ -1,6 +1,6 @@
 /**
  * GENERATED FILE — do not edit by hand.
- * Source: tokens/figma-export.json (exported 2026-09-14T00:00:00.000Z)
+ * Source: tokens/figma-export.json (exported 2026-10-02T00:00:00.000Z)
  * Regenerate: node scripts/transform-tokens.mjs
  *
  * Every value is a CSS var() reference, not a raw value — these read the
@@ -21,6 +21,7 @@ export const color = {
     Success: 'var(--surface-success)',
     Warning: 'var(--surface-warning)',
     Error: 'var(--surface-error)',
+    Scrim: 'var(--surface-scrim)',
   },
   border: {
     Default: 'var(--border-default)',
@@ -55,6 +56,7 @@ export const color = {
   brand: {
     Accent: 'var(--brand-accent)',
     AccentForeground: 'var(--brand-accent-foreground)',
+    Logo: 'var(--brand-logo)',
   },
   semantic: {
     Success: 'var(--semantic-success)',

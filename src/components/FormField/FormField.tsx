@@ -22,12 +22,12 @@ export function FormField({ label, helperText, error, id, leadingIcon, className
 
   return (
     <div className={cn('flex flex-col gap-6px', className)}>
-      <label htmlFor={inputId} className="text-text-xxs font-medium text-text-primary">
+      <label htmlFor={inputId} className="text-text-xxs font-medium leading-4 text-text-primary">
         {label}
       </label>
       <Input id={inputId} size="md" error={error} leadingIcon={leadingIcon} {...props} />
       {helperText ? (
-        <p className={cn('text-text-min', error ? 'text-semantic-error' : 'text-text-secondary')}>{helperText}</p>
+        <p className={cn('text-caption leading-4', error ? 'text-text-error' : 'text-text-secondary')}>{helperText}</p>
       ) : null}
     </div>
   )

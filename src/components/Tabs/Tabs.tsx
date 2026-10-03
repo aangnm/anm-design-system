@@ -7,6 +7,8 @@ import { cn } from '@/lib/utils'
 // `Tabs` as the tablist container and `Tab` as the item that maps 1:1 to
 // the Figma component. Hover is a real :hover here; Active and Disabled
 // are props since neither has a native equivalent on a <button>.
+// Hit area — each tab is 40 high (above the 24 floor); on touch the target
+// extends to 48 x 48 with a pseudo-element, the visual does not change.
 
 export interface TabsProps extends HTMLAttributes<HTMLDivElement> {}
 
@@ -31,7 +33,7 @@ export const Tab = forwardRef<HTMLButtonElement, TabProps>(
       aria-selected={active}
       disabled={disabled}
       className={cn(
-        'group flex flex-col items-center rounded-sm outline-none focus-visible:ring-1 focus-visible:ring-focus-ring',
+        'group relative flex flex-col items-center rounded-sm outline-none pointer-coarse:after:absolute pointer-coarse:after:left-1/2 pointer-coarse:after:top-1/2 pointer-coarse:after:h-48px pointer-coarse:after:w-full pointer-coarse:after:min-w-48px pointer-coarse:after:-translate-x-1/2 pointer-coarse:after:-translate-y-1/2 focus-visible:ring-1 focus-visible:ring-focus-ring',
         disabled ? 'cursor-not-allowed' : 'cursor-pointer',
         className,
       )}

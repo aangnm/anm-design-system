@@ -1,29 +1,48 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { BarChart } from './BarChart'
 
+// Sample scale from the Figma component: 0–300 t, bar height = value ÷ 300 × 150px.
 const data = [
-  { label: 'S1', value: 63 },
-  { label: 'S2', value: 95 },
-  { label: 'S3', value: 73 },
-  { label: 'S4', value: 118 },
-  { label: 'S5', value: 104 },
-  { label: 'S6', value: 134 },
+  { label: 'S1', value: 125 },
+  { label: 'S2', value: 190 },
+  { label: 'S3', value: 145 },
+  { label: 'S4', value: 235 },
+  { label: 'S5', value: 210 },
+  { label: 'S6', value: 255 },
 ]
 
 const meta: Meta<typeof BarChart> = {
   title: 'Data Display/Bar Chart',
   component: BarChart,
   tags: ['autodocs'],
-  args: { data },
+  args: { data, max: 300, showValues: true, highlightLatest: true },
+  decorators: [
+    (Story) => (
+      <div className="bg-surface-page p-24px">
+        <Story />
+      </div>
+    ),
+  ],
 }
 export default meta
 
 type Story = StoryObj<typeof BarChart>
 
-export const Playground: Story = {
+export const Playground: Story = {}
+
+// The two booleans of the Figma component, every combination.
+export const Variants: Story = {
   render: (args) => (
-    <div className="bg-surface-page p-24px">
-      <BarChart {...args} />
+    <div className="flex flex-wrap gap-32px">
+      <BarChart {...args} showValues highlightLatest />
+      <BarChart {...args} showValues highlightLatest={false} />
+      <BarChart {...args} showValues={false} highlightLatest />
+      <BarChart {...args} showValues={false} highlightLatest={false} />
     </div>
   ),
+}
+
+// A wider card adds space between bars; bars stay capped at 36px.
+export const Wide: Story = {
+  render: (args) => <BarChart {...args} className="w-[640px]" />,
 }

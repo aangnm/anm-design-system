@@ -11,7 +11,7 @@ figma.connect(
     example: () => (
       <PageHeader
         title="Radiometría"
-        subtitle="Hacienda Santa Clara · 61.91 ha · Semana 22"
+        subtitle="Hacienda Santa Clara · 61,91 ha · Semana 22"
         actions={
           <>
             <IconButton variant="secondary" icon={<Bell />} aria-label="Notificaciones" />

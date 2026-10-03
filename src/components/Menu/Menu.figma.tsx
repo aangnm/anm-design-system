@@ -8,8 +8,13 @@ figma.connect(
     props: {
       children: figma.string('Elemento del menú'),
       disabled: figma.enum('State', { Disabled: true }),
+      leadingIcon: figma.boolean('Leading icon'),
     },
-    example: ({ children, disabled }) => <MenuItem disabled={disabled}>{children}</MenuItem>,
+    example: ({ children, disabled, leadingIcon }) => (
+      <MenuItem disabled={disabled} leadingIcon={leadingIcon}>
+        {children}
+      </MenuItem>
+    ),
   },
 )
 

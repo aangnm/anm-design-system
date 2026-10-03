@@ -23,7 +23,7 @@ figma.connect(
         }
       >
         <LineChart
-          className="border-0 bg-transparent p-0"
+          className="border-0 bg-transparent px-0"
           categories={['mar', 'abr', 'may', 'jun', 'jul']}
           series={[
             { label: 'NDVI', series: 1, data: [0.8, 0.82, 0.88, 0.84, 0.86] },

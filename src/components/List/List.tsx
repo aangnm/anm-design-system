@@ -29,7 +29,10 @@ export interface ListProps extends HTMLAttributes<HTMLDivElement> {
   loadingRows?: number
 }
 
-const container = 'w-full overflow-hidden rounded-lg border border-border-subtle bg-surface-container'
+const container = 'w-full overflow-hidden rounded-lg border border-border-subtle bg-surface-subtle'
+// Every non-Default variant is padded to the Default's height (198px = three 66px
+// rows) on purpose, so swapping states never makes the container jump.
+const statePad = 'min-h-[198px]'
 const rowLayout = 'flex w-full items-center gap-12px px-16px py-12px'
 
 export function List({
@@ -43,15 +46,15 @@ export function List({
 }: ListProps) {
   if (state === 'loading') {
     return (
-      <div className={cn(container, 'divide-y divide-border-subtle', className)} aria-busy="true" {...props}>
+      <div className={cn(container, statePad, className)} aria-busy="true" {...props}>
         {Array.from({ length: loadingRows }).map((_, i) => (
-          <div key={i} className={rowLayout}>
-            <div className="size-5 shrink-0 rounded-full bg-surface-emphasis" />
+          <div key={i} className="flex w-full items-center gap-12px p-16px">
+            <div className="size-5 shrink-0 rounded-full bg-border-muted" />
             <div className="flex min-w-0 flex-1 flex-col gap-6px">
-              <div className="h-[12px] w-[120px] rounded-sm bg-surface-emphasis" />
-              <div className="h-[10px] w-[80px] rounded-sm bg-surface-emphasis" />
+              <div className="h-12px w-[70px] rounded-sm bg-border-muted" />
+              <div className="h-[10px] w-[110px] rounded-sm bg-border-muted" />
             </div>
-            <div className="h-[12px] w-[40px] rounded-sm bg-surface-emphasis" />
+            <div className="h-12px w-[36px] rounded-sm bg-border-muted" />
           </div>
         ))}
       </div>
@@ -62,8 +65,8 @@ export function List({
     const isError = state === 'error'
     const Icon = isError ? CircleAlert : Inbox
     return (
-      <div className={cn(container, 'flex flex-col items-center justify-center gap-8px px-16px py-24px', className)} {...props}>
-        <Icon className={cn('size-5', isError ? 'text-semantic-error' : 'text-icon-muted')} aria-hidden />
+      <div className={cn(container, statePad, 'flex flex-col items-center justify-center gap-8px px-16px py-24px', className)} {...props}>
+        <Icon className={cn('size-24px', isError ? 'text-semantic-error' : 'text-icon-muted')} aria-hidden />
         <p className="text-text-xs leading-5 text-text-secondary">{isError ? errorMessage : emptyMessage}</p>
       </div>
     )

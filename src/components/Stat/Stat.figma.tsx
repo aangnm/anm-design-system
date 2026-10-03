@@ -17,8 +17,8 @@ figma.connect(
       <Stat
         state={state}
         label="Producción total"
-        value="1,284 t"
-        delta="12.5%"
+        value="1.284 Tallos"
+        delta="12,5 %"
         trend="up"
         deltaCaption="vs. mes anterior"
       />

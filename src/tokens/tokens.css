@@ -1,6 +1,6 @@
 /**
  * GENERATED FILE — do not edit by hand.
- * Source: tokens/figma-export.json (exported 2026-09-14T00:00:00.000Z)
+ * Source: tokens/figma-export.json (exported 2026-10-02T00:00:00.000Z)
  * Regenerate: node scripts/transform-tokens.mjs
  */
 
@@ -16,13 +16,13 @@
   --surface-success: #285231;
   --surface-warning: #73321b;
   --surface-error: #752522;
-  --border-default: #2b2b2b;
+  --border-default: #737373;
   --border-muted: #262626;
   --border-subtle: #262626;
   --border-emphasis: #8c8c8c;
   --text-primary: #e4e0da;
   --text-emphasis: #ffffff;
-  --text-secondary: #8c8c8c;
+  --text-secondary: #9c9c9c;
   --text-disabled: #404040;
   --text-inverse: #000000;
   --text-info: #dee9fc;
@@ -50,7 +50,7 @@
   --semantic-info: #2169c4;
   --semantic-info-foreground: #c4d9fa;
   --semantic-info-surface: #0a1a2e;
-  --data-low: #2c5a78;
+  --data-low: #38739a;
   --data-mid: #3b8db8;
   --data-high: #5cc6ed;
   --interactive-primary-hover: #d2cec9;
@@ -66,10 +66,14 @@
   --chart-series-6: #008300;
   --chart-series-7: #9085e9;
   --chart-series-8: #e66767;
+  --brand-logo: #ffffff;
+  --surface-scrim: #000000;
 
   --border-width-sm: 1px;
   --border-width-md: 2px;
   --border-width-lg: 4px;
+  --hit-floor: 24px;
+  --hit-touch: 48px;
   --duration-fast: 120ms;
   --duration-base: 200ms;
   --duration-slow: 320ms;
@@ -92,8 +96,11 @@
   --z-index-popover: 500;
   --z-index-toast: 600;
   --z-index-tooltip: 700;
+  --icon-stroke-width-24: 2;
+  --icon-stroke-width-20: 1.67;
+  --icon-stroke-width-16: 1.33;
+  --icon-stroke-width-12: 1;
 
-  --font-size-text-min: 10px;
   --font-family-base: Inter;
   --font-family-title: Inter;
   --font-size-text-xxs: 11px;
@@ -111,7 +118,6 @@
   --font-weight-bold: 700;
   --font-weight-extrabold: 800;
   --font-weight-black: 900;
-  --font-line-height-min: 12px;
   --font-line-height-xxs: 14px;
   --font-line-height-xs: 16px;
   --font-line-height-sm: 20px;
@@ -134,13 +140,13 @@
   --surface-success: #e2fbe8;
   --surface-warning: #fceed8;
   --surface-error: #f9e3e2;
-  --border-default: #e0e0e0;
+  --border-default: #8c8c8c;
   --border-muted: #e0e0e0;
   --border-subtle: #e0e0e0;
-  --border-emphasis: #c0c0c0;
+  --border-emphasis: #737373;
   --text-primary: #131313;
   --text-emphasis: #131313;
-  --text-secondary: #737373;
+  --text-secondary: #575757;
   --text-disabled: #737373;
   --text-inverse: #ffffff;
   --text-info: #253985;
@@ -168,8 +174,8 @@
   --semantic-info: #2169c4;
   --semantic-info-foreground: #143b72;
   --semantic-info-surface: #e4eefb;
-  --data-low: #a7cce0;
-  --data-mid: #3e8db5;
+  --data-low: #4392bd;
+  --data-mid: #337394;
   --data-high: #1a5b7e;
   --interactive-primary-hover: #45443f;
   --interactive-primary-active: #585651;
@@ -178,10 +184,12 @@
   --icon-inverse: #ffffff;
   --chart-series-1: #2a78d6;
   --chart-series-2: #eb6834;
-  --chart-series-3: #1baf7a;
-  --chart-series-4: #eda100;
-  --chart-series-5: #e87ba4;
+  --chart-series-3: #239060;
+  --chart-series-4: #b18303;
+  --chart-series-5: #bd5792;
   --chart-series-6: #008300;
   --chart-series-7: #4a3aa7;
   --chart-series-8: #e34948;
+  --brand-logo: #0a0e17;
+  --surface-scrim: #000000;
 }

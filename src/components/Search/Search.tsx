@@ -1,24 +1,38 @@
 import { forwardRef } from 'react'
 import type { InputHTMLAttributes } from 'react'
+import { cva, type VariantProps } from 'class-variance-authority'
 import { SearchIcon } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
-// Mirrors the Search component (Core page): State only (no Error), one
-// size (36px), search icon always present — not an optional slot like
-// Input's leading icon, since a Search field without it isn't the Figma
-// component anymore.
+// Mirrors the Search component (Core page): Size (SM 32 / MD 36 / LG 48) x
+// State (Default / Hover / Focus / Disabled) — no Error, since an empty
+// result is not an invalid entry. Same padding, radius and text as Input.
+// The search icon is always present, not an optional slot like Input's
+// leading icon, since a Search field without it isn't the Figma component.
+// Width is up to the caller (Figma shows 260 / 280 / 300).
 
-export interface SearchProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'size'> {}
+const searchVariants = cva(
+  'flex w-full items-center gap-8px border border-border-default bg-surface-subtle transition-colors hover:border-border-emphasis ' +
+    'has-[:focus-visible]:border-focus-ring ' +
+    'has-[:disabled]:cursor-not-allowed has-[:disabled]:bg-interactive-disabled has-[:disabled]:border-border-subtle has-[:disabled]:hover:border-border-subtle',
+  {
+    variants: {
+      size: {
+        sm: 'h-32px rounded-sm px-10px text-text-xs leading-5',
+        md: 'h-36px rounded-md px-12px text-sm',
+        lg: 'h-48px rounded-md px-16px text-base',
+      },
+    },
+    defaultVariants: { size: 'md' },
+  },
+)
 
-export const Search = forwardRef<HTMLInputElement, SearchProps>(({ className, ...props }, ref) => (
-  <div
-    className={cn(
-      'flex w-full items-center gap-8px rounded-md border border-border-default bg-surface-subtle px-12px py-8px text-base transition-colors',
-      'has-[:focus-visible]:border-focus-ring',
-      'has-[:disabled]:cursor-not-allowed has-[:disabled]:bg-interactive-disabled has-[:disabled]:border-border-subtle',
-      className,
-    )}
-  >
+export interface SearchProps
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'size'>,
+    VariantProps<typeof searchVariants> {}
+
+export const Search = forwardRef<HTMLInputElement, SearchProps>(({ className, size, ...props }, ref) => (
+  <div className={cn(searchVariants({ size }), className)}>
     <SearchIcon className="size-4 shrink-0 text-icon-muted" aria-hidden />
     <input
       ref={ref}

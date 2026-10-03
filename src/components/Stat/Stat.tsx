@@ -4,8 +4,9 @@ import { cn } from '@/lib/utils'
 
 // Mirrors the Stat component set (Data Display page): a single KPI — label,
 // value, and a delta/trend indicator — with State=Default/Empty/Loading/Error.
-// Same card surface as Card; the trend colour comes from the semantic
-// success/error tokens (▲ green / ▼ red), matching the Figma default.
+// Same card surface as Card; the trend colour binds to the text/success and
+// text/error tokens (▲ / ▼), not the semantic fills — those are tuned for
+// surfaces and fail contrast as text on the dark card (Figma default binding).
 
 export type StatState = 'default' | 'empty' | 'loading' | 'error'
 export type StatTrend = 'up' | 'down' | 'neutral'
@@ -13,7 +14,7 @@ export type StatTrend = 'up' | 'down' | 'neutral'
 export interface StatProps extends HTMLAttributes<HTMLDivElement> {
   label?: ReactNode
   value?: ReactNode
-  /** Delta shown under the value, e.g. "12.5%". */
+  /** Delta shown under the value, e.g. "12,5 %". */
   delta?: ReactNode
   /** Colour + arrow for the delta: up = ▲ success, down = ▼ error, neutral = muted (no arrow). */
   trend?: StatTrend
@@ -24,11 +25,12 @@ export interface StatProps extends HTMLAttributes<HTMLDivElement> {
   errorMessage?: string
 }
 
-const surface = 'w-full rounded-lg border border-border-subtle bg-surface-container p-20px'
+// Non-default states are padded to the Default's 120 high so swapping them in never makes the layout jump.
+const surface = 'min-h-[120px] w-full rounded-lg border border-border-subtle bg-surface-container p-20px'
 
 const trend: Record<StatTrend, { arrow: string; className: string }> = {
-  up: { arrow: '▲', className: 'text-semantic-success' },
-  down: { arrow: '▼', className: 'text-semantic-error' },
+  up: { arrow: '▲', className: 'text-text-success' },
+  down: { arrow: '▼', className: 'text-text-error' },
   neutral: { arrow: '', className: 'text-text-secondary' },
 }
 

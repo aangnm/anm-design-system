@@ -6,8 +6,10 @@ import { cn } from '@/lib/utils'
 // Mirrors the Tag component set (Core page): Color, plus the component-set-
 // level "Dismissible" boolean (a close icon whose visibility is driven by
 // the prop, same pattern as Figma's componentPropertyReferences wiring).
+// 24 high, 11/16 Medium text. The dismiss × is a 12px visual with a 24x24
+// target (WCAG 2.5.8), extended by a pseudo-element rather than a bigger icon.
 
-const tagVariants = cva('inline-flex items-center gap-6px rounded-sm px-10px py-4px text-sm', {
+const tagVariants = cva('inline-flex h-24px items-center gap-6px rounded-sm px-10px text-text-xxs font-medium leading-4', {
   variants: {
     color: {
       neutral: 'bg-surface-emphasis text-text-secondary',
@@ -38,7 +40,7 @@ export function Tag({ children, className, color, dismissible, onDismiss }: TagP
         <button
           type="button"
           onClick={onDismiss}
-          className="rounded-xs opacity-80 outline-none transition-opacity hover:opacity-100 focus-visible:opacity-100 focus-visible:ring-1 focus-visible:ring-focus-ring"
+          className="relative inline-flex rounded-xs opacity-80 outline-none after:absolute after:left-1/2 after:top-1/2 after:size-24px after:-translate-x-1/2 after:-translate-y-1/2 transition-opacity hover:opacity-100 focus-visible:opacity-100 focus-visible:ring-1 focus-visible:ring-focus-ring"
           aria-label="Quitar"
         >
           <X className="size-3" />

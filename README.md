@@ -94,15 +94,16 @@ This section used to duplicate that list and drifted badly out of date, so it no
 ### Ported to code
 
 - [x] Token pipeline (color, spacing, radius, type, motion, breakpoints, elevation, opacity, z-index)
-- [x] Core: Button, Input, Select, Search, Checkbox, Radio, Switch, Tag, Badge, Avatar, Tooltip, Form Field, Divider, Textarea, Segmented Control, Skeleton, Spinner, Icon Button, Slider, Stepper, Multi-select, Date Picker, File Upload
+- [x] Core: Button, Input, Select, Search, Checkbox, Radio, Switch, Tag, Badge, Avatar, Tooltip, Form Field, Divider, Textarea, Segmented Control, Skeleton, Spinner, Icon Button, Slider, Stepper, Multi-select, Date Picker, File Upload, Link, Combobox, Accordion, Radio Group, Rating
 - [x] Navigation: Tabs, Breadcrumb, Pagination, Menu Item, Menu, Dropdown Menu, Navbar, Sidebar
 - [x] Data Display: Card, Stat, List, Table, Bar Chart, Sparkline (each with Empty/Loading/Error states), Legend, Chart Tooltip, Line Chart, Area Chart
 - [x] Feedback & Overlays: Banner, Progress, Toast, Popover, Modal, Drawer
-- [x] Product Patterns: Metric Card, Content Panel, Page Header, Benchmark Table
+- [x] Product Patterns: Metric Card, Content Panel, Page Header, Benchmark Table, Table Toolbar, Empty State, Timeline
+- [x] Templates (Storybook only, not exported): Dashboard, Settings, Records (List + Detail), Dashboard · Top navbar
 
 ### Designed in Figma, not yet in code
 
-As of v0.10 every component category in the file has a code counterpart. Nothing is currently known to be missing — but Figma is still the source of truth, so re-check a component against it before assuming the code is current; components can gain states or new siblings between snapshots (Icon Button went from 9 to 36 variants this way once already).
+As of the Phase C mapping (Figma changelog v0.72) every component in the file has a code counterpart, including the Scrim (as the `overlay` prop on Modal and Drawer). Nothing is currently known to be missing — but Figma is still the source of truth, so re-check a component against it before assuming the code is current; components can gain states or new siblings between snapshots (Icon Button went from 9 to 36 variants this way once already).
 
 ### Not ported, on purpose
 
@@ -112,4 +113,4 @@ As of v0.10 every component category in the file has a code counterpart. Nothing
 
 ### Code Connect
 
-Mapping files exist for all 25 ported components, but are **not published** — that is a deliberate choice while the system is still being designed, not a missing prerequisite. Publishing needs `FIGMA_ACCESS_TOKEN` with Code Connect write scope.
+Mapping files exist for every ported component, but are **not published** — that is a deliberate choice while the system is still being designed, not a missing prerequisite. Publishing needs `FIGMA_ACCESS_TOKEN` with Code Connect write scope.
