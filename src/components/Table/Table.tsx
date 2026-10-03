@@ -27,6 +27,11 @@ export interface TableProps extends Omit<HTMLAttributes<HTMLTableElement>, 'chil
   errorMessage?: string
   /** Skeleton rows rendered while loading. */
   loadingRows?: number
+  /**
+   * Card chrome (border, radius, surface). Turn off when the table sits inside
+   * another container that already owns the chrome, e.g. Content Panel.
+   */
+  bordered?: boolean
 }
 
 const alignClass = { left: 'text-left', right: 'text-right', center: 'text-center' } as const
@@ -41,13 +46,15 @@ export function Table({
   emptyMessage = 'Sin registros que coincidan con el filtro.',
   errorMessage = 'No se pudieron cargar los registros.',
   loadingRows = 3,
+  bordered = true,
   className,
   ...props
 }: TableProps) {
   return (
     <div
       className={cn(
-        'w-full overflow-hidden rounded-lg border border-border-subtle bg-surface-subtle',
+        'w-full overflow-hidden',
+        bordered && 'rounded-lg border border-border-subtle bg-surface-subtle',
         // Every non-Default variant is padded to the Default's height (header 36
         // + four 44px rows = 212px) on purpose, so swapping states never makes
         // the container jump.

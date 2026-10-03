@@ -91,8 +91,8 @@ function crumbs(page: string) {
   return <Breadcrumb items={[{ label: 'Inicio', href: '#' }, { label: 'Santa Fe', href: '#' }, { label: page }]} />
 }
 
-// A ContentPanel hosts a Table / List borderless: strip the nested surface's own
-// edge so the panel owns the card chrome.
+// A ContentPanel hosts a List borderless: strip the nested surface's own edge so
+// the panel owns the card chrome (Table has a `bordered` prop for the same job).
 const borderless = '[&>div]:rounded-none [&>div]:border-0 [&>div]:bg-transparent'
 
 const productionData = [
@@ -132,9 +132,7 @@ function DashboardBody() {
           <BarChart data={productionData} max={300} className="w-full" aria-label="Producción semanal en Tallos" />
         </ContentPanel>
         <ContentPanel title="Registros recientes" className="w-full">
-          <div className={`w-full ${borderless}`}>
-            <Table columns={tableColumns} rows={tableRows} />
-          </div>
+          <Table columns={tableColumns} rows={tableRows} bordered={false} />
         </ContentPanel>
       </div>
     </>

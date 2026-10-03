@@ -59,3 +59,12 @@ export const States: Story = {
     </div>
   ),
 }
+
+// `bordered={false}`: no card chrome, for a table inside a container that owns it (Content Panel).
+export const Borderless: Story = {
+  render: () => (
+    <div className="w-[530px] rounded-lg border border-border-subtle bg-surface-subtle p-16px">
+      <Table columns={columns} rows={rows} bordered={false} />
+    </div>
+  ),
+}
