@@ -31,7 +31,7 @@ export const Overview: StoryObj = {
       <div className="mx-auto flex max-w-[960px] flex-col gap-48px">
         <header className="flex flex-col gap-16px">
           <span className="text-text-xxs font-semibold uppercase tracking-wider text-text-secondary">Product design system</span>
-          <h1 className="m-0 text-[48px] font-semibold leading-[56px] text-text-primary">anm design system</h1>
+          <h1 className="m-0 text-display-2xl font-semibold text-text-primary">anm design system</h1>
           <p className="m-0 max-w-[640px] text-text-lg leading-7 text-text-secondary">
             Tokens, components and patterns for data-heavy products: analytics, data visualisation and fintech. Dark and light themes,
             a high-contrast mode, and a component library that maps one to one to the Figma file.

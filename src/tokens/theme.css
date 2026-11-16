@@ -1,6 +1,6 @@
 /**
  * GENERATED FILE — do not edit by hand.
- * Source: tokens/figma-export.json (exported 2026-11-15T21:00:00.000Z)
+ * Source: tokens/figma-export.json (exported 2026-11-16T03:00:00.000Z)
  * Regenerate: node scripts/transform-tokens.mjs
  */
 
@@ -104,6 +104,36 @@
   --text-text-xl: var(--font-size-text-xl);
   --text-text-2xl: var(--font-size-text-2xl);
   --text-caption: var(--font-size-caption);
+  --text-text-3xl: var(--font-size-text-3xl);
+  --text-text-4xl: var(--font-size-text-4xl);
+  --text-text-5xl: var(--font-size-text-5xl);
+
+  --text-display-2xl: var(--font-size-text-5xl);
+  --text-display-2xl--line-height: var(--font-line-height-5xl);
+  --text-display-xl: var(--font-size-text-4xl);
+  --text-display-xl--line-height: var(--font-line-height-4xl);
+  --text-headline-large: var(--font-size-text-3xl);
+  --text-headline-large--line-height: var(--font-line-height-3xl);
+  --text-headline-medium: var(--font-size-text-2xl);
+  --text-headline-medium--line-height: var(--font-line-height-2xl);
+  --text-headline-small: var(--font-size-text-lg);
+  --text-headline-small--line-height: var(--font-line-height-lg);
+  --text-title-large: var(--font-size-text-xl);
+  --text-title-large--line-height: var(--font-line-height-lg);
+  --text-title-default: var(--font-size-text-base);
+  --text-title-default--line-height: var(--font-line-height-base);
+  --text-title-small: var(--font-size-text-sm);
+  --text-title-small--line-height: var(--font-line-height-sm);
+  --text-body-large: var(--font-size-text-base);
+  --text-body-large--line-height: var(--font-line-height-base);
+  --text-body-default: var(--font-size-text-sm);
+  --text-body-default--line-height: var(--font-line-height-sm);
+  --text-body-small: var(--font-size-text-xs);
+  --text-body-small--line-height: var(--font-line-height-sm);
+  --text-label-large: var(--font-size-caption);
+  --text-label-large--line-height: var(--font-line-height-xs);
+  --text-label-default: var(--font-size-text-xxs);
+  --text-label-default--line-height: var(--font-line-height-xs);
 
   --breakpoint-sm: 640px;
   --breakpoint-md: 768px;

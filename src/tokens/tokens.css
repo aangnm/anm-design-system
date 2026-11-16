@@ -1,6 +1,6 @@
 /**
  * GENERATED FILE — do not edit by hand.
- * Source: tokens/figma-export.json (exported 2026-11-15T21:00:00.000Z)
+ * Source: tokens/figma-export.json (exported 2026-11-16T03:00:00.000Z)
  * Regenerate: node scripts/transform-tokens.mjs
  */
 
@@ -124,6 +124,12 @@
   --font-line-height-xl: 28px;
   --font-line-height-2xl: 32px;
   --font-size-caption: 12px;
+  --font-size-text-3xl: 30px;
+  --font-size-text-4xl: 36px;
+  --font-size-text-5xl: 48px;
+  --font-line-height-3xl: 36px;
+  --font-line-height-4xl: 40px;
+  --font-line-height-5xl: 52px;
 }
 
 [data-theme='light'] {

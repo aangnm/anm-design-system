@@ -15,8 +15,8 @@ import { cn } from '@/lib/utils'
 // around the field; Error is a semantic/error border (`error`).
 //
 // The value is a real numeric input (inputmode numeric) so it can also be
-// typed; − / + clamp to `min` / `max`. 36px is Display XL, which the font
-// size tokens do not carry yet (see "type by role" on the Roadmap).
+// typed; − / + clamp to `min` / `max`. The value is Display XL
+// Semibold (`text-display-xl`).
 
 export interface CounterProps {
   value: number
@@ -55,7 +55,7 @@ export function Counter({ value, onChange, min = 0, max = Infinity, step = 1, di
           if (!Number.isNaN(n)) onChange(clamp(n))
         }}
         className={cn(
-          'h-64px min-w-0 flex-1 rounded-md border bg-surface-container text-center text-[36px] font-semibold leading-[40px] text-text-primary outline-none transition-colors',
+          'h-64px min-w-0 flex-1 rounded-md border bg-surface-container text-center text-display-xl font-semibold text-text-primary outline-none transition-colors',
           'focus-visible:focus-ring disabled:bg-interactive-disabled disabled:text-text-disabled',
           error ? 'border-semantic-error' : 'border-border-default',
           disabled && 'border-border-subtle',

@@ -18,7 +18,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 const root = join(__dirname, '..')
 
 const raw = JSON.parse(readFileSync(join(root, 'tokens/figma-export.json'), 'utf-8'))
-const { collections, effectStyles = [] } = raw
+const { collections, effectStyles = [], textStyles = [] } = raw
 
 /** "surface/page" -> "surface-page" (valid CSS custom property segment) */
 function cssName(name) {
@@ -111,8 +111,8 @@ if (collections.Icon) {
   }
 }
 
-// Typography: "Default" mode only for now — Normal/Large exist in Figma as a
-// density switch and aren't wired to a CSS mechanism yet (see README notes).
+// Typography: one mode ("Default") since Figma v0.94 — the old Normal/Large
+// modes were never wired to anything and were removed.
 // font/weight/* values are Inter style names in Figma ("Semi Bold") — mapped
 // to numeric CSS font-weight here since the style name itself isn't valid CSS.
 const typography = collections.Typography
@@ -161,6 +161,19 @@ const colorTheme = themes.variables.map((v) => `  --color-${cssName(v.name)}: va
 const fontSizeTheme = typography.variables
   .filter((v) => v.name.startsWith('font/size/'))
   .map((v) => `  --text-${cssName(v.name).replace('font-size-', '')}: var(--${cssName(v.name)});`)
+
+// Type roles (Figma v0.94): one Tailwind text utility per text-style role,
+// carrying size AND line height — `text-body-default`, `text-title-large`,
+// `text-label-default` … — so a component names the role it plays instead of
+// a raw size. Weight stays a separate class (font-medium), matching the
+// Figma styles, which are role/weight (Body Default/Medium).
+const roleTheme = textStyles.flatMap((t) => {
+  const role = cssName(t.role.toLowerCase().replace(/\s+/g, '-'))
+  return [
+    `  --text-${role}: var(--${cssName(t.fontSize)});`,
+    `  --text-${role}--line-height: var(--${cssName(t.lineHeight)});`,
+  ]
+})
 
 // Radius, spacing, breakpoint: defined ONCE here with their real value — see
 // the note next to NAMESPACE_COLLIDES_WITH_TAILWIND above for why these don't
@@ -229,6 +242,8 @@ ${radiusTheme.join('\n')}
 ${spacingTheme.join('\n')}
 
 ${fontSizeTheme.join('\n')}
+
+${roleTheme.join('\n')}
 
 ${breakpointTheme.join('\n')}
 

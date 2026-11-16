@@ -373,3 +373,11 @@ Audited against the Material 3 Design Kit; the agreed items are on the Roadmap. 
 - Code handoff specs on Core, Navigation, Data Display and Feedback & Overlays list them with their prop mappings. No page has a "Not in code yet" section any more.
 - Choice Tile's description drops its last farming examples.
 - Roadmap: the code item is removed, and type by role moves to Now.
+
+## v0.94 — Type by role
+- The Typography collection has one mode. Normal and Large never drove anything and are removed.
+- New variables: font/size/text-3xl (30), text-4xl (36) and text-5xl (48), and font/line-height/3xl (36), 4xl (40) and 5xl (52), so every text style has a variable.
+- All 31 text styles now bind their font size, line height, family and weight to the Typography variables. Values are unchanged.
+- A new Type by role rule on the Decisions card.
+- Roadmap: type by role is removed. Elevation in dark moves to Now.
+- Code: the token export carries the 13 text roles, and the transform emits role utilities (`text-display-2xl` … `text-label-default`), each setting size and line height. Counter's value uses `text-display-xl` instead of arbitrary values.

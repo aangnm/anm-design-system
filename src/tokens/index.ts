@@ -1,6 +1,6 @@
 /**
  * GENERATED FILE — do not edit by hand.
- * Source: tokens/figma-export.json (exported 2026-11-15T21:00:00.000Z)
+ * Source: tokens/figma-export.json (exported 2026-11-16T03:00:00.000Z)
  * Regenerate: node scripts/transform-tokens.mjs
  *
  * Every value is a CSS var() reference, not a raw value — these read the
