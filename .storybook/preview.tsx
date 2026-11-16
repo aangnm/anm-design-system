@@ -20,6 +20,11 @@ const withTheme = (Story: React.ComponentType, context: { globals: { theme?: str
 const preview: Preview = {
   parameters: {
     layout: 'fullscreen',
+    options: {
+      storySort: {
+        order: ['Introduction', 'Core', 'Navigation', 'Data Display', 'Feedback & Overlays', 'Product Patterns', 'Templates'],
+      },
+    },
   },
   globalTypes: {
     theme: {

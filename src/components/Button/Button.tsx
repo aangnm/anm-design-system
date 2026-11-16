@@ -1,6 +1,6 @@
 import { forwardRef } from 'react'
 import type { ButtonHTMLAttributes, ReactNode } from 'react'
-import { Slot } from '@radix-ui/react-slot'
+import { Slot, Slottable } from '@radix-ui/react-slot'
 import { cva, type VariantProps } from 'class-variance-authority'
 import { LoaderCircle } from 'lucide-react'
 import { cn } from '@/lib/utils'
@@ -69,22 +69,25 @@ export interface ButtonProps
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild, loading, leadingIcon, trailingIcon, disabled, children, ...props }, ref) => {
-    const Comp = asChild ? Slot : 'button'
+    const classes = cn(buttonVariants({ variant, size }), className)
+    const leading = loading ? <LoaderCircle className="animate-spin" aria-hidden /> : leadingIcon
+    if (asChild) {
+      // Slot needs exactly one element to merge onto: the child (e.g. an <a>)
+      // is marked with Slottable and the icons render inside it.
+      return (
+        <Slot ref={ref} className={classes} {...props}>
+          {leading}
+          <Slottable>{children}</Slottable>
+          {trailingIcon}
+        </Slot>
+      )
+    }
     return (
-      <Comp
-        ref={ref}
-        className={cn(buttonVariants({ variant, size }), className)}
-        disabled={disabled || loading}
-        {...props}
-      >
-        {loading ? (
-          <LoaderCircle className="animate-spin" aria-hidden />
-        ) : (
-          leadingIcon
-        )}
+      <button ref={ref} className={classes} disabled={disabled || loading} {...props}>
+        {leading}
         <span className={cn(loading && 'opacity-loading')}>{children}</span>
         {trailingIcon}
-      </Comp>
+      </button>
     )
   },
 )
