@@ -57,6 +57,22 @@ export function formatChartNumber(value: number, decimals?: number): string {
   }).format(value)
 }
 
+/**
+ * Text alternative for a chart (role="img"): the kind of chart, then every
+ * series with its values per category, es-EC formatted. Screen readers get
+ * the same numbers the picture shows. Charts use it as their default
+ * `aria-label`; pass your own `aria-label` to summarise instead.
+ */
+export function describeChart(
+  kind: string,
+  series: { label: string; data: number[] }[],
+  categories: string[],
+  format: (value: number) => string = (v) => formatChartNumber(v),
+): string {
+  const parts = series.map((s) => `${s.label}: ${s.data.map((v, i) => `${categories[i] ?? i + 1} ${format(v)}`).join(', ')}`)
+  return `${kind}. ${parts.join('; ')}`
+}
+
 export interface LegendItem {
   label: string
   series: ChartSeriesIndex

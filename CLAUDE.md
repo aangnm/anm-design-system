@@ -64,8 +64,9 @@ Accumulated API gotchas, each found the hard way:
 - Build from token classes only — no raw hex, no magic numbers. Text: prefer the role utilities (`text-body-default`, `text-title-large` …) over raw size classes; add new ones to the font-size group in `src/lib/utils.ts` or tailwind-merge will drop them.
 - Density is `data-density="compact"`; sized controls use `h-control-sm|md|lg` (Button LG `h-control-button-lg`) and table cells `py-table-cell-y`, never a fixed `h-36px`, so they follow it.
 - Status colour by role: `bg-semantic-<status>` solid (Badge, dots), `bg-semantic-<status>-surface` + `text-semantic-<status>-foreground` for tints, `text-text-<status>` for status text or icons on a neutral surface. All are ramp steps; never add a one-off status primitive.
+- Anything with `role="img"` needs a text alternative. Charts use `describeChart(kind, series, categories)` from Legend as their default `aria-label`.
 - Focus is one utility: `focus-visible:focus-ring` (or `peer-focus-visible:focus-ring` on the visible box of a hidden-input control). Never `ring-*` or a border recolour for focus. Forced Focus states in stories need `focus-ring!` to beat a base `outline-none`.
-- Sample copy is generic fintech/analytics in es-EC (Cuenta 4021, Ventas, USD, Conversión). Never farming vocabulary.
+- Sample copy is generic fintech/analytics in es-EC (Cuenta 4021, Ventas, USD, Conversión). The placeholder person is Laura Romero (LR). Never farming vocabulary.
 - Figma variant axes map to a real API: `State=Hover/Focus/Disabled` become CSS pseudo-classes, not props. `State=Loading` has no native equivalent, so it becomes a real prop.
 - A component's Storybook grid should mirror the Figma variant grid, so a visual diff is a straight comparison.
 - Large Figma variant sets use a manual grid (`layoutMode = 'NONE'`), matching Button and Icon Button. Growing a set means shifting everything below it on the page.

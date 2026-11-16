@@ -102,7 +102,15 @@ export function DropdownMenu({
       </div>
 
       {open ? (
-        <Menu id={menuId} className="absolute left-0 top-[calc(100%+8px)] z-[var(--z-index-dropdown)]">
+        <Menu
+          id={menuId}
+          // Searchable: the panel is a plain group holding the search field;
+          // only the option list inside it is the menu (a menu may contain
+          // menu items, not a text field).
+          role={searchable ? 'group' : undefined}
+          aria-label={searchable ? label : undefined}
+          className="absolute left-0 top-[calc(100%+8px)] z-[var(--z-index-dropdown)]"
+        >
           {searchable ? (
             <>
               <Search
@@ -114,20 +122,23 @@ export function DropdownMenu({
                 autoFocus
               />
               <Divider className="my-2px" />
-              {Children.toArray(children).filter(
-                (child) => !query || textOf(child).toLowerCase().includes(query.trim().toLowerCase()),
-              )}
-              <Divider className="my-2px" />
-              <button
-                type="button"
+              <div role="menu" className="flex flex-col gap-2px">
+                {Children.toArray(children).filter(
+                  (child) => !query || textOf(child).toLowerCase().includes(query.trim().toLowerCase()),
+                )}
+                <Divider className="my-2px" />
+                <button
+                  type="button"
+                  role="menuitem"
                 onClick={() => {
                   setQuery('')
                   onClear?.()
                 }}
                 className="flex w-full items-center rounded-sm px-12px py-6px text-left text-text-xs font-medium leading-5 text-text-primary outline-none transition-colors hover:bg-interactive-default focus-visible:bg-interactive-default focus-visible:focus-ring"
               >
-                Limpiar
-              </button>
+                  Limpiar
+                </button>
+              </div>
             </>
           ) : (
             children

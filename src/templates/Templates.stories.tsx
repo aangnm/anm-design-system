@@ -46,9 +46,9 @@ function AppSidebar({ active }: { active: NavKey }) {
       footer={
         <>
           <div className="flex items-center gap-10px">
-            <Avatar initials="ER" size="sm" />
+            <Avatar initials="LR" size="sm" />
             <div className="flex flex-col">
-              <span className="text-sm leading-5 text-text-primary">Elainy Romero</span>
+              <span className="text-sm leading-5 text-text-primary">Laura Romero</span>
               <span className="text-text-xxs leading-4 text-text-secondary">Administrador</span>
             </div>
           </div>
@@ -175,7 +175,7 @@ export const Settings_: Story = {
       <div className="mx-auto flex w-[640px] flex-col gap-24px pt-48px">
         <SettingsSection title="Perfil">
           <div className="flex w-full flex-col gap-16px">
-            <FormField label="Nombre completo" placeholder="Elainy Romero" helperText="Así aparecerás en los registros." />
+            <FormField label="Nombre completo" placeholder="Laura Romero" helperText="Así aparecerás en los registros." />
             <FormField label="Correo electrónico" placeholder="nombre@empresa.com" helperText="Aquí recibirás las alertas." />
             <div className="flex flex-col gap-6px">
               <label htmlFor="rol" className="text-text-xxs font-medium leading-4 text-text-primary">
@@ -249,7 +249,7 @@ export const Records: Story = {
           <Divider />
           <dl className="flex flex-col">
             <DetailRow label="Fecha" value="27 may 2026" />
-            <DetailRow label="Responsable" value="Elainy Romero" />
+            <DetailRow label="Responsable" value="Laura Romero" />
             <DetailRow label="Monto" value="$ 250,00" />
             <DetailRow label="Comisión" value="$ 3,00" />
           </dl>

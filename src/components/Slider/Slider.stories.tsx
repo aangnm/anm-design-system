@@ -21,7 +21,7 @@ type Story = StoryObj<typeof Slider>
 export const Playground: Story = {
   render: () => {
     const [value, setValue] = useState(40)
-    return <Slider min={0} max={100} value={value} onChange={(e) => setValue(Number(e.target.value))} />
+    return <Slider aria-label="Porcentaje de comisión" min={0} max={100} value={value} onChange={(e) => setValue(Number(e.target.value))} />
   },
 }
 
@@ -30,7 +30,7 @@ export const Values: Story = {
   render: () => (
     <div className="flex flex-col gap-16px">
       {[0, 40, 100].map((v) => (
-        <Slider key={v} value={v} onChange={() => {}} />
+        <Slider key={v} aria-label={`Valor ${v} %`} value={v} onChange={() => {}} />
       ))}
     </div>
   ),

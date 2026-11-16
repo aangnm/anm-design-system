@@ -40,13 +40,13 @@ const navWithIcons = (
 )
 
 function Footer({ collapsed }: { collapsed?: boolean }) {
-  if (collapsed) return <Avatar initials="ER" size="sm" />
+  if (collapsed) return <Avatar initials="LR" size="sm" />
   return (
     <>
       <div className="flex items-center gap-10px">
-        <Avatar initials="ER" size="sm" />
+        <Avatar initials="LR" size="sm" />
         <div className="flex flex-col">
-          <span className="text-sm text-text-primary">Elainy Romero</span>
+          <span className="text-sm text-text-primary">Laura Romero</span>
           <span className="text-text-xxs leading-4 text-text-secondary">Administrador</span>
         </div>
       </div>

@@ -412,3 +412,14 @@ Audited against the Material 3 Design Kit; the agreed items are on the Roadmap. 
 - Badge and Choice Tile descriptions carry the new ratios. Choice Tile drops its last farming examples and its stored HTML entities. The Touch choices rule and a new Status colours rule on the Decisions card.
 - **Roadmap:** empty except Accepted.
 - **Code:** the export and generated tokens follow. Toast icons use `text-text-<status>`. Choice Tile's Done check uses `icon/default`, as in Figma. MIT license added, and the `./styles.css` export now points at the CSS file the build writes (`dist/index.css`; it named a `dist/style.css` that never existed).
+
+## v0.98 — Ready to host
+- The placeholder person is now Laura Romero (LR) everywhere: Avatar, Sidebar, Sidebar / Alt, Navbar, Drawer, the Records templates and the About page note.
+- About & Guidelines states what the system is for: prototyping with AI agents, whether they design in Figma or build in code, from the same components.
+- **Code:**
+  - Every chart with `role="img"` now has a text alternative: Bar, Stacked Bar, Donut, Line, Area, Detailed Line and Sparkline. A shared `describeChart` builds an es-EC summary of each series and its values; a caller's `aria-label` overrides it.
+  - Searchable Dropdown Menu: the search field sits outside the `role="menu"` list, and Limpiar is a menu item.
+  - Slider stories carry labels, and the component notes that a label is required.
+  - An axe pass over all 168 stories is clean for names, labels and roles.
+  - The Introduction page and README state the AI-agent purpose.
+  - Storybook deploys to GitHub Pages from `main` (`.github/workflows/storybook-pages.yml`).

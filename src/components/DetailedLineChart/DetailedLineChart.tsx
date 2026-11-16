@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import type { HTMLAttributes } from 'react'
-import { CHART_SERIES_BG, CHART_SERIES_TEXT, formatChartNumber, type ChartSeriesIndex } from '@/components/Legend'
+import { CHART_SERIES_BG, CHART_SERIES_TEXT, describeChart, formatChartNumber, type ChartSeriesIndex } from '@/components/Legend'
 import { ChartTooltip } from '@/components/ChartTooltip'
 import { cn } from '@/lib/utils'
 
@@ -116,7 +116,7 @@ export function DetailedLineChart({
               setHover(locate(e.clientX, e.currentTarget.getBoundingClientRect()))
             }}
             role="img"
-            aria-label={series.map((s) => s.label).join(', ')}
+            aria-label={describeChart('Gráfico de líneas detallado', series, categories, formatValue)}
           >
             <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} fill="none" className="overflow-visible">
               {ticks.map((t) => (

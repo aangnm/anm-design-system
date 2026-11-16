@@ -12,7 +12,7 @@ const meta: Meta<typeof Drawer> = {
     items: [
       { label: 'Cuenta', value: 'Cuenta 4021' },
       { label: 'Categoría', value: 'Ventas' },
-      { label: 'Responsable', value: 'Elainy Romero' },
+      { label: 'Responsable', value: 'Laura Romero' },
       { label: 'Notas', value: 'Revisar la conciliación antes del cierre — diferencia reportada en Sem 21.' },
     ],
   },

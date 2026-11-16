@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from 'react'
-import { Legend, CHART_SERIES_BG, chartTextureStyle, formatChartNumber, type ChartSeriesIndex } from '@/components/Legend'
+import { Legend, describeChart, CHART_SERIES_BG, chartTextureStyle, formatChartNumber, type ChartSeriesIndex } from '@/components/Legend'
 import { cn } from '@/lib/utils'
 
 // Mirrors the Stacked Bar Chart component set (Data Display page): how a total
@@ -69,6 +69,7 @@ export function StackedBarChart({
     <div
       className={cn('flex w-fit flex-col gap-14px rounded-lg border border-border-subtle bg-surface-container p-16px', className)}
       role="img"
+      aria-label={describeChart(percent ? 'Gráfico de barras apiladas, en porcentaje' : 'Gráfico de barras apiladas', series, categories, formatValue)}
       {...props}
     >
       <Legend texture={texture} items={series.map((s) => ({ label: s.label, series: s.series }))} />

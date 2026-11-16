@@ -17,10 +17,10 @@ const meta: Meta = {
 export default meta
 
 const principles = [
+  ['Built for prototyping with AI agents', 'The system exists so agents can prototype real product screens, designing in Figma or building straight in code, with the same components either way. Every component documents why it looks the way it does, how its Figma properties map to props, and every state as a story, so an agent reuses what is here instead of guessing.'],
   ['Figma is the source of truth', 'Tokens and component specs are decided in the anm Design System Figma file and flow into code through a reviewed token pull. Nothing is fixed here first.'],
-  ['States are CSS, not props', 'Hover, Focus and Disabled are real :hover, :focus-visible and disabled. Only states with no native equivalent, like Loading, become props.'],
-  ['One rule per concern', 'One surface order (page < container < container-high), one hover (an 8% state layer), one focus ring (2px, 2px outside), one sample-copy format (es-EC).'],
-  ['Accessible by default', 'Text clears AA in both themes and AAA in High contrast; controls clear 3:1; every target is at least 24 × 24 and 48 × 48 on touch.'],
+  ['One rule per concern', 'Hover, Focus and Disabled are real CSS states, not props. One surface order (page < container < container-high), one hover (an 8% state layer), one focus ring (2px, 2px outside), one status palette from the colour ramps.'],
+  ['Accessible by default', 'Text clears AA in both themes and AAA in High contrast; controls clear 3:1; every target is at least 24 × 24 and 48 × 48 on touch; every chart has a text alternative.'],
 ]
 
 const stack = ['React 19', 'TypeScript', 'Tailwind CSS v4', 'class-variance-authority', 'Storybook', 'Changesets']
@@ -33,8 +33,9 @@ export const Overview: StoryObj = {
           <span className="text-text-xxs font-semibold uppercase tracking-wider text-text-secondary">Product design system</span>
           <h1 className="m-0 text-display-2xl font-semibold text-text-primary">anm design system</h1>
           <p className="m-0 max-w-[640px] text-text-lg leading-7 text-text-secondary">
-            Tokens, components and patterns for data-heavy products: analytics, data visualisation and fintech. Dark and light themes,
-            a high-contrast mode, and a component library that maps one to one to the Figma file.
+            Tokens, components and patterns for prototyping data-heavy products with AI agents: analytics, data visualisation and
+            fintech. Dark and light themes, a high-contrast mode, two densities, and a component library that maps one to one to the
+            Figma file.
           </p>
           <div className="flex flex-wrap gap-8px">
             <Button asChild variant="primary" trailingIcon={<ArrowUpRight className="size-4" />}>

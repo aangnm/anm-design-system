@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from 'react'
 import { useId } from 'react'
-import { CHART_SERIES_BG, CHART_SERIES_TEXT, ChartTexturePattern, chartTextureStyle, formatChartNumber, type ChartSeriesIndex } from '@/components/Legend'
+import { describeChart, CHART_SERIES_BG, CHART_SERIES_TEXT, ChartTexturePattern, chartTextureStyle, formatChartNumber, type ChartSeriesIndex } from '@/components/Legend'
 import { cn } from '@/lib/utils'
 
 // Mirrors the Donut Chart component (Data Display page): how one total splits
@@ -47,6 +47,7 @@ export function DonutChart({ parts, unit, centerLabel = true, formatValue = (v) 
     <div
       className={cn('flex w-fit items-center gap-24px rounded-lg border border-border-subtle bg-surface-container p-16px', className)}
       role="img"
+      aria-label={`${describeChart('Gráfico de anillo', [{ label: `Total ${formatValue(total)}${unit ? ` ${unit}` : ''}`, data: parts.map((p) => p.value) }], parts.map((p) => p.label), formatValue)}`}
       {...props}
     >
       <div className="relative shrink-0" style={{ width: SIZE, height: SIZE }}>

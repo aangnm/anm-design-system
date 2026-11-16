@@ -2,6 +2,10 @@
 
 Tokens and React components generated from [anm Design System](https://www.figma.com/design/OSexn3GQ7oIOo7X2sGVlSb/anm-Design-System), the canonical Figma file.
 
+**What it's for:** building prototypes with AI agents, whether they design in Figma or build directly in code. Both draw on the same components: each Figma component carries a `Why —` note and a Code handoff spec mapping its properties to props, and every state is a Storybook story, so an agent reuses what exists instead of guessing.
+
+**Storybook:** published to GitHub Pages from `main` by `.github/workflows/storybook-pages.yml`.
+
 ## Status
 
 Token pipeline is live (color, spacing, radius, type, motion, breakpoints, elevation, opacity, z-index, focus, density). Every component in the Figma file has a code counterpart (Sidebar / Alt and Navbar / Mobile through another component, on purpose), in Storybook for both themes. See [Roadmap](#roadmap).

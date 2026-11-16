@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from 'react'
 import { cn } from '@/lib/utils'
-import { Legend, CHART_SERIES_TEXT, formatChartNumber, type ChartSeriesIndex } from '@/components/Legend'
+import { Legend, describeChart, CHART_SERIES_TEXT, formatChartNumber, type ChartSeriesIndex } from '@/components/Legend'
 
 // Mirrors the Line Chart component (Data Display page): trend over time for
 // 1-8 series. Why (from Figma) — series colours are used in fixed order
@@ -37,6 +37,7 @@ export function LineChart({
   height = 160,
   formatValue = (v) => formatChartNumber(v, 1),
   className,
+  'aria-label': ariaLabel,
   ...props
 }: LineChartProps) {
   const allValues = series.flatMap((s) => s.data)
@@ -71,7 +72,7 @@ export function LineChart({
           <p>{formatValue(min)}</p>
         </div>
         <div className="flex flex-col items-start gap-6px">
-          <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} fill="none" role="img" className="overflow-visible">
+          <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} fill="none" role="img" aria-label={ariaLabel ?? describeChart('Gráfico de líneas', series, categories)} className="overflow-visible">
             <line x1={0} y1={pad + 0.5} x2={width} y2={pad + 0.5} stroke="var(--border-subtle)" strokeWidth={1} />
             <line x1={0} y1={height / 2} x2={width} y2={height / 2} stroke="var(--border-subtle)" strokeWidth={1} />
             <line x1={0} y1={height - pad + 0.5} x2={width} y2={height - pad + 0.5} stroke="var(--border-subtle)" strokeWidth={1} />
