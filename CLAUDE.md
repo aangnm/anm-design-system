@@ -56,16 +56,17 @@ Accumulated API gotchas, each found the hard way:
 - **Pattern fills cannot be written** (`type: 'PATTERN'` fails validation). Chart textures are `IMAGE` fills with `scaleMode: 'TILE'`, made with `figma.createImage(figma.base64Decode(png))`; the Chart Texture set on Data Display holds the canonical tiles, so copy fills from it.
 - **Variant option order is stored separately from child order.** Reordering children does not reorder the instance panel. Rename each option to a temporary value in one call, then back in the next, in the order you want.
 - **Cross-collection aliases resolve in the layer's own mode for the target collection**, not the referencing collection's mode. That is why theme-specific primitives keep -dark / -light suffixes.
-- Run `scripts/figma-lint-variants.js` (read-only, paste as `use_figma` code) after adding or changing a component; extend its vocabulary deliberately.
+- Run `scripts/figma/lint-variants.js` (read-only, paste as `use_figma` code) after adding or changing a component; extend its vocabulary deliberately.
 
 ## Conventions
 
-- Identifiers in English; user-facing copy in Spanish (es-EC).
+- Everything is in English: identifiers, user-facing copy, sample data, Figma text. Numbers and dates are en-US (`1,284.5`, `12.5%`, `$128,450`, `Wed, May 27, 2026`); `formatChartNumber` is the one formatter.
 - Build from token classes only — no raw hex, no magic numbers. Text: prefer the role utilities (`text-body-default`, `text-title-large` …) over raw size classes; add new ones to the font-size group in `src/lib/utils.ts` or tailwind-merge will drop them.
-- Density is `data-density="compact"`; sized controls use `h-control-sm|md|lg` (Button LG `h-control-button-lg`) and table cells `py-table-cell-y`, never a fixed `h-36px`, so they follow it.
+- Density is `data-density="compact"`; sized controls use `h-control-sm|md|lg`, table cells `py-table-cell-y`, cards `p-container-md` and chart cards / panels `p-container-sm`, never a fixed `h-36px` or `p-16px`, so they follow it.
 - Status colour by role: `bg-semantic-<status>` solid (Badge, dots), `bg-semantic-<status>-surface` + `text-semantic-<status>-foreground` for tints, `text-text-<status>` for status text or icons on a neutral surface. All are ramp steps; never add a one-off status primitive.
+- Anything with `role="img"` needs a text alternative. Charts use `describeChart(kind, series, categories)` from Legend as their default `aria-label`.
 - Focus is one utility: `focus-visible:focus-ring` (or `peer-focus-visible:focus-ring` on the visible box of a hidden-input control). Never `ring-*` or a border recolour for focus. Forced Focus states in stories need `focus-ring!` to beat a base `outline-none`.
-- Sample copy is generic fintech/analytics in es-EC (Cuenta 4021, Ventas, USD, Conversión). Never farming vocabulary.
+- Sample copy is generic fintech/analytics (Account 4021, Sales, USD, Conversion). The placeholder person is Laura Romero (LR). Never farming vocabulary.
 - Figma variant axes map to a real API: `State=Hover/Focus/Disabled` become CSS pseudo-classes, not props. `State=Loading` has no native equivalent, so it becomes a real prop.
 - A component's Storybook grid should mirror the Figma variant grid, so a visual diff is a straight comparison.
 - Large Figma variant sets use a manual grid (`layoutMode = 'NONE'`), matching Button and Icon Button. Growing a set means shifting everything below it on the page.

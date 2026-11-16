@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from 'react'
 import { useId } from 'react'
-import { CHART_SERIES_BG, CHART_SERIES_TEXT, ChartTexturePattern, chartTextureStyle, formatChartNumber, type ChartSeriesIndex } from '@/components/Legend'
+import { describeChart, CHART_SERIES_BG, CHART_SERIES_TEXT, ChartTexturePattern, chartTextureStyle, formatChartNumber, type ChartSeriesIndex } from '@/components/Legend'
 import { cn } from '@/lib/utils'
 
 // Mirrors the Donut Chart component (Data Display page): how one total splits
@@ -45,8 +45,9 @@ export function DonutChart({ parts, unit, centerLabel = true, formatValue = (v) 
 
   return (
     <div
-      className={cn('flex w-fit items-center gap-24px rounded-lg border border-border-subtle bg-surface-container p-16px', className)}
+      className={cn('flex w-full flex-wrap items-center gap-24px rounded-lg border border-border-subtle bg-surface-container p-container-sm', className)}
       role="img"
+      aria-label={`${describeChart('Donut chart', [{ label: `Total ${formatValue(total)}${unit ? ` ${unit}` : ''}`, data: parts.map((p) => p.value) }], parts.map((p) => p.label), formatValue)}`}
       {...props}
     >
       <div className="relative shrink-0" style={{ width: SIZE, height: SIZE }}>
@@ -86,14 +87,14 @@ export function DonutChart({ parts, unit, centerLabel = true, formatValue = (v) 
           </div>
         ) : null}
       </div>
-      <ul className="flex flex-col gap-8px">
+      <ul className="flex min-w-[220px] max-w-[360px] flex-1 flex-col gap-8px">
         {parts.map((p) => (
           <li key={p.series} className="grid grid-cols-[10px_minmax(0,1fr)_auto_48px] items-center gap-x-8px">
             <span className={cn('size-10px rounded-sm', CHART_SERIES_BG[p.series])} style={texture ? chartTextureStyle(p.series) : undefined} />
             <span className="truncate text-text-xs font-medium leading-5 text-text-secondary">{p.label}</span>
             <span className="text-right text-text-xs font-medium leading-5 tabular-nums text-text-primary">{formatValue(p.value)}</span>
             <span className="text-right text-text-xxs leading-4 tabular-nums text-text-secondary">
-              {formatChartNumber(Math.round((p.value / total) * 1000) / 10, 1)} %
+              {formatChartNumber(Math.round((p.value / total) * 1000) / 10, 1)}%
             </span>
           </li>
         ))}

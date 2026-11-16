@@ -1,7 +1,7 @@
 import { cn } from '@/lib/utils'
 
 // Mirrors the Segmented Control component (Core page): a mutually exclusive
-// view/scope switch (e.g. Día/Semana/Mes). Why (from Figma) — the active
+// view/scope switch (e.g. Day/Week/Month). Why (from Figma) — the active
 // segment is raised on surface/page over a surface/container-high track,
 // deliberately not an underline (that's Tabs' job): Tabs switches view,
 // Segmented Control switches scope within one view. Data-driven — Figma

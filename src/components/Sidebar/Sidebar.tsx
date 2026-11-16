@@ -12,7 +12,7 @@ import { cn } from '@/lib/utils'
 // the collapsed state easy to get half-applied.
 //
 // Each nav item takes its own `icon` (Figma: one icon swap property per nav
-// item — Resumen, Transacciones, Reportes, Clientes, Configuración). Collapsed is a 72px
+// item — Overview, Transactions, Reports, Clients, Settings). Collapsed is a 72px
 // icon-only rail; labels are hidden, not removed.
 // Hit area — each nav item row is 36 high; on touch the target extends to
 // 48 x 48 without changing the visual.
@@ -29,6 +29,7 @@ export function Sidebar({ className, collapsed = false, brand, footer, children,
   return (
     <SidebarContext.Provider value={{ collapsed }}>
       <aside
+        aria-label="Sidebar"
         className={cn(
           'flex h-full flex-col gap-8px bg-surface-container px-16px py-20px transition-[width]',
           collapsed ? 'w-[72px]' : 'w-[240px]',

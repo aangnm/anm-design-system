@@ -38,8 +38,8 @@ const rowLayout = 'flex w-full items-center gap-12px px-16px py-12px'
 export function List({
   items = [],
   state = 'default',
-  emptyMessage = 'Sin movimientos para esta cuenta.',
-  errorMessage = 'No se pudo cargar el historial.',
+  emptyMessage = 'No activity for this account.',
+  errorMessage = 'Couldn’t load the history.',
   loadingRows = 3,
   className,
   ...props

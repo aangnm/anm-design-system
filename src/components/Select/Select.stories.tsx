@@ -4,8 +4,8 @@ import { Select } from './Select'
 const options = (
   <>
     <option value="">Selecciona…</option>
-    <option value="a">Opción A</option>
-    <option value="b">Opción B</option>
+    <option value="a">Option A</option>
+    <option value="b">Option B</option>
   </>
 )
 
@@ -25,7 +25,7 @@ type Story = StoryObj<typeof Select>
 export const Playground: Story = {
   render: (args) => (
     <div className="w-[280px]">
-      <Select {...args} />
+      <Select aria-label="Account" {...args} />
     </div>
   ),
 }
@@ -52,7 +52,7 @@ export const SizeByState: Story = {
             {states.map((s) => (
               <div key={s.label} className={`flex flex-col gap-4px ${widths[size]}`}>
                 <span className="text-text-caption leading-4 text-text-secondary">{s.label}</span>
-                <Select size={size} className={s.cls} {...s.props}>{options}</Select>
+                <Select aria-label="Account" size={size} className={s.cls} {...s.props}>{options}</Select>
               </div>
             ))}
           </div>

@@ -18,8 +18,8 @@ export const Playground: Story = {
   render: (args) => (
     <div className="w-[320px]">
       <Card {...args}>
-        <CardTitle>Título de la tarjeta</CardTitle>
-        <CardDescription>Contenido de la tarjeta con una descripción breve del elemento mostrado.</CardDescription>
+        <CardTitle>Card title</CardTitle>
+        <CardDescription>Card content with a short description of the item shown.</CardDescription>
       </Card>
     </div>
   ),
@@ -31,8 +31,8 @@ export const States: Story = {
     <div className="flex flex-wrap gap-16px bg-surface-page p-24px">
       <div className="w-[320px]">
         <Card>
-          <CardTitle>Título de la tarjeta</CardTitle>
-          <CardDescription>Contenido de la tarjeta con una descripción breve del elemento mostrado.</CardDescription>
+          <CardTitle>Card title</CardTitle>
+          <CardDescription>Card content with a short description of the item shown.</CardDescription>
         </Card>
       </div>
       <div className="w-[320px]">

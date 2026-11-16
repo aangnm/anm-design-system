@@ -16,38 +16,38 @@ type Story = StoryObj<typeof Sidebar>
 const nav = (
   <>
     <SidebarItem icon={<Circle />} active>
-      Resumen
+      Overview
     </SidebarItem>
-    <SidebarItem icon={<Circle />}>Transacciones</SidebarItem>
-    <SidebarItem icon={<Circle />}>Reportes</SidebarItem>
-    <SidebarItem icon={<Circle />}>Clientes</SidebarItem>
-    <SidebarItem icon={<Circle />}>Configuración</SidebarItem>
+    <SidebarItem icon={<Circle />}>Transactions</SidebarItem>
+    <SidebarItem icon={<Circle />}>Reports</SidebarItem>
+    <SidebarItem icon={<Circle />}>Clients</SidebarItem>
+    <SidebarItem icon={<Circle />}>Settings</SidebarItem>
   </>
 )
 
-// Same rows with a distinct icon each — the per-item icon slot (Figma: Icon · Resumen,
-// Transacciones, Reportes, Clientes, Configuración).
+// Same rows with a distinct icon each — the per-item icon slot (Figma: Icon · Overview,
+// Transactions, Reports, Clients, Settings).
 const navWithIcons = (
   <>
     <SidebarItem icon={<LayoutDashboard />} active>
-      Resumen
+      Overview
     </SidebarItem>
-    <SidebarItem icon={<ArrowLeftRight />}>Transacciones</SidebarItem>
-    <SidebarItem icon={<ChartColumn />}>Reportes</SidebarItem>
-    <SidebarItem icon={<Users />}>Clientes</SidebarItem>
-    <SidebarItem icon={<Settings />}>Configuración</SidebarItem>
+    <SidebarItem icon={<ArrowLeftRight />}>Transactions</SidebarItem>
+    <SidebarItem icon={<ChartColumn />}>Reports</SidebarItem>
+    <SidebarItem icon={<Users />}>Clients</SidebarItem>
+    <SidebarItem icon={<Settings />}>Settings</SidebarItem>
   </>
 )
 
 function Footer({ collapsed }: { collapsed?: boolean }) {
-  if (collapsed) return <Avatar initials="ER" size="sm" />
+  if (collapsed) return <Avatar initials="LR" size="sm" />
   return (
     <>
       <div className="flex items-center gap-10px">
-        <Avatar initials="ER" size="sm" />
+        <Avatar initials="LR" size="sm" />
         <div className="flex flex-col">
-          <span className="text-sm text-text-primary">Elainy Romero</span>
-          <span className="text-text-xxs leading-4 text-text-secondary">Administrador</span>
+          <span className="text-sm text-text-primary">Laura Romero</span>
+          <span className="text-text-xxs leading-4 text-text-secondary">Administrator</span>
         </div>
       </div>
       <ChevronUp className="size-4 text-icon-muted" />
@@ -58,7 +58,7 @@ function Footer({ collapsed }: { collapsed?: boolean }) {
 export const Expanded: Story = {
   render: () => (
     <div className="h-[600px]">
-      <Sidebar brand={<SidebarBrand name="Espacio de trabajo" />} footer={<Footer />}>
+      <Sidebar brand={<SidebarBrand name="Workspace" />} footer={<Footer />}>
         {nav}
       </Sidebar>
     </div>
@@ -69,8 +69,9 @@ export const Collapsed: Story = {
   render: () => (
     <div className="h-[600px]">
       <Sidebar
+        aria-label="Sidebar, collapsed"
         collapsed
-        brand={<SidebarBrand name="Espacio de trabajo" />}
+        brand={<SidebarBrand name="Workspace" />}
         footer={<Footer collapsed />}
       >
         {nav}
@@ -82,12 +83,13 @@ export const Collapsed: Story = {
 export const SideBySide: Story = {
   render: () => (
     <div className="flex h-[600px] gap-24px bg-surface-page">
-      <Sidebar brand={<SidebarBrand name="Espacio de trabajo" />} footer={<Footer />}>
+      <Sidebar brand={<SidebarBrand name="Workspace" />} footer={<Footer />}>
         {nav}
       </Sidebar>
       <Sidebar
+        aria-label="Sidebar, collapsed"
         collapsed
-        brand={<SidebarBrand name="Espacio de trabajo" />}
+        brand={<SidebarBrand name="Workspace" />}
         footer={<Footer collapsed />}
       >
         {nav}
@@ -99,12 +101,13 @@ export const SideBySide: Story = {
 export const WithIcons: Story = {
   render: () => (
     <div className="flex h-[600px] gap-24px bg-surface-page">
-      <Sidebar brand={<SidebarBrand name="Espacio de trabajo" />} footer={<Footer />}>
+      <Sidebar brand={<SidebarBrand name="Workspace" />} footer={<Footer />}>
         {navWithIcons}
       </Sidebar>
       <Sidebar
+        aria-label="Sidebar, collapsed"
         collapsed
-        brand={<SidebarBrand name="Espacio de trabajo" />}
+        brand={<SidebarBrand name="Workspace" />}
         footer={<Footer collapsed />}
       >
         {navWithIcons}

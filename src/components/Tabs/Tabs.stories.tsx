@@ -13,11 +13,11 @@ type Story = StoryObj<typeof Tabs>
 
 export const Playground: Story = {
   render: () => {
-    const [value, setValue] = useState('resumen')
+    const [value, setValue] = useState('overview')
     const items = [
-      ['resumen', 'Resumen'],
-      ['transacciones', 'Transacciones'],
-      ['reportes', 'Reportes'],
+      ['overview', 'Overview'],
+      ['transactions', 'Transactions'],
+      ['reports', 'Reports'],
     ]
     return (
       <div className="bg-surface-page p-24px">
@@ -40,10 +40,10 @@ export const States: Story = {
   render: () => (
     <div className="bg-surface-page p-24px">
       <Tabs>
-        <Tab>Etiqueta</Tab>
-        <Tab active>Etiqueta</Tab>
-        <Tab disabled>Etiqueta</Tab>
-        <Tab className="[&>span:first-child]:text-text-primary">Etiqueta</Tab>
+        <Tab>Label</Tab>
+        <Tab active>Label</Tab>
+        <Tab disabled>Label</Tab>
+        <Tab className="[&>span:first-child]:text-text-primary">Label</Tab>
       </Tabs>
     </div>
   ),

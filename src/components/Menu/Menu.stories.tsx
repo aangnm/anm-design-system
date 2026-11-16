@@ -15,11 +15,11 @@ export const Playground: Story = {
   render: () => (
     <div className="bg-surface-page p-8">
       <Menu>
-        <MenuItem icon={<Circle />}>Elemento del menú</MenuItem>
-        <MenuItem icon={<Circle />}>Elemento del menú</MenuItem>
-        <MenuItem icon={<Circle />}>Elemento del menú</MenuItem>
+        <MenuItem icon={<Circle />}>Menu item</MenuItem>
+        <MenuItem icon={<Circle />}>Menu item</MenuItem>
+        <MenuItem icon={<Circle />}>Menu item</MenuItem>
         <MenuItem icon={<Circle />} disabled>
-          Elemento del menú
+          Menu item
         </MenuItem>
       </Menu>
     </div>
@@ -28,10 +28,10 @@ export const Playground: Story = {
 
 export const ItemStates: Story = {
   render: () => (
-    <div className="flex flex-col gap-8px bg-surface-page p-8">
-      <MenuItem icon={<Circle />}>Elemento del menú</MenuItem>
+    <div role="menu" aria-label="Menu item states" className="flex flex-col gap-8px bg-surface-page p-8">
+      <MenuItem icon={<Circle />}>Menu item</MenuItem>
       <MenuItem icon={<Circle />} disabled>
-        Elemento del menú
+        Menu item
       </MenuItem>
     </div>
   ),
@@ -42,12 +42,12 @@ export const LeadingIcon: Story = {
   render: () => (
     <div className="flex gap-24px bg-surface-page p-8">
       <Menu>
-        <MenuItem>Con icono</MenuItem>
-        <MenuItem>Con icono</MenuItem>
+        <MenuItem>With icon</MenuItem>
+        <MenuItem>With icon</MenuItem>
       </Menu>
       <Menu>
-        <MenuItem leadingIcon={false}>Sin icono</MenuItem>
-        <MenuItem leadingIcon={false}>Sin icono</MenuItem>
+        <MenuItem leadingIcon={false}>Without icon</MenuItem>
+        <MenuItem leadingIcon={false}>Without icon</MenuItem>
       </Menu>
     </div>
   ),

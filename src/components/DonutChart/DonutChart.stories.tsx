@@ -9,10 +9,10 @@ const meta: Meta<typeof DonutChart> = {
   args: {
     unit: 'USD',
     parts: [
-      { label: 'Cuenta 4021', series: 1, value: 520 },
-      { label: 'Cuenta 4035', series: 2, value: 380 },
-      { label: 'Cuenta 4102', series: 3, value: 250 },
-      { label: 'Cuenta 4118', series: 4, value: 134 },
+      { label: 'Account 4021', series: 1, value: 520 },
+      { label: 'Account 4035', series: 2, value: 380 },
+      { label: 'Account 4102', series: 3, value: 250 },
+      { label: 'Account 4118', series: 4, value: 134 },
     ],
   },
 }

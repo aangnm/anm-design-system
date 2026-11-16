@@ -25,7 +25,7 @@ export const Playground: Story = {
 const types = ['primary', 'secondary', 'outline', 'ghost'] as const
 const sizes = ['sm', 'md', 'lg'] as const
 
-// Hover/Focus are CSS pseudo-states and can't be triggered from markup, so the
+// Hover/Focus are CSS pseudo-states and can’t be triggered from markup, so the
 // grid forces them with the same classes the pseudo-states apply.
 const forcedHover = {
   primary: 'state-hover',
@@ -66,9 +66,9 @@ export const AllVariants: Story = {
 export const WithIcons: Story = {
   render: () => (
     <div className="flex items-center gap-16px bg-surface-page p-8">
-      <Button size="sm" leadingIcon={<Plus className="size-4" />}>Nuevo</Button>
-      <Button leadingIcon={<Plus className="size-4" />}>Nuevo</Button>
-      <Button size="lg" leadingIcon={<Plus className="size-4" />}>Nuevo</Button>
+      <Button size="sm" leadingIcon={<Plus className="size-4" />}>New</Button>
+      <Button leadingIcon={<Plus className="size-4" />}>New</Button>
+      <Button size="lg" leadingIcon={<Plus className="size-4" />}>New</Button>
     </div>
   ),
 }

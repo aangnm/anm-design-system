@@ -47,3 +47,24 @@
   outline: var(--border-width-focus) solid var(--focus-ring);
   outline-offset: var(--focus-offset);
 }
+
+/*
+ * High contrast (Figma's "Light · High contrast" mode + Dimension "High
+ * contrast"). Figma binds component strokes to border-width/sm, which is 2px
+ * here; in code the plain border utilities are 1px, so this theme widens them.
+ * Selectors outrank the utilities without !important.
+ */
+[data-theme='high-contrast'] .border { border-width: var(--border-width-sm); }
+[data-theme='high-contrast'] .border-t { border-top-width: var(--border-width-sm); }
+[data-theme='high-contrast'] .border-b { border-bottom-width: var(--border-width-sm); }
+
+/*
+ * Status edge (Figma v0.66, border-width/status): Banner and Tag get a 2px
+ * edge in their own foreground colour only in High contrast, where a pale
+ * tint on white has no visible boundary. 0 everywhere else.
+ */
+@utility status-edge {
+  border-style: solid;
+  border-color: currentColor;
+  border-width: var(--border-width-status);
+}

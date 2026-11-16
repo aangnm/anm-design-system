@@ -3,7 +3,7 @@ import { cn } from '@/lib/utils'
 
 // Mirrors the Progress component (Feedback & Overlays page). Determinate only —
 // indeterminate progress is Spinner's job (per the component's Figma description);
-// a bar that doesn't represent a real proportion is a misleading affordance.
+// a bar that doesn’t represent a real proportion is a misleading affordance.
 // Track: a 1px border/default outline (inside) so the bar stays visible on any
 // surface, including grey ones where the soft track fill alone disappears.
 // The value prints as "65 %" with a no-break space (U+00A0) before the sign, so it never wraps
@@ -17,12 +17,13 @@ export interface ProgressProps extends HTMLAttributes<HTMLDivElement> {
   showLabel?: boolean
 }
 
-export function Progress({ value, label = 'Progreso', showLabel = true, className, ...props }: ProgressProps) {
+export function Progress({ value, label = 'Progress', showLabel = true, className, ...props }: ProgressProps) {
   const clamped = Math.min(100, Math.max(0, value))
   return (
     <div
       className={cn('flex w-full flex-col items-start gap-8px', className)}
       role="progressbar"
+      aria-label={label}
       aria-valuenow={clamped}
       aria-valuemin={0}
       aria-valuemax={100}

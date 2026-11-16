@@ -6,7 +6,7 @@ const meta: Meta<typeof DateIndicator> = {
   component: DateIndicator,
   tags: ['autodocs'],
   decorators: [(Story) => <div className="bg-surface-page p-8"><Story /></div>],
-  args: { date: 'Miércoles, 27 may 2026', tag: 'SEM 22' },
+  args: { date: 'Wednesday, May 27, 2026', tag: 'WK 22' },
 }
 export default meta
 type Story = StoryObj<typeof DateIndicator>

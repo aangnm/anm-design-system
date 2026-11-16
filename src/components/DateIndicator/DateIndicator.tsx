@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils'
 // Medium date, 10px gap, a neutral Tag. Static, not interactive.
 
 export interface DateIndicatorProps extends HTMLAttributes<HTMLDivElement> {
-  /** The formatted date, e.g. "Miércoles, 27 may 2026". */
+  /** The formatted date, e.g. "Wednesday, May 27, 2026". */
   date: ReactNode
   /** Optional short context label shown as a Tag, e.g. "SEM 22". Figma's "Show tag". */
   tag?: ReactNode

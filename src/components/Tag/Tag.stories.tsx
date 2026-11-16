@@ -5,7 +5,7 @@ const meta: Meta<typeof Tag> = {
   title: 'Core/Tag',
   component: Tag,
   tags: ['autodocs'],
-  args: { children: 'Etiqueta' },
+  args: { children: 'Label' },
 }
 export default meta
 
@@ -20,7 +20,7 @@ export const AllColors: Story = {
     <div className="flex flex-col items-start gap-8px bg-surface-page p-8">
       {(['neutral', 'success', 'warning', 'error', 'info'] as const).map((color) => (
         <Tag key={color} color={color}>
-          Etiqueta
+          Label
         </Tag>
       ))}
     </div>
@@ -33,7 +33,7 @@ export const Dismissible: Story = {
     <div className="flex flex-col items-start gap-8px bg-surface-page p-8">
       {(['neutral', 'success', 'warning', 'error', 'info'] as const).map((color) => (
         <Tag key={color} color={color} dismissible>
-          Etiqueta
+          Label
         </Tag>
       ))}
     </div>

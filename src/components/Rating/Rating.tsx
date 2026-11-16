@@ -13,9 +13,9 @@ import { cn } from '@/lib/utils'
 export type Severity = 'critical' | 'moderate' | 'healthy'
 
 const tiers: Record<Severity, { index: number; label: string; text: string }> = {
-  critical: { index: 0, label: 'Crítico', text: 'text-text-error' },
-  moderate: { index: 1, label: 'Moderado', text: 'text-text-warning' },
-  healthy: { index: 2, label: 'Saludable', text: 'text-text-success' },
+  critical: { index: 0, label: 'Critical', text: 'text-text-error' },
+  moderate: { index: 1, label: 'Moderate', text: 'text-text-warning' },
+  healthy: { index: 2, label: 'Healthy', text: 'text-text-success' },
 }
 const segmentColors = ['bg-semantic-error', 'bg-semantic-warning', 'bg-semantic-success']
 

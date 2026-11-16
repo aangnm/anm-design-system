@@ -16,9 +16,9 @@ export const Playground: Story = {
   render: () => {
     const [sel, setSel] = useState('4021')
     const rows = [
-      { id: '4021', title: 'Cuenta 4021', subtitle: 'Ahorros · USD', icon: <Wallet /> },
-      { id: '4035', title: 'Cuenta 4035', subtitle: 'Corriente · USD', icon: <Landmark /> },
-      { id: '4102', title: 'Tarjeta 4102', subtitle: 'Crédito · EUR', icon: <CreditCard /> },
+      { id: '4021', title: 'Account 4021', subtitle: 'Ahorros · USD', icon: <Wallet /> },
+      { id: '4035', title: 'Account 4035', subtitle: 'Corriente · USD', icon: <Landmark /> },
+      { id: '4102', title: 'Card 4102', subtitle: 'Credit · EUR', icon: <CreditCard /> },
     ]
     return (
       <div className="flex flex-col gap-8px">
@@ -34,10 +34,10 @@ export const Playground: Story = {
 export const States: Story = {
   render: () => (
     <div className="flex flex-col gap-8px">
-      <ListRow title="Título" subtitle="Subtítulo" icon={<Wallet />} />
-      <ListRow title="Título" subtitle="Subtítulo" icon={<Wallet />} className="focus-ring!" />
-      <ListRow title="Título" subtitle="Subtítulo" icon={<Wallet />} disabled />
-      <ListRow title="Título" subtitle="Subtítulo" icon={<Wallet />} selected />
+      <ListRow title="Title" subtitle="Subtitle" icon={<Wallet />} />
+      <ListRow title="Title" subtitle="Subtitle" icon={<Wallet />} className="focus-ring!" />
+      <ListRow title="Title" subtitle="Subtitle" icon={<Wallet />} disabled />
+      <ListRow title="Title" subtitle="Subtitle" icon={<Wallet />} selected />
     </div>
   ),
 }

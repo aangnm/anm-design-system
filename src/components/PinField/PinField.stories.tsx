@@ -14,7 +14,7 @@ type Story = StoryObj<typeof PinField>
 export const Playground: Story = {
   render: () => {
     const [v, setV] = useState('')
-    return <PinField label="PIN de 4 dígitos" helperText="Los 4 dígitos de tu clave de acceso." value={v} onChange={setV} />
+    return <PinField label="4-digit PIN" helperText="The 4 digits of your passcode." value={v} onChange={setV} />
   },
 }
 
@@ -28,11 +28,11 @@ export const StateByFilled: Story = {
           {[0, 2, 4].map((n) => (
             <PinField
               key={n}
-              label="PIN de 4 dígitos"
+              label="4-digit PIN"
               value={'1234'.slice(0, n)}
               onChange={() => {}}
-              helperText="Los 4 dígitos de tu clave de acceso."
-              error={state === 'error' ? 'PIN incorrecto. Intenta de nuevo.' : undefined}
+              helperText="The 4 digits of your passcode."
+              error={state === 'error' ? 'Incorrect PIN. Try again.' : undefined}
               disabled={state === 'disabled'}
               className="w-[280px]"
             />

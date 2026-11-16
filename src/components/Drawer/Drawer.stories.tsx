@@ -3,17 +3,17 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Drawer } from './Drawer'
 
 const meta: Meta<typeof Drawer> = {
-  title: 'Feedback/Drawer',
+  title: 'Feedback & Overlays/Drawer',
   component: Drawer,
   tags: ['autodocs'],
   args: {
     overlay: false,
-    title: 'Detalle de tarea',
+    title: 'Task detail',
     items: [
-      { label: 'Cuenta', value: 'Cuenta 4021' },
-      { label: 'Categoría', value: 'Ventas' },
-      { label: 'Responsable', value: 'Elainy Romero' },
-      { label: 'Notas', value: 'Revisar la conciliación antes del cierre — diferencia reportada en Sem 21.' },
+      { label: 'Account', value: 'Account 4021' },
+      { label: 'Category', value: 'Sales' },
+      { label: 'Owner', value: 'Laura Romero' },
+      { label: 'Notes', value: 'Review the reconciliation before close — difference reported in Wk 21.' },
     ],
   },
   decorators: [
@@ -38,7 +38,7 @@ export const OverScrim: Story = {
       <div className="relative h-[640px] overflow-hidden bg-surface-page [transform:translateZ(0)]">
         <div className="p-24px">
           <button type="button" className="text-sm text-text-primary underline" onClick={() => setOpen(true)}>
-            Abrir drawer
+            Open drawer
           </button>
         </div>
         {open ? <Drawer {...args} overlay onClose={() => setOpen(false)} onCancel={() => setOpen(false)} /> : null}

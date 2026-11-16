@@ -19,10 +19,10 @@ type Story = StoryObj<typeof MetricCard>
 
 export const Playground: Story = {
   args: {
-    title: 'Ingresos totales',
-    context: 'Captura global · Semana 22',
-    value: '$ 128.450',
-    valueContext: '$ 2,5 M acumulados en el año',
+    title: 'Total revenue',
+    context: 'All accounts · Week 22',
+    value: '$128,450',
+    valueContext: '$2.5M year to date',
     tagLabel: 'Global',
   },
 }

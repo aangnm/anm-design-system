@@ -3,6 +3,7 @@ import type { HTMLAttributes, ReactNode } from 'react'
 import { X } from 'lucide-react'
 import { Button } from '../Button'
 import { cn } from '@/lib/utils'
+import { useDialogFocus } from '@/lib/useDialogFocus'
 
 // Mirrors the Modal component (Feedback & Overlays page): Type=Default/Destructive.
 // Why (from Figma) — Destructive recolours the confirm button through an instance
@@ -13,7 +14,8 @@ import { cn } from '@/lib/utils'
 // dialog centred above it at --z-index-modal; clicking the scrim (or Escape)
 // calls `onClose`. Pass `overlay={false}` for the body-only component Figma
 // documents, e.g. to compose your own backdrop (a Radix Dialog). Focus
-// trapping stays the host dialog's job. The destructive confirm label is the
+// moves into the dialog, stays inside while it is open and returns on close
+// (useDialogFocus) whenever it renders as an overlay. The destructive confirm label is the
 // literal white of Figma's charcoal/0 binding (like Badge), not text/inverse,
 // which flips to black in dark and would drop contrast on the error red.
 // The close icon is a 20px visual with a 24x24 target.
@@ -38,7 +40,7 @@ export function Modal({
   type = 'default',
   title,
   children,
-  cancelLabel = 'Cancelar',
+  cancelLabel = 'Cancel',
   confirmLabel,
   onCancel,
   onConfirm,
@@ -49,6 +51,8 @@ export function Modal({
 }: ModalProps) {
   const isDestructive = type === 'destructive'
   const titleId = useId()
+  // Focus moves in on open, stays inside while open, and returns on close.
+  const focusRef = useDialogFocus<HTMLDivElement>(overlay)
 
   useEffect(() => {
     if (!overlay || !onClose) return
@@ -59,10 +63,11 @@ export function Modal({
 
   const dialog = (
     <div
+      ref={focusRef}
       role="dialog"
       aria-modal="true"
       aria-labelledby={titleId}
-      className={cn('flex w-[440px] flex-col items-start gap-16px rounded-lg bg-surface-container p-24px shadow-xl', className)}
+      className={cn('flex w-full max-w-[440px] flex-col items-start gap-16px rounded-lg bg-surface-container p-24px shadow-xl', className)}
       {...props}
     >
       <div className="flex w-full items-center justify-between">
@@ -71,7 +76,7 @@ export function Modal({
           type="button"
           onClick={onClose}
           className="relative rounded-xs text-icon-muted outline-none transition-colors after:absolute after:left-1/2 after:top-1/2 after:size-24px after:-translate-x-1/2 after:-translate-y-1/2 hover:text-text-primary focus-visible:focus-ring"
-          aria-label="Cerrar"
+          aria-label="Close"
         >
           <X className="size-5" />
         </button>
@@ -86,7 +91,7 @@ export function Modal({
           onClick={onConfirm}
           className={isDestructive ? 'bg-semantic-error text-white hover:bg-semantic-error active:bg-semantic-error' : undefined}
         >
-          {confirmLabel ?? (isDestructive ? 'Eliminar' : 'Confirmar')}
+          {confirmLabel ?? (isDestructive ? 'Delete' : 'Confirm')}
         </Button>
       </div>
     </div>

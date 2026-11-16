@@ -73,12 +73,12 @@ export function Stepper({
   return (
     // Joined without cn(): tailwind-merge reads text-text-xs as a colour and would
     // drop text-text-primary / text-text-disabled (and vice versa).
-    <div className={[stepperVariants({ size, error, disabled }), className].filter(Boolean).join(' ')} aria-invalid={error || undefined}>
+    <div className={[stepperVariants({ size, error, disabled }), className].filter(Boolean).join(' ')} aria-invalid={error || undefined} aria-disabled={disabled || undefined}>
       <button
         type="button"
         disabled={!canDecrement}
         onClick={() => onChange(Math.max(min, value - step))}
-        aria-label="Disminuir"
+        aria-label="Decrease"
         className={cell}
       >
         <Minus className={iconSize} />
@@ -90,7 +90,7 @@ export function Stepper({
         type="button"
         disabled={!canIncrement}
         onClick={() => onChange(Math.min(max, value + step))}
-        aria-label="Aumentar"
+        aria-label="Increase"
         className={cell}
       >
         <Plus className={iconSize} />

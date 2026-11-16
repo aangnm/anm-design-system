@@ -9,9 +9,9 @@ const meta: Meta<typeof StackedBarChart> = {
   args: {
     categories: ['S1', 'S2', 'S3', 'S4', 'S5', 'S6'],
     series: [
-      { label: 'Cuenta 4021', series: 1, data: [60, 95, 70, 120, 105, 130] },
-      { label: 'Cuenta 4035', series: 2, data: [40, 60, 45, 70, 65, 75] },
-      { label: 'Cuenta 4102', series: 3, data: [25, 35, 30, 45, 40, 50] },
+      { label: 'Account 4021', series: 1, data: [60, 95, 70, 120, 105, 130] },
+      { label: 'Account 4035', series: 2, data: [40, 60, 45, 70, 65, 75] },
+      { label: 'Account 4102', series: 3, data: [25, 35, 30, 45, 40, 50] },
     ],
   },
 }

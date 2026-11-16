@@ -3,10 +3,11 @@ import type { HTMLAttributes, ReactNode } from 'react'
 import { X } from 'lucide-react'
 import { Button } from '../Button'
 import { cn } from '@/lib/utils'
+import { useDialogFocus } from '@/lib/useDialogFocus'
 
 // Mirrors the Drawer component (Feedback & Overlays page): cloned from Modal so
 // header/footer patterns stay identical (a drawer is a modal entering from the
-// side, not a different family). Figma's body shows a fixed "Cuenta/Categoría/
+// side, not a different family). Figma's body shows a fixed "Account/Category/
 // Responsable/Notas" detail list — illustrative sample content for a task-detail
 // use case, not the contract, so it's exposed as a generic label/value `items`
 // list (falls back to arbitrary `children` for other bodies). The footer is
@@ -16,7 +17,8 @@ import { cn } from '@/lib/utils'
 // the panel docked to the right edge above it (--z-index-modal); clicking the
 // scrim or pressing Escape calls `onClose`. Pass `overlay={false}` for the
 // body-only panel Figma documents.
-// Focus trapping is the host dialog's job. Close icon: 20px visual, 24x24 target.
+// Focus moves in on open, stays inside and returns on close (useDialogFocus)
+// while it is an overlay. Close icon: 20px visual, 24x24 target.
 
 export interface DrawerItem {
   label: string
@@ -40,8 +42,8 @@ export function Drawer({
   title,
   items,
   children,
-  cancelLabel = 'Cancelar',
-  confirmLabel = 'Guardar cambios',
+  cancelLabel = 'Cancel',
+  confirmLabel = 'Save changes',
   onCancel,
   onConfirm,
   onClose,
@@ -50,6 +52,8 @@ export function Drawer({
   ...props
 }: DrawerProps) {
   const titleId = useId()
+  // Focus moves in on open, stays inside while open, and returns on close.
+  const focusRef = useDialogFocus<HTMLDivElement>(overlay)
 
   useEffect(() => {
     if (!overlay || !onClose) return
@@ -60,11 +64,12 @@ export function Drawer({
 
   const panel = (
     <div
+      ref={focusRef}
       role="dialog"
       aria-modal="true"
       aria-labelledby={titleId}
       className={cn(
-        'flex w-[400px] flex-col items-start gap-16px rounded-lg bg-surface-container p-24px shadow-xl',
+        'flex w-full max-w-[400px] flex-col items-start gap-16px rounded-lg bg-surface-container p-24px shadow-xl',
         overlay ? 'h-full rounded-r-none' : 'h-[600px]',
         className,
       )}
@@ -76,7 +81,7 @@ export function Drawer({
           type="button"
           onClick={onClose}
           className="relative rounded-xs text-icon-muted outline-none transition-colors after:absolute after:left-1/2 after:top-1/2 after:size-24px after:-translate-x-1/2 after:-translate-y-1/2 hover:text-text-primary focus-visible:focus-ring"
-          aria-label="Cerrar"
+          aria-label="Close"
         >
           <X className="size-5" />
         </button>

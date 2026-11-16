@@ -2,9 +2,9 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { RadioGroup } from './RadioGroup'
 
 const options = [
-  { value: 'cafe', label: 'Café' },
-  { value: 'cacao', label: 'Cacao' },
-  { value: 'platano', label: 'Plátano' },
+  { value: 'savings', label: 'Savings' },
+  { value: 'checking', label: 'Checking' },
+  { value: 'credit', label: 'Credit' },
 ]
 
 const meta: Meta<typeof RadioGroup> = {
@@ -12,10 +12,10 @@ const meta: Meta<typeof RadioGroup> = {
   component: RadioGroup,
   tags: ['autodocs'],
   args: {
-    legend: 'Moneda principal',
-    helperText: 'Se usa para los reportes y las conversiones.',
+    legend: 'Primary currency',
+    helperText: 'Used for reports and conversions.',
     options,
-    defaultValue: 'cafe',
+    defaultValue: 'savings',
   },
 }
 export default meta
@@ -37,18 +37,18 @@ export const Variants: Story = {
     <div className="flex flex-wrap gap-32px bg-surface-page p-24px">
       <div className="w-[280px]">
         <RadioGroup
-          legend="Moneda principal"
-          helperText="Se usa para los reportes y las conversiones."
+          legend="Primary currency"
+          helperText="Used for reports and conversions."
           options={options}
           defaultValue="cafe"
         />
       </div>
       <div className="w-[280px]">
-        <RadioGroup legend="Moneda principal" options={options} defaultValue="cacao" />
+        <RadioGroup legend="Primary currency" options={options} defaultValue="cacao" />
       </div>
       <div className="w-[280px]">
         <RadioGroup
-          legend="Moneda principal (deshabilitado)"
+          legend="Primary currency (disabled)"
           options={options}
           defaultValue="cafe"
           disabled

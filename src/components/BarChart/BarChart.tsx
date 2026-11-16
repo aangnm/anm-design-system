@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from 'react'
 import { cn } from '@/lib/utils'
-import { formatChartNumber } from '@/components/Legend'
+import { describeChart, formatChartNumber } from '@/components/Legend'
 
 // Mirrors the Bar Chart component (Data Display page). Why (from Figma) —
 // bar heights come from data, so in code this is generated rather than a
@@ -37,7 +37,7 @@ export interface BarChartProps extends HTMLAttributes<HTMLDivElement> {
   showValues?: boolean
   /** Newest bar keeps chart/series-1, the rest turn icon/muted — Figma's "Highlight latest". */
   highlightLatest?: boolean
-  /** Formats tick and value labels; defaults to es-EC numbers (`1.284`). */
+  /** Formats tick and value labels; defaults to en-US numbers (`1,284`). */
   formatValue?: (value: number) => string
 }
 
@@ -67,7 +67,7 @@ export function BarChart({
   const plotHeight = height + EDGE * 2
 
   return (
-    <div className={cn('flex w-[360px] flex-col items-stretch gap-8px', className)} role="img" {...props}>
+    <div className={cn('flex w-full min-w-[200px] flex-col items-stretch gap-8px', className)} role="img" aria-label={describeChart('Bar chart', [{ label: 'Values', data: data.map((d) => d.value) }], data.map((d) => d.label), formatValue)} {...props}>
       <div className="flex gap-8px" style={{ height: plotHeight }}>
         {/* y axis */}
         <div className="flex w-32px shrink-0 flex-col items-end justify-between text-text-xxs leading-4 text-text-secondary" aria-hidden>

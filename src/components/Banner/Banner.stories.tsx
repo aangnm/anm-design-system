@@ -2,10 +2,10 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Banner } from './Banner'
 
 const meta: Meta<typeof Banner> = {
-  title: 'Feedback/Banner',
+  title: 'Feedback & Overlays/Banner',
   component: Banner,
   tags: ['autodocs'],
-  args: { message: 'Mensaje para el usuario.' },
+  args: { message: 'Message for the user.' },
 }
 export default meta
 
@@ -20,10 +20,10 @@ export const AllColors: Story = {
     <div className="flex w-[440px] flex-col gap-8px bg-surface-page p-8">
       {(
         [
-          ['info', 'Mensaje de info para el usuario.'],
-          ['success', 'Mensaje de success para el usuario.'],
-          ['warning', 'Mensaje de warning para el usuario.'],
-          ['error', 'Mensaje de error para el usuario.'],
+          ['info', 'Info message for the user.'],
+          ['success', 'Success message for the user.'],
+          ['warning', 'Warning message for the user.'],
+          ['error', 'Error message for the user.'],
         ] as const
       ).map(([color, message]) => (
         <Banner key={color} color={color} message={message} onDismiss={() => {}} />
@@ -40,8 +40,8 @@ export const TitleAndAction: Story = {
         <Banner
           key={color}
           color={color}
-          title="Título del mensaje"
-          message="Mensaje para el usuario."
+          title="Message title"
+          message="Message for the user."
           action={{ label: 'Deshacer', onClick: () => {} }}
           onDismiss={() => {}}
         />

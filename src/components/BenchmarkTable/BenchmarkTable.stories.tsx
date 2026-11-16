@@ -18,14 +18,14 @@ export default meta
 type Story = StoryObj<typeof BenchmarkTable>
 
 // Sample from the Figma component: Ingresos/mes per account against the 400 min /
-// 800 ideal benchmarks (Crítico < 400 ≤ Moderado < 800 ≤ Saludable).
+// 800 ideal benchmarks (Critical < 400 ≤ Moderate < 800 ≤ Healthy).
 export const Playground: Story = {
   args: {
     rows: [
-      { label: '4021', category: 'Ventas', rate: 612 },
-      { label: '4035', category: 'Ventas', rate: 340 },
-      { label: '4102', category: 'Ventas', rate: 845 },
-      { label: '4118', category: 'Ventas', rate: 810 },
+      { label: '4021', category: 'Sales', rate: 612 },
+      { label: '4035', category: 'Sales', rate: 340 },
+      { label: '4102', category: 'Sales', rate: 845 },
+      { label: '4118', category: 'Sales', rate: 810 },
     ],
   },
 }

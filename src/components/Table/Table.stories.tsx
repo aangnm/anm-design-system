@@ -2,21 +2,21 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Table } from './Table'
 import { Tag } from '@/components/Tag'
 
-// Sample from the Figma component set: Cuenta · Categoría · Estado · Monto · Moneda
+// Sample from the Figma component set: Account · Category · Status · Amount · Currency
 // (column widths 70 / 160 / 120 / 90 / 90 = 530).
 const columns = [
-  { key: 'cuenta', header: 'Cuenta', width: 70 },
-  { key: 'categoria', header: 'Categoría', width: 160 },
-  { key: 'estado', header: 'Estado', width: 120 },
-  { key: 'data', header: 'Monto', width: 90 },
-  { key: 'unidad', header: 'Moneda', width: 90 },
+  { key: 'account', header: 'Account', width: 70 },
+  { key: 'category', header: 'Category', width: 160 },
+  { key: 'status', header: 'Status', width: 120 },
+  { key: 'amount', header: 'Amount', width: 90 },
+  { key: 'currency', header: 'Currency', width: 90 },
 ]
 
 const rows = [
-  { cuenta: '4021', categoria: 'Ventas', estado: <Tag color="success">Activa</Tag>, data: '250', unidad: 'USD' },
-  { cuenta: '4035', categoria: 'Suscripciones', estado: <Tag color="warning">Pendiente</Tag>, data: '—', unidad: 'USD' },
-  { cuenta: '4102', categoria: 'Reembolsos', estado: <Tag color="success">Activa</Tag>, data: '98', unidad: 'EUR' },
-  { cuenta: '4118', categoria: 'Comisiones', estado: <Tag color="success">Activa</Tag>, data: '76', unidad: 'USD' },
+  { account: '4021', category: 'Sales', status: <Tag color="success">Active</Tag>, amount: '250', currency: 'USD' },
+  { account: '4035', category: 'Subscriptions', status: <Tag color="warning">Pending</Tag>, amount: '—', currency: 'USD' },
+  { account: '4102', category: 'Refunds', status: <Tag color="success">Active</Tag>, amount: '98', currency: 'EUR' },
+  { account: '4118', category: 'Commissions', status: <Tag color="success">Active</Tag>, amount: '76', currency: 'USD' },
 ]
 
 const meta: Meta<typeof Table> = {
@@ -45,16 +45,16 @@ export const States: Story = {
   render: () => (
     <div className="flex flex-wrap items-start gap-16px bg-surface-page p-24px">
       <div className="w-[530px]">
-        <Table columns={columns} rows={rows} />
+        <Table aria-label="Accounts" columns={columns} rows={rows} />
       </div>
       <div className="w-[530px]">
-        <Table columns={columns} state="empty" />
+        <Table aria-label="Accounts, empty" columns={columns} state="empty" />
       </div>
       <div className="w-[530px]">
-        <Table columns={columns} state="loading" loadingRows={4} />
+        <Table aria-label="Accounts, loading" columns={columns} state="loading" loadingRows={4} />
       </div>
       <div className="w-[530px]">
-        <Table columns={columns} state="error" />
+        <Table aria-label="Accounts, error" columns={columns} state="error" />
       </div>
     </div>
   ),

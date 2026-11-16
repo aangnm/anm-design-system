@@ -2,9 +2,9 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Timeline } from './Timeline'
 
 const entries = [
-  { title: 'Pago recibido', time: 'Hoy · 09:12', detail: '$ 250 acreditados en la cuenta 4021.', tone: 'success' as const },
-  { title: 'Conciliación', time: 'Ayer · 18:40', detail: 'Conciliación programada completada, 45 min.', tone: 'info' as const },
-  { title: 'Transferencia', time: 'Hace 3 días', detail: 'Transferencia internacional enviada desde la cuenta 4035.', tone: 'warning' as const },
+  { title: 'Pago recibido', time: 'Today · 09:12', detail: '$250 credited to account 4021.', tone: 'success' as const },
+  { title: 'Reconciliation', time: 'Yesterday · 18:40', detail: 'Scheduled reconciliation completed, 45 min.', tone: 'info' as const },
+  { title: 'Transfer', time: '3 days ago', detail: 'International transfer sent from account 4035.', tone: 'warning' as const },
 ]
 
 const meta: Meta<typeof Timeline> = {
@@ -23,7 +23,7 @@ export default meta
 
 type Story = StoryObj<typeof Timeline>
 
-// Mirrors the Figma component: pago recibido (success), conciliación (info), transferencia (warning).
+// Mirrors the Figma component: payment received (success), reconciliation (info), transfer (warning).
 export const Playground: Story = {
   args: { entries },
 }

@@ -1,0 +1,450 @@
+{
+  "source": "Figma component descriptions, pulled by scripts/figma/pull-notes.js — do not edit by hand; fix the description in Figma and pull again.",
+  "pulledAt": "2026-11-16T21:00:00.000Z",
+  "notes": {
+    "AccordionItem": {
+      "figma": "Accordion",
+      "nodeId": "2403:124",
+      "page": "Core",
+      "description": "Disclosure row for grouped content: a header (title + chevron) that reveals a body on expand. State=Collapsed/Expanded. Stack several with a shared bottom hairline for a list of sections — no separate container component, same relationship as Menu Item to Menu.\n\nWhy — Drawer and Modal are the only ways today to hide content behind an interaction, and both fully block the page. Accordion is for content that belongs on the page but doesn't need to be visible all the time — per-account detail sections, grouped settings. Chevron rotates 180° on expand; no separate icon swap needed.\n\nHit area — pointer: the whole header row (48 high). On touch, extend the hit area to 48 × 48 px (hit/touch) without changing the visual. See Target size on the Accessibility page.\n\nSlots — Title is a text property. Leading icon (swap) and Show count (a Badge Info, set from its own Label) are optional and off by default, so the plain disclosure row is unchanged; they let a list of sections carry an icon and a tally without a second component. To put your own rows under an expanded header, hide the body text on the instance and stack the rows beneath it: an instance cannot take children, so the rows are siblings, not a slot.\n\nRow spacing — 12px between icon, title, count and chevron, so the optional slots never touch the title; the plain header is unchanged because the title fills the row.\n\nSize — MD is the original (14px title, flush to the edges, for desktop and dense pages). LG is the touch size: 16px title, 16px side padding, a 56 high header and a 20px chevron. On a phone put LG headers inside a soft container: a frame on surface/container with a border/subtle edge and radius/lg that clips its headers and the Count Rows beneath an expanded one."
+    },
+    "ActionBar": {
+      "figma": "Action Bar",
+      "nodeId": "2630:2891",
+      "page": "Navigation",
+      "description": "Pinned bottom bar for a phone screen: an optional summary line, one Primary Button LG and an optional Secondary. Properties: Summary (text), Show summary, Show secondary. Bottom padding of 32 clears the home indicator.\n\nWhy — A screen that ends in one decision (Continue, Complete sign-up) keeps that action in the thumb zone and visible while the content scrolls. One Primary per view still holds: the second action is a Secondary Button, never a second Primary. The summary line carries the running tally (2 filters · 26 results) so the user knows what they are about to confirm without scrolling.\n\nContrast — summary text/secondary on surface/container 7.2:1 Light / 6.2 Dark; the top hairline is a container edge (border/subtle).\n\nHit area — both buttons are LG (48) and full width."
+    },
+    "AppBar": {
+      "figma": "App Bar / Mobile",
+      "nodeId": "2630:2877",
+      "page": "Navigation",
+      "description": "Top bar for a phone-width screen: menu button, Date Indicator (date and week tag) and Avatar, 56 high, on surface/container over a border/subtle hairline. Show date is a boolean property.\n\nWhy — Navbar / Mobile above is a static frame that keeps only the menu and the avatar, which suits a content app. A field or operations app needs the day and the week on every screen — a record belongs to a day — so the bar carries the Date Indicator in the middle, as Topbar / Alt does on the web. It is its own component rather than a Navbar variant because Navbar is a slot shell that responsive code is meant to collapse.\n\nContrast — the hairline is a container edge (border/subtle, not held to 3:1); text/primary on surface/container 18.6:1 Light / 13.0 Dark.\n\nHit area — Menu is an Icon Button LG (48). The Avatar is 32 and carries an invisible 48 × 48 Hit area frame on touch (hit/touch), the visual unchanged."
+    },
+    "AreaChart": {
+      "figma": "Area Chart",
+      "nodeId": "2310:71",
+      "page": "Data Display",
+      "description": "Area chart — magnitude/volume over time. Fills at ~18% opacity with a 2px line on top (chart/series-N). Best for 1–2 non-overlapping series or a stacked total; for 3+ crossing series use Line Chart.\n\nWhy — The area fill is bound to opacity/chart-fill rather than a hardcoded value, so the whole chart family shifts together if that reading changes. Best for one or two series — stacked areas hide the series behind them.\n\nHit area — not interactive (a labelled image). Point targets, if added, need at least 24 × 24. See Target size on the Accessibility page."
+    },
+    "Avatar": {
+      "figma": "Avatar",
+      "nodeId": "2105:8",
+      "page": "Core",
+      "description": "User/entity representation with initials. Size for context; Status shows presence (Online/Offline).\n\nWhy — The status dot carries a 2px surface/page stroke so it reads as cut out of the avatar rather than stuck on top, and scales proportionally with each size."
+    },
+    "Badge": {
+      "figma": "Badge",
+      "nodeId": "2104:23",
+      "page": "Core",
+      "description": "Small count or status indicator (e.g. notification counts), in solid semantic colors.\n\nWhy — Text on the coloured variants is a literal primitive, not a semantic token: white on Success, Error and Info, near-black (charcoal/950) on Warning. The fills are ramp steps (semantic/*: green 700, red 600, blue 600, orange 600; one step darker in High contrast), chosen so the white label clears 4.9:1 or better in every theme. Warning is the exception to white because orange 600 is too light for it (3.7:1); near-black clears 5.4:1.\n\nLabel — a text property (the count). A Badge nested inside another component, as in Choice Tile's Done state, is set from its own instance panel."
+    },
+    "Banner": {
+      "figma": "Banner",
+      "nodeId": "2133:29",
+      "page": "Feedback & Overlays",
+      "description": "Inline contextual message tied to a region or page. Color by semantic meaning (Info/Success/Warning/Error).\n\nTitle and Action — two optional parts, both off by default. Title adds a bold first line above the message; Action adds one underlined text action such as Undo or Retry, kept to a single action so a banner never becomes a dialog. Booleans: Show title, Show action. Text properties: Title, Action label.\n\nWhy — Colour carries the meaning here because a banner sits inside known page content — a tinted surface is safe. Each colour also gets its own icon (info / check / triangle-alert / circle-x); an earlier build repeated one placeholder icon and made colour do all the work, which fails for colour-blind readers.\n\nHigh contrast — in Light · High contrast the tint alone is too faint to mark the edge (white on white), so each Color gets a 2px border in its own semantic colour. The border width is the token border-width/status: 0 in Dark and Light (nothing changes), 2 in High contrast.\n\nHit area — pointer: the close icon (16px visual) has a 24 × 24 target (marked Hit area) and the Action is 24 high. On touch, extend the hit area to 48 × 48 px (hit/touch) without changing the visual. See Target size on the Accessibility page."
+    },
+    "BarChart": {
+      "figma": "Bar Chart",
+      "nodeId": "2132:11",
+      "page": "Data Display",
+      "description": "Data-viz primitive for comparing values across categories. Bars flex to the available width on a fixed 12px gap; a y-axis with gridlines gives the scale, and Show values prints each value above its bar.\n\nWhy — Bar heights come from data, so in code this is generated rather than a static asset. The Figma component documents the chrome and spacing; the geometry is not a token and should not be traced from this file. The axis and value labels exist because a bar chart with no scale cannot be read: the axis shows the range, the labels give exact numbers without judging heights. Bars are capped at 36px wide and stay centred in equal slots, so a wider card adds space between bars instead of making them thicker. They use chart/series-1, not interactive/primary: data marks should carry less visual weight than the figures they show. Highlight latest (on by default) draws every week in muted grey except the newest, which keeps the data blue, so the eye lands on “now”; turn it off when every period matters equally. The context bars use icon/muted rather than a faded blue because graphics must keep 3:1 against the card, which a faded blue cannot.\n\nSample scale: 0–300 (USD thousands), bar height = value ÷ 300 × 150px.\n\nHit area — not interactive (a labelled image). Interactive bars would need 24 × 24 targets. See Target size on the Accessibility page."
+    },
+    "BenchmarkTable": {
+      "figma": "Benchmark Table",
+      "nodeId": "2342:66",
+      "page": "Product Patterns",
+      "description": "Productivity benchmark table — per-account rate (Revenue/month) with a tier-colored Status chip (Critical/Moderate/Healthy vs the 400 min / 800 ideal benchmarks). Table + Tag; numeric column right-aligned.\n\nWhy — The Status column uses tier-coloured Tag instances (Critical / Moderate / Healthy) rather than coloured text, so status survives being scanned quickly. The numeric column is right-aligned so magnitudes compare by eye.\n\nHit area — not interactive today (rows 44, header 40). If rows become selectable, make them at least 48 high on touch. See Target size on the Accessibility page."
+    },
+    "BottomSheet": {
+      "figma": "Bottom Sheet",
+      "nodeId": "2631:483",
+      "page": "Feedback & Overlays",
+      "description": "Panel that rises from the bottom of a phone screen for one focused task — entering a count, picking from a short list — over a Scrim. Optional handle, a title with a one-line context, a swappable Content slot (Counter by default) and a two-button footer. 390 wide, top corners radius/xl, elevation/shadow-xl. Properties: Title, Context, Show handle, Content (swap).\n\nWhy — Modal is a 440px centred dialog and Drawer enters from the side; neither is built for a thumb on a phone. The sheet reuses Modal's header and footer pattern (same title style, same cancel / primary pair) so it reads as one family. Like Modal and Drawer it has no backdrop of its own: compose it over Scrim, as the 'Bottom Sheet over scrim' example shows.\n\nContrast — title on surface/container 18.6:1 Light / 13.0 Dark, context text/secondary 7.2 / 6.2; the handle is decorative.\n\nHit area — Close is an Icon Button LG (48), the footer buttons are LG, the Counter buttons are 64."
+    },
+    "Breadcrumb": {
+      "figma": "Breadcrumb",
+      "nodeId": "2636:601",
+      "page": "Navigation",
+      "description": "Shows location in the hierarchy and enables upward navigation.\n\nWhy — Data-driven rather than slot-based: 'the last item is the current page, and is not a link' is the component's entire behaviour, so it owns the list instead of the caller.\n\nHit area — pointer: each link has a 24px-high target (marked Hit area); the current page is not a link. On touch, extend the hit area to 48 × 48 px (hit/touch) without changing the visual. See Target size on the Accessibility page.\n\nDepth — 2, 3, 4 or 5 items (3 is the original). Pick the variant that matches the hierarchy; the labels are overridden on the instance. The last item is always the current page and is not a link, so every variant carries one Hit area frame per link and none on the last item. In a longer trail (5) the first item is the root; on a narrow screen show Depth 2 and let the parent label stand for the rest."
+    },
+    "Button": {
+      "figma": "Button",
+      "nodeId": "2097:56",
+      "page": "Core",
+      "description": "Action trigger. Type sets emphasis (Primary > Secondary > Outline > Ghost); Size sets density; toggle Leading icon for an optional icon. Use one Primary per view. States: Default/Hover/Focus/Disabled/Loading.\n\nWhy — Focus and Loading were added using existing tokens rather than new ones. Loading is the one state with no CSS pseudo-class equivalent, so in code it becomes a real prop while Hover/Focus/Disabled stay pseudo-classes. Icon: a swap property. Pick any icon/<name> from the instance, then switch Leading icon on to show it.\n\nHit area — pointer: the button itself (SM 32, MD 36, LG 52 high). On touch, extend the hit area to 48 × 48 px (hit/touch) without changing the visual. See Target size on the Accessibility page.\n\nLabel — a text property, so the label is set from the instance panel (and from Action Bar, Bottom Sheet and any composition) instead of drilling into the layer.\n\nLabel size — LG uses Headline Small / Medium (18/28), one step above MD, with a 20px icon: the label reads at arm's length on a phone and matches the code library's LG. SM and MD are unchanged.\n\nSecondary — a filled button. Its edge is border/subtle, not border/default: the fill and the label identify it (label on fill 14.1:1 Light / 11.5 Dark), so a heavy outline only made it look like a wireframe. Outline is the type that depends on its border and keeps border/default (3:1).\n\nWhy — Hover is a state layer, not a hover colour: a \"State layer\" child in the label colour at opacity/state-hover (8%) over the Default fill. Every Type gets the same treatment, so a fill never needs its own hover token and any future colour gets a hover for free. Pressed is the same layer at opacity/state-pressed (12%) and exists in code only (:active), so the variant grid does not grow. Replaced interactive/hover and interactive/primary-hover in v0.89 (Material 3 audit).\n\nFocus — a Focus ring frame, focus/ring at border-width/focus (2px, 3px in High contrast), 2px outside the button (focus/offset). Why — an outline on the fill disappears on Primary in dark and on Ghost over a busy surface; a ring outside the control is visible on any fill, and the same treatment on every control means one rule to learn.\n\nTrailing icon — a boolean plus its own icon swap (Trailing icon · Icon, chevron-down by default), the same pattern as Leading. Use it for a trigger that opens something, such as a menu; not for decoration."
+    },
+    "Card": {
+      "figma": "Card",
+      "nodeId": "2220:29",
+      "page": "Data Display",
+      "description": "Generic surface for grouping related content.\n\nWhy — Empty, Loading and Error are states of the same surface rather than separate components, so a caller swaps one property instead of conditionally rendering three things. Every non-Default variant is padded to the Default's height on purpose: without that, swapping a populated card for its Empty state collapsed the container and the whole layout jumped.\n\nHit area — not interactive. If a whole card becomes a link or button, the card itself is the target. See Target size on the Accessibility page."
+    },
+    "chartTextureStyle": {
+      "figma": "Chart Texture",
+      "nodeId": "2777:838",
+      "page": "Data Display",
+      "description": "Chart Texture — the pattern that goes with each chart series: 1 Solid, 2 Diagonal, 3 Dots, 4 Horizontal, 5 Crosshatch, 6 Vertical, 7 Diagonal reverse, 8 Grid. Lines are white at 50% over chart/series-N, an 8px tile.\n\nWhy — the palette passes contrast in both themes, but colour alone still carries each series. Textures make a series identifiable in print, in greyscale and for colour-blind readers. They are opt-in (texture in code; Texture=Pattern on Stacked Bar Chart), because on screen, with a legend and direct labels, flat fills read more calmly. Series 1 stays solid: it is the one every chart has. Fixed slot order, like the colours: series 3 is always Dots.\n\nFigma note — the tiles are image fills (TILE, scale 25%), because pattern fills cannot be written through the plugin API. Use the variant as a fill reference: copy its fills onto a shape."
+    },
+    "ChartTooltip": {
+      "figma": "Chart Tooltip",
+      "nodeId": "2305:42",
+      "page": "Data Display",
+      "description": "Crosshair/hover readout for line & area charts. Header = x value; one row per series (color dot + label + value). surface/container-high + shadow-md; values wear text/primary, tabular.\n\nWhy — One row per series with a colour dot, so the reading never depends on matching a line's colour by eye across the plot.\n\nHit area — not interactive; it only appears on hover or focus of a data point. See Target size on the Accessibility page."
+    },
+    "Checkbox": {
+      "figma": "Checkbox",
+      "nodeId": "2102:16",
+      "page": "Core",
+      "description": "Multi-select or indeterminate choice within a group. Two axes: Value (Unchecked, Checked, Indeterminate) × State (Default, Hover, Focus, Disabled), so every combination exists, including Checked + Disabled and Checked + Focus.\n\nWhy — Indeterminate is a third visual state of one control, not a separate component. Note for implementation: it has no HTML attribute and must be set on the DOM node directly.\n\nHit area — pointer: the whole row, box and label, 24 high. On touch, extend the hit area to 48 × 48 px (hit/touch) without changing the visual. See Target size on the Accessibility page.\n\nHover — on Checked and Indeterminate the box keeps interactive/primary and gains the 8% state layer in interactive/primary-foreground (see Button)."
+    },
+    "ChoiceTile": {
+      "figma": "Choice Tile",
+      "nodeId": "2629:1904",
+      "page": "Core",
+      "description": "Selectable tile for picking one option from a short set — a number, a category, a plan, a reason — where the answer must be hit fast with a gloved or wet thumb. Size MD 48 / LG 56 high; Align Center (numbers, chips) or Left (names). States: Default, Hover, Focus (the shared Focus ring, 2px wide, 2px outside), Disabled, Selected (solid interactive/primary fill) and Done (surface/highlight tint with a check and a Badge holding the count: this one already has a value) and Counted (the same tint and Badge without the check, 12px side padding). Properties: Label, Leading icon (swap). Set the count on the nested Badge (its Label property).\n\nWhy — Button is an action trigger. Using Outline Buttons as choices put a 3:1 border on every option, left the selected one barely different from the rest and centred every label. A choice needs its own selected state, and that state is a fill, not a border: Selected is the strongest signal in the system so the answer reads at a glance in bright, messy surroundings (outdoors, on a shop floor). The unselected edge is deliberately soft (border/subtle) so a grid of options reads as finished UI, not as a form of boxes.\n\nContrast — a tile is identified by its content, not its outline. Default label on the tile 18.6:1 Light / 13.0 Dark; the border/subtle edge is a container edge and is not held to 3:1 (see the Touch choices entry on About). Selected: label 13.2 / 14.1, fill against page 12.6 / 14.1. Done: label 15.2 / 11.3, check 15.2 / 11.3, the Badge fill against the tint 4.3 / 2.8 and its white label 5.2:1. The tint is surface/highlight (blue 100 Light, blue 950 Dark). In Dark the Badge edge sits under 3:1 on the tint; the count it carries is 5.2:1, and the Badge is not a control, so the count, not the edge, identifies it.\n\nWhy Counted — in a half-width tile (≈167px) the check, gaps and Badge of Done leave ≈75px for the label, and long labels (International transfer, Direct debit) broke mid-word. Counted drops the check because the tint plus the numeric Badge already say \"done\" without relying on colour, and frees ≈40px. Use Done where the tile is wide, Counted in two-column grids.\n\nHit area — the visual is the target: MD 48 and LG 56 are both above hit/touch. For a narrow chip (a two-digit number in a six-column grid) override the horizontal padding; the height keeps the target."
+    },
+    "Combobox": {
+      "figma": "Combobox",
+      "nodeId": "2400:116",
+      "page": "Core",
+      "description": "Searchable single-value picker: type to filter, pick one. State=Default/Hover/Focus/Disabled/Error/Focus + Error mirrors Select's field exactly; State=Open shows the field with its filtered results panel, matching how Dropdown Menu documents its own open state.\n\nWhy — Select's own description already draws this line: \"a searchable... picker is a separate component (Multi-select), never a variant of this one\" — but that only named the multi-value case. Multi-select covers several values; nothing covered a searchable single value, which is the more common of the two. Reuses Select's field styling and Menu's panel styling rather than inventing either.\n\nSize — SM 32, MD 36 and LG 48 high (260, 280 and 300 wide), the same scale as Input and Button. Open keeps the field at its Size and widens the list to match.\n\nStates — Default, Hover (border/emphasis), Focus (focus/ring), Disabled, Error, and Focus + Error: the error border with a 2px focus/ring outside it, so an invalid field that is being edited still shows keyboard focus. Hover is pointer only.\n\nHit area — pointer: the whole field (32, 36 or 48 high by Size). On touch, extend the hit area to 48 × 48 px (hit/touch) without changing the visual. See Target size on the Accessibility page."
+    },
+    "ContentPanel": {
+      "figma": "Content Panel",
+      "nodeId": "2340:17",
+      "page": "Product Patterns",
+      "description": "Titled surface that frames a graph, table, or content block: header (title + optional controls) over a content area. The graph/table sits inside borderless; the panel owns the card chrome. Primary dashboard container for the product.\n\nWhy — The nested chart instance is overridden to be borderless rather than rebuilt without a border. Keeping it a real instance means chart fixes still propagate here.\n\nHit area — pointer: the Segmented Control segments (32 high). On touch, extend each to 48 high without changing the visual. See Target size on the Accessibility page."
+    },
+    "Counter": {
+      "figma": "Counter",
+      "nodeId": "2630:1890",
+      "page": "Core",
+      "description": "Large numeric entry for a small count: − / value / + with 64px buttons and a 36px value (Display XL). For a compact value inside a form row use Stepper; for free text use Input. State = Default, Focus, Disabled, Error. Value is a text property.\n\nWhy — Stepper tops out at 48 high with a small glyph: right for a form row, wrong for entering counts with gloves on, standing up, where the number is the whole task. Counter makes the number the largest thing on the screen and gives each step a 64px target.\n\nContrast — the value field uses border/default, 3.2:1 Light / 3.9:1 Dark against the page; the − / + buttons are filled with a border/subtle edge and are identified by their glyph. Glyphs are icon/default on interactive/default, 10.0 / 11.5; the value is 18.6 / 13.0. Focus is the shared Focus ring around the field, 2px wide, 2px outside. Error is semantic/error (5.5 / 3.3 against the page) and must be paired with a message from Form Field, never colour alone.\n\nHit area — each button is 64 × 64, so no Hit area frame is needed."
+    },
+    "CountRow": {
+      "figma": "Count Row",
+      "nodeId": "2651:1986",
+      "page": "Core",
+      "description": "A row for entering a small count against one item: label on the left, a Stepper LG on the right. 64 high. State = Default, Filled. Filled adds a full-width surface/highlight band and a semibold label: this item already holds a value. Property: Label; set the value on the nested Stepper (its Value property).\n\nWhy — The first Option B pass put a label and a Stepper in a bare 56px row and marked entered values only by bolding the label; among eight rows the filled ones disappeared. The row is 64 high with no outline of its own (the Stepper carries the control border), and a filled row gets a highlight band, the same resource Choice Tile's Done state uses, so 'already has a value' reads the same everywhere. Stack rows edge to edge under an expanded Accordion header, with no hairlines between them.\n\nContrast — label text/primary on surface/highlight 15.9:1 Light / 13.3 Dark (18.6 / 13.0 on the plain row). The Stepper keeps its own border/default boundary (3.2 / 3.9) on its own surface/container fill, so it does not depend on the band. The highlight is never the only signal: a filled row also has a semibold label and a non-zero value.\n\nHit area — the Stepper's − and + are 48 × 48 (Stepper LG) inside the 64 row."
+    },
+    "DateIndicator": {
+      "figma": "Date Indicator",
+      "nodeId": "2163:42",
+      "page": "Navigation",
+      "description": "A date with an optional context tag. Date is a text property; the tag is an optional slot controlled by Show tag. The sample copy shows a week label (WK 32) — illustrative content, not part of the component's contract. Retype or swap the tag for any short context label.\n\nWhy — Generalized deliberately: the week tag was domain vocabulary hardcoded into a product-agnostic library. Making the date a property and the tag an optional swappable slot keeps the structure generic while the sample copy stays realistic."
+    },
+    "DatePicker": {
+      "figma": "Date Picker",
+      "nodeId": "2609:283",
+      "page": "Core",
+      "description": "Calendar for date selection, shown in a popover from a date input. Selected day = interactive/primary; today = ring; navigate months via chevrons. Use with disableFuture where future dates are invalid.\n\nWhy — Single date only — a range picker is not modelled here and should not be faked with two instances. Selected day uses interactive/primary; today is marked with a ring so the two never look the same.\n\nStates — Default shows today (ringed) and a selected day. Hover lays an 8% text/primary state layer on the day under the pointer, with a 1px border/default outline, so it still shows on the dark surface (pointer only). Focus draws a 2px focus/ring on the day that has keyboard focus. Disabled greys the days that cannot be chosen, such as dates after today when disableFuture is on, and a disabled day can never be selected.\n\nHit area — pointer: each day cell is 30 × 30; the month arrows need 24 × 24. On touch, extend the hit area to 48 × 48 px (hit/touch) without changing the visual. See Target size on the Accessibility page."
+    },
+    "DetailedLineChart": {
+      "figma": "Line Chart · Detailed",
+      "nodeId": "2623:6372",
+      "page": "Data Display",
+      "description": "Detailed line chart for analysis: several series plus the context that explains them. Target line (Target 0.80), optimal range band, forecast zone (dashed lines, open end markers, shaded and labelled Forecast), event markers (Campaign, Launch) and, in State=Hover, a crosshair that snaps to the nearest x with the series values in a Chart Tooltip. State=Default/Hover.\n\nWhy — Only the series carry colour. Everything else (target, band edges, events, forecast zone) is drawn with neutral tokens, and the one tinted layer, the band, uses semantic/success at opacity/chart-fill so the lines stay on top. The forecast is dashed, shaded and labelled, because dashes alone fail in greyscale and for colour-blind readers; the target is a dashed line with a text label for the same reason. The legend lists every non-series element, so nothing on the plot is unexplained. Use Line Chart for plain trends; this one earns its space only when the target, forecast or events change what the reader should conclude.\n\nHit area — pointer: the whole plot is one hover target that snaps to the nearest data point; event markers need 24 × 24 targets if they open a detail. On touch, a tap pins the crosshair and tooltip, and the tooltip must not cover the pinned point. See Target size on the Accessibility page."
+    },
+    "Divider": {
+      "figma": "Divider",
+      "nodeId": "2278:39",
+      "page": "Core",
+      "description": "1px rule separating content. Orientation: Horizontal (spans width) or Vertical (spans height). Bound to border/subtle, the one decorative rule colour.\n\nWhy — Orientation is a variant rather than two components, because the only difference is which axis spans — the token and weight are identical."
+    },
+    "DonutChart": {
+      "figma": "Donut Chart",
+      "nodeId": "2778:877",
+      "page": "Data Display",
+      "description": "Donut chart: how one total splits into 2–6 parts (sample: revenue per account). A ring of arcs starting at 12 o’clock and running clockwise in chart/series-N order, a 2px gap between arcs, and a legend list on the right with each part’s value and its share. The centre carries the total and its unit and can be turned off with Center label.\n\nWhy — A donut rather than a pie: the centre holds the total, and the list holds exact values and percentages, so no reading depends on judging an angle. Parts keep their series slot instead of being sorted by size, so a category keeps its colour across every chart; shares are rounded to one decimal and sum to 100. Past six parts, group the tail as \"Other\". There is deliberately no pie variant: it encodes the same data with less room for labels.\n\nTexture — Texture=Pattern adds each series’ Chart Texture over its colour (series 1 stays solid), legend swatches included, for print, greyscale and colour-blind readers. Opt-in: on screen, with a legend, flat fills read more calmly. Code: texture.\n\nHit area — not interactive (a labelled image). Interactive arcs would need 24 × 24 targets, and the legend rows would become the list of controls. See Target size on the Accessibility page."
+    },
+    "Drawer": {
+      "figma": "Drawer",
+      "nodeId": "2230:28",
+      "page": "Feedback & Overlays",
+      "description": "Side panel for secondary flows without leaving the current page.\n\nWhy — Cloned from Modal so the header and footer patterns stay identical — a drawer is a modal that enters from the side, and should not look like a different family. The footer is pinned by a filling spacer rather than fixed heights, so the body can grow. Like Modal, it sits on the Scrim component; see Drawer over scrim.\n\nHit area — pointer: the close icon (20px visual) has a 24 × 24 target (marked Hit area). On touch, extend the hit area to 48 × 48 px (hit/touch) without changing the visual. See Target size on the Accessibility page."
+    },
+    "DropdownMenu": {
+      "figma": "Dropdown Menu",
+      "nodeId": "2226:123",
+      "page": "Navigation",
+      "description": "Menu opened from a trigger (button/field). Elevated surface with actions or options.\n\nSearchable — a third state: the open menu with a Search field on top and a Clear button at the bottom, both inside the menu container, separated from the items by dividers. Use it for long lists; Clear resets the query and the selection.\n\nWhy — The trigger is a single outline box, not a Button instance with a chevron beside it. The earlier build had the chevron outside the button's border, which made the control read as two things; rebuilding the trigger as one field fixed it.\n\nHit area — pointer: the trigger (32 high), each item row (32 high), the search field (36) and Clear (32). On touch, extend the hit area to 48 × 48 px (hit/touch) without changing the visual. See Target size on the Accessibility page."
+    },
+    "EmptyState": {
+      "figma": "Empty State",
+      "nodeId": "2405:74",
+      "page": "Product Patterns",
+      "description": "A whole page or panel with nothing in it yet — icon badge, heading, one line of guidance, one primary action. Distinct from Card/Stat/List/Table's own built-in Empty state, which fills only that one component’s bounds; this is the bigger version, for a page or section that has never had data at all. It has no border of its own and fills whatever space it is given, like Divider and Spinner.\n\nWhy — the per-component Empty states already in the library answer \"this list has no rows right now.\" They don't answer \"this product surface has never been set up\" (no accounts registered, no campaigns created) — a first-run moment that deserves an action, not just an icon and a sentence.\n\nHit area — pointer: the Add button (36 high). On touch, extend it to 48 × 48 without changing the visual. See Target size on the Accessibility page."
+    },
+    "FileUpload": {
+      "figma": "File Upload",
+      "nodeId": "2326:65",
+      "page": "Core",
+      "description": "Dropzone for file input (XLSX import, image attach). Dashed border + upload icon + prompt + accepted-formats hint. States: Default / Dragging (border→interactive/primary) / Disabled. Shows uploaded files as rows below on success.\n\nWhy — The dashed border is the whole affordance: it says drop target in a way a solid bordered field does not. Keep the accepted-formats hint — it prevents the most common upload error. Icon: a swap property. Pick any icon/<name> from the instance.\n\nHit area — pointer: the whole drop zone. On touch, extend the hit area to 48 × 48 px (hit/touch) without changing the visual. See Target size on the Accessibility page."
+    },
+    "FormField": {
+      "figma": "Form Field",
+      "nodeId": "2122:21",
+      "page": "Core",
+      "description": "Standard form building block: label + control + helper/error. Compose with Input, Select, etc.\n\nWhy — A composition wrapper, not a control. It owns the label/helper/error slots so that individual controls never have to, which keeps error handling consistent across every field type.\n\nHit area — pointer: the field inside it; the label should also focus it. On touch, extend the hit area to 48 × 48 px (hit/touch) without changing the visual. See Target size on the Accessibility page.\n\nSize — MD is the desktop field: 12px label (Label Large / Medium; it was 11px, the text floor, but a label is something a user must read), Input MD, 12px helper and error. LG is the touch field, 358 wide: 14px label (Title Small / Medium), Input LG (48 high), 13px helper and error (Body Small), 8px between the three. Use LG on phones, where Input must be Size LG anyway. Each Size has State = Default and Error.\n\nContrast — label text/primary on surface/page 17.8:1 Light / 14.1 Dark; helper text/secondary 6.9 / 6.8; error text/error 9.8 / 15.1. The Error state is the red border plus a written message, never colour alone."
+    },
+    "IconButton": {
+      "figma": "Icon Button",
+      "nodeId": "2282:63",
+      "page": "Core",
+      "description": "Icon-only button. Type (Primary / Secondary / Ghost) x Size (SM 32 / MD 36 / LG 48) x State (Default / Hover / Focus / Disabled). State mirrors Button exactly: Hover adds the 8% state layer in the icon colour, Focus adds the shared Focus ring, 2px wide and 2px outside, over the default fill, Disabled uses interactive/disabled with the icon on text/disabled. Swap the icon instance for any Lucide glyph; always give it an accessible label in code.\n\nWhy — State mirrors Button exactly so the two never drift. The disabled icon uses text/disabled rather than icon/muted: in Dark Mode text/disabled resolves to charcoal/600 against icon/muted's charcoal/400, and the dimmer value is the correct direction against the disabled fill — the seemingly more semantic icon/* token would read as enabled. Icon: a swap property. Pick any icon/<name> from the instance.\n\nHit area — pointer: the button itself (32, 36 or 48 square). On touch, extend the hit area to 48 × 48 px (hit/touch) without changing the visual. See Target size on the Accessibility page."
+    },
+    "Input": {
+      "figma": "Input",
+      "nodeId": "2101:26",
+      "page": "Core",
+      "description": "Single-line text field. Wrap in a Form Field for label + helper/error. Supports a leading icon. States: Default/Hover/Focus/Disabled/Error/Focus + Error.\n\nWhy — This is the baseline for every field in the system — Textarea, Select and Search deliberately mirror its padding, radius and state tokens so a form reads as one control family rather than four. Icon: a swap property for the leading icon. Pick any icon/<name> from the instance, then switch Leading icon on.\n\nStates — Default, Hover (border/emphasis), Focus (focus/ring), Disabled, Error, and Focus + Error: the error border with a 2px focus/ring outside it, so an invalid field that is being edited still shows keyboard focus. Hover is pointer only.\n\nHit area — pointer: the whole field (32, 36 or 48 high). On touch, extend the hit area to 48 × 48 px (hit/touch) without changing the visual. See Target size on the Accessibility page."
+    },
+    "Legend": {
+      "figma": "Legend",
+      "nodeId": "2305:31",
+      "page": "Data Display",
+      "description": "Series key for any multi-series chart. One swatch (chart/series-N) + label per series, in fixed slot order. Always present for ≥2 series; labels wear text/secondary, never the series color.\n\nWhy — Always ship the legend with a multi-series chart. The categorical palette passes its hard contrast gates but carries a documented light-mode warning on a few hues — the legend and direct labels are that warning's mitigation, not decoration.\n\nHit area — not interactive today: items are 20 high. If a legend toggles series, each item needs a target of at least 24 high, and 48 on touch. See Target size on the Accessibility page."
+    },
+    "LineChart": {
+      "figma": "Line Chart",
+      "nodeId": "2308:71",
+      "page": "Data Display",
+      "description": "Line Chart — trend over time for 1–8 series (chart/series-N in fixed order). 2px lines, end markers with a 2px surface ring, recessive gridlines/axes, legend always present. Sample series are illustrative.\n\nWhy — Series colours are used in fixed order (chart/series-1 upward) so the same series keeps its colour across every chart in a product. The Conversion/Retention/Churn sample data is illustrative only. The axis is embedded chrome here, not a standalone component.\n\nHit area — not interactive (a labelled image). Point targets, if added, need at least 24 × 24. See Target size on the Accessibility page."
+    },
+    "Link": {
+      "figma": "Link",
+      "nodeId": "2399:114",
+      "page": "Core",
+      "description": "Inline text link. State=Default/Hover/Focus/Visited; toggle External for an inline arrow suffix on links that leave the product. Underlined by default so the affordance does not depend on color alone.\n\nWhy — This library had no text-link primitive: every clickable element was a Button, Icon Button, or nav item, so inline links (body copy, footnotes, external references) had no defined treatment. Kept deliberately minimal — text/primary underlined by default, text/emphasis on Hover, the shared Focus ring (2px, 2px outside) on Focus (same treatment as every other focusable control), text/secondary on Visited. No new color token was introduced: the file already reserves brand/accent for brand moments and semantic/* for shared meanings, and a link is neither, so it borrows the existing text tokens instead of adding a link-specific one.\n\nHit area — pointer: 24px high as a standalone link. Links inside running text are exempt. On touch, extend the hit area to 48 × 48 px (hit/touch) without changing the visual. See Target size on the Accessibility page."
+    },
+    "List": {
+      "figma": "List",
+      "nodeId": "2221:5289",
+      "page": "Data Display",
+      "description": "Vertical rows with icon, title/subtitle, and trailing content; dividers between rows.\n\nWhy — Loading uses skeleton rows rather than a spinner, so the shape of the incoming content is visible before it arrives. Every non-Default variant is padded to the Default's height on purpose: without that, swapping a populated card for its Empty state collapsed the container and the whole layout jumped.\n\nHit area — pointer and touch: when a row is interactive (onSelect), the whole row is the target, 66 high, already above the 48px touch size. Keep rows at 48 or more if they are ever shortened. See Target size on the Accessibility page."
+    },
+    "ListRow": {
+      "figma": "List Row",
+      "nodeId": "2630:1852",
+      "page": "Core",
+      "description": "Tappable row for choosing or opening one item from a list: leading icon box, title, optional subtitle, trailing chevron (a check when selected). 64 high. State = Default, Hover, Focus, Disabled, Selected (2px interactive/primary edge plus a check). Properties: Title, Subtitle, Show subtitle, Show icon, Icon (swap).\n\nWhy — List is a read-only block with three fixed rows and cannot take a fourth account or a fifth category; Menu Item is a row inside a popup. The selectable row was missing as its own piece, the same relationship Menu Item has to Menu. Stack rows 8px apart on the page, or inside a Card.\n\nContrast — the edge is border/subtle: a container edge, not a control boundary (see the Border tokens rule on About), so it is not held to 3:1. The row is identified by its text, the chevron (icon/muted 4.7:1 Light / 5.1:1 Dark) and the icon box. Selected adds a 2px interactive/primary edge (12.6 / 14.1) backed by the check, so it never relies on colour. Title 18.6 / 13.0, subtitle 7.2 / 6.2.\n\nHit area — 64 high and full width: the row is the target."
+    },
+    "Menu": {
+      "figma": "Menu",
+      "nodeId": "2125:17",
+      "page": "Navigation",
+      "description": "Elevated list of actions or options. Compose from Menu Item.\n\nWhy — Needs an explicit panel width. A bare column stretches to fill whatever contains it, which made the panel span the page the first time it was used — the fixed width is the fix, not a style choice.\n\nHit area — pointer: each item row (32 high). On touch, extend the hit area to 48 × 48 px (hit/touch) without changing the visual. See Target size on the Accessibility page."
+    },
+    "MenuItem": {
+      "figma": "Menu Item",
+      "nodeId": "2125:16",
+      "page": "Navigation",
+      "description": "A single row within a Menu — icon + label, with Default/Hover/Disabled states.\n\nWhy — The row primitive. It exists separately from Menu so that Dropdown Menu, Sidebar and any future list can share one row treatment instead of redefining hover and disabled each time. Icon: a swap property. Pick any icon/<name> from the instance.\n\nHit area — pointer: the whole row (32 high). On touch, extend the hit area to 48 × 48 px (hit/touch) without changing the visual. See Target size on the Accessibility page.\n\nLeading icon — a boolean, on by default. Turn it off for text-only lists such as the Searchable Dropdown Menu."
+    },
+    "MetricCard": {
+      "figma": "Metric Card",
+      "nodeId": "2339:10",
+      "page": "Product Patterns",
+      "description": "Dashboard KPI card — title + context, a hero value with unit, and a category tag. Product surface built on Card + Tag; use Stat for a compact label/value/delta tile instead.\n\nWhy — Product-specific, and deliberately kept off the Core and Data Display pages. It is assembled entirely from library components so it inherits their tokens — a product surface should compose the system, never fork it.\n\nHit area — not interactive; the category Tag is a label. If the whole card becomes a link, the card is the target. See Target size on the Accessibility page."
+    },
+    "Modal": {
+      "figma": "Modal",
+      "nodeId": "2225:36",
+      "page": "Feedback & Overlays",
+      "description": "Blocking dialog for focused tasks or confirmations; header, body, and footer actions.\n\nWhy — Destructive recolours the confirm button through an instance override rather than adding a Type to Button. One dialog's needs did not justify widening Button's API for every consumer. The backdrop is the separate Scrim component (surface/scrim at opacity/scrim); see Modal over scrim.\n\nHit area — pointer: the close icon (20px visual) has a 24 × 24 target (marked Hit area). On touch, extend the hit area to 48 × 48 px (hit/touch) without changing the visual. See Target size on the Accessibility page."
+    },
+    "MultiSelect": {
+      "figma": "Multi-select",
+      "nodeId": "2606:5360",
+      "page": "Core",
+      "description": "Multi-select / combobox — a select that holds multiple values as removable chips (Tag, dismissible) with a chevron affordance. Opens the same Menu panel as Dropdown Menu. For a single value use Select.\n\nWhy — Chips are real Tag instances with Dismissible enabled, not a bespoke chip. They inherit Tag's semantic colours and dismiss affordance, so a filter chip means the same thing wherever it appears.\n\nSize — SM 32, MD 36 and LG 48 high (260, 280 and 300 wide), the same scale as Input and Button. Chips stay 24 high at every Size.\n\nStates — Default, Hover (border/emphasis), Focus (focus/ring), Disabled, Error, and Focus + Error: the error border with a 2px focus/ring outside it, so an invalid field that is being edited still shows keyboard focus. Hover is pointer only.\n\nOpen — the field at its Size with a Focus border, chips kept, and the list panel below: each option is a Checkbox row, checked when its chip is in the field. Unlike Select, the list stays open while you pick, because several values are chosen.\n\nHit area — pointer: the whole field (32, 36 or 48 high by Size). Each chip dismiss needs its own 24 × 24 target. On touch, extend the hit area to 48 × 48 px (hit/touch) without changing the visual. See Target size on the Accessibility page."
+    },
+    "Navbar": {
+      "figma": "Navbar",
+      "nodeId": "2126:19",
+      "page": "Navigation",
+      "description": "Top application bar: brand/logo, primary nav links, and actions (search, avatar).\n\nWhy — A slot-based shell, not a fixed composition: brand, links and actions are regions to fill. The mobile form should become responsive behaviour on this component rather than a second component callers swap manually.\n\nHit area — pointer: each link has a 24px-high target and the search icon a 24 × 24 target (marked Hit area); the avatar is 32. On touch, extend the hit area to 48 × 48 px (hit/touch) without changing the visual. See Target size on the Accessibility page.\n\nLogo — the horizontal lockup at 108 px wide, the product-UI minimum. Keep clear space X (37.5% of the symbol width, about 8 px) free on every side, so nothing sits against the logo; the mobile bar drops the logo and keeps only the menu button and avatar. See the Logo and Brand page."
+    },
+    "PageHeader": {
+      "figma": "Page Header",
+      "nodeId": "2341:59",
+      "page": "Product Patterns",
+      "description": "Page/section header — title + subtitle on the left, actions (Icon Button + primary Button) on the right, over a bottom hairline. Add a Breadcrumb above for nested pages. Built from Button + Icon Button.\n\nWhy — Exists so page-level chrome is decided once. The action side pairs an Icon Button with a primary Button, which sets the expectation that secondary page actions are icon-only.\n\nHit area — pointer: the Icon Button (36 × 36) and the Button (36 high). On touch, extend each to 48 × 48 without changing the visual. See Target size on the Accessibility page."
+    },
+    "Pagination": {
+      "figma": "Pagination",
+      "nodeId": "2124:10",
+      "page": "Navigation",
+      "description": "Navigate paged data sets; the active page is filled.\n\nWhy — The active page is filled rather than outlined so it stays legible at small sizes, where a 1px outline on a 2-digit number is easy to miss.\n\nHit area — pointer: each page item (32 × 32). On touch, extend the hit area to 48 × 48 px (hit/touch) without changing the visual. See Target size on the Accessibility page."
+    },
+    "PinField": {
+      "figma": "PIN Field",
+      "nodeId": "2662:7179",
+      "page": "Core",
+      "description": "Four-box entry for a short numeric code, such as a 4-digit PIN: a label, four masked digit boxes and a helper or error line. 358 wide, boxes 56 high. State = Default, Focus (the next empty box takes the focus/ring), Error (all four boxes semantic/error) and Disabled; Filled = 0–4 shows how many digits are entered, each as a masked dot. Property: Label.\n\nWhy — A PIN is the one field where Input is the wrong shape: one wide box hides how many digits are in and makes a gloved thumb aim at a text line, while four boxes show progress at a glance and have a target each. The dots are shapes centred in the box, not a text glyph, so they sit in the exact middle at any count. In code it is one numeric input (inputmode numeric, autocomplete one-time-code, paste fills all four); the four boxes are presentation.\n\nContrast — box border border/default 3.2:1 Light / 3.9 Dark against the page (it is a control boundary, unlike Choice Tile); dot and label text/primary 17.8 / 14.1; helper text/secondary 6.9 / 6.8; error text/error 9.8 / 15.1 and border semantic/error 5.5 / 3.3; focus ring 5.0 / 7.3. Error is the red boxes plus a written message, never colour alone.\n\nHit area — each box is 56 high and about a quarter of the width: above hit/touch."
+    },
+    "Popover": {
+      "figma": "Popover",
+      "nodeId": "2134:18",
+      "page": "Feedback & Overlays",
+      "description": "Contextual floating panel anchored to a trigger.\n\nWhy — Static, like Tooltip: body only, no arrow, no anchoring or collision logic. Real placement is code's responsibility and deliberate future work.\n\nHit area — not interactive itself. Any action placed inside it follows the Button and Link rules: at least 24 × 24 on pointer, 48 × 48 on touch. See Target size on the Accessibility page."
+    },
+    "Progress": {
+      "figma": "Progress",
+      "nodeId": "2632:560",
+      "page": "Feedback & Overlays",
+      "description": "Determinate progress bar for an ongoing task, with an optional value label.\n\nWhy — Determinate only. Indeterminate progress is Spinner's job — a progress bar that does not represent a proportion is a misleading affordance.\n\nTrack — a 1px border/default outline, so the full length of the bar stays visible on any surface, including grey ones where the soft track fill alone disappears (1.3:1 on white).\n\nHit area — not interactive (a labelled bar). See Target size on the Accessibility page.\n\nValue — 0, 20, 40, 60, 80 and 100 % (65 % is the original sample). The fill scales with the track (its horizontal constraint is Scale), so the same variant is right at 300px or at a phone's full width; a product picks the nearest variant rather than typing a number; a step flow of five steps lands exactly on 20 / 40 / 60 / 80 / 100. Label is a text property."
+    },
+    "Radio": {
+      "figma": "Radio",
+      "nodeId": "2102:27",
+      "page": "Core",
+      "description": "Single choice within a mutually exclusive group — always use two or more together. Focus state uses the focus/ring token, matching Input/Button.\n\nWhy — Focus reuses Input's focus/ring treatment exactly, so keyboard focus looks identical across every control in the system.\n\nTwo axes: Value (Unselected, Selected) × State (Default, Hover, Focus, Disabled), so Selected + Disabled and Selected + Focus exist. Hover tints the circle with interactive/default and is pointer only.\n\nHit area — pointer: the whole row, circle and label, 24 high. On touch, extend the hit area to 48 × 48 px (hit/touch) without changing the visual. See Target size on the Accessibility page."
+    },
+    "RadioGroup": {
+      "figma": "Radio Group",
+      "nodeId": "2408:108",
+      "page": "Core",
+      "description": "A legend + optional helper text over a stack of Radio options — the wrapper Form Field never generalized to. Form Field labels one control; this labels a set.\n\nWhy — every multi-option Radio group in the file so far has re-solved \"legend + helper + stacked options\" by hand, the same layout problem Form Field already solved once for a single Input. Built from Radio's own circle styling (border/emphasis unselected, interactive/primary selected) rather than a new marker treatment.\n\nHit area — pointer: each option row, 24 high. On touch, extend the hit area to 48 × 48 px (hit/touch) without changing the visual. See Target size on the Accessibility page."
+    },
+    "Rating": {
+      "figma": "Rating / Severity Scale",
+      "nodeId": "2409:5442",
+      "page": "Core",
+      "description": "A compact 3-tier scale indicator: three fixed segments (semantic/error, semantic/warning, semantic/success in order), the current tier at full opacity and the other two dimmed to 25%, with a label in the matching text token (text/error, text/warning, text/success), which stays readable in both themes. Severity=Critical/Moderate/Healthy. The labels shown are Critical, Moderate and Healthy, the same words as the property values.\n\nWhy — Benchmark Table’s Status column already expresses this exact 3-point scale, but only as a colored Tag chip naming one tier at a time. This generalizes the same tier semantics into a form that also shows where the current value sits relative to the other two, for anywhere a single Tag doesn’t carry enough context (a compact table cell, a card footer, a dashboard tile). Same fixed tier order and colors as Benchmark Table, not a new palette."
+    },
+    "Search": {
+      "figma": "Search",
+      "nodeId": "2107:27",
+      "page": "Core",
+      "description": "Search field with a leading magnifier, for filtering lists or global search.\n\nWhy — A native text input with an overlaid magnifier, for the same reason as Select: no custom popup behaviour is implied, and none should be read into it.\n\nSize — SM 32, MD 36 and LG 48 high (260, 280 and 300 wide), the same scale as Input and Button.\n\nStates — Default, Hover (border/emphasis), Focus (focus/ring) and Disabled. A search field has no Error: an empty result is not an invalid entry.\n\nHit area — pointer: the whole field (32, 36 or 48 high by Size). On touch, extend the hit area to 48 × 48 px (hit/touch) without changing the visual. See Target size on the Accessibility page."
+    },
+    "SegmentedControl": {
+      "figma": "Segmented Control",
+      "nodeId": "2281:57",
+      "page": "Core",
+      "description": "Mutually exclusive view/scope switch (e.g. Day/Week/Month). Active marks which segment is selected. Active segment raised on surface/page + text/primary; inactive text/secondary on a surface/container-high track. Use for 2–4 options; use Tabs for page-level navigation.\n\nWhy — The active segment is raised on surface/page over a surface/container-high track — deliberately not an underline. Tabs uses the underline; keeping the two treatments distinct signals different jobs: Tabs switches view, Segmented Control switches scope within one view.\n\nHit area — pointer: each segment (32 high). On touch, extend the hit area to 48 × 48 px (hit/touch) without changing the visual. See Target size on the Accessibility page."
+    },
+    "Select": {
+      "figma": "Select",
+      "nodeId": "2107:11",
+      "page": "Core",
+      "description": "Dropdown to pick one option. Mirrors Input styling with a chevron affordance. States: Default/Hover/Focus/Disabled/Error/Focus + Error.\n\nWhy — Modelled as a native select (chevron overlaid on the field), not a custom listbox — so no open-list state exists here. A searchable or multi-value picker is a separate component (Multi-select), never a variant of this one.\n\nSize — SM 32, MD 36 and LG 48 high (260, 280 and 300 wide), the same scale as Input and Button.\n\nStates — Default, Hover (border/emphasis), Focus (focus/ring), Disabled, Error, and Focus + Error: the error border with a 2px focus/ring outside it, so an invalid field that is being edited still shows keyboard focus. Hover is pointer only.\n\nHit area — pointer: the whole field (32, 36 or 48 high by Size). On touch, extend the hit area to 48 × 48 px (hit/touch) without changing the visual. See Target size on the Accessibility page."
+    },
+    "Sidebar": {
+      "figma": "Sidebar",
+      "nodeId": "2227:286",
+      "page": "Navigation",
+      "description": "Primary side navigation: the workspace name at top, as text (no logo), nav items, and a user-menu profile at the bottom.\n\nWhy — Collapsed is a 72px icon-only rail where labels are hidden rather than deleted, so expanding restores the content and any instance overrides survive the round trip. Icon · Overview, Transactions, Reports, Clients and Settings: one swap property per nav item. Pick any icon/<name> from the instance.\n\nHit area — pointer: each nav item row (36 high). On touch, extend the hit area to 48 × 48 px (hit/touch) without changing the visual. See Target size on the Accessibility page."
+    },
+    "Skeleton": {
+      "figma": "Skeleton",
+      "nodeId": "2278:44",
+      "page": "Core",
+      "description": "Loading placeholder. Shape: Line (text row), Block (card/media), Circle (avatar). Filled with border/subtle; animate opacity 0.5↔1 in code for shimmer.\n\nWhy — Three shapes cover every loading case in the library (text row, media block, avatar), rather than a bespoke skeleton per component. Filled with border/subtle so it reads as absent content, not as a disabled control."
+    },
+    "Slider": {
+      "figma": "Slider",
+      "nodeId": "2322:55",
+      "page": "Core",
+      "description": "Continuous value selector. Rail = interactive/default; filled portion + thumb = interactive/primary with a 2px surface ring. Pair with a value label or Stepper for precise entry.\n\nRail — a 1px border/default outline around the rail (and a matching primary one around the filled part), so the whole length stays visible on any surface; the soft rail fill alone is 1.3:1 on white.\n\nWhy — The thumb carries a 2px surface ring so it stays legible where it overlaps the filled portion of the rail.\n\nHit area — pointer: a 24px band around the track; the thumb is 16px visual. On touch, extend the hit area to 48 × 48 px (hit/touch) without changing the visual. See Target size on the Accessibility page."
+    },
+    "SmallMultiples": {
+      "figma": "Small Multiples",
+      "nodeId": "2774:755",
+      "page": "Data Display",
+      "description": "Small Multiples — the same small area chart repeated once per category, in a grid, so shapes compare at a glance. Use it instead of a Line Chart with more than four crossing series.\n\nWhy — every panel shares one y-scale by default: independent scales make a flat series look as volatile as a steep one, which is the mistake small multiples exist to avoid. The shared range is stated once in the footer, not on every panel. One series colour throughout: panels are told apart by label and position, not hue, so the 8-hue palette stays free. In code, highlight draws one panel in the series colour and the rest in border/default for 'this one versus the field'; independentScales is opt-in and rewrites the footer to say heights no longer compare."
+    },
+    "Sparkline": {
+      "figma": "Sparkline",
+      "nodeId": "2132:32",
+      "page": "Data Display",
+      "description": "Compact inline trend line, e.g. within a Stat or table cell.\n\nWhy — Same reasoning as Bar Chart: the polyline is generated from a data array. A static vector copied out of Figma would be useless as a component.\n\nHit area — not interactive. See Target size on the Accessibility page."
+    },
+    "Spinner": {
+      "figma": "Spinner",
+      "nodeId": "2279:42",
+      "page": "Core",
+      "description": "Indeterminate loading indicator. Size: SM 16 / MD 24 / LG 32. A 270° arc bound to interactive/primary; rotate 360° continuously in code. Use for in-progress actions; use Skeleton for content placeholders.\n\nWhy — Drawn as a static 270° arc. The rotation lives in code using the motion tokens — this component is the shape, not the animation, and Figma should not imply otherwise."
+    },
+    "StackedBarChart": {
+      "figma": "Stacked Bar Chart",
+      "nodeId": "2622:6313",
+      "page": "Data Display",
+      "description": "Stacked bar chart: how a total splits into parts across categories (sample: revenue per account, by week). Type=Absolute shows the bars on a 0–300 scale with the total above each bar (Show totals boolean); Type=Percent normalises every bar to 100 %. Series use chart/series-N in fixed order with series 1 at the bottom; segments are separated by a 1px gap in the card surface, the top segment has 2px rounded top corners, and bars are capped at 36px wide, centred in equal slots, like Bar Chart. The legend is always present.\n\nWhy — The stack order never changes, so a series keeps its place from bar to bar; only the bottom segment shares a baseline, so it is the only one that can be compared by eye, and the totals and the legend carry the rest. There are no labels inside segments: exact values belong in a tooltip or a table. Stop at about four series; beyond that the inner segments become unreadable and Line Chart or Small Multiples is the better form. Percent exists because a share is a different question from a size.\n\nTexture — Texture=Pattern adds each series’ Chart Texture over its colour (series 1 stays solid), legend swatches included, for print, greyscale and colour-blind readers. Opt-in: on screen, with a legend, flat fills read more calmly. Code: texture.\n\nHit area — not interactive (a labelled image). Interactive segments would need 24 × 24 targets. See Target size on the Accessibility page."
+    },
+    "Stat": {
+      "figma": "Stat",
+      "nodeId": "2221:40",
+      "page": "Data Display",
+      "description": "Single KPI: label, value, and a delta/trend indicator.\n\nWhy — Carries its own Empty and Error copy because a KPI with no data must say so — a blank number reads as zero, which is a different and wrong claim. Every non-Default variant is padded to the Default's height on purpose: without that, swapping a populated card for its Empty state collapsed the container and the whole layout jumped.\n\nHit area — not interactive. If a stat becomes a link, the whole block is the target. See Target size on the Accessibility page."
+    },
+    "Stepper": {
+      "figma": "Stepper",
+      "nodeId": "2606:5500",
+      "page": "Core",
+      "description": "Numeric stepper for small precise values (hours, counts). − / value / + segments in a bordered field; disable − at min and + at max. For free numeric entry use Input; for a range use Slider.\n\nWhy — For small precise values only (hours, counts). Use Input for anything free-form — a stepper implies a bounded range and a meaningful increment.\n\nSize — SM 32, MD 36 and LG 48 high (120, 140 and 160 wide), the same scale as Input and Button.\n\nStates — Default, Hover (border/emphasis), Focus (focus/ring), Disabled, Error, and Focus + Error: the error border with a 2px focus/ring outside it, so an invalid field that is being edited still shows keyboard focus. Hover is pointer only.\n\nHit area — pointer: each button cell is square, as tall as the control: 32, 36 or 48 (marked Hit area). On touch, extend the hit area to 48 × 48 px (hit/touch) without changing the visual. See Target size on the Accessibility page.\n\nValue — a text property, so a Stepper nested in Count Row, or in any composition, is set from its own instance panel.\n\nValue centring — the number is a text box spanning the whole middle segment, centred, so a single digit, 12 and 100 all sit on the segment's centre (it was left-aligned at a fixed spot that was only centred for 12)."
+    },
+    "Switch": {
+      "figma": "Switch",
+      "nodeId": "2103:14",
+      "page": "Core",
+      "description": "Immediate on/off toggle for settings that apply instantly (no explicit save). Focus state uses the focus/ring token, matching Input/Button.\n\nWhy — The Off knob uses icon/muted, which clears 3:1 against the track and every surface in both themes (a fixed light grey vanished on the light track), and the Off track carries a 1px border/default outline so its edge is visible. The Disabled knob stays a raw primitive (color/charcoal/600), deliberately NOT promoted into a semantic token: it is this component’s one-off choice, and disabled controls are exempt from contrast.\n\nTwo axes: Value (Off, On) × State (Default, Hover, Focus, Disabled), so On + Disabled and On + Focus exist. Hover lays the 8% state layer over the track — text/primary on Off, interactive/primary-foreground on On (see Button) — and is pointer only.\n\nHit area — pointer: the whole row, track and label, 24 high. On touch, extend the hit area to 48 × 48 px (hit/touch) without changing the visual. See Target size on the Accessibility page."
+    },
+    "Tab": {
+      "figma": "Tabs",
+      "nodeId": "2123:17",
+      "page": "Navigation",
+      "description": "Switch between peer views in the same context. The active tab shows the primary underline indicator.\n\nWhy — Only the Active tab shows the underline — the indicator exists on every variant but stays hidden, so switching state never reflows the row. In code this set becomes two things: Tabs (the tablist) and Tab (the item), because a single Figma variant set is doing both jobs.\n\nHit area — pointer: each tab (40 high). On touch, extend the hit area to 48 × 48 px (hit/touch) without changing the visual. See Target size on the Accessibility page."
+    },
+    "Table": {
+      "figma": "Table",
+      "nodeId": "2221:5436",
+      "page": "Data Display",
+      "description": "Tabular data with a header row and data rows; status shown via Tags.\n\nWhy — Loading keeps the real header row and skeletons only the body, so column structure stays readable while data loads. In code the cells accept arbitrary content, which is how status columns reuse Tag instead of inventing a table-only chip. Every non-Default variant is padded to the Default's height (header plus four rows, 212px) on purpose: without that, swapping a populated card for its Empty state collapsed the container and the whole layout jumped.\n\nHit area — not interactive today: rows are 44 high (header 36). If rows become selectable or headers sortable, make rows at least 48 high on touch and give each sort control at least 24 × 24. See Target size on the Accessibility page."
+    },
+    "TableToolbar": {
+      "figma": "Table Toolbar",
+      "nodeId": "2404:72",
+      "page": "Product Patterns",
+      "description": "Search + active filter chips on the left, a secondary icon action and one primary action on the right — the header row that sits above Table or Benchmark Table.\n\nWhy — Content Panel solved this exact problem for charts (a Segmented Control in its own header slot); tables had no equivalent, so callers were re-solving \"search + filters + action\" by hand above every table. Built from Search's own field styling and Tag's chip styling, not new treatments.\n\nHit area — pointer: the search field, the export and add buttons are 36 high; each filter chip is 24 high and its remove icon (12px visual) has a 24 × 24 target (marked Hit area). On touch, extend each to 48 × 48 without changing the visual. See Target size on the Accessibility page."
+    },
+    "Tag": {
+      "figma": "Tag",
+      "nodeId": "2104:12",
+      "page": "Core",
+      "description": "Compact category or status label. Set Color by semantic meaning; enable Dismissible for removable filter chips.\n\nWhy — Dismissible is a set-level boolean driving the close icon's visibility, tinted to each colour's own text token — so a removable chip keeps its semantic colour instead of needing a parallel set of variants.\n\nHit area — pointer: when Dismissible, the close icon (12px visual) has a 24 × 24 target (marked Hit area). On touch, extend the hit area to 48 × 48 px (hit/touch) without changing the visual. See Target size on the Accessibility page."
+    },
+    "Textarea": {
+      "figma": "Textarea",
+      "nodeId": "2280:44",
+      "page": "Core",
+      "description": "Multi-line text input for notes and longer entries. States: Default/Hover/Focus/Disabled/Error/Focus + Error. Atomic — pair with Form Field for label + helper.\n\nWhy — Mirrors Input's state tokens exactly rather than defining its own, so a form mixing single- and multi-line fields stays visually consistent.\n\nStates — Default, Hover (border/emphasis), Focus (focus/ring), Disabled, Error, and Focus + Error: the error border with a 2px focus/ring outside it, so an invalid field that is being edited still shows keyboard focus. Hover is pointer only. Height comes from rows, not Size.\n\nHit area — pointer: the whole field. On touch, extend the hit area to 48 × 48 px (hit/touch) without changing the visual. See Target size on the Accessibility page."
+    },
+    "Timeline": {
+      "figma": "Timeline",
+      "nodeId": "2406:76",
+      "page": "Product Patterns",
+      "description": "An ordered event history per account — payments, reconciliations, transfers — a colored marker per event type joined by a connecting line, with a relative timestamp and one line of detail per entry. Event colors reuse the semantic palette already established by Benchmark Table’s tier chips (success/info/warning), not a new marker palette.\n\nWhy — speculative rather than a confirmed gap: inferred from sample copy already present in Drawer (a reconciliation task) and Benchmark Table, not from a screen that has actually needed one yet. Kept intentionally simple — no filtering, grouping, or pagination modeled here; those are real questions the first real usage should answer, not assumptions worth guessing at now.\n\nHit area — not interactive. If entries open a detail, each entry is the target. See Target size on the Accessibility page."
+    },
+    "Toast": {
+      "figma": "Toast",
+      "nodeId": "2196:41",
+      "page": "Feedback & Overlays",
+      "description": "Transient, auto-dismissing notification (corner/bottom).\n\nWhy — Keeps a neutral surface with a coloured icon, deliberately unlike Banner's tinted background. A toast overlays arbitrary content, so a neutral surface stays legible wherever it lands and the icon carries the meaning.\n\nHit area — pointer: the close icon (16px visual) has a 24 × 24 target (marked Hit area). On touch, extend the hit area to 48 × 48 px (hit/touch) without changing the visual. See Target size on the Accessibility page."
+    },
+    "Tooltip": {
+      "figma": "Tooltip",
+      "nodeId": "2106:4",
+      "page": "Core",
+      "description": "Brief helper text on hover/focus. Keep to a short phrase; never place essential-only info here.\n\nWhy — Ported as exactly what it is: a static body and arrow. It has no trigger, anchoring or collision logic. Viewport-aware placement is deliberate future work — do not assume this component positions itself."
+    },
+    "Topbar": {
+      "figma": "Topbar / Alt",
+      "nodeId": "2164:44",
+      "page": "Navigation",
+      "description": "Alternate top bar: breadcrumbs (left), Date Indicator (center), and actions incl. search + alerts (right).\n\nWhy — A composition of parts that already exist — Breadcrumb, Date Indicator, search and alerts. Kept as a component so the arrangement is documented, not because it introduces anything new.\n\nHit area — pointer: search and alerts each carry a 24 × 24 target (marked Hit area). On touch, extend the hit area to 48 × 48 px (hit/touch) without changing the visual. See Target size on the Accessibility page."
+    }
+  }
+}

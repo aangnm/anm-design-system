@@ -5,7 +5,7 @@ const meta: Meta<typeof Textarea> = {
   title: 'Core/Textarea',
   component: Textarea,
   tags: ['autodocs'],
-  args: { placeholder: 'Escribe una nota…' },
+  args: { placeholder: 'Write a note…' },
   decorators: [
     (Story) => (
       <div className="w-[280px] bg-surface-page p-8">
@@ -37,7 +37,7 @@ export const States: Story = {
       {states.map((s) => (
         <div key={s.label} className="flex w-[280px] flex-col gap-4px">
           <span className="text-text-caption leading-4 text-text-secondary">{s.label}</span>
-          <Textarea placeholder="Escribe una nota…" className={s.cls} {...s.props} />
+          <Textarea placeholder="Write a note…" className={s.cls} {...s.props} />
         </div>
       ))}
     </div>

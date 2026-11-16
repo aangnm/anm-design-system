@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils'
 // State (Default / Hover / Focus / Disabled) — no Error, since an empty
 // result is not an invalid entry. Same padding, radius and text as Input.
 // The search icon is always present, not an optional slot like Input's
-// leading icon, since a Search field without it isn't the Figma component.
+// leading icon, since a Search field without it isn’t the Figma component.
 // Width is up to the caller (Figma shows 260 / 280 / 300).
 
 const searchVariants = cva(
@@ -37,7 +37,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(({ className, si
     <input
       ref={ref}
       type="search"
-      placeholder="Buscar…"
+      placeholder="Search…"
       className="w-full bg-transparent text-text-primary outline-none placeholder:text-text-secondary disabled:cursor-not-allowed disabled:text-text-disabled disabled:placeholder:text-text-disabled"
       {...props}
     />

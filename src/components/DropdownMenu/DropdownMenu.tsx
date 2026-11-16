@@ -10,20 +10,20 @@ import { Divider } from '@/components/Divider'
 // Mirrors the Dropdown Menu component (Navigation page), which has two
 // static states — Closed (trigger only) and Open (trigger + Menu panel).
 // Code needs the behaviour those two frames imply, so this owns open state
-// plus the two dismissals a real menu can't ship without: click-outside
+// plus the two dismissals a real menu can’t ship without: click-outside
 // and Escape.
 //
 // Searchable (Figma State=Searchable) is the Open menu with a Search field on
-// top and a Limpiar (clear) button at the bottom, both inside the menu
+// top and a Clear button at the bottom, both inside the menu
 // container and separated from the items by dividers; items carry no icons
-// there (`leadingIcon={false}`). Limpiar resets the query and calls `onClear`
+// there (`leadingIcon={false}`). Clear resets the query and calls `onClear`
 // so the owner can reset its selection. The list is filtered by each child's
 // text content.
 //
 // Positioning is a plain absolute panel below the trigger — no viewport
 // collision handling. That's a deliberate limit, not an oversight: proper
 // flipping/shifting is a Floating UI concern, and adding the dependency
-// isn't justified until a screen actually needs it.
+// isn’t justified until a screen actually needs it.
 
 export interface DropdownMenuProps {
   /** Trigger label. Ignored when `trigger` is provided. */
@@ -33,10 +33,10 @@ export interface DropdownMenuProps {
   children: ReactNode
   className?: string
   defaultOpen?: boolean
-  /** Maps to Figma's State=Searchable: search field on top, Limpiar at the bottom. */
+  /** Maps to Figma's State=Searchable: search field on top, Clear at the bottom. */
   searchable?: boolean
   searchPlaceholder?: string
-  /** Called by Limpiar (after the query is reset) so the owner can clear its selection. */
+  /** Called by Clear (after the query is reset) so the owner can clear its selection. */
   onClear?: () => void
 }
 
@@ -50,13 +50,13 @@ function textOf(node: ReactNode): string {
 }
 
 export function DropdownMenu({
-  label = 'Opciones',
+  label = 'Options',
   trigger,
   children,
   className,
   defaultOpen = false,
   searchable = false,
-  searchPlaceholder = 'Buscar…',
+  searchPlaceholder = 'Search…',
   onClear,
 }: DropdownMenuProps) {
   const [open, setOpen] = useState(defaultOpen)
@@ -102,7 +102,15 @@ export function DropdownMenu({
       </div>
 
       {open ? (
-        <Menu id={menuId} className="absolute left-0 top-[calc(100%+8px)] z-[var(--z-index-dropdown)]">
+        <Menu
+          id={menuId}
+          // Searchable: the panel is a plain group holding the search field;
+          // only the option list inside it is the menu (a menu may contain
+          // menu items, not a text field).
+          role={searchable ? 'group' : 'menu'}
+          aria-label={searchable ? label : undefined}
+          className="absolute left-0 top-[calc(100%+8px)] z-[var(--z-index-dropdown)]"
+        >
           {searchable ? (
             <>
               <Search
@@ -114,20 +122,23 @@ export function DropdownMenu({
                 autoFocus
               />
               <Divider className="my-2px" />
-              {Children.toArray(children).filter(
-                (child) => !query || textOf(child).toLowerCase().includes(query.trim().toLowerCase()),
-              )}
-              <Divider className="my-2px" />
-              <button
-                type="button"
+              <div role="menu" className="flex flex-col gap-2px">
+                {Children.toArray(children).filter(
+                  (child) => !query || textOf(child).toLowerCase().includes(query.trim().toLowerCase()),
+                )}
+                <Divider className="my-2px" />
+                <button
+                  type="button"
+                  role="menuitem"
                 onClick={() => {
                   setQuery('')
                   onClear?.()
                 }}
                 className="flex w-full items-center rounded-sm px-12px py-6px text-left text-text-xs font-medium leading-5 text-text-primary outline-none transition-colors hover:bg-interactive-default focus-visible:bg-interactive-default focus-visible:focus-ring"
               >
-                Limpiar
-              </button>
+                  Clear
+                </button>
+              </div>
             </>
           ) : (
             children

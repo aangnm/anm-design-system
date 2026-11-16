@@ -2,9 +2,9 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { List } from './List'
 
 const items = [
-  { title: 'Cuenta 4021', subtitle: 'Ventas · Sem 22', value: '$ 250' },
-  { title: 'Cuenta 4035', subtitle: 'Suscripciones · Sem 21', value: '—' },
-  { title: 'Cuenta 4102', subtitle: 'Reembolsos · Sem 22', value: '$ 98' },
+  { title: 'Account 4021', subtitle: 'Sales · Wk 22', value: '$250' },
+  { title: 'Account 4035', subtitle: 'Suscripciones · Wk 21', value: '—' },
+  { title: 'Account 4102', subtitle: 'Reembolsos · Wk 22', value: '$98' },
 ]
 
 const meta: Meta<typeof List> = {

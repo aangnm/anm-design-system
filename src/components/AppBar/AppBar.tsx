@@ -20,7 +20,7 @@ export interface AppBarProps extends HTMLAttributes<HTMLElement> {
   trailing?: ReactNode
 }
 
-export function AppBar({ onMenu, menuLabel = 'Abrir menú', center, trailing, className, ...props }: AppBarProps) {
+export function AppBar({ onMenu, menuLabel = 'Open menu', center, trailing, className, ...props }: AppBarProps) {
   return (
     <header
       className={cn(

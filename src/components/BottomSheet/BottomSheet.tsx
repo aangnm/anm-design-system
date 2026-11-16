@@ -3,6 +3,7 @@ import type { HTMLAttributes, ReactNode } from 'react'
 import { X } from 'lucide-react'
 import { Button } from '@/components/Button'
 import { cn } from '@/lib/utils'
+import { useDialogFocus } from '@/lib/useDialogFocus'
 
 // Mirrors the Bottom Sheet component (Feedback & Overlays page): a panel that
 // rises from the bottom of a phone screen for one focused task, over the
@@ -13,7 +14,8 @@ import { cn } from '@/lib/utils'
 // enters from the side; neither is built for a thumb on a phone. The sheet
 // reuses Modal's header and footer pattern so it reads as the same family.
 // Like Modal, `overlay` (on by default) renders the fixed Scrim; clicking it
-// or pressing Escape calls `onClose`. Focus trapping is the host's job.
+// or pressing Escape calls `onClose`. Focus moves in, stays inside and returns on close
+// (useDialogFocus) while it is an overlay.
 
 export interface BottomSheetProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
   title: string
@@ -36,8 +38,8 @@ export function BottomSheet({
   context,
   showHandle = true,
   children,
-  cancelLabel = 'Cancelar',
-  confirmLabel = 'Guardar',
+  cancelLabel = 'Cancel',
+  confirmLabel = 'Save',
   onCancel,
   onConfirm,
   onClose,
@@ -46,6 +48,8 @@ export function BottomSheet({
   ...props
 }: BottomSheetProps) {
   const titleId = useId()
+  // Focus moves in on open, stays inside while open, and returns on close.
+  const focusRef = useDialogFocus<HTMLDivElement>(overlay)
 
   useEffect(() => {
     if (!overlay || !onClose) return
@@ -56,6 +60,7 @@ export function BottomSheet({
 
   const sheet = (
     <div
+      ref={focusRef}
       role="dialog"
       aria-modal="true"
       aria-labelledby={titleId}
@@ -80,7 +85,7 @@ export function BottomSheet({
         <button
           type="button"
           onClick={onClose}
-          aria-label="Cerrar"
+          aria-label="Close"
           className="-mr-12px inline-flex size-48px items-center justify-center rounded-md text-icon-muted outline-none transition-colors hover:text-text-primary focus-visible:focus-ring"
         >
           <X className="size-5" aria-hidden />

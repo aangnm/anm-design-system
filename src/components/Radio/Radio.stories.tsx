@@ -5,7 +5,7 @@ const meta: Meta<typeof Radio> = {
   title: 'Core/Radio',
   component: Radio,
   tags: ['autodocs'],
-  args: { label: 'Etiqueta', name: 'radio-group' },
+  args: { label: 'Label', name: 'radio-group' },
 }
 export default meta
 
@@ -47,7 +47,7 @@ export const ValueByState: Story = {
               <Radio
                 id={`r-${v.label}-${state}`}
                 name={`r-${v.label}-${state}`}
-                label="Etiqueta"
+                label="Label"
                 disabled={state === 'Disabled'}
                 {...v.props}
               />

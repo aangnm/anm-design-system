@@ -15,10 +15,10 @@ type Story = StoryObj<typeof DropdownMenu>
 
 const items = (
   <>
-    <MenuItem icon={<Circle />}>Elemento del menú</MenuItem>
-    <MenuItem icon={<Circle />}>Elemento del menú</MenuItem>
+    <MenuItem icon={<Circle />}>Menu item</MenuItem>
+    <MenuItem icon={<Circle />}>Menu item</MenuItem>
     <MenuItem icon={<Circle />} disabled>
-      Elemento del menú
+      Menu item
     </MenuItem>
   </>
 )
@@ -26,7 +26,7 @@ const items = (
 export const Closed: Story = {
   render: () => (
     <div className="bg-surface-page p-8">
-      <DropdownMenu label="Opciones">{items}</DropdownMenu>
+      <DropdownMenu label="Options">{items}</DropdownMenu>
     </div>
   ),
 }
@@ -34,21 +34,21 @@ export const Closed: Story = {
 export const Open: Story = {
   render: () => (
     <div className="h-[280px] bg-surface-page p-8">
-      <DropdownMenu label="Opciones" defaultOpen>
+      <DropdownMenu label="Options" defaultOpen>
         {items}
       </DropdownMenu>
     </div>
   ),
 }
 
-// State=Searchable: search field on top, text-only items, Limpiar at the bottom.
-// Limpiar resets the query and the selection.
+// State=Searchable: search field on top, text-only items, Clear at the bottom.
+// Clear resets the query and the selection.
 function SearchableExample() {
   const [selected, setSelected] = useState<string | null>(null)
-  const names = ['Ventas', 'Comisiones', 'Suscripciones', 'Reembolsos']
+  const names = ['Sales', 'Commissions', 'Subscriptions', 'Refunds']
   return (
     <div className="h-[340px] bg-surface-page p-8">
-      <DropdownMenu label={selected ?? 'Opciones'} defaultOpen searchable onClear={() => setSelected(null)}>
+      <DropdownMenu label={selected ?? 'Options'} defaultOpen searchable onClear={() => setSelected(null)}>
         {names.map((name) => (
           <MenuItem
             key={name}

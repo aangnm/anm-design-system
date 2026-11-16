@@ -1,0 +1,65 @@
+# Checks every pull request and every push to main.
+# Each step guards something that has broken before and passed typecheck.
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Generated tokens match the export
+        # src/tokens/* must be exactly what the transform makes from
+        # tokens/figma-export.json — never hand-edited.
+        run: |
+          npm run tokens:transform
+          git diff --exit-code -- src/tokens
+
+      - name: Library build
+        run: npm run build
+
+      - name: Stories as tests, with axe
+        # Every story renders in headless Chromium and fails on an
+        # accessibility violation.
+        run: |
+          npx playwright install --with-deps chromium
+          npm test
+
+      - name: Storybook build
+        run: npm run build:storybook
+
+  visual:
+    # Visual regression with Chromatic. Runs once CHROMATIC_PROJECT_TOKEN is
+    # set as a repository secret (chromatic.com → new project → token).
+    runs-on: ubuntu-latest
+    env:
+      CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - if: env.CHROMATIC_PROJECT_TOKEN != ''
+        run: npm ci
+      - if: env.CHROMATIC_PROJECT_TOKEN != ''
+        uses: chromaui/action@v11
+        with:
+          projectToken: ${{ env.CHROMATIC_PROJECT_TOKEN }}
+          exitZeroOnChanges: true
+          onlyChanged: true

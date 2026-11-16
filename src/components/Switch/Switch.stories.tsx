@@ -5,7 +5,7 @@ const meta: Meta<typeof Switch> = {
   title: 'Core/Switch',
   component: Switch,
   tags: ['autodocs'],
-  args: { label: 'Etiqueta' },
+  args: { label: 'Label' },
 }
 export default meta
 
@@ -44,7 +44,7 @@ export const ValueByState: Story = {
           <span className="text-text-caption leading-4 text-text-secondary">{v.label}</span>
           {(Object.keys(forced) as (keyof typeof forced)[]).map((state) => (
             <div key={state} className={forced[state]}>
-              <Switch id={`sw-${v.label}-${state}`} label="Etiqueta" disabled={state === 'Disabled'} {...v.props} />
+              <Switch id={`sw-${v.label}-${state}`} label="Label" disabled={state === 'Disabled'} {...v.props} />
             </div>
           ))}
         </div>

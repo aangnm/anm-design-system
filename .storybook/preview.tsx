@@ -1,6 +1,8 @@
 import type { Preview } from '@storybook/react-vite'
 import React, { useEffect } from 'react'
 import '../src/styles.css'
+import { DocsPage } from './DocsPage'
+import { anm } from './theme'
 
 const withTheme = (Story: React.ComponentType, context: { globals: { theme?: string; density?: string } }) => {
   const theme = context.globals.theme ?? 'dark'
@@ -26,18 +28,26 @@ const preview: Preview = {
     layout: 'fullscreen',
     options: {
       storySort: {
-        order: ['Introduction', 'Core', 'Navigation', 'Data Display', 'Feedback & Overlays', 'Product Patterns', 'Templates'],
+        order: ['Introduction', 'Start here', 'Core', 'Navigation', 'Data Display', 'Feedback & Overlays', 'Product Patterns', 'Templates'],
       },
     },
+    // Docs pages carry the Figma design notes under the props table.
+    // Docs pages wear the same anm chrome as the rest of Storybook (dark),
+    // instead of Storybook's default light docs around dark stories.
+    docs: { page: DocsPage, theme: anm },
+    // Every story runs as a test (npm test, and in CI) with an axe check;
+    // an accessibility violation fails the run.
+    a11y: { test: 'error' },
   },
   globalTypes: {
     theme: {
-      description: 'Dark / light mode',
+      description: 'Dark / light / high contrast',
       toolbar: {
         icon: 'circlehollow',
         items: [
           { value: 'dark', title: 'Dark' },
           { value: 'light', title: 'Light' },
+          { value: 'high-contrast', title: 'High contrast' },
         ],
         showName: true,
       },

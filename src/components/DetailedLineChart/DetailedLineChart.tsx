@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import type { HTMLAttributes } from 'react'
-import { CHART_SERIES_BG, CHART_SERIES_TEXT, formatChartNumber, type ChartSeriesIndex } from '@/components/Legend'
+import { CHART_SERIES_BG, CHART_SERIES_TEXT, describeChart, formatChartNumber, type ChartSeriesIndex } from '@/components/Legend'
 import { ChartTooltip } from '@/components/ChartTooltip'
 import { cn } from '@/lib/utils'
+import { labelStep, useElementWidth } from '@/lib/useElementWidth'
 
 // Mirrors the Line Chart · Detailed component set (Data Display page): several
 // series plus the context that explains them — a target line, an optimal
@@ -50,18 +51,21 @@ export function DetailedLineChart({
   categories,
   axisLabels,
   forecastFrom,
-  forecastLabel = 'Proyección',
+  forecastLabel = 'Forecast',
   target,
   band,
   events = [],
   min: minProp,
   max: maxProp,
-  width = 560,
+  width: fixedWidth,
   height = 200,
   formatValue = (v) => formatChartNumber(v, 2),
   className,
   ...props
 }: DetailedLineChartProps) {
+  // Fills its container unless `width` is set; geometry is redrawn at the real width.
+  const [plotRef, measured] = useElementWidth(560)
+  const width = fixedWidth ?? measured
   const [hover, setHover] = useState<number | null>(null)
   const [pinned, setPinned] = useState(false)
   const n = categories.length
@@ -77,7 +81,7 @@ export function DetailedLineChart({
   const locate = (clientX: number, rect: DOMRect) => Math.max(0, Math.min(n - 1, Math.round(((clientX - rect.left) / rect.width) * (n - 1))))
 
   return (
-    <div className={cn('flex w-fit flex-col gap-14px rounded-lg border border-border-subtle bg-surface-container p-16px', className)} {...props}>
+    <div className={cn(fixedWidth ? 'w-fit' : 'w-full', 'flex flex-col gap-14px rounded-lg border border-border-subtle bg-surface-container p-container-sm', className)} {...props}>
       <div className="flex flex-wrap items-center gap-16px text-text-xs font-medium leading-5 text-text-secondary">
         {series.map((s) => (
           <span key={s.series} className="flex items-center gap-6px">
@@ -98,13 +102,13 @@ export function DetailedLineChart({
           </span>
         ) : null}
       </div>
-      <div className="flex gap-8px">
+      <div className="flex w-full gap-8px">
         <div className="flex flex-col justify-between text-right text-text-xxs leading-4 text-text-secondary" style={{ height: height + 8 }}>
           {ticks.map((t) => (
             <span key={t}>{formatChartNumber(t, 1)}</span>
           ))}
         </div>
-        <div className="flex flex-col gap-6px">
+        <div ref={plotRef} className={cn('flex flex-col gap-6px', !fixedWidth && 'min-w-0 flex-1')}>
           <div
             className="relative"
             style={{ width, height }}
@@ -116,7 +120,7 @@ export function DetailedLineChart({
               setHover(locate(e.clientX, e.currentTarget.getBoundingClientRect()))
             }}
             role="img"
-            aria-label={series.map((s) => s.label).join(', ')}
+            aria-label={describeChart('Detailed line chart', series, categories, formatValue)}
           >
             <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} fill="none" className="overflow-visible">
               {ticks.map((t) => (
@@ -186,9 +190,10 @@ export function DetailedLineChart({
             ) : null}
           </div>
           <div className="flex justify-between text-text-xxs leading-4 text-text-secondary" style={{ width }}>
-            {(axisLabels ?? categories).map((c) => (
-              <span key={c}>{c}</span>
-            ))}
+            {(axisLabels ?? categories).map((c, i, all) => {
+              const step = labelStep(all.length, width, 56)
+              return <span key={c} aria-hidden={i % step !== 0 || undefined}>{i % step === 0 ? c : ''}</span>
+            })}
           </div>
         </div>
       </div>

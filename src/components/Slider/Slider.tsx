@@ -14,6 +14,9 @@ import { cn } from '@/lib/utils'
 // no open state. The filled portion is a gradient on the track driven by a
 // CSS custom property, since neither vendor prefix exposes a plain
 // percentage-fill utility.
+//
+// Give it a name: wrap it in a FormField, point a <label> at its id, or pass
+// aria-label. A range input with no label fails WCAG 4.1.2.
 
 export interface SliderProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'type'> {
   value: number

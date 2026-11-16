@@ -19,9 +19,9 @@ export default meta
 type Story = StoryObj<typeof SegmentedControl>
 
 const options = [
-  { label: 'Día', value: 'day' },
-  { label: 'Semana', value: 'week' },
-  { label: 'Mes', value: 'month' },
+  { label: 'Day', value: 'day' },
+  { label: 'Week', value: 'week' },
+  { label: 'Month', value: 'month' },
 ]
 
 export const Playground: Story = {

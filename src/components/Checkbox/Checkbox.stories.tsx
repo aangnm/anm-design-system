@@ -5,7 +5,7 @@ const meta: Meta<typeof Checkbox> = {
   title: 'Core/Checkbox',
   component: Checkbox,
   tags: ['autodocs'],
-  args: { label: 'Etiqueta' },
+  args: { label: 'Label' },
 }
 export default meta
 
@@ -48,7 +48,7 @@ export const ValueByState: Story = {
             <div key={state} className={forced[state]}>
               <Checkbox
                 id={`cb-${v.label}-${state}`}
-                label="Etiqueta"
+                label="Label"
                 disabled={state === 'Disabled'}
                 {...v.props}
               />

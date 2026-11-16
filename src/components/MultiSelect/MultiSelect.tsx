@@ -39,7 +39,7 @@ const fieldVariants = cva(
   },
 )
 
-const widths = { sm: 'w-[260px]', md: 'w-[280px]', lg: 'w-[300px]' } as const
+const widths = { sm: 'w-full max-w-[260px]', md: 'w-full max-w-[280px]', lg: 'w-full max-w-[300px]' } as const
 
 export interface MultiSelectOption {
   label: string
@@ -51,6 +51,8 @@ export interface MultiSelectProps extends VariantProps<typeof fieldVariants> {
   value: string[]
   onChange: (value: string[]) => void
   placeholder?: string
+  /** Accessible name when no <label> points at the field; defaults to the placeholder. */
+  'aria-label'?: string
   /** Maps to Figma's State=Disabled. */
   disabled?: boolean
   /** Maps to Figma's State=Open — the initial open state; the component tracks it afterwards. */
@@ -62,12 +64,13 @@ export function MultiSelect({
   options,
   value,
   onChange,
-  placeholder = 'Seleccionar…',
+  placeholder = 'Select…',
   size,
   error,
   disabled = false,
   defaultOpen = false,
   className,
+  'aria-label': ariaLabel,
 }: MultiSelectProps) {
   const [open, setOpen] = useState(defaultOpen && !disabled)
   const rootRef = useRef<HTMLDivElement>(null)
@@ -98,6 +101,7 @@ export function MultiSelect({
     <div ref={rootRef} className={cn('relative', widths[size ?? 'md'], className)}>
       <div
         role="combobox"
+        aria-label={ariaLabel ?? placeholder}
         aria-haspopup="listbox"
         aria-expanded={open}
         aria-controls={open ? menuId : undefined}
@@ -146,7 +150,7 @@ export function MultiSelect({
         <Menu
           id={menuId}
           role="group"
-          aria-label="Opciones"
+          aria-label="Options"
           className="absolute left-0 top-[calc(100%+6px)] z-[var(--z-index-dropdown)] w-full min-w-0"
         >
           {options.map((option) => (

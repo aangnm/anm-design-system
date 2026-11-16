@@ -20,14 +20,14 @@ export interface PageHeaderProps extends HTMLAttributes<HTMLDivElement> {
 export function PageHeader({ title, subtitle, actions, className, ...props }: PageHeaderProps) {
   return (
     <div
-      className={cn('flex w-full items-center justify-between border-b border-border-subtle pb-16px', className)}
+      className={cn('flex w-full flex-wrap items-center justify-between gap-12px border-b border-border-subtle pb-16px', className)}
       {...props}
     >
       <div className="flex flex-col gap-4px">
         <p className="text-3xl font-semibold text-text-primary">{title}</p>
         {subtitle ? <p className="text-sm text-text-secondary">{subtitle}</p> : null}
       </div>
-      {actions ? <div className="flex items-center gap-8px">{actions}</div> : null}
+      {actions ? <div className="flex flex-wrap items-center gap-8px">{actions}</div> : null}
     </div>
   )
 }

@@ -43,8 +43,8 @@ export function Table({
   columns,
   rows = [],
   state = 'default',
-  emptyMessage = 'Sin registros que coincidan con el filtro.',
-  errorMessage = 'No se pudieron cargar los registros.',
+  emptyMessage = 'No records match the filter.',
+  errorMessage = 'Couldn’t load the records.',
   loadingRows = 3,
   bordered = true,
   className,
@@ -52,8 +52,14 @@ export function Table({
 }: TableProps) {
   return (
     <div
+      // Scrolls sideways on a narrow screen instead of squeezing or clipping
+      // columns, so the wrapper is a labelled, keyboard-focusable region
+      // (arrow keys scroll it) — WCAG 2.1.1 for scrollable content.
+      role="region"
+      aria-label={props['aria-label'] ?? 'Table'}
+      tabIndex={0}
       className={cn(
-        'w-full overflow-hidden',
+        'w-full overflow-x-auto outline-none focus-visible:focus-ring',
         bordered && 'rounded-lg border border-border-subtle bg-surface-container',
         // Every non-Default variant is padded to the Default's height (header 36
         // + four 44px rows = 212px) on purpose, so swapping states never makes

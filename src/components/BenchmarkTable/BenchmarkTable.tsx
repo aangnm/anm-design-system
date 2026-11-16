@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils'
 
 // Mirrors the Benchmark Table component (Product Patterns page): a
 // benchmark table — a per-row rate (sample: Ingresos/mes per account) with a
-// tier-coloured Estado chip (Crítico / Moderado / Saludable against a minimum
+// tier-coloured Status chip (Critical / Moderate / Healthy against a minimum
 // and an ideal benchmark, 400 / 800 by default). Why (from Figma) — the Estado column uses
 // tier-coloured Tag instances rather than coloured text, so status survives
 // being scanned quickly; the numeric column is right-aligned so magnitudes
@@ -15,29 +15,29 @@ import { cn } from '@/lib/utils'
 // Table's padding. Not interactive today (if rows become selectable, make
 // them at least 48 high on touch).
 
-export type BenchmarkTier = 'critico' | 'moderado' | 'saludable'
+export type BenchmarkTier = 'critical' | 'moderate' | 'healthy'
 
 const TIER_LABEL: Record<BenchmarkTier, string> = {
-  critico: 'Crítico',
-  moderado: 'Moderado',
-  saludable: 'Saludable',
+  critical: 'Critical',
+  moderate: 'Moderate',
+  healthy: 'Healthy',
 }
 
 const TIER_COLOR = {
-  critico: 'error',
-  moderado: 'warning',
-  saludable: 'success',
+  critical: 'error',
+  moderate: 'warning',
+  healthy: 'success',
 } as const
 
-/** Default minimum: a rate below this is Crítico. */
+/** Default minimum: a rate below this is Critical. */
 export const BENCHMARK_MIN = 400
 /** Default ideal: a rate at or above this is Saludable. */
 export const BENCHMARK_IDEAL = 800
 
 export function benchmarkTier(rate: number, min = BENCHMARK_MIN, ideal = BENCHMARK_IDEAL): BenchmarkTier {
-  if (rate < min) return 'critico'
-  if (rate < ideal) return 'moderado'
-  return 'saludable'
+  if (rate < min) return 'critical'
+  if (rate < ideal) return 'moderate'
+  return 'healthy'
 }
 
 export interface BenchmarkRow {
@@ -57,7 +57,7 @@ export interface BenchmarkTableProps extends HTMLAttributes<HTMLDivElement> {
   labelHeader?: string
   categoryHeader?: string
   rateHeader?: string
-  /** Below `min` is Crítico, at or above `ideal` is Saludable. */
+  /** Below `min` is Critical, at or above `ideal` is Healthy. */
   min?: number
   ideal?: number
 }
@@ -67,9 +67,9 @@ const td = 'px-6px py-10px text-text-xs leading-5 first:pl-16px last:pr-16px'
 
 export function BenchmarkTable({
   rows,
-  labelHeader = 'Cuenta',
-  categoryHeader = 'Categoría',
-  rateHeader = 'Ingresos/mes',
+  labelHeader = 'Account',
+  categoryHeader = 'Category',
+  rateHeader = 'Revenue/month',
   min = BENCHMARK_MIN,
   ideal = BENCHMARK_IDEAL,
   className,
@@ -92,7 +92,7 @@ export function BenchmarkTable({
             <th className={th}>{labelHeader}</th>
             <th className={th}>{categoryHeader}</th>
             <th className={cn(th, 'text-right')}>{rateHeader}</th>
-            <th className={th}>Estado</th>
+            <th className={th}>Status</th>
           </tr>
         </thead>
         <tbody className="divide-y divide-border-subtle">

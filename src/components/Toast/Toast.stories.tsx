@@ -2,10 +2,10 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Toast } from './Toast'
 
 const meta: Meta<typeof Toast> = {
-  title: 'Feedback/Toast',
+  title: 'Feedback & Overlays/Toast',
   component: Toast,
   tags: ['autodocs'],
-  args: { title: 'Guardado', description: 'Los cambios se guardaron correctamente.' },
+  args: { title: 'Saved', description: 'Your changes were saved.' },
   decorators: [
     (Story) => (
       <div className="bg-surface-page p-8">
@@ -25,10 +25,10 @@ export const Playground: Story = {
 export const AllColors: Story = {
   render: () => (
     <div className="flex flex-col gap-8px">
-      <Toast color="success" title="Guardado" description="Los cambios se guardaron correctamente." onDismiss={() => {}} />
-      <Toast color="info" title="Información" description="Hay una actualización disponible." onDismiss={() => {}} />
-      <Toast color="warning" title="Advertencia" description="Revisa los campos antes de continuar." onDismiss={() => {}} />
-      <Toast color="error" title="Error" description="No se pudo guardar el cambio." onDismiss={() => {}} />
+      <Toast color="success" title="Saved" description="Your changes were saved." onDismiss={() => {}} />
+      <Toast color="info" title="Information" description="An update is available." onDismiss={() => {}} />
+      <Toast color="warning" title="Warning" description="Check the fields before continuing." onDismiss={() => {}} />
+      <Toast color="error" title="Error" description="Couldn’t save the change." onDismiss={() => {}} />
     </div>
   ),
 }

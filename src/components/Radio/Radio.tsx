@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils'
 // State (Default/Hover/Focus/Disabled). Hover tints the circle with
 // interactive/default (pointer only); Focus is the focus/ring border; every
 // combination renders. Row is 24 high (the target). Same peer + sibling-overlay structure as Checkbox — see the
-// note there on why the inner dot can't be nested inside the circle span.
+// note there on why the inner dot can’t be nested inside the circle span.
 
 export interface RadioProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'size'> {
   label?: string
