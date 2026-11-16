@@ -1,6 +1,6 @@
 /**
  * GENERATED FILE — do not edit by hand.
- * Source: tokens/figma-export.json (exported 2026-11-16T12:00:00.000Z)
+ * Source: tokens/figma-export.json (exported 2026-11-16T15:00:00.000Z)
  * Regenerate: node scripts/transform-tokens.mjs
  *
  * Every value is a CSS var() reference, not a raw value — these read the
@@ -14,10 +14,6 @@ export const color = {
     ContainerHigh: 'var(--surface-container-high)',
     Container: 'var(--surface-container)',
     Inverted: 'var(--surface-inverted)',
-    Info: 'var(--surface-info)',
-    Success: 'var(--surface-success)',
-    Warning: 'var(--surface-warning)',
-    Error: 'var(--surface-error)',
     Scrim: 'var(--surface-scrim)',
     Highlight: 'var(--surface-highlight)',
   },

@@ -62,7 +62,7 @@ export const ChoiceTile = forwardRef<HTMLButtonElement, ChoiceTileProps>(
         className={cn(tileVariants({ size, align, state }), '[&>svg]:size-5 [&>svg]:shrink-0', className)}
         {...props}
       >
-        {state === 'done' ? <Check className="text-semantic-info" aria-hidden /> : null}
+        {state === 'done' ? <Check className="text-icon-default" aria-hidden /> : null}
         {!holdsValue && icon ? icon : null}
         <span className="truncate">{label}</span>
         {holdsValue && count !== undefined ? <Badge color="info">{count}</Badge> : null}

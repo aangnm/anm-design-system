@@ -399,3 +399,16 @@ Audited against the Material 3 Design Kit; the agreed items are on the Roadmap. 
 - Donut Chart's description no longer stores HTML entities around "Otros".
 - **Roadmap:** Next and Later are empty. Only one status palette remains, in Now.
 - **Code:** the export carries the Density collection. The transform emits `--control-height-*` and `--table-cell-padding-y` with a `[data-density="compact"]` override, plus the `h-control-*` and `py-table-cell-y` utilities, and the sized controls and Table use them. Storybook gains a density toolbar. New `SmallMultiples`; `texture` on `StackedBarChart`, `DonutChart` and `Legend`, from one tile geometry in `chartTexture.tsx`.
+
+## v0.97 — One status palette
+- **Status colours are ramp steps, one set per status.** The 26 one-off status primitives (color/success/base-dark, fg-light, subtle-dark, base-hc …) and the duplicate surface/success, warning, error and info are deleted. The remaining tokens alias the red, orange, green and blue ramps:
+  - semantic/<status> (solid: Badge, dots, borders): 600 (success 700) in Dark and Light; 700 (success 800, warning 600) in High contrast. White labels clear 4.9:1 or better; warning keeps a near-black label (5.4:1).
+  - semantic/<status>-surface and -foreground (tints): 900 / 100 in Dark, 100 / 900 in Light, 50 / 950 in High contrast. 8.2:1 or better.
+  - text/<status> (the status colour on a neutral surface): 400 in Dark, 800 in Light, 900 in High contrast. 5.3:1 or better, and AAA in High contrast. In Dark this was the 100 step, which read as near-white.
+- surface/highlight is its own blue step (950 in Dark, 100 in Light, 50 in High contrast) instead of an alias of semantic/info-surface, which got much brighter. Choice Tile's Done border stays distinct from its fill.
+- Icons follow the surface they sit on: Toast icons are text/<status> (Info was 2.9:1 in Dark), and Banner icons are the foreground, matching code.
+- Color page: the four surface/<status> rows are gone, and every alias and hex label is regenerated from live values. Color Primaries shows the status set as ramp steps.
+- Accessibility page: 16 status contrast pairs are recomputed in all three themes; all pass.
+- Badge and Choice Tile descriptions carry the new ratios. Choice Tile drops its last farming examples and its stored HTML entities. The Touch choices rule and a new Status colours rule on the Decisions card.
+- **Roadmap:** empty except Accepted.
+- **Code:** the export and generated tokens follow. Toast icons use `text-text-<status>`. Choice Tile's Done check uses `icon/default`, as in Figma. MIT license added, and the `./styles.css` export now points at the CSS file the build writes (`dist/index.css`; it named a `dist/style.css` that never existed).

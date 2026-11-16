@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": false,
   "type": "module",
+  "license": "MIT",
   "description": "anm design system — tokens and React components, generated from the anm Design System Figma file.",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -12,7 +13,7 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     },
-    "./styles.css": "./dist/style.css"
+    "./styles.css": "./dist/index.css"
   },
   "files": [
     "dist"

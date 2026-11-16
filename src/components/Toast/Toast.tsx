@@ -5,7 +5,8 @@ import { cn } from '@/lib/utils'
 // Mirrors the Toast component (Feedback & Overlays page): Color=Success/Info/Warning/Error.
 // Why (from Figma) — keeps a neutral surface with a coloured icon, deliberately unlike
 // Banner's tinted background: a toast overlays arbitrary content, so a neutral surface
-// stays legible wherever it lands and the icon alone carries the meaning.
+// stays legible wherever it lands and the icon alone carries the meaning. The
+// icon is text/<status>, the status colour for neutral surfaces (5.3:1 or better).
 // The close icon is a 16px visual with a 24x24 target (extended with a pseudo-element).
 
 export type ToastColor = 'success' | 'info' | 'warning' | 'error'
@@ -18,10 +19,10 @@ const icons: Record<ToastColor, typeof Check> = {
 }
 
 const iconColors: Record<ToastColor, string> = {
-  success: 'text-semantic-success',
-  info: 'text-semantic-info',
-  warning: 'text-semantic-warning',
-  error: 'text-semantic-error',
+  success: 'text-text-success',
+  info: 'text-text-info',
+  warning: 'text-text-warning',
+  error: 'text-text-error',
 }
 
 export interface ToastProps extends HTMLAttributes<HTMLDivElement> {

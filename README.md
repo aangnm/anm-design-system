@@ -115,3 +115,7 @@ Nothing. As of Figma v0.96 every component has a code counterpart, mapped in eac
 
 - **Sidebar / Alt** — a layout rearrangement (profile on top, brand bar at the bottom) rather than a distinct component. Reachable today by passing different `brand`/`footer` slots to `Sidebar`.
 - **Navbar / Mobile** — the responsive form of Navbar. Best added as a real responsive behaviour on `Navbar` once breakpoint usage is settled, rather than as a second component that callers must swap manually.
+
+## License
+
+MIT. See [LICENSE](LICENSE).

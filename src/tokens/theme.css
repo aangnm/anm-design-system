@@ -1,6 +1,6 @@
 /**
  * GENERATED FILE — do not edit by hand.
- * Source: tokens/figma-export.json (exported 2026-11-16T12:00:00.000Z)
+ * Source: tokens/figma-export.json (exported 2026-11-16T15:00:00.000Z)
  * Regenerate: node scripts/transform-tokens.mjs
  */
 
@@ -9,10 +9,6 @@
   --color-surface-container-high: var(--surface-container-high);
   --color-surface-container: var(--surface-container);
   --color-surface-inverted: var(--surface-inverted);
-  --color-surface-info: var(--surface-info);
-  --color-surface-success: var(--surface-success);
-  --color-surface-warning: var(--surface-warning);
-  --color-surface-error: var(--surface-error);
   --color-border-default: var(--border-default);
   --color-border-subtle: var(--border-subtle);
   --color-border-emphasis: var(--border-emphasis);

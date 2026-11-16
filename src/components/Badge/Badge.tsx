@@ -6,8 +6,9 @@ import { cn } from '@/lib/utils'
 // pill, typically a count — unlike Tag, colored variants always use white
 // text regardless of theme (the Figma component uses the raw white
 // primitive here, not a semantic token, since it's pinned against a
-// saturated fill rather than following the page background). Warning is the
-// exception: near-black, because white on the amber fill is only 3.3:1.
+// saturated fill rather than following the page background). The fills are
+// ramp steps (Figma v0.97), so white clears 4.9:1 or better. Warning is the
+// exception: near-black (5.4:1), because white on orange 600 is only 3.7:1.
 // 20 high, 11/16 Medium.
 
 const badgeVariants = cva('inline-flex h-20px min-w-20px items-center justify-center rounded-pill px-6px text-text-xxs font-medium leading-4', {
