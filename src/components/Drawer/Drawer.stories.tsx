@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Drawer } from './Drawer'
 
 const meta: Meta<typeof Drawer> = {
-  title: 'Feedback/Drawer',
+  title: 'Feedback & Overlays/Drawer',
   component: Drawer,
   tags: ['autodocs'],
   args: {

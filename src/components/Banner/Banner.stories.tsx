@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Banner } from './Banner'
 
 const meta: Meta<typeof Banner> = {
-  title: 'Feedback/Banner',
+  title: 'Feedback & Overlays/Banner',
   component: Banner,
   tags: ['autodocs'],
   args: { message: 'Message for the user.' },
