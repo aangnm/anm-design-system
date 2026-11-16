@@ -20,7 +20,7 @@ Two other Figma pages orient you fast:
 
 Two steps, deliberately manual. Figma's Variables REST API is Enterprise-only and this team is on Pro, so there is no webhook.
 
-1. **Pull** — needs a live Figma MCP connection. Walk `figma.variables.getLocalVariableCollectionsAsync()` + `getLocalVariablesAsync()`, resolve `VARIABLE_ALIAS` chains recursively, and write the result to `tokens/figma-export.json`. Effect styles come through `figma.getLocalEffectStylesAsync()` as a top-level `effectStyles` array — **variables cannot hold effects**, so shadows are easy to miss on a re-export.
+1. **Pull** — needs a live Figma MCP connection. Walk `figma.variables.getLocalVariableCollectionsAsync()` + `getLocalVariablesAsync()`, resolve `VARIABLE_ALIAS` chains recursively, and write the result to `tokens/figma-export.json`. Effect styles come through `figma.getLocalEffectStylesAsync()` as a top-level `effectStyles` array — **variables cannot hold effects**, so shadows are easy to miss on a re-export. Each shadow carries `colorVar` (shadow/key or shadow/ambient) because the colours are bound Themes variables. Text styles go in a top-level `textStyles` array (role, size variable, line-height variable), which the transform turns into `text-body-default`-style role utilities. Keep the file's one-variable-per-line layout so diffs stay readable.
 2. **Transform** — `npm run tokens:transform`. Pure Node, no Figma access, deterministic.
 
 `src/tokens/{tokens.css,theme.css,index.ts}` are **generated — never hand-edit them.** `tokens/figma-export.json` is committed on purpose so every token change is a reviewable diff.
@@ -56,7 +56,9 @@ Accumulated API gotchas, each found the hard way:
 ## Conventions
 
 - Identifiers in English; user-facing copy in Spanish (es-EC).
-- Build from token classes only — no raw hex, no magic numbers.
+- Build from token classes only — no raw hex, no magic numbers. Text: prefer the role utilities (`text-body-default`, `text-title-large` …) over raw size classes; add new ones to the font-size group in `src/lib/utils.ts` or tailwind-merge will drop them.
+- Focus is one utility: `focus-visible:focus-ring` (or `peer-focus-visible:focus-ring` on the visible box of a hidden-input control). Never `ring-*` or a border recolour for focus. Forced Focus states in stories need `focus-ring!` to beat a base `outline-none`.
+- Sample copy is generic fintech/analytics in es-EC (Cuenta 4021, Ventas, USD, Conversión). Never farming vocabulary.
 - Figma variant axes map to a real API: `State=Hover/Focus/Disabled` become CSS pseudo-classes, not props. `State=Loading` has no native equivalent, so it becomes a real prop.
 - A component's Storybook grid should mirror the Figma variant grid, so a visual diff is a straight comparison.
 - Large Figma variant sets use a manual grid (`layoutMode = 'NONE'`), matching Button and Icon Button. Growing a set means shifting everything below it on the page.
