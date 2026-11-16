@@ -16,7 +16,7 @@ type Story = StoryObj<typeof Sidebar>
 const nav = (
   <>
     <SidebarItem icon={<Circle />} active>
-      Resumen
+      Overview
     </SidebarItem>
     <SidebarItem icon={<Circle />}>Transactions</SidebarItem>
     <SidebarItem icon={<Circle />}>Reports</SidebarItem>
@@ -30,7 +30,7 @@ const nav = (
 const navWithIcons = (
   <>
     <SidebarItem icon={<LayoutDashboard />} active>
-      Resumen
+      Overview
     </SidebarItem>
     <SidebarItem icon={<ArrowLeftRight />}>Transactions</SidebarItem>
     <SidebarItem icon={<ChartColumn />}>Reports</SidebarItem>
@@ -47,7 +47,7 @@ function Footer({ collapsed }: { collapsed?: boolean }) {
         <Avatar initials="LR" size="sm" />
         <div className="flex flex-col">
           <span className="text-sm text-text-primary">Laura Romero</span>
-          <span className="text-text-xxs leading-4 text-text-secondary">Administrador</span>
+          <span className="text-text-xxs leading-4 text-text-secondary">Administrator</span>
         </div>
       </div>
       <ChevronUp className="size-4 text-icon-muted" />

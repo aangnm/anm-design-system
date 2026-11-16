@@ -32,7 +32,7 @@ export const Playground: Story = {
   args: {
     filters: [
       { id: 'sales', label: 'Sales' },
-      { id: 'moderado', label: 'Moderate' },
+      { id: 'moderate', label: 'Moderate' },
     ],
     ...actions,
   },
@@ -47,7 +47,7 @@ export const AboveTable: Story = {
   render: () => {
     const [filters, setFilters] = useState([
       { id: 'sales', label: 'Sales' },
-      { id: 'moderado', label: 'Moderate' },
+      { id: 'moderate', label: 'Moderate' },
     ])
     return (
       <div className="flex flex-col gap-12px">
@@ -59,12 +59,12 @@ export const AboveTable: Story = {
         <Table
           columns={[
             { key: 'account', header: 'Account', width: 120 },
-            { key: 'categoria', header: 'Category' },
-            { key: 'data', header: 'Amount', width: 120 },
+            { key: 'category', header: 'Category' },
+            { key: 'amount', header: 'Amount', width: 120 },
           ]}
           rows={[
-            { cuenta: 'Account 4021', categoria: 'Sales', data: '$250' },
-            { cuenta: 'Account 4035', categoria: 'Sales', data: '$340' },
+            { account: 'Account 4021', category: 'Sales', amount: '$250' },
+            { account: 'Account 4035', category: 'Sales', amount: '$340' },
           ]}
         />
       </div>

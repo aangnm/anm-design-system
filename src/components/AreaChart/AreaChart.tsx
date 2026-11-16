@@ -1,5 +1,6 @@
 import type { HTMLAttributes } from 'react'
 import { cn } from '@/lib/utils'
+import { labelStep, useElementWidth } from '@/lib/useElementWidth'
 import { Legend, describeChart, CHART_SERIES_TEXT, CHART_SERIES_FILL, formatChartNumber, type ChartSeriesIndex } from '@/components/Legend'
 
 // Mirrors the Area Chart component (Data Display page): magnitude/volume over
@@ -21,7 +22,7 @@ export interface AreaChartSeries {
 export interface AreaChartProps extends HTMLAttributes<HTMLDivElement> {
   series: AreaChartSeries[]
   categories: string[]
-  /** Plot width in px. */
+  /** Fixed plot width in px. Leave it out and the chart fills its container. */
   width?: number
   /** Plot height in px. */
   height?: number
@@ -29,7 +30,11 @@ export interface AreaChartProps extends HTMLAttributes<HTMLDivElement> {
   formatValue?: (value: number) => string
 }
 
-export function AreaChart({ series, categories, width = 360, height = 160, formatValue = (v) => formatChartNumber(v, 1), className, 'aria-label': ariaLabel, ...props }: AreaChartProps) {
+export function AreaChart({ series, categories, width: fixedWidth, height = 160, formatValue = (v) => formatChartNumber(v, 1), className, 'aria-label': ariaLabel, ...props }: AreaChartProps) {
+  // Fills its container unless `width` is set; geometry is redrawn at the real width.
+  const [plotRef, measured] = useElementWidth(360)
+  const width = fixedWidth ?? measured
+  const step = labelStep(categories.length, width)
   const allValues = series.flatMap((s) => s.data)
   const max = Math.max(...allValues)
   const min = Math.min(...allValues)
@@ -48,17 +53,18 @@ export function AreaChart({ series, categories, width = 360, height = 160, forma
 
   return (
     <div
-      className={cn('flex w-fit flex-col items-start gap-14px overflow-hidden rounded-lg border border-border-subtle bg-surface-container p-16px', className)}
+      className={cn(fixedWidth ? 'w-fit' : 'w-full',
+        'flex flex-col items-start gap-14px overflow-hidden rounded-lg border border-border-subtle bg-surface-container p-16px', className)}
       {...props}
     >
       <Legend items={series.map((s) => ({ label: s.label, series: s.series }))} />
-      <div className="flex items-start gap-8px">
+      <div className={cn('flex items-start gap-8px', !fixedWidth && 'w-full')}>
         <div className="flex flex-col items-end justify-between text-text-xxs leading-4 text-text-secondary" style={{ height }}>
           <p>{formatValue(max)}</p>
           <p>{formatValue(mid)}</p>
           <p>{formatValue(min)}</p>
         </div>
-        <div className="flex flex-col items-start gap-6px">
+        <div ref={plotRef} className={cn('flex flex-col items-start gap-6px', !fixedWidth && 'min-w-0 flex-1')}>
           <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} fill="none" role="img" aria-label={ariaLabel ?? describeChart('Area chart', series, categories)}>
             <line x1={0} y1={pad + 0.5} x2={width} y2={pad + 0.5} stroke="var(--border-subtle)" strokeWidth={1} />
             <line x1={0} y1={height / 2} x2={width} y2={height / 2} stroke="var(--border-subtle)" strokeWidth={1} />
@@ -76,8 +82,8 @@ export function AreaChart({ series, categories, width = 360, height = 160, forma
             })}
           </svg>
           <div className="flex items-start justify-between text-text-xxs leading-4 text-text-secondary" style={{ width }}>
-            {categories.map((c) => (
-              <p key={c}>{c}</p>
+            {categories.map((c, i) => (
+              <p key={c} aria-hidden={i % step !== 0 || undefined}>{i % step === 0 ? c : ''}</p>
             ))}
           </div>
         </div>

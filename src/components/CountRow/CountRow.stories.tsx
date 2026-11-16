@@ -15,7 +15,7 @@ type Story = StoryObj<typeof CountRow>
 // as soon as it holds a value. Stack rows edge to edge.
 export const Playground: Story = {
   render: () => {
-    const [v, setV] = useState({ Tarjetas: 0, Transferencias: 3, Cheques: 0 })
+    const [v, setV] = useState({ Cards: 0, Transfers: 3, Checks: 0 })
     return (
       <div className="flex flex-col">
         {Object.entries(v).map(([k, n]) => (

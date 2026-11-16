@@ -15,7 +15,7 @@ export interface PopoverProps extends HTMLAttributes<HTMLDivElement> {
 export function Popover({ title, children, className, ...props }: PopoverProps) {
   return (
     <div
-      className={cn('flex w-[260px] flex-col items-start gap-8px rounded-md bg-surface-container-high p-16px shadow-lg', className)}
+      className={cn('flex w-[260px] max-w-full flex-col items-start gap-8px rounded-md bg-surface-container-high p-16px shadow-lg', className)}
       {...props}
     >
       <p className="w-full text-sm font-semibold leading-5 text-text-primary">{title}</p>

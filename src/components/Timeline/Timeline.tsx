@@ -18,7 +18,7 @@ export type TimelineTone = 'success' | 'info' | 'warning'
 
 export interface TimelineEntry {
   title: ReactNode
-  /** Relative timestamp, e.g. "Hoy · 09:12". */
+  /** Relative timestamp, e.g. "Today · 09:12". */
   time: ReactNode
   detail?: ReactNode
   /** Marker colour — success / info / warning, same as Benchmark Table's chips. */
@@ -37,7 +37,7 @@ const toneClass: Record<TimelineTone, string> = {
 
 export function Timeline({ entries, className, ...props }: TimelineProps) {
   return (
-    <ol className={cn('flex w-[360px] flex-col', className)} {...props}>
+    <ol className={cn('flex w-full max-w-[360px] flex-col', className)} {...props}>
       {entries.map((entry, i) => {
         const isLast = i === entries.length - 1
         return (

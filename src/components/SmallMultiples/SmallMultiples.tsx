@@ -26,6 +26,7 @@ export interface SmallMultiplesProps extends HTMLAttributes<HTMLDivElement> {
   panels: SmallMultiplesPanel[]
   /** First and last x-axis labels, shown under every panel. */
   range?: [string, string]
+  /** Most panels per row; fewer when the container is narrow. */
   columns?: 2 | 3 | 4
   series?: ChartSeriesIndex
   /** Index of one panel to emphasise; the others turn neutral. */
@@ -38,8 +39,6 @@ export interface SmallMultiplesProps extends HTMLAttributes<HTMLDivElement> {
   /** Plot height of each panel, px. */
   plotHeight?: number
 }
-
-const COLS = { 2: 'grid-cols-2', 3: 'grid-cols-3', 4: 'grid-cols-4' } as const
 
 export function SmallMultiples({
   panels,
@@ -66,7 +65,12 @@ export function SmallMultiples({
       className={cn('flex flex-col gap-16px rounded-lg border border-border-subtle bg-surface-container p-16px', className)}
       {...props}
     >
-      <div className={cn('grid gap-x-16px gap-y-20px', COLS[columns])}>
+      {/* Up to `columns` per row; panels never shrink below 160px, so a narrow
+          container drops to fewer columns instead of squeezing the charts. */}
+      <div
+        className="grid gap-x-16px gap-y-20px"
+        style={{ gridTemplateColumns: `repeat(auto-fill, minmax(max(160px, calc((100% - ${(columns - 1) * 16}px) / ${columns})), 1fr))` }}
+      >
         {panels.map((p, i) => {
           const min = independentScales ? Math.min(...p.data) : sharedMin
           const max = independentScales ? Math.max(...p.data) : sharedMax

@@ -6,7 +6,7 @@ const meta: Meta<typeof Breadcrumb> = {
   component: Breadcrumb,
   tags: ['autodocs'],
   args: {
-    items: [{ label: 'Inicio', href: '#' }, { label: 'Section', href: '#' }, { label: 'Current page' }],
+    items: [{ label: 'Home', href: '#' }, { label: 'Section', href: '#' }, { label: 'Current page' }],
   },
 }
 export default meta
@@ -22,6 +22,6 @@ export const Playground: Story = {
 }
 
 export const TwoLevels: Story = {
-  args: { items: [{ label: 'Inicio', href: '#' }, { label: 'Current page' }] },
+  args: { items: [{ label: 'Home', href: '#' }, { label: 'Current page' }] },
   render: Playground.render,
 }

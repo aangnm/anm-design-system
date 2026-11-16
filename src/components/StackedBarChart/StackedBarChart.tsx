@@ -67,25 +67,25 @@ export function StackedBarChart({
 
   return (
     <div
-      className={cn('flex w-fit flex-col gap-14px rounded-lg border border-border-subtle bg-surface-container p-16px', className)}
+      className={cn('flex w-full flex-col gap-14px rounded-lg border border-border-subtle bg-surface-container p-16px', className)}
       role="img"
       aria-label={describeChart(percent ? 'Stacked bar chart, percent' : 'Stacked bar chart', series, categories, formatValue)}
       {...props}
     >
       <Legend texture={texture} items={series.map((s) => ({ label: s.label, series: s.series }))} />
-      <div className="flex gap-8px">
+      <div className="flex w-full gap-8px">
         <div className="flex w-32px flex-col items-end justify-between text-text-xxs leading-4 text-text-secondary" style={{ height: height + 16, paddingTop: showTotals && !percent ? 16 : 0 }}>
           {ticks.map((t) => (
             <span key={t} className="-my-2">{fmtTick(t)}</span>
           ))}
         </div>
-        <div className="flex flex-col gap-6px">
+        <div className="flex min-w-0 flex-1 flex-col gap-6px">
           <div className="relative flex items-end gap-8px" style={{ height: height + (showTotals && !percent ? 16 : 0) }}>
             {categories.map((c, i) => {
               const total = totals[i] || 1
               const barHeight = percent ? height : (totals[i] / top) * height
               return (
-                <div key={c} className="flex w-[48px] flex-col items-center justify-end">
+                <div key={c} className="flex min-w-0 flex-1 flex-col items-center justify-end">
                   {showTotals && !percent ? (
                     <span className="mb-2px text-text-xxs font-medium leading-4 text-text-primary">{formatValue(totals[i])}</span>
                   ) : null}
@@ -108,7 +108,7 @@ export function StackedBarChart({
           </div>
           <div className="flex gap-8px text-text-xxs leading-4 text-text-secondary">
             {categories.map((c) => (
-              <span key={c} className="w-[48px] text-center">{c}</span>
+              <span key={c} className="min-w-0 flex-1 truncate text-center">{c}</span>
             ))}
           </div>
         </div>

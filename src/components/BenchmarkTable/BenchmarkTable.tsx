@@ -15,18 +15,18 @@ import { cn } from '@/lib/utils'
 // Table's padding. Not interactive today (if rows become selectable, make
 // them at least 48 high on touch).
 
-export type BenchmarkTier = 'critico' | 'moderado' | 'saludable'
+export type BenchmarkTier = 'critical' | 'moderate' | 'healthy'
 
 const TIER_LABEL: Record<BenchmarkTier, string> = {
-  critico: 'Critical',
-  moderado: 'Moderate',
-  saludable: 'Healthy',
+  critical: 'Critical',
+  moderate: 'Moderate',
+  healthy: 'Healthy',
 }
 
 const TIER_COLOR = {
-  critico: 'error',
-  moderado: 'warning',
-  saludable: 'success',
+  critical: 'error',
+  moderate: 'warning',
+  healthy: 'success',
 } as const
 
 /** Default minimum: a rate below this is Critical. */
@@ -35,9 +35,9 @@ export const BENCHMARK_MIN = 400
 export const BENCHMARK_IDEAL = 800
 
 export function benchmarkTier(rate: number, min = BENCHMARK_MIN, ideal = BENCHMARK_IDEAL): BenchmarkTier {
-  if (rate < min) return 'critico'
-  if (rate < ideal) return 'moderado'
-  return 'saludable'
+  if (rate < min) return 'critical'
+  if (rate < ideal) return 'moderate'
+  return 'healthy'
 }
 
 export interface BenchmarkRow {

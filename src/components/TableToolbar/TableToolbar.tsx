@@ -28,7 +28,7 @@ export interface TableToolbarProps extends Omit<HTMLAttributes<HTMLDivElement>, 
   /** Active filters, rendered as dismissible chips after the search field. */
   filters?: TableToolbarFilter[]
   onRemoveFilter?: (id: string) => void
-  /** Secondary action — an icon-only control, e.g. `<IconButton variant="secondary" icon={<Download />} aria-label="Exportar" />`. */
+  /** Secondary action — an icon-only control, e.g. `<IconButton variant="secondary" icon={<Download />} aria-label="Export" />`. */
   secondaryAction?: ReactNode
   /** The one primary action, e.g. `<Button>Add account</Button>`. */
   primaryAction?: ReactNode

@@ -31,7 +31,7 @@ export const Playground: Story = {
       }
     >
       <NavbarLink href="#" active>
-        Panel
+        Dashboard
       </NavbarLink>
       <NavbarLink href="#">Transactions</NavbarLink>
       <NavbarLink href="#">Reports</NavbarLink>

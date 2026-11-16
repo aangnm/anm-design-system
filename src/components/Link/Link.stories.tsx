@@ -5,7 +5,7 @@ const meta: Meta<typeof Link> = {
   title: 'Core/Link',
   component: Link,
   tags: ['autodocs'],
-  args: { href: '#', children: 'Enlace de ejemplo', standalone: true },
+  args: { href: '#', children: 'Sample link', standalone: true },
 }
 export default meta
 
@@ -27,7 +27,7 @@ export const States: Story = {
           ['Visited', 'text-text-secondary'],
         ].map(([state, cls]) => (
           <Link key={`${state}-${external}`} href="#" external={external} standalone className={cls}>
-            Enlace de ejemplo
+            Sample link
           </Link>
         )),
       )}

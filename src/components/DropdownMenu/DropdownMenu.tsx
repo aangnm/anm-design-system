@@ -14,9 +14,9 @@ import { Divider } from '@/components/Divider'
 // and Escape.
 //
 // Searchable (Figma State=Searchable) is the Open menu with a Search field on
-// top and a Limpiar (clear) button at the bottom, both inside the menu
+// top and a Clear button at the bottom, both inside the menu
 // container and separated from the items by dividers; items carry no icons
-// there (`leadingIcon={false}`). Limpiar resets the query and calls `onClear`
+// there (`leadingIcon={false}`). Clear resets the query and calls `onClear`
 // so the owner can reset its selection. The list is filtered by each child's
 // text content.
 //
@@ -33,10 +33,10 @@ export interface DropdownMenuProps {
   children: ReactNode
   className?: string
   defaultOpen?: boolean
-  /** Maps to Figma's State=Searchable: search field on top, Limpiar at the bottom. */
+  /** Maps to Figma's State=Searchable: search field on top, Clear at the bottom. */
   searchable?: boolean
   searchPlaceholder?: string
-  /** Called by Limpiar (after the query is reset) so the owner can clear its selection. */
+  /** Called by Clear (after the query is reset) so the owner can clear its selection. */
   onClear?: () => void
 }
 
@@ -136,7 +136,7 @@ export function DropdownMenu({
                 }}
                 className="flex w-full items-center rounded-sm px-12px py-6px text-left text-text-xs font-medium leading-5 text-text-primary outline-none transition-colors hover:bg-interactive-default focus-visible:bg-interactive-default focus-visible:focus-ring"
               >
-                  Limpiar
+                  Clear
                 </button>
               </div>
             </>

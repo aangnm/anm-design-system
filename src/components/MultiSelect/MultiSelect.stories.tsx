@@ -21,8 +21,8 @@ type Story = StoryObj<typeof MultiSelect>
 const options = [
   { label: 'Sales', value: 'sales' },
   { label: 'Commissions', value: 'fees' },
-  { label: 'Tratamiento', value: 'treatment' },
-  { label: 'Poda', value: 'pruning' },
+  { label: 'Transfers', value: 'transfers' },
+  { label: 'Payroll', value: 'payroll' },
 ]
 
 export const Playground: Story = {

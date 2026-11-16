@@ -17,7 +17,7 @@ type Story = StoryObj<typeof Topbar>
 export const Playground: Story = {
   render: () => (
     <Topbar
-      breadcrumb={<Breadcrumb items={[{ label: 'Inicio', href: '#' }, { label: 'Main portfolio', href: '#' }, { label: 'Overview' }]} />}
+      breadcrumb={<Breadcrumb items={[{ label: 'Home', href: '#' }, { label: 'Main portfolio', href: '#' }, { label: 'Overview' }]} />}
       center={<DateIndicator date="Wednesday, May 27, 2026" tag="WK 22" />}
       actions={
         <>

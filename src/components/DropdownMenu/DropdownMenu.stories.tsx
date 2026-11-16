@@ -41,8 +41,8 @@ export const Open: Story = {
   ),
 }
 
-// State=Searchable: search field on top, text-only items, Limpiar at the bottom.
-// Limpiar resets the query and the selection.
+// State=Searchable: search field on top, text-only items, Clear at the bottom.
+// Clear resets the query and the selection.
 function SearchableExample() {
   const [selected, setSelected] = useState<string | null>(null)
   const names = ['Sales', 'Commissions', 'Subscriptions', 'Refunds']

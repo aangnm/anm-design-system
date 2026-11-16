@@ -2,9 +2,9 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { RadioGroup } from './RadioGroup'
 
 const options = [
-  { value: 'cafe', label: 'Savings' },
-  { value: 'cacao', label: 'Checking' },
-  { value: 'platano', label: 'Credit' },
+  { value: 'savings', label: 'Savings' },
+  { value: 'checking', label: 'Checking' },
+  { value: 'credit', label: 'Credit' },
 ]
 
 const meta: Meta<typeof RadioGroup> = {
@@ -15,7 +15,7 @@ const meta: Meta<typeof RadioGroup> = {
     legend: 'Primary currency',
     helperText: 'Used for reports and conversions.',
     options,
-    defaultValue: 'cafe',
+    defaultValue: 'savings',
   },
 }
 export default meta

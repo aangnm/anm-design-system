@@ -42,7 +42,7 @@ export const OverScrim: Story = {
       <div className="relative h-[420px] overflow-hidden bg-surface-page [transform:translateZ(0)]">
         <div className="p-24px">
           <button type="button" className="text-sm text-text-primary underline" onClick={() => setOpen(true)}>
-            Abrir modal
+            Open modal
           </button>
         </div>
         {open ? <Modal {...args} overlay onClose={() => setOpen(false)} onCancel={() => setOpen(false)} /> : null}

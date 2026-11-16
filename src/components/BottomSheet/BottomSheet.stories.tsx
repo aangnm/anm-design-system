@@ -34,7 +34,7 @@ export const OverScrim: Story = {
     const [v, setV] = useState(3)
     return (
       <div className="min-h-[600px] bg-surface-page p-8">
-        <Button onClick={() => setOpen(true)}>Abrir hoja</Button>
+        <Button onClick={() => setOpen(true)}>Open sheet</Button>
         {open ? (
           <BottomSheet title="Unidades" context="Account 4021 · Sales" onClose={() => setOpen(false)} onConfirm={() => setOpen(false)}>
             <Counter value={v} onChange={setV} />

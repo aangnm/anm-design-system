@@ -67,7 +67,7 @@ export function BarChart({
   const plotHeight = height + EDGE * 2
 
   return (
-    <div className={cn('flex w-[360px] flex-col items-stretch gap-8px', className)} role="img" aria-label={describeChart('Bar chart', [{ label: 'Values', data: data.map((d) => d.value) }], data.map((d) => d.label), formatValue)} {...props}>
+    <div className={cn('flex w-full min-w-[200px] flex-col items-stretch gap-8px', className)} role="img" aria-label={describeChart('Bar chart', [{ label: 'Values', data: data.map((d) => d.value) }], data.map((d) => d.label), formatValue)} {...props}>
       <div className="flex gap-8px" style={{ height: plotHeight }}>
         {/* y axis */}
         <div className="flex w-32px shrink-0 flex-col items-end justify-between text-text-xxs leading-4 text-text-secondary" aria-hidden>

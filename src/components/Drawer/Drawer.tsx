@@ -64,7 +64,7 @@ export function Drawer({
       aria-modal="true"
       aria-labelledby={titleId}
       className={cn(
-        'flex w-[400px] flex-col items-start gap-16px rounded-lg bg-surface-container p-24px shadow-xl',
+        'flex w-full max-w-[400px] flex-col items-start gap-16px rounded-lg bg-surface-container p-24px shadow-xl',
         overlay ? 'h-full rounded-r-none' : 'h-[600px]',
         className,
       )}

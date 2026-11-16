@@ -39,7 +39,7 @@ const fieldVariants = cva(
   },
 )
 
-const widths = { sm: 'w-[260px]', md: 'w-[280px]', lg: 'w-[300px]' } as const
+const widths = { sm: 'w-full max-w-[260px]', md: 'w-full max-w-[280px]', lg: 'w-full max-w-[300px]' } as const
 
 export interface MultiSelectOption {
   label: string
