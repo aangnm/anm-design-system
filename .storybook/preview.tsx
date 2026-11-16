@@ -2,14 +2,18 @@ import type { Preview } from '@storybook/react-vite'
 import React, { useEffect } from 'react'
 import '../src/styles.css'
 
-const withTheme = (Story: React.ComponentType, context: { globals: { theme?: string } }) => {
+const withTheme = (Story: React.ComponentType, context: { globals: { theme?: string; density?: string } }) => {
   const theme = context.globals.theme ?? 'dark'
+  const density = context.globals.density ?? 'comfortable'
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
+    // Density (Figma v0.96) is independent of theme: Compact shrinks control
+    // heights and table rows wherever data-density="compact" is set.
+    document.documentElement.setAttribute('data-density', density)
     // The canvas itself follows the theme too, so stories shorter than the
     // viewport do not show a dark strip under a light story (and vice versa).
     document.body.style.backgroundColor = 'var(--surface-page)'
-  }, [theme])
+  }, [theme, density])
   return (
     <div className="bg-surface-page p-8 min-h-40">
       <Story />
@@ -38,9 +42,21 @@ const preview: Preview = {
         showName: true,
       },
     },
+    density: {
+      description: 'Comfortable / compact density',
+      toolbar: {
+        icon: 'component',
+        items: [
+          { value: 'comfortable', title: 'Comfortable' },
+          { value: 'compact', title: 'Compact' },
+        ],
+        showName: true,
+      },
+    },
   },
   initialGlobals: {
     theme: 'dark',
+    density: 'comfortable',
   },
   decorators: [withTheme],
 }

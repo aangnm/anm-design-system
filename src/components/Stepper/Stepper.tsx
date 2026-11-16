@@ -20,9 +20,9 @@ const stepperVariants = cva(
   {
     variants: {
       size: {
-        sm: 'h-32px w-[120px] rounded-sm text-text-xs leading-5',
-        md: 'h-36px w-[140px] rounded-md text-sm',
-        lg: 'h-48px w-[160px] rounded-md text-base',
+        sm: 'h-control-sm w-[120px] rounded-sm text-text-xs leading-5',
+        md: 'h-control-md w-[140px] rounded-md text-sm',
+        lg: 'h-control-lg w-[160px] rounded-md text-base',
       },
       error: {
         // Error border wins over hover/focus borders; Focus + Error adds the ring.

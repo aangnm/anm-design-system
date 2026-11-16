@@ -20,9 +20,9 @@ const selectVariants = cva(
   {
     variants: {
       size: {
-        sm: 'h-32px rounded-sm pl-10px pr-32px text-text-xs leading-5',
-        md: 'h-36px rounded-md pl-12px pr-32px text-sm',
-        lg: 'h-48px rounded-md pl-16px pr-40px text-base',
+        sm: 'h-control-sm rounded-sm pl-10px pr-32px text-text-xs leading-5',
+        md: 'h-control-md rounded-md pl-12px pr-32px text-sm',
+        lg: 'h-control-lg rounded-md pl-16px pr-40px text-base',
       },
       error: {
         true: 'border-semantic-error focus-visible:focus-ring',

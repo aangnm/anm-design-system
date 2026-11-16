@@ -111,6 +111,19 @@ if (collections.Icon) {
   }
 }
 
+// Density (Figma v0.96): Comfortable / Compact control heights and table
+// padding. Its own collection, so it combines with any theme. Comfortable is
+// the :root default; [data-density="compact"] on any ancestor overrides it.
+const densityLines = []
+const compactLines = []
+if (collections.Density) {
+  const [comfortable, compact] = collections.Density.modes
+  for (const v of collections.Density.variables) {
+    densityLines.push(`  --${cssName(v.name)}: ${cssValue(v.name, v.valuesByMode[comfortable], v.type)};`)
+    compactLines.push(`  --${cssName(v.name)}: ${cssValue(v.name, v.valuesByMode[compact], v.type)};`)
+  }
+}
+
 // Typography: one mode ("Default") since Figma v0.94 — the old Normal/Large
 // modes were never wired to anything and were removed.
 // font/weight/* values are Inter style names in Figma ("Semi Bold") — mapped
@@ -141,7 +154,13 @@ ${darkLines.join('\n')}
 
 ${flatLines.join('\n')}
 
+${densityLines.join('\n')}
+
 ${typeLines.join('\n')}
+}
+
+[data-density='compact'] {
+${compactLines.join('\n')}
 }
 
 [data-theme='light'] {
@@ -194,6 +213,14 @@ const spacingTheme = collections.Dimension.variables
   .filter((v) => v.name.startsWith('spacing/'))
   .map((v) => `  --spacing-${cssName(v.name).replace('spacing-', '')}px: ${cssValue(v.name, v.valuesByMode.Value, v.type)};`)
 
+// Density keys land in the spacing namespace so every sizing utility gets
+// them: h-control-md, size-control-sm, min-h-control-lg, py-table-cell-y.
+// Named keys, so no collision with Tailwind's numeric scale.
+const densityTheme = (collections.Density?.variables ?? []).map((v) => {
+  const key = v.name.startsWith('control/height/') ? `control-${v.name.split('/').pop()}` : 'table-cell-y'
+  return `  --spacing-${key}: var(--${cssName(v.name)});`
+})
+
 const breakpointTheme = collections.Layout.variables
   .filter((v) => v.name.startsWith('breakpoint/'))
   .map((v) => `  --breakpoint-${cssName(v.name).replace('breakpoint-', '')}: ${cssValue(v.name, v.valuesByMode.Value, v.type)};`)
@@ -243,6 +270,8 @@ ${colorTheme.join('\n')}
 ${radiusTheme.join('\n')}
 
 ${spacingTheme.join('\n')}
+
+${densityTheme.join('\n')}
 
 ${fontSizeTheme.join('\n')}
 

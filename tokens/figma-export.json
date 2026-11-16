@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-11-16T03:00:00.000Z",
+  "exportedAt": "2026-11-16T12:00:00.000Z",
   "figmaFileKey": "OSexn3GQ7oIOo7X2sGVlSb",
   "collections": {
     "Themes": {
@@ -194,6 +194,16 @@
       "modes": ["24", "20", "16", "12"],
       "variables": [
         {"name": "icon/stroke-width", "type": "FLOAT", "valuesByMode": {"12": 1, "16": 1.33, "20": 1.67, "24": 2}}
+      ]
+    },
+    "Density": {
+      "modes": ["Comfortable", "Compact"],
+      "variables": [
+        {"name": "control/height/sm", "type": "FLOAT", "valuesByMode": {"Comfortable": 32, "Compact": 28}},
+        {"name": "control/height/md", "type": "FLOAT", "valuesByMode": {"Comfortable": 36, "Compact": 32}},
+        {"name": "control/height/lg", "type": "FLOAT", "valuesByMode": {"Comfortable": 48, "Compact": 40}},
+        {"name": "control/height/button-lg", "type": "FLOAT", "valuesByMode": {"Comfortable": 52, "Compact": 44}},
+        {"name": "table/cell-padding-y", "type": "FLOAT", "valuesByMode": {"Comfortable": 10, "Compact": 6}}
       ]
     }
   },

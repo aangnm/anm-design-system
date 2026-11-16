@@ -21,3 +21,6 @@ type Story = StoryObj<typeof DonutChart>
 
 export const Playground: Story = {}
 export const WithoutCenterLabel: Story = { args: { centerLabel: false } }
+
+/** Each part also carries its series texture (series 1 stays solid). */
+export const Texture: Story = { args: { texture: true } }

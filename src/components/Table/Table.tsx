@@ -35,7 +35,7 @@ export interface TableProps extends Omit<HTMLAttributes<HTMLTableElement>, 'chil
 }
 
 const alignClass = { left: 'text-left', right: 'text-right', center: 'text-center' } as const
-const cellPad = 'px-14px py-10px'
+const cellPad = 'px-14px py-table-cell-y'
 // Loading keeps the real header and skeletons only the body; widths per column as in Figma.
 const SKELETON_WIDTHS = [24, 112, 72, 42, 42]
 

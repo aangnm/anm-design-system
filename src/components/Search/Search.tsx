@@ -18,9 +18,9 @@ const searchVariants = cva(
   {
     variants: {
       size: {
-        sm: 'h-32px rounded-sm px-10px text-text-xs leading-5',
-        md: 'h-36px rounded-md px-12px text-sm',
-        lg: 'h-48px rounded-md px-16px text-base',
+        sm: 'h-control-sm rounded-sm px-10px text-text-xs leading-5',
+        md: 'h-control-md rounded-md px-12px text-sm',
+        lg: 'h-control-lg rounded-md px-16px text-base',
       },
     },
     defaultVariants: { size: 'md' },

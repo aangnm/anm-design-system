@@ -1,5 +1,6 @@
 import type { HTMLAttributes } from 'react'
-import { CHART_SERIES_BG, CHART_SERIES_TEXT, formatChartNumber, type ChartSeriesIndex } from '@/components/Legend'
+import { useId } from 'react'
+import { CHART_SERIES_BG, CHART_SERIES_TEXT, ChartTexturePattern, chartTextureStyle, formatChartNumber, type ChartSeriesIndex } from '@/components/Legend'
 import { cn } from '@/lib/utils'
 
 // Mirrors the Donut Chart component (Data Display page): how one total splits
@@ -27,13 +28,16 @@ export interface DonutChartProps extends HTMLAttributes<HTMLDivElement> {
   /** Figma's "Center label". */
   centerLabel?: boolean
   formatValue?: (value: number) => string
+  /** Give each part its series texture as well as its colour (print, greyscale, colour-blind use). */
+  texture?: boolean
 }
 
 const SIZE = 144
 const STROKE = 20
 const GAP = 2
 
-export function DonutChart({ parts, unit, centerLabel = true, formatValue = (v) => formatChartNumber(v), className, ...props }: DonutChartProps) {
+export function DonutChart({ parts, unit, centerLabel = true, formatValue = (v) => formatChartNumber(v), texture = false, className, ...props }: DonutChartProps) {
+  const uid = useId().replace(/[^a-zA-Z0-9_-]/g, '')
   const total = parts.reduce((s, p) => s + p.value, 0) || 1
   const r = (SIZE - STROKE) / 2
   const circumference = 2 * Math.PI * r
@@ -47,6 +51,13 @@ export function DonutChart({ parts, unit, centerLabel = true, formatValue = (v) 
     >
       <div className="relative shrink-0" style={{ width: SIZE, height: SIZE }}>
         <svg width={SIZE} height={SIZE} viewBox={`0 0 ${SIZE} ${SIZE}`} className="-rotate-90">
+          {texture && (
+            <defs>
+              {parts.map((p) => (
+                <ChartTexturePattern key={p.series} id={`${uid}-t${p.series}`} series={p.series} rotate={90} />
+              ))}
+            </defs>
+          )}
           {parts.map((p) => {
             const len = (p.value / total) * circumference
             const dash = Math.max(0, len - GAP)
@@ -58,7 +69,7 @@ export function DonutChart({ parts, unit, centerLabel = true, formatValue = (v) 
                 r={r}
                 fill="none"
                 strokeWidth={STROKE}
-                stroke="currentColor"
+                stroke={texture && p.series !== 1 ? `url(#${uid}-t${p.series})` : 'currentColor'}
                 className={CHART_SERIES_TEXT[p.series]}
                 strokeDasharray={`${dash} ${circumference - dash}`}
                 strokeDashoffset={-offset}
@@ -78,7 +89,7 @@ export function DonutChart({ parts, unit, centerLabel = true, formatValue = (v) 
       <ul className="flex flex-col gap-8px">
         {parts.map((p) => (
           <li key={p.series} className="grid grid-cols-[10px_minmax(0,1fr)_auto_48px] items-center gap-x-8px">
-            <span className={cn('size-10px rounded-sm', CHART_SERIES_BG[p.series])} />
+            <span className={cn('size-10px rounded-sm', CHART_SERIES_BG[p.series])} style={texture ? chartTextureStyle(p.series) : undefined} />
             <span className="truncate text-text-xs font-medium leading-5 text-text-secondary">{p.label}</span>
             <span className="text-right text-text-xs font-medium leading-5 tabular-nums text-text-primary">{formatValue(p.value)}</span>
             <span className="text-right text-text-xxs leading-4 tabular-nums text-text-secondary">

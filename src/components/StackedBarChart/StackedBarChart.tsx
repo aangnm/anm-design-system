@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from 'react'
-import { Legend, CHART_SERIES_BG, formatChartNumber, type ChartSeriesIndex } from '@/components/Legend'
+import { Legend, CHART_SERIES_BG, chartTextureStyle, formatChartNumber, type ChartSeriesIndex } from '@/components/Legend'
 import { cn } from '@/lib/utils'
 
 // Mirrors the Stacked Bar Chart component set (Data Display page): how a total
@@ -34,6 +34,8 @@ export interface StackedBarChartProps extends HTMLAttributes<HTMLDivElement> {
   /** Top of the absolute scale; defaults to the largest total rounded up. */
   max?: number
   formatValue?: (value: number) => string
+  /** Figma's Texture = Pattern: each series also gets its texture (print, greyscale, colour-blind use). */
+  texture?: boolean
 }
 
 const MAX_BAR_WIDTH = 36
@@ -53,6 +55,7 @@ export function StackedBarChart({
   height = 120,
   max,
   formatValue = (v) => formatChartNumber(v),
+  texture = false,
   className,
   ...props
 }: StackedBarChartProps) {
@@ -68,7 +71,7 @@ export function StackedBarChart({
       role="img"
       {...props}
     >
-      <Legend items={series.map((s) => ({ label: s.label, series: s.series }))} />
+      <Legend texture={texture} items={series.map((s) => ({ label: s.label, series: s.series }))} />
       <div className="flex gap-8px">
         <div className="flex w-32px flex-col items-end justify-between text-text-xxs leading-4 text-text-secondary" style={{ height: height + 16, paddingTop: showTotals && !percent ? 16 : 0 }}>
           {ticks.map((t) => (
@@ -93,7 +96,7 @@ export function StackedBarChart({
                         <div
                           key={s.series}
                           className={cn(CHART_SERIES_BG[s.series], isTop && 'rounded-t-xs')}
-                          style={{ flexGrow: v / total, flexBasis: 0 }}
+                          style={{ flexGrow: v / total, flexBasis: 0, ...(texture ? chartTextureStyle(s.series) : {}) }}
                         />
                       )
                     })}

@@ -27,9 +27,9 @@ const iconButtonVariants = cva(
         ghost: 'bg-transparent text-text-primary',
       },
       size: {
-        sm: 'size-32px [&>svg]:size-4',
-        md: 'size-36px [&>svg]:size-4',
-        lg: 'size-48px [&>svg]:size-5',
+        sm: 'size-control-sm [&>svg]:size-4',
+        md: 'size-control-md [&>svg]:size-4',
+        lg: 'size-control-lg [&>svg]:size-5',
       },
     },
     defaultVariants: {

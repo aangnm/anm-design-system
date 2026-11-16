@@ -20,3 +20,7 @@ type Story = StoryObj<typeof StackedBarChart>
 
 export const Absolute: Story = {}
 export const Percent: Story = { args: { type: 'percent' } }
+
+/** Texture = Pattern: each series also carries its texture, for print, greyscale and colour-blind readers. */
+export const TextureAbsolute: Story = { args: { texture: true } }
+export const TexturePercent: Story = { args: { type: 'percent', texture: true } }

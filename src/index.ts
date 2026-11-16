@@ -67,6 +67,7 @@ export * from './components/AreaChart'
 export * from './components/StackedBarChart'
 export * from './components/DonutChart'
 export * from './components/DetailedLineChart'
+export * from './components/SmallMultiples'
 
 export * from './components/MetricCard'
 export * from './components/ContentPanel'

@@ -53,10 +53,16 @@ Accumulated API gotchas, each found the hard way:
 
 **Always verify writes visually.** Two bugs this week were invisible to the returning script and only showed up in a screenshot.
 
+- **Pattern fills cannot be written** (`type: 'PATTERN'` fails validation). Chart textures are `IMAGE` fills with `scaleMode: 'TILE'`, made with `figma.createImage(figma.base64Decode(png))`; the Chart Texture set on Data Display holds the canonical tiles, so copy fills from it.
+- **Variant option order is stored separately from child order.** Reordering children does not reorder the instance panel. Rename each option to a temporary value in one call, then back in the next, in the order you want.
+- **Cross-collection aliases resolve in the layer's own mode for the target collection**, not the referencing collection's mode. That is why theme-specific primitives keep -dark / -light suffixes.
+- Run `scripts/figma-lint-variants.js` (read-only, paste as `use_figma` code) after adding or changing a component; extend its vocabulary deliberately.
+
 ## Conventions
 
 - Identifiers in English; user-facing copy in Spanish (es-EC).
 - Build from token classes only — no raw hex, no magic numbers. Text: prefer the role utilities (`text-body-default`, `text-title-large` …) over raw size classes; add new ones to the font-size group in `src/lib/utils.ts` or tailwind-merge will drop them.
+- Density is `data-density="compact"`; sized controls use `h-control-sm|md|lg` (Button LG `h-control-button-lg`) and table cells `py-table-cell-y`, never a fixed `h-36px`, so they follow it.
 - Focus is one utility: `focus-visible:focus-ring` (or `peer-focus-visible:focus-ring` on the visible box of a hidden-input control). Never `ring-*` or a border recolour for focus. Forced Focus states in stories need `focus-ring!` to beat a base `outline-none`.
 - Sample copy is generic fintech/analytics in es-EC (Cuenta 4021, Ventas, USD, Conversión). Never farming vocabulary.
 - Figma variant axes map to a real API: `State=Hover/Focus/Disabled` become CSS pseudo-classes, not props. `State=Loading` has no native equivalent, so it becomes a real prop.

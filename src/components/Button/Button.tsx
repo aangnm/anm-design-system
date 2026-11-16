@@ -37,9 +37,9 @@ const buttonVariants = cva(
         ghost: 'bg-transparent text-text-primary',
       },
       size: {
-        sm: 'gap-6px h-32px rounded-sm px-12px text-text-xs leading-5 [&_svg]:size-4',
-        md: 'gap-8px h-36px rounded-md px-16px text-text-sm leading-5 [&_svg]:size-4',
-        lg: 'gap-8px h-[52px] rounded-md px-24px text-text-lg leading-7 [&_svg]:size-5',
+        sm: 'gap-6px h-control-sm rounded-sm px-12px text-text-xs leading-5 [&_svg]:size-4',
+        md: 'gap-8px h-control-md rounded-md px-16px text-text-sm leading-5 [&_svg]:size-4',
+        lg: 'gap-8px h-control-button-lg rounded-md px-24px text-text-lg leading-7 [&_svg]:size-5',
       },
     },
     defaultVariants: {

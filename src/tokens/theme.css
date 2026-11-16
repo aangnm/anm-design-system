@@ -1,6 +1,6 @@
 /**
  * GENERATED FILE — do not edit by hand.
- * Source: tokens/figma-export.json (exported 2026-11-16T03:00:00.000Z)
+ * Source: tokens/figma-export.json (exported 2026-11-16T12:00:00.000Z)
  * Regenerate: node scripts/transform-tokens.mjs
  */
 
@@ -97,6 +97,12 @@
   --spacing-96px: 96px;
   --spacing-112px: 112px;
   --spacing-128px: 128px;
+
+  --spacing-control-sm: var(--control-height-sm);
+  --spacing-control-md: var(--control-height-md);
+  --spacing-control-lg: var(--control-height-lg);
+  --spacing-control-button-lg: var(--control-height-button-lg);
+  --spacing-table-cell-y: var(--table-cell-padding-y);
 
   --text-text-xxs: var(--font-size-text-xxs);
   --text-text-xs: var(--font-size-text-xs);

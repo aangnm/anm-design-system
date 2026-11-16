@@ -26,9 +26,9 @@ const fieldVariants = cva(
   {
     variants: {
       size: {
-        sm: 'min-h-32px rounded-sm px-8px py-[3px] text-text-xs leading-5',
-        md: 'min-h-36px rounded-md px-8px py-[5px] text-sm',
-        lg: 'min-h-48px rounded-md px-12px py-[11px] text-base',
+        sm: 'min-h-control-sm rounded-sm px-8px py-[3px] text-text-xs leading-5',
+        md: 'min-h-control-md rounded-md px-8px py-[5px] text-sm',
+        lg: 'min-h-control-lg rounded-md px-12px py-[11px] text-base',
       },
       error: {
         true: 'border-semantic-error focus-visible:border-semantic-error aria-expanded:border-semantic-error',

@@ -1,5 +1,6 @@
 import type { HTMLAttributes } from 'react'
 import { cn } from '@/lib/utils'
+import { chartTextureStyle } from './chartTexture'
 
 // Mirrors the Legend component (Data Display page): the series key for any
 // multi-series chart. Why (from Figma) — one swatch (chart/series-N) + label
@@ -63,14 +64,16 @@ export interface LegendItem {
 
 export interface LegendProps extends HTMLAttributes<HTMLDivElement> {
   items: LegendItem[]
+  /** Show each series' texture in its swatch, to match a textured chart. */
+  texture?: boolean
 }
 
-export function Legend({ items, className, ...props }: LegendProps) {
+export function Legend({ items, texture, className, ...props }: LegendProps) {
   return (
     <div className={cn('flex items-center gap-16px', className)} {...props}>
       {items.map((item) => (
         <div key={item.series} className="flex items-center gap-6px">
-          <div className={cn('size-10px shrink-0 rounded-sm', CHART_SERIES_BG[item.series])} />
+          <div className={cn('size-10px shrink-0 rounded-sm', CHART_SERIES_BG[item.series])} style={texture ? chartTextureStyle(item.series) : undefined} />
           <p className="whitespace-nowrap text-text-xs font-medium leading-5 text-text-secondary">{item.label}</p>
         </div>
       ))}

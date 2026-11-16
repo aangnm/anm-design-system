@@ -4,7 +4,7 @@ Tokens and React components generated from [anm Design System](https://www.figma
 
 ## Status
 
-Token pipeline is live (color, spacing, radius, type, motion, breakpoints, elevation, opacity, z-index, focus). Every component in the Figma file has a code counterpart (Sidebar / Alt and Navbar / Mobile through another component, on purpose), in Storybook for both themes. See [Roadmap](#roadmap).
+Token pipeline is live (color, spacing, radius, type, motion, breakpoints, elevation, opacity, z-index, focus, density). Every component in the Figma file has a code counterpart (Sidebar / Alt and Navbar / Mobile through another component, on purpose), in Storybook for both themes. See [Roadmap](#roadmap).
 
 ## Stack
 
@@ -39,7 +39,7 @@ npm run tokens:transform
 
 Pure Node, no Figma access needed — reads `tokens/figma-export.json`, writes:
 
-- `src/tokens/tokens.css` — raw CSS custom properties. Colors are theme-aware (`:root` = dark, `[data-theme="light"]` overrides); everything else (radius, spacing, motion, breakpoints) is a single constant.
+- `src/tokens/tokens.css` — raw CSS custom properties. Colors are theme-aware (`:root` = dark, `[data-theme="light"]` overrides). Density is too, on its own axis (`:root` = comfortable, `[data-density="compact"]` overrides control heights and table padding). Everything else (radius, spacing, motion, breakpoints) is a single constant.
 - `src/tokens/theme.css` — the Tailwind v4 `@theme` block that turns those tokens into real utility classes (`bg-surface-page`, `rounded-md`, `p-16`, `text-sm`, …).
 - `src/tokens/index.ts` — the same tokens as typed TS constants (`color.text.primary`, `radius.md`, …), for the cases a Tailwind class isn't the right tool (canvas/chart colors, inline styles).
 
@@ -60,6 +60,8 @@ Figma can't reliably generate production React from a component; component code 
 Instead, each component page in Figma carries a **Code handoff** spec (a Figma Spec block beside the frames): the React export and source file for every component, how each Figma property maps to a prop, the page's build rules, and the components that have no code yet. When a component's API changes, update its page's spec in the same change.
 
 The history of the Figma file itself is in [`docs/figma-changelog.md`](docs/figma-changelog.md); add an entry there whenever a Figma change ships.
+
+**Variant-name lint.** [`scripts/figma-lint-variants.js`](scripts/figma-lint-variants.js) is a read-only `use_figma` script that checks every component property name and value in the file against the agreed vocabulary (variant axes and options, Size order, numeric order, boolean and text naming). Run it from a Claude Code session with Figma access before a changelog entry that adds or changes a component; an empty `findings` array is a pass.
 
 ## Repo structure
 
@@ -96,18 +98,18 @@ This section used to duplicate that list and drifted badly out of date, so it no
 
 ### Ported to code
 
-- [x] Token pipeline (color, spacing, radius, type, motion, breakpoints, elevation, opacity, z-index)
+- [x] Token pipeline (color, spacing, radius, type, motion, breakpoints, elevation, opacity, z-index, density)
 - [x] Core: Button, Input, Select, Search, Checkbox, Radio, Switch, Tag, Badge, Avatar, Tooltip, Form Field, Divider, Textarea, Segmented Control, Skeleton, Spinner, Icon Button, Slider, Stepper, Multi-select, Date Picker, File Upload, Link, Combobox, Accordion, Radio Group, Rating
 - [x] Core, touch input: Choice Tile, List Row, Counter, Count Row, PIN Field
 - [x] Navigation: Tabs, Breadcrumb, Pagination, Menu Item, Menu, Dropdown Menu, Navbar, Sidebar, Date Indicator, Topbar, App Bar, Action Bar
-- [x] Data Display: Card, Stat, List, Table, Bar Chart, Sparkline (each with Empty/Loading/Error states), Legend, Chart Tooltip, Line Chart, Area Chart, Stacked Bar Chart, Donut Chart, Detailed Line Chart
+- [x] Data Display: Card, Stat, List, Table, Bar Chart, Sparkline (each with Empty/Loading/Error states), Legend, Chart Tooltip, Line Chart, Area Chart, Stacked Bar Chart, Donut Chart, Detailed Line Chart, Small Multiples, chart textures (`texture` on Stacked Bar, Donut and Legend)
 - [x] Feedback & Overlays: Banner, Progress, Toast, Popover, Modal, Drawer, Bottom Sheet
 - [x] Product Patterns: Metric Card, Content Panel, Page Header, Benchmark Table, Table Toolbar, Empty State, Timeline
 - [x] Templates (Storybook only, not exported): Dashboard, Settings, Records (List + Detail), Dashboard · Top navbar
 
 ### Designed in Figma, not yet in code
 
-Nothing new. As of Figma v0.93 every component has a code counterpart, mapped in each page's Code handoff spec in Figma. The two below are covered by another component on purpose.
+Nothing. As of Figma v0.96 every component has a code counterpart, mapped in each page's Code handoff spec in Figma. The two below are covered by another component on purpose.
 
 ### Not ported, on purpose
 
