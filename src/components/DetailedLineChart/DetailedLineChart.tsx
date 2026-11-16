@@ -50,7 +50,7 @@ export function DetailedLineChart({
   categories,
   axisLabels,
   forecastFrom,
-  forecastLabel = 'Proyección',
+  forecastLabel = 'Forecast',
   target,
   band,
   events = [],
@@ -116,7 +116,7 @@ export function DetailedLineChart({
               setHover(locate(e.clientX, e.currentTarget.getBoundingClientRect()))
             }}
             role="img"
-            aria-label={describeChart('Gráfico de líneas detallado', series, categories, formatValue)}
+            aria-label={describeChart('Detailed line chart', series, categories, formatValue)}
           >
             <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} fill="none" className="overflow-visible">
               {ticks.map((t) => (

@@ -20,9 +20,9 @@ type Story = StoryObj<typeof Legend>
 export const Playground: Story = {
   args: {
     items: [
-      { label: 'Conversión', series: 1 },
-      { label: 'Retención', series: 2 },
-      { label: 'Abandono', series: 3 },
+      { label: 'Conversion', series: 1 },
+      { label: 'Retention', series: 2 },
+      { label: 'Churn', series: 3 },
     ],
   },
 }

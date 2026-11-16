@@ -78,7 +78,7 @@ export function Stepper({
         type="button"
         disabled={!canDecrement}
         onClick={() => onChange(Math.max(min, value - step))}
-        aria-label="Disminuir"
+        aria-label="Decrease"
         className={cell}
       >
         <Minus className={iconSize} />
@@ -90,7 +90,7 @@ export function Stepper({
         type="button"
         disabled={!canIncrement}
         onClick={() => onChange(Math.min(max, value + step))}
-        aria-label="Aumentar"
+        aria-label="Increase"
         className={cell}
       >
         <Plus className={iconSize} />

@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils'
 
 // Mirrors the Drawer component (Feedback & Overlays page): cloned from Modal so
 // header/footer patterns stay identical (a drawer is a modal entering from the
-// side, not a different family). Figma's body shows a fixed "Cuenta/Categoría/
+// side, not a different family). Figma's body shows a fixed "Account/Category/
 // Responsable/Notas" detail list — illustrative sample content for a task-detail
 // use case, not the contract, so it's exposed as a generic label/value `items`
 // list (falls back to arbitrary `children` for other bodies). The footer is
@@ -40,8 +40,8 @@ export function Drawer({
   title,
   items,
   children,
-  cancelLabel = 'Cancelar',
-  confirmLabel = 'Guardar cambios',
+  cancelLabel = 'Cancel',
+  confirmLabel = 'Save changes',
   onCancel,
   onConfirm,
   onClose,
@@ -76,7 +76,7 @@ export function Drawer({
           type="button"
           onClick={onClose}
           className="relative rounded-xs text-icon-muted outline-none transition-colors after:absolute after:left-1/2 after:top-1/2 after:size-24px after:-translate-x-1/2 after:-translate-y-1/2 hover:text-text-primary focus-visible:focus-ring"
-          aria-label="Cerrar"
+          aria-label="Close"
         >
           <X className="size-5" />
         </button>

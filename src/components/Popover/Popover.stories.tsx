@@ -6,8 +6,8 @@ const meta: Meta<typeof Popover> = {
   component: Popover,
   tags: ['autodocs'],
   args: {
-    title: 'Título del popover',
-    children: 'Contenido con información contextual y acciones opcionales.',
+    title: 'Popover title',
+    children: 'Content with contextual information and optional actions.',
   },
   decorators: [
     (Story) => (

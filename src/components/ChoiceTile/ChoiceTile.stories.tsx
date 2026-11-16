@@ -14,10 +14,10 @@ type Story = StoryObj<typeof ChoiceTile>
 
 export const Playground: Story = {
   render: () => {
-    const [picked, setPicked] = useState('Mensual')
+    const [picked, setPicked] = useState('Monthly')
     return (
       <div className="grid w-[360px] grid-cols-2 gap-8px">
-        {['Diario', 'Semanal', 'Mensual', 'Anual'].map((p) => (
+        {['Diario', 'Semanal', 'Monthly', 'Yearly'].map((p) => (
           <ChoiceTile key={p} label={p} state={picked === p ? 'selected' : 'default'} onClick={() => setPicked(p)} />
         ))}
       </div>
@@ -48,7 +48,7 @@ export const SizeAlignByState: Story = {
                 key={s.label}
                 size={size}
                 align={align}
-                label="Opción"
+                label="Option"
                 icon={<Wallet />}
                 {...{ ...s.props, focus: undefined }}
                 className={'w-[160px] shrink-0' + ('focus' in s.props ? ' focus-ring!' : '')}

@@ -10,7 +10,7 @@ import { Divider } from '@/components/Divider'
 // Mirrors the Dropdown Menu component (Navigation page), which has two
 // static states — Closed (trigger only) and Open (trigger + Menu panel).
 // Code needs the behaviour those two frames imply, so this owns open state
-// plus the two dismissals a real menu can't ship without: click-outside
+// plus the two dismissals a real menu can’t ship without: click-outside
 // and Escape.
 //
 // Searchable (Figma State=Searchable) is the Open menu with a Search field on
@@ -23,7 +23,7 @@ import { Divider } from '@/components/Divider'
 // Positioning is a plain absolute panel below the trigger — no viewport
 // collision handling. That's a deliberate limit, not an oversight: proper
 // flipping/shifting is a Floating UI concern, and adding the dependency
-// isn't justified until a screen actually needs it.
+// isn’t justified until a screen actually needs it.
 
 export interface DropdownMenuProps {
   /** Trigger label. Ignored when `trigger` is provided. */
@@ -50,13 +50,13 @@ function textOf(node: ReactNode): string {
 }
 
 export function DropdownMenu({
-  label = 'Opciones',
+  label = 'Options',
   trigger,
   children,
   className,
   defaultOpen = false,
   searchable = false,
-  searchPlaceholder = 'Buscar…',
+  searchPlaceholder = 'Search…',
   onClear,
 }: DropdownMenuProps) {
   const [open, setOpen] = useState(defaultOpen)

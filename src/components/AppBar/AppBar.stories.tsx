@@ -15,7 +15,7 @@ type Story = StoryObj<typeof AppBar>
 // Figma: App Bar / Mobile. Show date = the center slot.
 export const Playground: Story = {
   render: () => (
-    <AppBar center={<DateIndicator date="Mié, 27 may 2026" tag="SEM 22" />} trailing={<Avatar initials="LR" size="md" />} />
+    <AppBar center={<DateIndicator date="Wed, May 27, 2026" tag="WK 22" />} trailing={<Avatar initials="LR" size="md" />} />
   ),
 }
 export const WithoutDate: Story = {

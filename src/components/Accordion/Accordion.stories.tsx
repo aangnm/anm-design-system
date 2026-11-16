@@ -6,13 +6,13 @@ const meta: Meta<typeof AccordionItem> = {
   title: 'Core/Accordion',
   component: AccordionItem,
   tags: ['autodocs'],
-  args: { title: 'Detalles de la cuenta' },
+  args: { title: 'Account details' },
 }
 export default meta
 
 type Story = StoryObj<typeof AccordionItem>
 
-const body = 'Cuenta 4021 · Ahorros · Moneda: USD · Último movimiento: Semana 21.'
+const body = 'Account 4021 · Savings · Currency: USD · Last activity: Week 21.'
 
 export const Playground: Story = {
   render: (args) => (
@@ -29,10 +29,10 @@ export const States: Story = {
   render: () => (
     <div className="flex flex-wrap gap-32px bg-surface-page p-24px">
       <div className="w-[360px]">
-        <AccordionItem title="Detalles de la cuenta">{body}</AccordionItem>
+        <AccordionItem title="Account details">{body}</AccordionItem>
       </div>
       <div className="w-[360px]">
-        <AccordionItem title="Detalles de la cuenta" defaultOpen>
+        <AccordionItem title="Account details" defaultOpen>
           {body}
         </AccordionItem>
       </div>
@@ -44,11 +44,11 @@ export const Stacked: Story = {
   render: () => (
     <div className="w-[360px] bg-surface-page p-24px">
       <Accordion>
-        <AccordionItem title="Detalles de la cuenta" defaultOpen>
+        <AccordionItem title="Account details" defaultOpen>
           {body}
         </AccordionItem>
-        <AccordionItem title="Comisiones">Tarifa plana del 1,2 % por transacción.</AccordionItem>
-        <AccordionItem title="Conciliación">Automática cada noche, con revisión manual los viernes.</AccordionItem>
+        <AccordionItem title="Commissions">Flat fee of 1.2% per transaction.</AccordionItem>
+        <AccordionItem title="Reconciliation">Automatic every night, with a manual review on Fridays.</AccordionItem>
       </Accordion>
     </div>
   ),
@@ -59,7 +59,7 @@ export const SizeLG: Story = {
   render: () => (
     <div className="w-[358px]">
       <Accordion>
-        <AccordionItem size="lg" title="Cuentas" icon={<Wallet />} count={3} defaultOpen>
+        <AccordionItem size="lg" title="Accounts" icon={<Wallet />} count={3} defaultOpen>
           {body}
         </AccordionItem>
         <AccordionItem size="lg" title="Tarjetas" icon={<Wallet />} count={1}>

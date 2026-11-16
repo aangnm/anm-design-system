@@ -5,7 +5,7 @@ const meta: Meta<typeof Tooltip> = {
   title: 'Core/Tooltip',
   component: Tooltip,
   tags: ['autodocs'],
-  args: { children: 'Información' },
+  args: { children: 'Information' },
 }
 export default meta
 

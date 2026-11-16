@@ -17,7 +17,7 @@ export interface FileUploadProps extends Omit<InputHTMLAttributes<HTMLInputEleme
 }
 
 export function FileUpload({
-  hint = 'PNG · JPG · XLSX — hasta 10 MB',
+  hint = 'PNG · JPG · XLSX — up to 10 MB',
   onFilesSelected,
   disabled,
   className,

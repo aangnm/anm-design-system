@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils'
 // grouping related content, with State=Default/Empty/Loading/Error. Default
 // renders arbitrary children (compose with CardTitle/CardDescription for the
 // canonical title+body); the other three are built-in data states so callers
-// don't reimplement the same skeleton/empty/error treatment per usage.
+// don’t reimplement the same skeleton/empty/error treatment per usage.
 
 export type CardState = 'default' | 'empty' | 'loading' | 'error'
 
@@ -29,8 +29,8 @@ const statePad = 'min-h-[108px]'
 
 export function Card({
   state = 'default',
-  emptyMessage = 'Sin datos para mostrar.',
-  errorMessage = 'Error al cargar los datos.',
+  emptyMessage = 'No data to show.',
+  errorMessage = 'Couldn’t load the data.',
   className,
   children,
   ...props

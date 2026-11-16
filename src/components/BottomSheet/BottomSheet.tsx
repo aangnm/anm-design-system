@@ -36,8 +36,8 @@ export function BottomSheet({
   context,
   showHandle = true,
   children,
-  cancelLabel = 'Cancelar',
-  confirmLabel = 'Guardar',
+  cancelLabel = 'Cancel',
+  confirmLabel = 'Save',
   onCancel,
   onConfirm,
   onClose,
@@ -80,7 +80,7 @@ export function BottomSheet({
         <button
           type="button"
           onClick={onClose}
-          aria-label="Cerrar"
+          aria-label="Close"
           className="-mr-12px inline-flex size-48px items-center justify-center rounded-md text-icon-muted outline-none transition-colors hover:text-text-primary focus-visible:focus-ring"
         >
           <X className="size-5" aria-hidden />

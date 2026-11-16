@@ -23,16 +23,16 @@ export default meta
 type Story = StoryObj<typeof TableToolbar>
 
 const actions = {
-  secondaryAction: <IconButton variant="secondary" icon={<Download />} aria-label="Exportar" />,
-  primaryAction: <Button leadingIcon={<Plus />}>Añadir cuenta</Button>,
+  secondaryAction: <IconButton variant="secondary" icon={<Download />} aria-label="Export" />,
+  primaryAction: <Button leadingIcon={<Plus />}>Add account</Button>,
 }
 
 // Mirrors the Figma component: search, two active chips (Ventas, Moderado), export, add.
 export const Playground: Story = {
   args: {
     filters: [
-      { id: 'ventas', label: 'Ventas' },
-      { id: 'moderado', label: 'Moderado' },
+      { id: 'sales', label: 'Sales' },
+      { id: 'moderado', label: 'Moderate' },
     ],
     ...actions,
   },
@@ -46,8 +46,8 @@ export const NoFilters: Story = {
 export const AboveTable: Story = {
   render: () => {
     const [filters, setFilters] = useState([
-      { id: 'ventas', label: 'Ventas' },
-      { id: 'moderado', label: 'Moderado' },
+      { id: 'sales', label: 'Sales' },
+      { id: 'moderado', label: 'Moderate' },
     ])
     return (
       <div className="flex flex-col gap-12px">
@@ -58,13 +58,13 @@ export const AboveTable: Story = {
         />
         <Table
           columns={[
-            { key: 'cuenta', header: 'Cuenta', width: 120 },
-            { key: 'categoria', header: 'Categoría' },
-            { key: 'data', header: 'Monto', width: 120 },
+            { key: 'account', header: 'Account', width: 120 },
+            { key: 'categoria', header: 'Category' },
+            { key: 'data', header: 'Amount', width: 120 },
           ]}
           rows={[
-            { cuenta: 'Cuenta 4021', categoria: 'Ventas', data: '$ 250' },
-            { cuenta: 'Cuenta 4035', categoria: 'Ventas', data: '$ 340' },
+            { cuenta: 'Account 4021', categoria: 'Sales', data: '$250' },
+            { cuenta: 'Account 4035', categoria: 'Sales', data: '$340' },
           ]}
         />
       </div>

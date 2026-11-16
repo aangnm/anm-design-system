@@ -47,7 +47,7 @@ export function DonutChart({ parts, unit, centerLabel = true, formatValue = (v) 
     <div
       className={cn('flex w-fit items-center gap-24px rounded-lg border border-border-subtle bg-surface-container p-16px', className)}
       role="img"
-      aria-label={`${describeChart('Gráfico de anillo', [{ label: `Total ${formatValue(total)}${unit ? ` ${unit}` : ''}`, data: parts.map((p) => p.value) }], parts.map((p) => p.label), formatValue)}`}
+      aria-label={`${describeChart('Donut chart', [{ label: `Total ${formatValue(total)}${unit ? ` ${unit}` : ''}`, data: parts.map((p) => p.value) }], parts.map((p) => p.label), formatValue)}`}
       {...props}
     >
       <div className="relative shrink-0" style={{ width: SIZE, height: SIZE }}>
@@ -94,7 +94,7 @@ export function DonutChart({ parts, unit, centerLabel = true, formatValue = (v) 
             <span className="truncate text-text-xs font-medium leading-5 text-text-secondary">{p.label}</span>
             <span className="text-right text-text-xs font-medium leading-5 tabular-nums text-text-primary">{formatValue(p.value)}</span>
             <span className="text-right text-text-xxs leading-4 tabular-nums text-text-secondary">
-              {formatChartNumber(Math.round((p.value / total) * 1000) / 10, 1)} %
+              {formatChartNumber(Math.round((p.value / total) * 1000) / 10, 1)}%
             </span>
           </li>
         ))}

@@ -18,7 +18,7 @@ import { CHART_SERIES_FILL, CHART_SERIES_TEXT, formatChartNumber, type ChartSeri
 export interface SmallMultiplesPanel {
   label: string
   data: number[]
-  /** Headline value for the panel, already formatted (e.g. "$ 12.400"). */
+  /** Headline value for the panel, already formatted (e.g. "$12,400"). */
   value?: string
 }
 
@@ -119,8 +119,8 @@ export function SmallMultiples({
       </div>
       <p className="m-0 border-t border-border-subtle pt-16px text-label-default text-text-secondary">
         {independentScales
-          ? 'Cada panel usa su propia escala; compare formas, no alturas.'
-          : `Escala compartida: ${formatValue(sharedMin)} – ${formatValue(sharedMax)}${unit ? ` ${unit}` : ''}`}
+          ? 'Each panel uses its own scale; compare shapes, not heights.'
+          : `Shared scale: ${formatValue(sharedMin)} – ${formatValue(sharedMax)}${unit ? ` ${unit}` : ''}`}
       </p>
     </div>
   )

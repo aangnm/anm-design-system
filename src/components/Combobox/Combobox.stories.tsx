@@ -2,10 +2,10 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Combobox } from './Combobox'
 
 const options = [
-  { value: '07', label: 'Cuenta 4021' },
-  { value: '12', label: 'Cuenta 4035' },
-  { value: '15n', label: 'Cuenta 4102' },
-  { value: '21', label: 'Cuenta 4130' },
+  { value: '07', label: 'Account 4021' },
+  { value: '12', label: 'Account 4035' },
+  { value: '15n', label: 'Account 4102' },
+  { value: '21', label: 'Account 4130' },
 ]
 
 const meta: Meta<typeof Combobox> = {

@@ -63,13 +63,13 @@ export function StackedBarChart({
   const percent = type === 'percent'
   const top = percent ? 100 : max ?? niceMax(Math.max(...totals))
   const ticks = percent ? [100, 50, 0] : [top, (top * 2) / 3, top / 3, 0].map((t) => Math.round(t))
-  const fmtTick = (t: number) => (percent ? `${t} %` : formatValue(t))
+  const fmtTick = (t: number) => (percent ? `${t}%` : formatValue(t))
 
   return (
     <div
       className={cn('flex w-fit flex-col gap-14px rounded-lg border border-border-subtle bg-surface-container p-16px', className)}
       role="img"
-      aria-label={describeChart(percent ? 'Gráfico de barras apiladas, en porcentaje' : 'Gráfico de barras apiladas', series, categories, formatValue)}
+      aria-label={describeChart(percent ? 'Stacked bar chart, percent' : 'Stacked bar chart', series, categories, formatValue)}
       {...props}
     >
       <Legend texture={texture} items={series.map((s) => ({ label: s.label, series: s.series }))} />

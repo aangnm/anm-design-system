@@ -29,13 +29,13 @@ export function Pagination({ page, pageCount, onPageChange, className }: Paginat
   const pages = Array.from({ length: pageCount }, (_, i) => i + 1)
 
   return (
-    <nav aria-label="Paginación" className={cn('flex items-center gap-4px', className)}>
+    <nav aria-label="Pagination" className={cn('flex items-center gap-4px', className)}>
       <button
         type="button"
         className={cn(itemClass, 'text-text-secondary hover:text-text-primary')}
         disabled={page <= 1}
         onClick={() => onPageChange?.(page - 1)}
-        aria-label="Página anterior"
+        aria-label="Previous page"
       >
         <ChevronLeft className="size-4" />
       </button>
@@ -65,7 +65,7 @@ export function Pagination({ page, pageCount, onPageChange, className }: Paginat
         className={cn(itemClass, 'text-text-secondary hover:text-text-primary')}
         disabled={page >= pageCount}
         onClick={() => onPageChange?.(page + 1)}
-        aria-label="Página siguiente"
+        aria-label="Next page"
       >
         <ChevronRight className="size-4" />
       </button>

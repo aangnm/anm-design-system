@@ -21,7 +21,7 @@ import { Table } from '@/components/Table'
 import { Tag } from '@/components/Tag'
 
 // Reference layouts from the Figma Templates page: four pages assembled only
-// from library components, with the same Spanish (es-EC) sample copy and the
+// from library components, with the same English sample copy and the
 // fintech data story (accounts, revenue categories, USD). This is a story file only — it is not exported from the
 // package; it exists so a page-level composition is checked in both themes.
 // The `-m-8` on each root cancels the global story decorator's `p-8`, so the
@@ -36,13 +36,13 @@ export default meta
 
 type Story = StoryObj
 
-type NavKey = 'resumen' | 'transacciones' | 'reportes' | 'clientes' | 'configuracion'
+type NavKey = 'overview' | 'transactions' | 'reports' | 'clients' | 'settings'
 
 function AppSidebar({ active }: { active: NavKey }) {
   return (
     <Sidebar
       className="h-auto"
-      brand={<SidebarBrand name="Espacio de trabajo" />}
+      brand={<SidebarBrand name="Workspace" />}
       footer={
         <>
           <div className="flex items-center gap-10px">
@@ -56,20 +56,20 @@ function AppSidebar({ active }: { active: NavKey }) {
         </>
       }
     >
-      <SidebarItem icon={<LayoutDashboard />} active={active === 'resumen'}>
+      <SidebarItem icon={<LayoutDashboard />} active={active === 'overview'}>
         Resumen
       </SidebarItem>
-      <SidebarItem icon={<ArrowLeftRight />} active={active === 'transacciones'}>
+      <SidebarItem icon={<ArrowLeftRight />} active={active === 'transactions'}>
         Transacciones
       </SidebarItem>
-      <SidebarItem icon={<ChartColumn />} active={active === 'reportes'}>
+      <SidebarItem icon={<ChartColumn />} active={active === 'reports'}>
         Reportes
       </SidebarItem>
-      <SidebarItem icon={<Users />} active={active === 'clientes'}>
+      <SidebarItem icon={<Users />} active={active === 'clients'}>
         Clientes
       </SidebarItem>
-      <SidebarItem icon={<Settings />} active={active === 'configuracion'}>
-        Configuración
+      <SidebarItem icon={<Settings />} active={active === 'settings'}>
+        Settings
       </SidebarItem>
     </Sidebar>
   )
@@ -84,11 +84,11 @@ function WithSidebar({ active, children }: { active: NavKey; children: ReactNode
   )
 }
 
-const bellButton = <IconButton variant="secondary" icon={<Bell />} aria-label="Notificaciones" />
-const newRecord = <Button variant="primary">Nuevo registro</Button>
+const bellButton = <IconButton variant="secondary" icon={<Bell />} aria-label="Notifications" />
+const newRecord = <Button variant="primary">New record</Button>
 
 function crumbs(page: string) {
-  return <Breadcrumb items={[{ label: 'Inicio', href: '#' }, { label: 'Cartera principal', href: '#' }, { label: page }]} />
+  return <Breadcrumb items={[{ label: 'Inicio', href: '#' }, { label: 'Main portfolio', href: '#' }, { label: page }]} />
 }
 
 // A ContentPanel hosts a List borderless: strip the nested surface's own edge so
@@ -105,33 +105,33 @@ const productionData = [
 ]
 
 const tableColumns = [
-  { key: 'cuenta', header: 'Cuenta', width: 70 },
-  { key: 'categoria', header: 'Categoría' },
-  { key: 'estado', header: 'Estado', width: 120 },
-  { key: 'monto', header: 'Monto', width: 90 },
-  { key: 'moneda', header: 'Moneda', width: 90 },
+  { key: 'account', header: 'Account', width: 70 },
+  { key: 'categoria', header: 'Category' },
+  { key: 'status', header: 'Status', width: 120 },
+  { key: 'amount', header: 'Amount', width: 90 },
+  { key: 'currency', header: 'Currency', width: 90 },
 ]
 
 const tableRows = [
-  { cuenta: '4021', categoria: 'Ventas', estado: <Tag color="success">Activa</Tag>, monto: '250', moneda: 'USD' },
-  { cuenta: '4035', categoria: 'Suscripciones', estado: <Tag color="warning">Pendiente</Tag>, monto: '—', moneda: 'USD' },
-  { cuenta: '4102', categoria: 'Reembolsos', estado: <Tag color="success">Activa</Tag>, monto: '98', moneda: 'EUR' },
-  { cuenta: '4118', categoria: 'Comisiones', estado: <Tag color="success">Activa</Tag>, monto: '76', moneda: 'USD' },
+  { cuenta: '4021', categoria: 'Sales', estado: <Tag color="success">Active</Tag>, monto: '250', moneda: 'USD' },
+  { cuenta: '4035', categoria: 'Subscriptions', estado: <Tag color="warning">Pending</Tag>, monto: '—', moneda: 'USD' },
+  { cuenta: '4102', categoria: 'Refunds', estado: <Tag color="success">Active</Tag>, monto: '98', moneda: 'EUR' },
+  { cuenta: '4118', categoria: 'Commissions', estado: <Tag color="success">Active</Tag>, monto: '76', moneda: 'USD' },
 ]
 
 function DashboardBody() {
   return (
     <>
       <div className="grid grid-cols-3 gap-16px">
-        <Stat label="Ingresos totales" value="$ 128.450" delta="12,5 %" trend="up" deltaCaption="vs. mes anterior" />
-        <Stat label="Transacciones del mes" value="342" delta="8,2 %" trend="up" deltaCaption="vs. mes anterior" />
-        <Stat label="Tasa de aprobación" value="87 %" delta="1,4 %" trend="down" deltaCaption="vs. mes anterior" />
+        <Stat label="Total revenue" value="$128,450" delta="12.5%" trend="up" deltaCaption="vs. last month" />
+        <Stat label="Transactions this month" value="342" delta="8.2%" trend="up" deltaCaption="vs. last month" />
+        <Stat label="Approval rate" value="87%" delta="1.4%" trend="down" deltaCaption="vs. last month" />
       </div>
       <div className="grid grid-cols-[368px_minmax(0,1fr)] items-start gap-16px">
-        <ContentPanel title="Ingresos semanales (miles USD)" className="w-full">
-          <BarChart data={productionData} max={300} className="w-full" aria-label="Ingresos semanales en miles de USD" />
+        <ContentPanel title="Weekly revenue (USD thousands)" className="w-full">
+          <BarChart data={productionData} max={300} className="w-full" aria-label="Weekly revenue in USD thousands" />
         </ContentPanel>
-        <ContentPanel title="Transacciones recientes" className="w-full">
+        <ContentPanel title="Recent transactions" className="w-full">
           <Table columns={tableColumns} rows={tableRows} bordered={false} />
         </ContentPanel>
       </div>
@@ -141,9 +141,9 @@ function DashboardBody() {
 
 export const Dashboard: Story = {
   render: () => (
-    <WithSidebar active="resumen">
-      {crumbs('Resumen')}
-      <PageHeader title="Resumen" subtitle="Cartera principal · Semana 22" actions={<>{bellButton}{newRecord}</>} />
+    <WithSidebar active="overview">
+      {crumbs('Overview')}
+      <PageHeader title="Overview" subtitle="Main portfolio · Week 22" actions={<>{bellButton}{newRecord}</>} />
       <DashboardBody />
     </WithSidebar>
   ),
@@ -169,14 +169,14 @@ function PreferenceRow({ label, defaultChecked }: { label: string; defaultChecke
 export const Settings_: Story = {
   name: 'Settings',
   render: () => (
-    <WithSidebar active="configuracion">
-      {crumbs('Configuración')}
-      <PageHeader title="Configuración" subtitle="Perfil y preferencias de la cuenta" />
+    <WithSidebar active="settings">
+      {crumbs('Settings')}
+      <PageHeader title="Settings" subtitle="Account profile and preferences" />
       <div className="mx-auto flex w-[640px] flex-col gap-24px pt-48px">
-        <SettingsSection title="Perfil">
+        <SettingsSection title="Profile">
           <div className="flex w-full flex-col gap-16px">
-            <FormField label="Nombre completo" placeholder="Laura Romero" helperText="Así aparecerás en los registros." />
-            <FormField label="Correo electrónico" placeholder="nombre@empresa.com" helperText="Aquí recibirás las alertas." />
+            <FormField label="Full name" placeholder="Laura Romero" helperText="This is how you appear in records." />
+            <FormField label="Email" placeholder="name@company.com" helperText="Alerts are sent here." />
             <div className="flex flex-col gap-6px">
               <label htmlFor="rol" className="text-text-xxs font-medium leading-4 text-text-primary">
                 Rol
@@ -196,12 +196,12 @@ export const Settings_: Story = {
           <div className="flex w-full flex-col">
             <PreferenceRow label="Notificaciones push" defaultChecked />
             <PreferenceRow label="Modo oscuro" defaultChecked />
-            <PreferenceRow label="Alertas por correo" />
+            <PreferenceRow label="Email alerts" />
           </div>
         </SettingsSection>
         <div className="flex justify-end gap-8px">
-          <Button variant="secondary">Cancelar</Button>
-          <Button variant="primary">Guardar cambios</Button>
+          <Button variant="secondary">Cancel</Button>
+          <Button variant="primary">Save changes</Button>
         </div>
       </div>
     </WithSidebar>
@@ -220,19 +220,19 @@ function DetailRow({ label, value }: { label: string; value: string }) {
 export const Records: Story = {
   name: 'Records (List + Detail)',
   render: () => (
-    <WithSidebar active="transacciones">
-      {crumbs('Transacciones')}
-      <PageHeader title="Transacciones" subtitle="Cartera principal · Semana 22" actions={<>{bellButton}{newRecord}</>} />
+    <WithSidebar active="transactions">
+      {crumbs('Transactions')}
+      <PageHeader title="Transactions" subtitle="Main portfolio · Week 22" actions={<>{bellButton}{newRecord}</>} />
       <div className="grid grid-cols-2 items-start gap-24px">
-        <ContentPanel title="Transacciones recientes" className="w-full">
+        <ContentPanel title="Recent transactions" className="w-full">
           <div className="flex w-full flex-col gap-12px">
-            <Search placeholder="Buscar…" aria-label="Buscar transacciones" />
+            <Search placeholder="Search…" aria-label="Search transactions" />
             <div className={borderless}>
               <List
                 items={[
-                  { title: 'Cuenta 4021', subtitle: 'Ventas · Sem 22', value: '$ 250', onSelect: () => {} },
-                  { title: 'Cuenta 4035', subtitle: 'Suscripciones · Sem 21', value: '—', onSelect: () => {} },
-                  { title: 'Cuenta 4102', subtitle: 'Reembolsos · Sem 22', value: '$ 98', onSelect: () => {} },
+                  { title: 'Account 4021', subtitle: 'Sales · Wk 22', value: '$250', onSelect: () => {} },
+                  { title: 'Account 4035', subtitle: 'Suscripciones · Wk 21', value: '—', onSelect: () => {} },
+                  { title: 'Account 4102', subtitle: 'Reembolsos · Wk 22', value: '$98', onSelect: () => {} },
                 ]}
               />
             </div>
@@ -240,22 +240,22 @@ export const Records: Story = {
         </ContentPanel>
         <div className="flex w-full flex-col gap-16px rounded-lg border border-border-subtle bg-surface-container p-16px">
           <div className="flex items-center gap-12px">
-            <p className="text-base font-semibold leading-6 text-text-primary">Cuenta 4021 · Ventas</p>
-            <Tag color="success">Activa</Tag>
+            <p className="text-base font-semibold leading-6 text-text-primary">Account 4021 · Sales</p>
+            <Tag color="success">Active</Tag>
             <Button variant="secondary" className="ml-auto">
               Editar
             </Button>
           </div>
           <Divider />
           <dl className="flex flex-col">
-            <DetailRow label="Fecha" value="27 may 2026" />
-            <DetailRow label="Responsable" value="Laura Romero" />
-            <DetailRow label="Monto" value="$ 250,00" />
-            <DetailRow label="Comisión" value="$ 3,00" />
+            <DetailRow label="Date" value="May 27 2026" />
+            <DetailRow label="Owner" value="Laura Romero" />
+            <DetailRow label="Amount" value="$250.00" />
+            <DetailRow label="Commission" value="$3.00" />
           </dl>
           <div className="flex justify-end gap-8px">
-            <Button variant="secondary">Cancelar</Button>
-            <Button variant="primary">Guardar cambios</Button>
+            <Button variant="secondary">Cancel</Button>
+            <Button variant="primary">Save changes</Button>
           </div>
         </div>
       </div>
@@ -271,23 +271,23 @@ export const DashboardTopNavbar: Story = {
     <div className="-m-8 flex min-h-[900px] flex-col bg-surface-page">
       <Navbar
         className="px-32px"
-        brand={<Breadcrumb items={[{ label: 'Inicio', href: '#' }, { label: 'Cartera principal', href: '#' }, { label: 'Resumen' }]} />}
+        brand={<Breadcrumb items={[{ label: 'Inicio', href: '#' }, { label: 'Main portfolio', href: '#' }, { label: 'Overview' }]} />}
         actions={
           <>
-            <button type="button" aria-label="Buscar" className={iconAction}>
+            <button type="button" aria-label="Search" className={iconAction}>
               <SearchIcon />
             </button>
-            <button type="button" aria-label="Notificaciones" className={iconAction}>
+            <button type="button" aria-label="Notifications" className={iconAction}>
               <Bell />
             </button>
           </>
         }
       >
-        <span className="text-sm font-medium text-text-primary">Miércoles, 27 may 2026</span>
-        <Tag>SEM 22</Tag>
+        <span className="text-sm font-medium text-text-primary">Wednesday, May 27, 2026</span>
+        <Tag>WK 22</Tag>
       </Navbar>
       <main className="flex flex-col gap-16px p-32px">
-        <PageHeader title="Resumen" subtitle="Cartera principal · Semana 22" actions={newRecord} />
+        <PageHeader title="Overview" subtitle="Main portfolio · Week 22" actions={newRecord} />
         <DashboardBody />
       </main>
     </div>

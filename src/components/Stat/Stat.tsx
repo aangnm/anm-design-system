@@ -41,7 +41,7 @@ export function Stat({
   trend: trendProp = 'up',
   deltaCaption,
   state = 'default',
-  emptyMessage = 'Sin datos',
+  emptyMessage = 'No data',
   errorMessage = 'Error al cargar',
   className,
   ...props

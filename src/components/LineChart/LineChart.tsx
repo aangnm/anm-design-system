@@ -5,11 +5,11 @@ import { Legend, describeChart, CHART_SERIES_TEXT, formatChartNumber, type Chart
 // Mirrors the Line Chart component (Data Display page): trend over time for
 // 1-8 series. Why (from Figma) — series colours are used in fixed order
 // (chart/series-1 upward) so the same series keeps its colour across every
-// chart in a product; the Conversión/Retención/Abandono sample data is illustrative only.
+// chart in a product; the Conversion/Retention/Churn sample data is illustrative only.
 // The axis is embedded chrome, not a standalone component. 2px lines, end
 // markers with a 2px surface ring, recessive gridlines (border/subtle, the
 // baseline border/subtle), legend always present, axis text on the 11px floor
-// with decimal commas. Container: surface/container + subtle border. Data-driven,
+// with en-US numbers. Container: surface/container + subtle border. Data-driven,
 // same "static vector in Figma, real polyline in code" call as Sparkline/Bar
 // Chart. Not interactive (a labelled image).
 
@@ -72,7 +72,7 @@ export function LineChart({
           <p>{formatValue(min)}</p>
         </div>
         <div className="flex flex-col items-start gap-6px">
-          <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} fill="none" role="img" aria-label={ariaLabel ?? describeChart('Gráfico de líneas', series, categories)} className="overflow-visible">
+          <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} fill="none" role="img" aria-label={ariaLabel ?? describeChart('Line chart', series, categories)} className="overflow-visible">
             <line x1={0} y1={pad + 0.5} x2={width} y2={pad + 0.5} stroke="var(--border-subtle)" strokeWidth={1} />
             <line x1={0} y1={height / 2} x2={width} y2={height / 2} stroke="var(--border-subtle)" strokeWidth={1} />
             <line x1={0} y1={height - pad + 0.5} x2={width} y2={height - pad + 0.5} stroke="var(--border-subtle)" strokeWidth={1} />

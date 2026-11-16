@@ -38,7 +38,7 @@ export const States: Story = {
 export const InRunningText: Story = {
   render: () => (
     <p className="max-w-[420px] bg-surface-page p-24px text-sm text-text-primary">
-      Consulta la <Link href="#">guía de conciliación</Link> antes de aplicar el plan, o revisa la{' '}
+      Consulta la <Link href="#">reconciliation guide</Link> antes de aplicar el plan, o revisa la{' '}
       <Link href="#" external>
         norma externa
       </Link>

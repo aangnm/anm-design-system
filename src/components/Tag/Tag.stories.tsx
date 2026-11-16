@@ -5,7 +5,7 @@ const meta: Meta<typeof Tag> = {
   title: 'Core/Tag',
   component: Tag,
   tags: ['autodocs'],
-  args: { children: 'Etiqueta' },
+  args: { children: 'Label' },
 }
 export default meta
 

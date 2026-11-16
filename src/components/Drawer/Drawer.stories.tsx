@@ -8,12 +8,12 @@ const meta: Meta<typeof Drawer> = {
   tags: ['autodocs'],
   args: {
     overlay: false,
-    title: 'Detalle de tarea',
+    title: 'Task detail',
     items: [
-      { label: 'Cuenta', value: 'Cuenta 4021' },
-      { label: 'Categoría', value: 'Ventas' },
-      { label: 'Responsable', value: 'Laura Romero' },
-      { label: 'Notas', value: 'Revisar la conciliación antes del cierre — diferencia reportada en Sem 21.' },
+      { label: 'Account', value: 'Account 4021' },
+      { label: 'Category', value: 'Sales' },
+      { label: 'Owner', value: 'Laura Romero' },
+      { label: 'Notes', value: 'Review the reconciliation before close — difference reported in Wk 21.' },
     ],
   },
   decorators: [

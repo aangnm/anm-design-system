@@ -19,8 +19,8 @@ export default meta
 type Story = StoryObj<typeof MultiSelect>
 
 const options = [
-  { label: 'Ventas', value: 'sales' },
-  { label: 'Comisiones', value: 'fees' },
+  { label: 'Sales', value: 'sales' },
+  { label: 'Commissions', value: 'fees' },
   { label: 'Tratamiento', value: 'treatment' },
   { label: 'Poda', value: 'pruning' },
 ]

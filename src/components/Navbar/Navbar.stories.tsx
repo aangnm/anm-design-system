@@ -21,7 +21,7 @@ export const Playground: Story = {
         <>
           <button
             type="button"
-            aria-label="Buscar"
+            aria-label="Search"
             className="inline-flex size-24px items-center justify-center rounded-xs text-icon-muted outline-none transition-colors hover:text-text-primary focus-visible:focus-ring"
           >
             <SearchIcon className="size-5" />
@@ -33,8 +33,8 @@ export const Playground: Story = {
       <NavbarLink href="#" active>
         Panel
       </NavbarLink>
-      <NavbarLink href="#">Transacciones</NavbarLink>
-      <NavbarLink href="#">Reportes</NavbarLink>
+      <NavbarLink href="#">Transactions</NavbarLink>
+      <NavbarLink href="#">Reports</NavbarLink>
     </Navbar>
   ),
 }

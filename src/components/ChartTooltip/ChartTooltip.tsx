@@ -7,7 +7,7 @@ import { CHART_SERIES_BG, type ChartSeriesIndex } from '@/components/Legend'
 // with a colour dot, so the reading never depends on matching a line's
 // colour by eye across the plot. Surface/emphasis + shadow-md; values wear
 // text/primary, tabular. Axis/label text sits on the 11px floor; values are
-// strings so callers format them (decimal comma: `0,86`).
+// strings so callers format them (en-US: `0.86`).
 
 export interface ChartTooltipRow {
   label: string

@@ -35,12 +35,12 @@ const stepButton =
   'flex size-64px shrink-0 items-center justify-center rounded-md border border-border-subtle bg-interactive-default text-icon-default outline-none transition-colors ' +
   'state-layer hover:state-hover active:state-pressed focus-visible:focus-ring disabled:pointer-events-none disabled:bg-interactive-disabled disabled:text-text-disabled'
 
-export function Counter({ value, onChange, min = 0, max = Infinity, step = 1, disabled, error, label = 'Cantidad', className }: CounterProps) {
+export function Counter({ value, onChange, min = 0, max = Infinity, step = 1, disabled, error, label = 'Quantity', className }: CounterProps) {
   const id = useId()
   const clamp = (v: number) => Math.min(max, Math.max(min, v))
   return (
     <div className={cn('flex w-full items-center gap-12px', className)}>
-      <button type="button" className={stepButton} aria-label="Restar" disabled={disabled || value <= min} onClick={() => onChange(clamp(value - step))}>
+      <button type="button" className={stepButton} aria-label="Decrease" disabled={disabled || value <= min} onClick={() => onChange(clamp(value - step))}>
         <Minus className="size-6" aria-hidden />
       </button>
       <input
@@ -61,7 +61,7 @@ export function Counter({ value, onChange, min = 0, max = Infinity, step = 1, di
           disabled && 'border-border-subtle',
         )}
       />
-      <button type="button" className={stepButton} aria-label="Sumar" disabled={disabled || value >= max} onClick={() => onChange(clamp(value + step))}>
+      <button type="button" className={stepButton} aria-label="Increase" disabled={disabled || value >= max} onClick={() => onChange(clamp(value + step))}>
         <Plus className="size-6" aria-hidden />
       </button>
     </div>

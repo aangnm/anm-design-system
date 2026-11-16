@@ -64,7 +64,7 @@ export function MultiSelect({
   options,
   value,
   onChange,
-  placeholder = 'Seleccionar…',
+  placeholder = 'Select…',
   size,
   error,
   disabled = false,
@@ -150,7 +150,7 @@ export function MultiSelect({
         <Menu
           id={menuId}
           role="group"
-          aria-label="Opciones"
+          aria-label="Options"
           className="absolute left-0 top-[calc(100%+6px)] z-[var(--z-index-dropdown)] w-full min-w-0"
         >
           {options.map((option) => (

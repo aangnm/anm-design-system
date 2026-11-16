@@ -22,12 +22,12 @@ type Story = StoryObj<typeof PageHeader>
 
 export const Playground: Story = {
   args: {
-    title: 'Cartera',
-    subtitle: 'Cartera principal · 1.284 cuentas · Semana 22',
+    title: 'Portfolio',
+    subtitle: 'Main portfolio · 1,284 accounts · Week 22',
     actions: (
       <>
-        <IconButton variant="secondary" icon={<Bell />} aria-label="Notificaciones" />
-        <Button variant="primary">Nuevo registro</Button>
+        <IconButton variant="secondary" icon={<Bell />} aria-label="Notifications" />
+        <Button variant="primary">New record</Button>
       </>
     ),
   },

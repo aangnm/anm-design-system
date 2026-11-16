@@ -10,7 +10,7 @@ import { Legend, describeChart, CHART_SERIES_TEXT, CHART_SERIES_FILL, formatChar
 // together if that reading changes — kept as a real token here, not inlined.
 // Same container as Line Chart (surface/container, subtle border), gridlines
 // border/subtle, baseline included, axis text on the 11px floor with
-// decimal commas. Not interactive (a labelled image).
+// en-US numbers. Not interactive (a labelled image).
 
 export interface AreaChartSeries {
   label: string
@@ -59,7 +59,7 @@ export function AreaChart({ series, categories, width = 360, height = 160, forma
           <p>{formatValue(min)}</p>
         </div>
         <div className="flex flex-col items-start gap-6px">
-          <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} fill="none" role="img" aria-label={ariaLabel ?? describeChart('Gráfico de áreas', series, categories)}>
+          <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} fill="none" role="img" aria-label={ariaLabel ?? describeChart('Area chart', series, categories)}>
             <line x1={0} y1={pad + 0.5} x2={width} y2={pad + 0.5} stroke="var(--border-subtle)" strokeWidth={1} />
             <line x1={0} y1={height / 2} x2={width} y2={height / 2} stroke="var(--border-subtle)" strokeWidth={1} />
             <line x1={0} y1={height - pad + 0.5} x2={width} y2={height - pad + 0.5} stroke="var(--border-subtle)" strokeWidth={1} />

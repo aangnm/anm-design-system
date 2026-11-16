@@ -15,7 +15,7 @@ import { cn } from '@/lib/utils'
 
 // Sizes use the Figma spacing tokens directly (px-16px, not px-4 — see the
 // note in scripts/transform-tokens.mjs on why our numbered spacing scale
-// can't share Tailwind's bare h-*/p-*/gap-* namespace). Height is
+// can’t share Tailwind's bare h-*/p-*/gap-* namespace). Height is
 // fixed per size (border-box) so the 1px border on Secondary/Outline sits
 // inside the height, as the Figma stroke does — SM/MD/LG are 32/36/52px for
 // every Type. Label text is 13/20, 14/20 and 18/28 (SM/MD/LG), icons 16/16/20.

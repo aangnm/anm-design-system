@@ -5,7 +5,7 @@ const meta: Meta<typeof FormField> = {
   title: 'Core/Form Field',
   component: FormField,
   tags: ['autodocs'],
-  args: { label: 'Etiqueta', placeholder: 'Placeholder' },
+  args: { label: 'Label', placeholder: 'Placeholder' },
 }
 export default meta
 
@@ -22,8 +22,8 @@ export const Playground: Story = {
 export const States: Story = {
   render: () => (
     <div className="flex flex-col gap-24px bg-surface-page p-8 w-[280px]">
-      <FormField label="Etiqueta" placeholder="Placeholder" helperText="Texto de ayuda opcional" />
-      <FormField label="Etiqueta" placeholder="Placeholder" error helperText="Este campo es obligatorio" />
+      <FormField label="Label" placeholder="Placeholder" helperText="Optional helper text" />
+      <FormField label="Label" placeholder="Placeholder" error helperText="Este campo es obligatorio" />
     </div>
   ),
 }

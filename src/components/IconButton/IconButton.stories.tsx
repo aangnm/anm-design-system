@@ -6,7 +6,7 @@ const meta: Meta<typeof IconButton> = {
   title: 'Core/Icon Button',
   component: IconButton,
   tags: ['autodocs'],
-  args: { icon: <Bell />, 'aria-label': 'Notificaciones' },
+  args: { icon: <Bell />, 'aria-label': 'Notifications' },
   decorators: [
     (Story) => (
       <div className="bg-surface-page p-8">
@@ -45,10 +45,10 @@ export const AllVariants: Story = {
             <span className="text-text-caption leading-4 text-text-secondary">
               {variant} / {size}
             </span>
-            <div><IconButton variant={variant} size={size} icon={<Bell />} aria-label="Notificaciones" /></div>
-            <div><IconButton variant={variant} size={size} icon={<Bell />} aria-label="Notificaciones" className={forcedHover[variant]} /></div>
-            <div><IconButton variant={variant} size={size} icon={<Bell />} aria-label="Notificaciones" className="focus-ring!" /></div>
-            <div><IconButton variant={variant} size={size} icon={<Bell />} aria-label="Notificaciones" disabled /></div>
+            <div><IconButton variant={variant} size={size} icon={<Bell />} aria-label="Notifications" /></div>
+            <div><IconButton variant={variant} size={size} icon={<Bell />} aria-label="Notifications" className={forcedHover[variant]} /></div>
+            <div><IconButton variant={variant} size={size} icon={<Bell />} aria-label="Notifications" className="focus-ring!" /></div>
+            <div><IconButton variant={variant} size={size} icon={<Bell />} aria-label="Notifications" disabled /></div>
           </div>
         )),
       )}

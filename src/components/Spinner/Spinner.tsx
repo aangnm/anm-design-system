@@ -24,7 +24,7 @@ export function Spinner({ size = 'sm', className }: SpinnerProps) {
   return (
     <LoaderCircle
       role="status"
-      aria-label="Cargando"
+      aria-label="Loading"
       className={cn('animate-spin text-interactive-primary', sizes[size], className)}
     />
   )

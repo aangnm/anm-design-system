@@ -71,7 +71,7 @@ export function Banner({ color = 'info', message, title, action, onDismiss, clas
           type="button"
           onClick={onDismiss}
           className="relative flex size-20px shrink-0 items-center justify-center rounded-xs opacity-80 outline-none transition-opacity after:absolute after:left-1/2 after:top-1/2 after:size-24px after:-translate-x-1/2 after:-translate-y-1/2 hover:opacity-100 focus-visible:opacity-100 focus-visible:focus-ring"
-          aria-label="Cerrar"
+          aria-label="Close"
         >
           <X className="size-4" />
         </button>

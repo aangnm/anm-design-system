@@ -39,7 +39,7 @@ export function Sparkline({ data, width = 160, height = 48, strokeWidth = 2, cla
       viewBox={`0 0 ${width} ${height}`}
       fill="none"
       role="img"
-      aria-label={`Tendencia: ${data.map((v) => formatChartNumber(v)).join(', ')}`}
+      aria-label={`Trend: ${data.map((v) => formatChartNumber(v)).join(', ')}`}
       className={cn('text-interactive-primary', className)}
       {...props}
     >

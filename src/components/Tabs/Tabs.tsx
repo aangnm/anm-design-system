@@ -3,7 +3,7 @@ import type { ButtonHTMLAttributes, HTMLAttributes } from 'react'
 import { cn } from '@/lib/utils'
 
 // The Figma "Tabs" component set is actually a single tab (State=Default/
-// Active/Disabled/Hover) — a lone tab isn't usable, so this exports both:
+// Active/Disabled/Hover) — a lone tab isn’t usable, so this exports both:
 // `Tabs` as the tablist container and `Tab` as the item that maps 1:1 to
 // the Figma component. Hover is a real :hover here; Active and Disabled
 // are props since neither has a native equivalent on a <button>.
@@ -49,7 +49,7 @@ export const Tab = forwardRef<HTMLButtonElement, TabProps>(
       >
         {children}
       </span>
-      {/* Always rendered so switching tabs doesn't shift layout — matches
+      {/* Always rendered so switching tabs doesn’t shift layout — matches
           the Figma component, where the 2px rect exists in every variant
           and only its fill changes. */}
       <span

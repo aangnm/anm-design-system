@@ -8,17 +8,17 @@ import { cn } from '@/lib/utils'
 // Selected day = interactive/primary; today is marked with a ring so the two
 // never look the same. Figma's "Junio 2026" grid is a static illustration —
 // generalized here to a real month grid computed from `month`, with
-// Monday-start weekdays (L M M J V S D) matching the design.
+// Monday-start weekdays (M T W T F S S) matching the design.
 // States (Figma State=Default/Hover/Focus/Disabled): Hover and Focus are real
 // :hover / :focus-visible on the day — Hover = the 8% text/primary state layer plus a
 // 1px border/default outline (a tint alone is faint on the dark surface); Focus = 2px focus/ring. Disabled days (dates after
 // today with `disableFuture`, or anything `isDateDisabled` rejects) are greyed
 // and can never be selected. Month arrows are 16px visuals with a 24x24 target.
 
-const WEEKDAYS = ['L', 'M', 'M', 'J', 'V', 'S', 'D']
+const WEEKDAYS = ['M', 'T', 'W', 'T', 'F', 'S', 'S']
 const MONTH_NAMES = [
-  'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
-  'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre',
+  'January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December',
 ]
 
 function isSameDay(a: Date, b: Date) {
@@ -68,7 +68,7 @@ export function DatePicker({ value, onChange, defaultMonth, disableFuture, isDat
       <div className="flex w-full items-center">
         <button
           type="button"
-          aria-label="Mes anterior"
+          aria-label="Previous month"
           onClick={() => setMonth(new Date(month.getFullYear(), month.getMonth() - 1, 1))}
           className="relative size-16px shrink-0 rounded-xs text-icon-muted outline-none after:absolute after:left-1/2 after:top-1/2 after:size-24px after:-translate-x-1/2 after:-translate-y-1/2 focus-visible:focus-ring"
         >
@@ -79,7 +79,7 @@ export function DatePicker({ value, onChange, defaultMonth, disableFuture, isDat
         </p>
         <button
           type="button"
-          aria-label="Mes siguiente"
+          aria-label="Next month"
           onClick={() => setMonth(new Date(month.getFullYear(), month.getMonth() + 1, 1))}
           className="relative size-16px shrink-0 rounded-xs text-icon-muted outline-none after:absolute after:left-1/2 after:top-1/2 after:size-24px after:-translate-x-1/2 after:-translate-y-1/2 focus-visible:focus-ring"
         >

@@ -18,7 +18,7 @@ export const Default: Story = {
     const [v, setV] = useState(12)
     return (
       <div className="bg-surface-page p-8">
-        <BottomSheet overlay={false} title="Título de la hoja" context="Contexto · detalle corto">
+        <BottomSheet overlay={false} title="Sheet title" context="Contexto · detalle corto">
           <Counter value={v} onChange={setV} />
         </BottomSheet>
       </div>
@@ -36,7 +36,7 @@ export const OverScrim: Story = {
       <div className="min-h-[600px] bg-surface-page p-8">
         <Button onClick={() => setOpen(true)}>Abrir hoja</Button>
         {open ? (
-          <BottomSheet title="Unidades" context="Cuenta 4021 · Ventas" onClose={() => setOpen(false)} onConfirm={() => setOpen(false)}>
+          <BottomSheet title="Unidades" context="Account 4021 · Sales" onClose={() => setOpen(false)} onConfirm={() => setOpen(false)}>
             <Counter value={v} onChange={setV} />
           </BottomSheet>
         ) : null}

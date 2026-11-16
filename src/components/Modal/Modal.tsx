@@ -38,7 +38,7 @@ export function Modal({
   type = 'default',
   title,
   children,
-  cancelLabel = 'Cancelar',
+  cancelLabel = 'Cancel',
   confirmLabel,
   onCancel,
   onConfirm,
@@ -71,7 +71,7 @@ export function Modal({
           type="button"
           onClick={onClose}
           className="relative rounded-xs text-icon-muted outline-none transition-colors after:absolute after:left-1/2 after:top-1/2 after:size-24px after:-translate-x-1/2 after:-translate-y-1/2 hover:text-text-primary focus-visible:focus-ring"
-          aria-label="Cerrar"
+          aria-label="Close"
         >
           <X className="size-5" />
         </button>
@@ -86,7 +86,7 @@ export function Modal({
           onClick={onConfirm}
           className={isDestructive ? 'bg-semantic-error text-white hover:bg-semantic-error active:bg-semantic-error' : undefined}
         >
-          {confirmLabel ?? (isDestructive ? 'Eliminar' : 'Confirmar')}
+          {confirmLabel ?? (isDestructive ? 'Delete' : 'Confirmar')}
         </Button>
       </div>
     </div>

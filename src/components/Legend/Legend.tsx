@@ -46,12 +46,12 @@ export const CHART_SERIES_FILL: Record<ChartSeriesIndex, string> = {
 }
 
 /**
- * Chart number format: decimal comma, thousands dot (es-EC), e.g. `0,86`,
- * `1.284`. Shared by the axis/tooltip text of the whole chart family so no
- * chart prints a US-style `0.86`.
+ * Chart number format: en-US, decimal point and thousands comma, e.g. `0.86`,
+ * `1,284`. Shared by the axis/tooltip text of the whole chart family so no
+ * chart mixes formats.
  */
 export function formatChartNumber(value: number, decimals?: number): string {
-  return new Intl.NumberFormat('de-DE', {
+  return new Intl.NumberFormat('en-US', {
     minimumFractionDigits: decimals,
     maximumFractionDigits: decimals ?? 3,
   }).format(value)
@@ -59,7 +59,7 @@ export function formatChartNumber(value: number, decimals?: number): string {
 
 /**
  * Text alternative for a chart (role="img"): the kind of chart, then every
- * series with its values per category, es-EC formatted. Screen readers get
+ * series with its values per category, en-US formatted. Screen readers get
  * the same numbers the picture shows. Charts use it as their default
  * `aria-label`; pass your own `aria-label` to summarise instead.
  */

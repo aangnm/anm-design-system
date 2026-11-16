@@ -63,19 +63,19 @@ export const Overview: StoryObj = {
         <section className="flex flex-col gap-16px">
           <h2 className="m-0 text-text-xs font-medium uppercase tracking-wider text-text-secondary">Live, in the current theme</h2>
           <div className="grid grid-cols-[minmax(0,1fr)_320px_auto] items-start gap-16px">
-            <Stat label="Ingresos totales" value="$ 128.450" delta="12,5 %" trend="up" deltaCaption="vs. mes anterior" />
+            <Stat label="Total revenue" value="$128,450" delta="12.5%" trend="up" deltaCaption="vs. last month" />
             <div className="grid grid-cols-2 gap-8px">
-              <ChoiceTile label="Mensual" state="selected" />
-              <ChoiceTile label="Anual" />
-              <ChoiceTile label="Ventas" state="done" count={3} />
-              <ChoiceTile label="Otros" state="counted" count={1} />
+              <ChoiceTile label="Monthly" state="selected" />
+              <ChoiceTile label="Yearly" />
+              <ChoiceTile label="Sales" state="done" count={3} />
+              <ChoiceTile label="Other" state="counted" count={1} />
             </div>
             <DonutChart
               unit="USD"
               parts={[
-                { label: 'Ventas', series: 1, value: 520 },
-                { label: 'Suscripciones', series: 2, value: 380 },
-                { label: 'Servicios', series: 3, value: 250 },
+                { label: 'Sales', series: 1, value: 520 },
+                { label: 'Subscriptions', series: 2, value: 380 },
+                { label: 'Services', series: 3, value: 250 },
               ]}
             />
           </div>

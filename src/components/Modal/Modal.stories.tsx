@@ -8,8 +8,8 @@ const meta: Meta<typeof Modal> = {
   tags: ['autodocs'],
   args: {
     overlay: false,
-    title: 'Confirmar acción',
-    children: '¿Estás seguro de que deseas continuar? Esta acción no se puede deshacer.',
+    title: 'Confirm action',
+    children: 'Are you sure you want to continue? This can’t be undone.',
   },
   decorators: [
     (Story) => (
@@ -28,8 +28,8 @@ export const Playground: Story = {}
 export const Destructive: Story = {
   args: {
     type: 'destructive',
-    title: 'Eliminar registro',
-    children: 'Esta acción eliminará el registro de forma permanente y no se puede deshacer.',
+    title: 'Delete record',
+    children: 'This permanently deletes the record and can’t be undone.',
   },
 }
 
@@ -54,8 +54,8 @@ export const OverScrim: Story = {
 export const DestructiveOverScrim: Story = {
   args: {
     type: 'destructive',
-    title: 'Eliminar registro',
-    children: 'Esta acción eliminará el registro de forma permanente y no se puede deshacer.',
+    title: 'Delete record',
+    children: 'This permanently deletes the record and can’t be undone.',
   },
   render: OverScrim.render,
 }

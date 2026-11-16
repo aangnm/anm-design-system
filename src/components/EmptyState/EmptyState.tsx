@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils'
 // state, which fills only that one component's bounds; this is the bigger
 // version for a page or section that has never had data at all.
 // Why (from Figma) — the per-component empty states answer "this list has no
-// rows right now". They don't answer "this product surface has never been set
+// rows right now". They don’t answer "this product surface has never been set
 // up" (no accounts registered, no campaigns created) — a first-run moment that
 // deserves an action, not just an icon and a sentence. It has no border of its
 // own and fills whatever space it is given, like Divider and Spinner.
@@ -19,7 +19,7 @@ export interface EmptyStateProps extends Omit<HTMLAttributes<HTMLDivElement>, 't
   icon?: ReactNode
   title: ReactNode
   description?: ReactNode
-  /** The one primary action, e.g. `<Button>Añadir cuenta</Button>`. */
+  /** The one primary action, e.g. `<Button>Add account</Button>`. */
   action?: ReactNode
 }
 
