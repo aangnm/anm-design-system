@@ -24,7 +24,7 @@ import { Button, Stat, LineChart } from '@anm/design-system'
 Two attributes on any ancestor switch the whole subtree:
 
 - `data-theme`: `dark` (default), `light` or `high-contrast`. Every colour follows; high contrast also widens borders to 2px and the focus ring to 3px.
-- `data-density`: `comfortable` (default) or `compact`. Control heights (28 / 32 / 40, Button LG 44) and table rows follow.
+- `data-density`: `comfortable` (default) or `compact`. Control heights (28 / 32 / 40), table rows and container padding follow.
 
 ## Tokens, not values
 
@@ -33,7 +33,7 @@ Two attributes on any ancestor switch the whole subtree:
 - **Spacing:** token classes carry a `px` suffix: `p-16px`, `gap-8px`, `h-32px`. Bare `p-4` is Tailwind's own scale and is wrong here.
 - **Type:** role classes: `text-display-2xl`, `text-headline-large`, `text-title-default`, `text-body-default`, `text-body-small`, `text-label-default`. Weight is separate (`font-medium`, `font-semibold`).
 - **Focus:** `focus-visible:focus-ring`, the one focus treatment. Never `ring-*` or a border recolour.
-- **Sizing that follows density:** `h-control-sm | md | lg`, `py-table-cell-y`.
+- **Sizing that follows density:** `h-control-sm | md | lg`, `py-table-cell-y`, `p-container-sm | md`.
 
 ## Behaviour
 

@@ -423,3 +423,16 @@ Audited against the Material 3 Design Kit; the agreed items are on the Roadmap. 
   - An axe pass over all 168 stories is clean for names, labels and roles.
   - The Introduction page and README state the AI-agent purpose.
   - Storybook deploys to GitHub Pages from `main` (`.github/workflows/storybook-pages.yml`).
+
+## v0.99 — Review fixes: English, responsive, tested, agent-ready
+- **Everything in English.** About 650 text layers, 38 text properties, the Sidebar icon property names, component descriptions, specs and the About & Guidelines rules. Numbers and dates are en-US ($128,450, 12.5%, May 27, 2026). The last farming examples are gone from descriptions (Bar Chart's tonnes, Timeline's zone, Date Indicator's SEM).
+- **Density covers containers.** New container/padding/md (20 → 16, Card and Stat) and container/padding/sm (16 → 12, chart cards, Content Panel and Metric Card), bound in 21 variants.
+- **Button LG is 48**, the same control/height/lg as LG fields, so a button and a field line up in a form row; control/height/button-lg is deleted.
+- **Specs:** List Row, Counter, Count Row, PIN Field, App Bar, Date Indicator and Topbar are in the Code handoff component tables. Every component description is stored as plain text (no HTML entities).
+- **Maintenance scripts** in the repository: scripts/figma/refresh-color-labels.js and refresh-contrast.js regenerate the Color page labels and the Accessibility page ratios from live variables; pull-tokens.js and pull-notes.js pull tokens and design notes. The lint is clean (1,596 components).
+- **Code:**
+  - CI on every pull request: typecheck, a generated-token drift check, library build, every story as a test with axe, and the Storybook build. Chromatic visual tests run once a project token is set.
+  - High contrast theme (`data-theme="high-contrast"`), with 2px borders, a 3px focus ring and Banner status edges.
+  - Charts fill their container and redraw at its width; templates are responsive (App Bar below 1024px, one-column grids on phones); fixed widths became max widths; tables scroll in a focusable region.
+  - Storybook Docs are installed: prop tables, each component's Figma design notes, a "Start here" page, and `/llms.txt` with the whole system for agents.
+  - `BenchmarkTier` values are English (`'critical' | 'moderate' | 'healthy'`).

@@ -9,8 +9,9 @@ const meta: Meta<typeof ContentPanel> = {
   component: ContentPanel,
   tags: ['autodocs'],
   decorators: [
+    // The panel fills its container; the story shows it at the Figma sample width.
     (Story) => (
-      <div className="bg-surface-page p-24px">
+      <div className="max-w-[488px] bg-surface-page p-24px">
         <Story />
       </div>
     ),

@@ -20,7 +20,7 @@ export interface ContentPanelProps extends HTMLAttributes<HTMLDivElement> {
 export function ContentPanel({ title, controls, children, className, ...props }: ContentPanelProps) {
   return (
     <div
-      className={cn('flex w-full max-w-[440px] flex-col items-start gap-12px rounded-lg border border-border-subtle bg-surface-container p-16px', className)}
+      className={cn('flex w-full flex-col items-start gap-12px rounded-lg border border-border-subtle bg-surface-container p-container-sm', className)}
       {...props}
     >
       <div className="flex min-h-36px w-full items-center">

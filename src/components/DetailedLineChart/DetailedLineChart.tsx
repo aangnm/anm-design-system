@@ -81,7 +81,7 @@ export function DetailedLineChart({
   const locate = (clientX: number, rect: DOMRect) => Math.max(0, Math.min(n - 1, Math.round(((clientX - rect.left) / rect.width) * (n - 1))))
 
   return (
-    <div className={cn(fixedWidth ? 'w-fit' : 'w-full', 'flex flex-col gap-14px rounded-lg border border-border-subtle bg-surface-container p-16px', className)} {...props}>
+    <div className={cn(fixedWidth ? 'w-fit' : 'w-full', 'flex flex-col gap-14px rounded-lg border border-border-subtle bg-surface-container p-container-sm', className)} {...props}>
       <div className="flex flex-wrap items-center gap-16px text-text-xs font-medium leading-5 text-text-secondary">
         {series.map((s) => (
           <span key={s.series} className="flex items-center gap-6px">

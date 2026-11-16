@@ -233,10 +233,15 @@ const spacingTheme = collections.Dimension.variables
   .map((v) => `  --spacing-${cssName(v.name).replace('spacing-', '')}px: ${cssValue(v.name, v.valuesByMode.Value, v.type)};`)
 
 // Density keys land in the spacing namespace so every sizing utility gets
-// them: h-control-md, size-control-sm, min-h-control-lg, py-table-cell-y.
+// them: h-control-md, size-control-sm, min-h-control-lg, py-table-cell-y,
+// p-container-sm (chart cards, panels), p-container-md (Card, Stat).
 // Named keys, so no collision with Tailwind's numeric scale.
 const densityTheme = (collections.Density?.variables ?? []).map((v) => {
-  const key = v.name.startsWith('control/height/') ? `control-${v.name.split('/').pop()}` : 'table-cell-y'
+  const key = v.name.startsWith('control/height/')
+    ? `control-${v.name.split('/').pop()}`
+    : v.name.startsWith('container/padding/')
+      ? `container-${v.name.split('/').pop()}`
+      : 'table-cell-y'
   return `  --spacing-${key}: var(--${cssName(v.name)});`
 })
 

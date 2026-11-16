@@ -62,7 +62,7 @@ Accumulated API gotchas, each found the hard way:
 
 - Everything is in English: identifiers, user-facing copy, sample data, Figma text. Numbers and dates are en-US (`1,284.5`, `12.5%`, `$128,450`, `Wed, May 27, 2026`); `formatChartNumber` is the one formatter.
 - Build from token classes only — no raw hex, no magic numbers. Text: prefer the role utilities (`text-body-default`, `text-title-large` …) over raw size classes; add new ones to the font-size group in `src/lib/utils.ts` or tailwind-merge will drop them.
-- Density is `data-density="compact"`; sized controls use `h-control-sm|md|lg` (Button LG `h-control-button-lg`) and table cells `py-table-cell-y`, never a fixed `h-36px`, so they follow it.
+- Density is `data-density="compact"`; sized controls use `h-control-sm|md|lg`, table cells `py-table-cell-y`, cards `p-container-md` and chart cards / panels `p-container-sm`, never a fixed `h-36px` or `p-16px`, so they follow it.
 - Status colour by role: `bg-semantic-<status>` solid (Badge, dots), `bg-semantic-<status>-surface` + `text-semantic-<status>-foreground` for tints, `text-text-<status>` for status text or icons on a neutral surface. All are ramp steps; never add a one-off status primitive.
 - Anything with `role="img"` needs a text alternative. Charts use `describeChart(kind, series, categories)` from Legend as their default `aria-label`.
 - Focus is one utility: `focus-visible:focus-ring` (or `peer-focus-visible:focus-ring` on the visible box of a hidden-input control). Never `ring-*` or a border recolour for focus. Forced Focus states in stories need `focus-ring!` to beat a base `outline-none`.

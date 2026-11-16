@@ -62,7 +62,7 @@ export function SmallMultiples({
 
   return (
     <div
-      className={cn('flex flex-col gap-16px rounded-lg border border-border-subtle bg-surface-container p-16px', className)}
+      className={cn('flex flex-col gap-16px rounded-lg border border-border-subtle bg-surface-container p-container-sm', className)}
       {...props}
     >
       {/* Up to `columns` per row; panels never shrink below 160px, so a narrow

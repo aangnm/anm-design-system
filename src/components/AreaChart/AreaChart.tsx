@@ -54,7 +54,7 @@ export function AreaChart({ series, categories, width: fixedWidth, height = 160,
   return (
     <div
       className={cn(fixedWidth ? 'w-fit' : 'w-full',
-        'flex flex-col items-start gap-14px overflow-hidden rounded-lg border border-border-subtle bg-surface-container p-16px', className)}
+        'flex flex-col items-start gap-14px overflow-hidden rounded-lg border border-border-subtle bg-surface-container p-container-sm', className)}
       {...props}
     >
       <Legend items={series.map((s) => ({ label: s.label, series: s.series }))} />

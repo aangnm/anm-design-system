@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-11-16T19:49:30.885Z",
+  "exportedAt": "2026-11-16T22:00:00.000Z",
   "figmaFileKey": "OSexn3GQ7oIOo7X2sGVlSb",
   "collections": {
     "Themes": {
@@ -198,8 +198,9 @@
         {"name": "control/height/sm", "type": "FLOAT", "valuesByMode": {"Comfortable": 32, "Compact": 28}},
         {"name": "control/height/md", "type": "FLOAT", "valuesByMode": {"Comfortable": 36, "Compact": 32}},
         {"name": "control/height/lg", "type": "FLOAT", "valuesByMode": {"Comfortable": 48, "Compact": 40}},
-        {"name": "control/height/button-lg", "type": "FLOAT", "valuesByMode": {"Comfortable": 52, "Compact": 44}},
-        {"name": "table/cell-padding-y", "type": "FLOAT", "valuesByMode": {"Comfortable": 10, "Compact": 6}}
+        {"name": "table/cell-padding-y", "type": "FLOAT", "valuesByMode": {"Comfortable": 10, "Compact": 6}},
+        {"name": "container/padding/sm", "type": "FLOAT", "valuesByMode": {"Comfortable": 16, "Compact": 12}},
+        {"name": "container/padding/md", "type": "FLOAT", "valuesByMode": {"Comfortable": 20, "Compact": 16}}
       ]
     }
   },

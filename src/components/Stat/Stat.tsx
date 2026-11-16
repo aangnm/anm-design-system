@@ -26,7 +26,7 @@ export interface StatProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 // Non-default states are padded to the Default's 120 high so swapping them in never makes the layout jump.
-const surface = 'min-h-[120px] w-full rounded-lg border border-border-subtle bg-surface-container p-20px'
+const surface = 'min-h-[120px] w-full rounded-lg border border-border-subtle bg-surface-container p-container-md'
 
 const trend: Record<StatTrend, { arrow: string; className: string }> = {
   up: { arrow: '▲', className: 'text-text-success' },

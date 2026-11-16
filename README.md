@@ -10,6 +10,23 @@ Tokens and React components generated from [anm Design System](https://www.figma
 
 Token pipeline is live (color, spacing, radius, type, motion, breakpoints, elevation, opacity, z-index, focus, density). Every component in the Figma file has a code counterpart (Sidebar / Alt and Navbar / Mobile through another component, on purpose), in Storybook for both themes. See [Roadmap](#roadmap).
 
+## Quality checks
+
+Every pull request runs `.github/workflows/ci.yml`: typecheck, a check that `src/tokens/*` matches what the transform makes from `tokens/figma-export.json`, the library build, **every Storybook story as a test with an axe accessibility check** (`npm test`), and the Storybook build. Visual regression runs through Chromatic once `CHROMATIC_PROJECT_TOKEN` is set as a repository secret.
+
+## For agents
+
+Storybook opens on **Start here**, the short rules, and every component's docs page carries its Figma design notes. The hosted Storybook also serves `/llms.txt`, the whole system in one plain-text file (built by `scripts/build-llms.mjs`).
+
+## Figma scripts
+
+`scripts/figma/` holds `use_figma` scripts, each run by pasting its contents into one call from a Claude Code session with Figma access:
+
+- `pull-tokens.js` (read-only) → then `node scripts/format-export.mjs pulled.json` writes `tokens/figma-export.json`.
+- `pull-notes.js` (read-only) → `src/docs/figma-notes.json`, the design notes shown in Storybook and `llms.txt`.
+- `lint-variants.js` (read-only): component property names and values against the agreed vocabulary.
+- `refresh-color-labels.js` and `refresh-contrast.js` (write): regenerate the Color page labels and the Accessibility page ratios from live variables.
+
 ## Stack
 
 - React 19 + TypeScript, built with Vite (library mode) + `vite-plugin-dts`
@@ -43,7 +60,7 @@ npm run tokens:transform
 
 Pure Node, no Figma access needed — reads `tokens/figma-export.json`, writes:
 
-- `src/tokens/tokens.css` — raw CSS custom properties. Colors are theme-aware (`:root` = dark, `[data-theme="light"]` overrides). Density is too, on its own axis (`:root` = comfortable, `[data-density="compact"]` overrides control heights and table padding). Everything else (radius, spacing, motion, breakpoints) is a single constant.
+- `src/tokens/tokens.css` — raw CSS custom properties. Colors are theme-aware (`:root` = dark, `[data-theme="light"]` and `[data-theme="high-contrast"]` override; high contrast also widens borders and the focus ring). Density is too, on its own axis (`:root` = comfortable, `[data-density="compact"]` overrides control heights, table padding and container padding). Everything else (radius, spacing, motion, breakpoints) is a single constant.
 - `src/tokens/theme.css` — the Tailwind v4 `@theme` block that turns those tokens into real utility classes (`bg-surface-page`, `rounded-md`, `p-16`, `text-sm`, …).
 - `src/tokens/index.ts` — the same tokens as typed TS constants (`color.text.primary`, `radius.md`, …), for the cases a Tailwind class isn't the right tool (canvas/chart colors, inline styles).
 
@@ -65,7 +82,7 @@ Instead, each component page in Figma carries a **Code handoff** spec (a Figma S
 
 The history of the Figma file itself is in [`docs/figma-changelog.md`](docs/figma-changelog.md); add an entry there whenever a Figma change ships.
 
-**Variant-name lint.** [`scripts/figma/lint-variants.js`](scripts/figma/lint-variants.js) is a read-only `use_figma` script that checks every component property name and value in the file against the agreed vocabulary (variant axes and options, Size order, numeric order, boolean and text naming). Run it from a Claude Code session with Figma access before a changelog entry that adds or changes a component; an empty `findings` array is a pass.
+**Variant-name lint.** [`scripts/figma/lint-variants.js`](scripts/figma/lint-variants.js) checks every component property name and value against the agreed vocabulary; run it before a changelog entry that adds or changes a component (see Figma scripts above).
 
 ## Repo structure
 

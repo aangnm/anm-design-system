@@ -17,10 +17,10 @@ import { cn } from '@/lib/utils'
 // note in scripts/transform-tokens.mjs on why our numbered spacing scale
 // can’t share Tailwind's bare h-*/p-*/gap-* namespace). Height is
 // fixed per size (border-box) so the 1px border on Secondary/Outline sits
-// inside the height, as the Figma stroke does — SM/MD/LG are 32/36/52px for
-// every Type. Label text is 13/20, 14/20 and 18/28 (SM/MD/LG), icons 16/16/20.
-// LG is the touch size (Figma v0.78: reads at arm's length); 52 has no spacing
-// token, so it is the one arbitrary height here.
+// inside the height, as the Figma stroke does — SM/MD/LG are 32/36/48px for
+// every Type (the control/height/* density tokens, the same as the fields, so
+// a button and a field line up in a form row). Label text is 13/20, 14/20 and
+// 18/28 (SM/MD/LG), icons 16/16/20. LG is the touch size.
 const buttonVariants = cva(
   'relative inline-flex items-center justify-center whitespace-nowrap font-medium transition-colors ' +
     'state-layer hover:state-hover active:state-pressed ' +
@@ -39,7 +39,7 @@ const buttonVariants = cva(
       size: {
         sm: 'gap-6px h-control-sm rounded-sm px-12px text-text-xs leading-5 [&_svg]:size-4',
         md: 'gap-8px h-control-md rounded-md px-16px text-text-sm leading-5 [&_svg]:size-4',
-        lg: 'gap-8px h-control-button-lg rounded-md px-24px text-text-lg leading-7 [&_svg]:size-5',
+        lg: 'gap-8px h-control-lg rounded-md px-24px text-text-lg leading-7 [&_svg]:size-5',
       },
     },
     defaultVariants: {

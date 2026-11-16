@@ -45,7 +45,7 @@ export function DonutChart({ parts, unit, centerLabel = true, formatValue = (v) 
 
   return (
     <div
-      className={cn('flex w-full flex-wrap items-center gap-24px rounded-lg border border-border-subtle bg-surface-container p-16px', className)}
+      className={cn('flex w-full flex-wrap items-center gap-24px rounded-lg border border-border-subtle bg-surface-container p-container-sm', className)}
       role="img"
       aria-label={`${describeChart('Donut chart', [{ label: `Total ${formatValue(total)}${unit ? ` ${unit}` : ''}`, data: parts.map((p) => p.value) }], parts.map((p) => p.label), formatValue)}`}
       {...props}

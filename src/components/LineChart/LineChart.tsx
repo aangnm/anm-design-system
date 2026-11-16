@@ -65,7 +65,7 @@ export function LineChart({
     <div
       className={cn(
         fixedWidth ? 'w-fit' : 'w-full',
-        'flex flex-col items-start gap-14px overflow-hidden rounded-lg border border-border-subtle bg-surface-container p-16px',
+        'flex flex-col items-start gap-14px overflow-hidden rounded-lg border border-border-subtle bg-surface-container p-container-sm',
         className,
       )}
       {...props}

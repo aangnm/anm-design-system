@@ -22,7 +22,7 @@ export interface MetricCardProps extends HTMLAttributes<HTMLDivElement> {
 
 export function MetricCard({ title, context, value, valueContext, tagLabel, tagColor = 'neutral', className, ...props }: MetricCardProps) {
   return (
-    <Card className={cn('w-full max-w-[300px] gap-16px', className)} {...props}>
+    <Card className={cn('w-full max-w-[300px] gap-16px p-container-sm', className)} {...props}>
       <div className="flex w-full flex-col gap-4px">
         <p className="text-base font-semibold leading-6 text-text-primary">{title}</p>
         <p className="text-text-xs leading-5 text-text-secondary">{context}</p>

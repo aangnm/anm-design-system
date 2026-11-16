@@ -67,7 +67,7 @@ export function StackedBarChart({
 
   return (
     <div
-      className={cn('flex w-full flex-col gap-14px rounded-lg border border-border-subtle bg-surface-container p-16px', className)}
+      className={cn('flex w-full flex-col gap-14px rounded-lg border border-border-subtle bg-surface-container p-container-sm', className)}
       role="img"
       aria-label={describeChart(percent ? 'Stacked bar chart, percent' : 'Stacked bar chart', series, categories, formatValue)}
       {...props}

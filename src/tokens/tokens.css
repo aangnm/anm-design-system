@@ -1,6 +1,6 @@
 /**
  * GENERATED FILE — do not edit by hand.
- * Source: tokens/figma-export.json (exported 2026-11-16T19:49:30.885Z)
+ * Source: tokens/figma-export.json (exported 2026-11-16T22:00:00.000Z)
  * Regenerate: node scripts/transform-tokens.mjs
  */
 
@@ -100,8 +100,9 @@
   --control-height-sm: 32px;
   --control-height-md: 36px;
   --control-height-lg: 48px;
-  --control-height-button-lg: 52px;
   --table-cell-padding-y: 10px;
+  --container-padding-sm: 16px;
+  --container-padding-md: 20px;
 
   --font-family-base: Inter;
   --font-family-title: Inter;
@@ -140,8 +141,9 @@
   --control-height-sm: 28px;
   --control-height-md: 32px;
   --control-height-lg: 40px;
-  --control-height-button-lg: 44px;
   --table-cell-padding-y: 6px;
+  --container-padding-sm: 12px;
+  --container-padding-md: 16px;
 }
 
 [data-theme='light'] {
