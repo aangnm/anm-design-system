@@ -85,6 +85,10 @@ export const color = {
     Series7: 'var(--chart-series-7)',
     Series8: 'var(--chart-series-8)',
   },
+  shadow: {
+    Key: 'var(--shadow-key)',
+    Ambient: 'var(--shadow-ambient)',
+  },
 } as const
 
 export const radius = {

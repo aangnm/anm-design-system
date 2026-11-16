@@ -61,6 +61,8 @@
   --brand-logo: #f1ece3;
   --surface-scrim: #000000;
   --surface-highlight: #0a1a2e;
+  --shadow-key: #00000099;
+  --shadow-ambient: #00000066;
 
   --border-width-sm: 1px;
   --border-width-md: 2px;
@@ -189,4 +191,6 @@
   --brand-logo: #0e0f11;
   --surface-scrim: #000000;
   --surface-highlight: #e4eefb;
+  --shadow-key: #0000001a;
+  --shadow-ambient: #0000000f;
 }

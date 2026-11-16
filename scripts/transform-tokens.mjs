@@ -208,6 +208,9 @@ function shadowCss(effects) {
   return effects
     .filter((e) => e.type === 'DROP_SHADOW')
     .map((e) => {
+      // Figma v0.95: effect colours are bound to shadow/key and shadow/ambient
+      // (Themes), much stronger in dark — so the shadow reads the theme var.
+      if (e.colorVar) return `${e.offsetX}px ${e.offsetY}px ${e.radius}px ${e.spread}px var(--${cssName(e.colorVar)})`
       const { r, g, b, a } = e.color
       const rgb = [r, g, b].map((c) => Math.round(c * 255)).join(' ')
       return `${e.offsetX}px ${e.offsetY}px ${e.radius}px ${e.spread}px rgb(${rgb} / ${a})`

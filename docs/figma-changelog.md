@@ -381,3 +381,10 @@ Audited against the Material 3 Design Kit; the agreed items are on the Roadmap. 
 - A new Type by role rule on the Decisions card.
 - Roadmap: type by role is removed. Elevation in dark moves to Now.
 - Code: the token export carries the 13 text roles, and the transform emits role utilities (`text-display-2xl` … `text-label-default`), each setting size and line height. Counter's value uses `text-display-xl` instead of arbitrary values.
+
+## v0.95 — Elevation that reads in dark
+- Two new Themes tokens, shadow/key and shadow/ambient: 60% / 40% black in Dark, 10% / 6% in Light and High contrast. Every elevation/* effect style binds its first shadow to key and its second to ambient. Before this, dark mode used the light-mode shadows, which disappeared on #131313.
+- Elevation page: the shadow specimens sat on a hard-coded white panel in both frames. They now sit on surface/page with container and container-high cards, so each frame shows its own theme. The intro and captions explain how surfaces pair with levels.
+- A new Elevation rule on the Decisions card.
+- Roadmap: elevation is removed, and one status palette moves to Now.
+- Code: `--shadow-*` now reads `var(--shadow-key)` and `var(--shadow-ambient)`, so every shadow class follows the theme.
