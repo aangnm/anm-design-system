@@ -25,7 +25,7 @@
     "docs:llms": "node scripts/build-llms.mjs",
     "tokens:transform": "node scripts/transform-tokens.mjs",
     "typecheck": "tsc --noEmit",
-    "test": "vitest run --project=storybook",
+    "test": "vitest run --project=storybook-dark && vitest run --project=storybook-light && vitest run --project=storybook-high-contrast",
     "changeset": "changeset",
     "release": "changeset publish"
   },

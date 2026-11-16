@@ -33,6 +33,8 @@ Components do **not** auto-sync. Figma cannot generate production React reliably
 
 **Tailwind spacing collision.** Figma's `spacing/8` means 8px; Tailwind v4's bare `p-8` means `8 × 0.25rem` = 32px. Both want the `--spacing-8` theme key. Our tokens are emitted with a `px` suffix — **use `px-16px` / `gap-8px` / `h-32px` for any exact-token value, never bare `p-4` / `gap-2`.** Bare numbered classes are a different, unrelated scale. This shipped a visually broken Button once; typecheck and build both stayed green.
 
+**`npm test` runs every story three times** (dark, light, high contrast — one Vitest project per theme, `VITE_SB_THEME`), each with axe including colour contrast. A contrast alert in the Storybook panel that the tests do not reproduce is worth checking for a theme switch caught mid-transition; the preview applies globals before render to prevent that.
+
 **Verify in the browser, not the compiler.** Every real bug in this project's history passed typecheck and build. Check Storybook, and check both themes (`data-theme="light"` on the iframe root).
 
 **`peer-*` only reaches true siblings.** Checkbox / Radio / Switch use a visually-hidden input with `peer`, and the visible box/knob must be a **direct sibling**, not nested inside another element.

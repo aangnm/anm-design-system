@@ -12,7 +12,7 @@ Token pipeline is live (color, spacing, radius, type, motion, breakpoints, eleva
 
 ## Quality checks
 
-Every pull request runs `.github/workflows/ci.yml`: typecheck, a check that `src/tokens/*` matches what the transform makes from `tokens/figma-export.json`, the library build, **every Storybook story as a test with an axe accessibility check** (`npm test`), and the Storybook build. Visual regression runs through Chromatic once `CHROMATIC_PROJECT_TOKEN` is set as a repository secret.
+Every pull request runs `.github/workflows/ci.yml`: typecheck, a check that `src/tokens/*` matches what the transform makes from `tokens/figma-export.json`, the library build, **every Storybook story as a test with an axe accessibility check, in each of the three themes** (`npm test`: dark, light and high contrast, so colour contrast is checked in all of them), and the Storybook build. Visual regression runs through Chromatic once `CHROMATIC_PROJECT_TOKEN` is set as a repository secret.
 
 ## For agents
 
