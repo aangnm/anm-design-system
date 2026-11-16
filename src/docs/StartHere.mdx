@@ -1,0 +1,61 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="Start here" />
+
+# Start here
+
+The anm design system exists to build **prototypes with AI agents**: data-heavy product screens (analytics, data visualisation, fintech), whether an agent designs in Figma or builds directly in code. Both draw on the same components and tokens. This page is the short version of the rules; every component's docs page adds its own **Design notes** from Figma (the "Why —" behind it).
+
+Machine-readable index: [`/llms.txt`](./llms.txt) lists every component with its import and design notes in one plain-text file.
+
+## Use what exists
+
+- Search this Storybook before building anything. About 70 components cover forms, navigation, data display, charts, feedback and page patterns. The Templates show how they compose into whole pages.
+- Never fork a component to change its look. Compose it, or pass `className` for layout only (width, margin, grid placement).
+- If something is genuinely missing, build it from tokens and existing components, the same way the Product Patterns are built.
+
+## Set up
+
+```tsx
+import '@anm/design-system/styles.css' // once, at the app root
+import { Button, Stat, LineChart } from '@anm/design-system'
+```
+
+Two attributes on any ancestor switch the whole subtree:
+
+- `data-theme`: `dark` (default), `light` or `high-contrast`. Every colour follows; high contrast also widens borders to 2px and the focus ring to 3px.
+- `data-density`: `comfortable` (default) or `compact`. Control heights (28 / 32 / 40, Button LG 44) and table rows follow.
+
+## Tokens, not values
+
+- **Colour:** semantic classes only: `bg-surface-page | container | container-high`, `text-text-primary | secondary`, `border-border-subtle | default`, `bg-interactive-primary`. Never a hex value.
+- **Status colour by role:** `bg-semantic-<status>` for a solid fill (Badge, dot); `bg-semantic-<status>-surface` with `text-semantic-<status>-foreground` for a tint (Banner, Tag); `text-text-<status>` for status text or an icon on a neutral surface.
+- **Spacing:** token classes carry a `px` suffix: `p-16px`, `gap-8px`, `h-32px`. Bare `p-4` is Tailwind's own scale and is wrong here.
+- **Type:** role classes: `text-display-2xl`, `text-headline-large`, `text-title-default`, `text-body-default`, `text-body-small`, `text-label-default`. Weight is separate (`font-medium`, `font-semibold`).
+- **Focus:** `focus-visible:focus-ring`, the one focus treatment. Never `ring-*` or a border recolour.
+- **Sizing that follows density:** `h-control-sm | md | lg`, `py-table-cell-y`.
+
+## Behaviour
+
+- Hover, Focus and Disabled are real CSS states, not props. Only states with no native equivalent (Loading, Selected, Done) are props.
+- One Primary Button per view. Secondary page actions are Icon Buttons.
+- Touch targets are at least 48 × 48 (the controls extend their hit area on coarse pointers); pointer targets at least 24 × 24.
+- Charts fill their container and redraw at its width; pass `width` only for a fixed size. Series keep their slot (colour and texture) across every chart. Use Small Multiples instead of a Line Chart with more than four crossing series.
+
+## Copy
+
+- Everything is in English. Numbers and dates are en-US: `1,284`, `12.5%`, `$128,450`, `May 27, 2026`. Format chart numbers with `formatChartNumber`.
+- Sample data is generic fintech and analytics: accounts (Account 4021), revenue categories (Sales, Subscriptions, Refunds, Commissions), USD, rates (Conversion, Retention, Churn). The placeholder person is Laura Romero (LR).
+
+## Accessibility is checked, not assumed
+
+Every story runs as a test in CI with axe. To pass:
+
+- Every field has a name: a `FormField` label, a `<label htmlFor>`, or `aria-label` (Select, Slider, Multi-select).
+- Charts announce their data through a generated `aria-label`; pass your own summary when the series are long.
+- Text clears 4.5:1 in dark and light, and 7:1 in high contrast; controls and graphics clear 3:1.
+
+## Where things are decided
+
+- **Figma** ([anm Design System](https://www.figma.com/design/OSexn3GQ7oIOo7X2sGVlSb/anm-Design-System)) is the source of truth: tokens, component specs, and each page's **Code handoff** spec mapping Figma properties to React props.
+- **Repository:** `tokens/figma-export.json` is the reviewed token pull; `src/tokens/*` is generated from it and never edited by hand.

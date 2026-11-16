@@ -1,6 +1,7 @@
 import type { Preview } from '@storybook/react-vite'
 import React, { useEffect } from 'react'
 import '../src/styles.css'
+import { DocsPage } from './DocsPage'
 
 const withTheme = (Story: React.ComponentType, context: { globals: { theme?: string; density?: string } }) => {
   const theme = context.globals.theme ?? 'dark'
@@ -26,9 +27,11 @@ const preview: Preview = {
     layout: 'fullscreen',
     options: {
       storySort: {
-        order: ['Introduction', 'Core', 'Navigation', 'Data Display', 'Feedback & Overlays', 'Product Patterns', 'Templates'],
+        order: ['Introduction', 'Start here', 'Core', 'Navigation', 'Data Display', 'Feedback & Overlays', 'Product Patterns', 'Templates'],
       },
     },
+    // Docs pages carry the Figma design notes under the props table.
+    docs: { page: DocsPage },
     // Every story runs as a test (npm test, and in CI) with an axe check;
     // an accessibility violation fails the run.
     a11y: { test: 'error' },
