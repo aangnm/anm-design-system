@@ -16,7 +16,7 @@ type Story = StoryObj<typeof Navbar>
 export const Playground: Story = {
   render: () => (
     <Navbar
-      brand={<span className="text-sm font-semibold text-text-primary">iankha</span>}
+      brand={<span className="text-sm font-semibold text-text-primary">anm</span>}
       actions={
         <>
           <button
@@ -33,8 +33,8 @@ export const Playground: Story = {
       <NavbarLink href="#" active>
         Panel
       </NavbarLink>
-      <NavbarLink href="#">Registros</NavbarLink>
-      <NavbarLink href="#">Análisis</NavbarLink>
+      <NavbarLink href="#">Transacciones</NavbarLink>
+      <NavbarLink href="#">Reportes</NavbarLink>
     </Navbar>
   ),
 }

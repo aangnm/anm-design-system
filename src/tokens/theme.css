@@ -1,23 +1,19 @@
 /**
  * GENERATED FILE — do not edit by hand.
- * Source: tokens/figma-export.json (exported 2026-10-02T00:00:00.000Z)
+ * Source: tokens/figma-export.json (exported 2026-11-15T21:00:00.000Z)
  * Regenerate: node scripts/transform-tokens.mjs
  */
 
 @theme {
   --color-surface-page: var(--surface-page);
-  --color-surface-default: var(--surface-default);
+  --color-surface-container-high: var(--surface-container-high);
   --color-surface-container: var(--surface-container);
-  --color-surface-emphasis: var(--surface-emphasis);
-  --color-surface-subtle: var(--surface-subtle);
-  --color-surface-muted: var(--surface-muted);
   --color-surface-inverted: var(--surface-inverted);
   --color-surface-info: var(--surface-info);
   --color-surface-success: var(--surface-success);
   --color-surface-warning: var(--surface-warning);
   --color-surface-error: var(--surface-error);
   --color-border-default: var(--border-default);
-  --color-border-muted: var(--border-muted);
   --color-border-subtle: var(--border-subtle);
   --color-border-emphasis: var(--border-emphasis);
   --color-text-primary: var(--text-primary);
@@ -30,8 +26,6 @@
   --color-text-warning: var(--text-warning);
   --color-text-error: var(--text-error);
   --color-interactive-default: var(--interactive-default);
-  --color-interactive-hover: var(--interactive-hover);
-  --color-interactive-active: var(--interactive-active);
   --color-interactive-disabled: var(--interactive-disabled);
   --color-focus-ring: var(--focus-ring);
   --color-brand-accent: var(--brand-accent);
@@ -53,8 +47,6 @@
   --color-data-low: var(--data-low);
   --color-data-mid: var(--data-mid);
   --color-data-high: var(--data-high);
-  --color-interactive-primary-hover: var(--interactive-primary-hover);
-  --color-interactive-primary-active: var(--interactive-primary-active);
   --color-icon-default: var(--icon-default);
   --color-icon-muted: var(--icon-muted);
   --color-icon-inverse: var(--icon-inverse);
@@ -68,6 +60,7 @@
   --color-chart-series-8: var(--chart-series-8);
   --color-brand-logo: var(--brand-logo);
   --color-surface-scrim: var(--surface-scrim);
+  --color-surface-highlight: var(--surface-highlight);
 
   --radius-xs: 2px;
   --radius-sm: 4px;
@@ -127,4 +120,6 @@
   --opacity-loading: var(--opacity-loading);
   --opacity-chart-fill: var(--opacity-chart-fill);
   --opacity-scrim: var(--opacity-scrim);
+  --opacity-state-hover: var(--opacity-state-hover);
+  --opacity-state-pressed: var(--opacity-state-pressed);
 }

@@ -1,5 +1,5 @@
 ---
-"@iankha/design-system": minor
+"@anm/design-system": minor
 ---
 
 Navigation category: Tabs, Breadcrumb, Pagination, Menu, MenuItem, DropdownMenu, Navbar, and Sidebar (Expanded/Collapsed).

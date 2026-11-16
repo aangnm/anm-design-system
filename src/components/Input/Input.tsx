@@ -12,7 +12,7 @@ import { cn } from '@/lib/utils'
 // 2px focus ring. Heights: SM 32 / MD 36 / LG 48; text 13/20, 14/20, 16/24.
 
 const inputVariants = cva(
-  'flex w-full items-center gap-8px border bg-surface-subtle text-text-primary outline-none transition-colors ' +
+  'flex w-full items-center gap-8px border bg-surface-container text-text-primary outline-none transition-colors ' +
     'placeholder:text-text-secondary ' +
     'disabled:cursor-not-allowed disabled:bg-interactive-disabled disabled:text-text-disabled disabled:placeholder:text-text-disabled disabled:border-border-subtle disabled:hover:border-border-subtle ' +
     'has-[:disabled]:cursor-not-allowed has-[:disabled]:bg-interactive-disabled has-[:disabled]:text-text-disabled has-[:disabled]:border-border-subtle has-[:disabled]:hover:border-border-subtle',

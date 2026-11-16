@@ -4,7 +4,7 @@ import { Circle } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 // Mirrors the Menu Item + Menu components (Navigation page). Menu is the
-// elevated surface (surface/emphasis, radius/md, elevation/shadow-lg);
+// elevated surface (surface/container-high, radius/md, elevation/shadow-lg);
 // MenuItem is the row. Hover is a real :hover — only Disabled needs a prop.
 // Leading icon is a boolean, on by default (as in Figma, where it shows the
 // placeholder circle); turn it off for text-only lists such as the Searchable
@@ -21,7 +21,7 @@ export function Menu({ className, children, ...props }: MenuProps) {
         // a block-level flex column would otherwise stretch to fill whatever
         // it's dropped into. Hugging content with a minimum keeps the Figma
         // width for typical items without pinning wider content.
-        'flex w-fit min-w-[232px] flex-col gap-2px rounded-md bg-surface-emphasis p-6px shadow-lg',
+        'flex w-fit min-w-[232px] flex-col gap-2px rounded-md bg-surface-container-high p-6px shadow-lg',
         className,
       )}
       {...props}

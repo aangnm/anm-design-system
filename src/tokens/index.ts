@@ -1,6 +1,6 @@
 /**
  * GENERATED FILE — do not edit by hand.
- * Source: tokens/figma-export.json (exported 2026-10-02T00:00:00.000Z)
+ * Source: tokens/figma-export.json (exported 2026-11-15T21:00:00.000Z)
  * Regenerate: node scripts/transform-tokens.mjs
  *
  * Every value is a CSS var() reference, not a raw value — these read the
@@ -11,21 +11,18 @@
 export const color = {
   surface: {
     Page: 'var(--surface-page)',
-    Default: 'var(--surface-default)',
+    ContainerHigh: 'var(--surface-container-high)',
     Container: 'var(--surface-container)',
-    Emphasis: 'var(--surface-emphasis)',
-    Subtle: 'var(--surface-subtle)',
-    Muted: 'var(--surface-muted)',
     Inverted: 'var(--surface-inverted)',
     Info: 'var(--surface-info)',
     Success: 'var(--surface-success)',
     Warning: 'var(--surface-warning)',
     Error: 'var(--surface-error)',
     Scrim: 'var(--surface-scrim)',
+    Highlight: 'var(--surface-highlight)',
   },
   border: {
     Default: 'var(--border-default)',
-    Muted: 'var(--border-muted)',
     Subtle: 'var(--border-subtle)',
     Emphasis: 'var(--border-emphasis)',
   },
@@ -42,13 +39,9 @@ export const color = {
   },
   interactive: {
     Default: 'var(--interactive-default)',
-    Hover: 'var(--interactive-hover)',
-    Active: 'var(--interactive-active)',
     Disabled: 'var(--interactive-disabled)',
     Primary: 'var(--interactive-primary)',
     PrimaryForeground: 'var(--interactive-primary-foreground)',
-    PrimaryHover: 'var(--interactive-primary-hover)',
-    PrimaryActive: 'var(--interactive-primary-active)',
   },
   focus: {
     Ring: 'var(--focus-ring)',

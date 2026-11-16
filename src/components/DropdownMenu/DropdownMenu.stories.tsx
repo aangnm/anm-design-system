@@ -45,7 +45,7 @@ export const Open: Story = {
 // Limpiar resets the query and the selection.
 function SearchableExample() {
   const [selected, setSelected] = useState<string | null>(null)
-  const names = ['Cosecha', 'Riego', 'Fertilización', 'Poda']
+  const names = ['Ventas', 'Comisiones', 'Suscripciones', 'Reembolsos']
   return (
     <div className="h-[340px] bg-surface-page p-8">
       <DropdownMenu label={selected ?? 'Opciones'} defaultOpen searchable onClear={() => setSelected(null)}>

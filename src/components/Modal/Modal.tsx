@@ -62,7 +62,7 @@ export function Modal({
       role="dialog"
       aria-modal="true"
       aria-labelledby={titleId}
-      className={cn('flex w-[440px] flex-col items-start gap-16px rounded-lg bg-surface-subtle p-24px shadow-xl', className)}
+      className={cn('flex w-[440px] flex-col items-start gap-16px rounded-lg bg-surface-container p-24px shadow-xl', className)}
       {...props}
     >
       <div className="flex w-full items-center justify-between">

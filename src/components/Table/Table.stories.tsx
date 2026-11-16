@@ -2,21 +2,21 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Table } from './Table'
 import { Tag } from '@/components/Tag'
 
-// Sample from the Figma component set: Lote · Actividad · Estado · Data · Unidad
+// Sample from the Figma component set: Cuenta · Categoría · Estado · Monto · Moneda
 // (column widths 70 / 160 / 120 / 90 / 90 = 530).
 const columns = [
-  { key: 'lote', header: 'Lote', width: 70 },
-  { key: 'actividad', header: 'Actividad', width: 160 },
+  { key: 'cuenta', header: 'Cuenta', width: 70 },
+  { key: 'categoria', header: 'Categoría', width: 160 },
   { key: 'estado', header: 'Estado', width: 120 },
-  { key: 'data', header: 'Data', width: 90 },
-  { key: 'unidad', header: 'Unidad', width: 90 },
+  { key: 'data', header: 'Monto', width: 90 },
+  { key: 'unidad', header: 'Moneda', width: 90 },
 ]
 
 const rows = [
-  { lote: '07', actividad: 'Cosecha', estado: <Tag color="success">Activa</Tag>, data: '250', unidad: 'Tallos' },
-  { lote: '12', actividad: 'Fertilización', estado: <Tag color="warning">Pendiente</Tag>, data: '—', unidad: 'Kg/Ha' },
-  { lote: '15N', actividad: 'Monitoreo', estado: <Tag color="success">Activa</Tag>, data: '98', unidad: 'Plantas' },
-  { lote: '18', actividad: 'Riego', estado: <Tag color="success">Activa</Tag>, data: '7,6', unidad: 'L/Ha' },
+  { cuenta: '4021', categoria: 'Ventas', estado: <Tag color="success">Activa</Tag>, data: '250', unidad: 'USD' },
+  { cuenta: '4035', categoria: 'Suscripciones', estado: <Tag color="warning">Pendiente</Tag>, data: '—', unidad: 'USD' },
+  { cuenta: '4102', categoria: 'Reembolsos', estado: <Tag color="success">Activa</Tag>, data: '98', unidad: 'EUR' },
+  { cuenta: '4118', categoria: 'Comisiones', estado: <Tag color="success">Activa</Tag>, data: '76', unidad: 'USD' },
 ]
 
 const meta: Meta<typeof Table> = {
@@ -63,7 +63,7 @@ export const States: Story = {
 // `bordered={false}`: no card chrome, for a table inside a container that owns it (Content Panel).
 export const Borderless: Story = {
   render: () => (
-    <div className="w-[530px] rounded-lg border border-border-subtle bg-surface-subtle p-16px">
+    <div className="w-[530px] rounded-lg border border-border-subtle bg-surface-container p-16px">
       <Table columns={columns} rows={rows} bordered={false} />
     </div>
   ),

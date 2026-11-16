@@ -23,7 +23,7 @@ import { Menu } from '@/components/Menu'
 // this component does not depend on their in-flight edits. Fixed heights
 // (box-border) so the stroke counts inside 32/36/48 like Figma.
 const comboboxVariants = cva(
-  'w-full border bg-surface-subtle text-text-primary outline-none transition-colors ' +
+  'w-full border bg-surface-container text-text-primary outline-none transition-colors ' +
     'placeholder:text-text-secondary hover:border-border-emphasis ' +
     'focus-visible:border-focus-ring ' +
     'aria-invalid:border-semantic-error aria-invalid:focus-visible:ring-2 aria-invalid:focus-visible:ring-focus-ring ' +
@@ -72,7 +72,7 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
       error,
       defaultOpen = false,
       emptyText = 'Sin resultados',
-      placeholder = 'Buscar lote…',
+      placeholder = 'Buscar cuenta…',
       disabled,
       className,
       wrapperClassName,

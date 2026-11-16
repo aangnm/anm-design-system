@@ -12,8 +12,8 @@ const meta: Meta<typeof RadioGroup> = {
   component: RadioGroup,
   tags: ['autodocs'],
   args: {
-    legend: 'Cultivo principal',
-    helperText: 'Usado para las recomendaciones de riego y fertilización.',
+    legend: 'Moneda principal',
+    helperText: 'Se usa para los reportes y las conversiones.',
     options,
     defaultValue: 'cafe',
   },
@@ -37,18 +37,18 @@ export const Variants: Story = {
     <div className="flex flex-wrap gap-32px bg-surface-page p-24px">
       <div className="w-[280px]">
         <RadioGroup
-          legend="Cultivo principal"
-          helperText="Usado para las recomendaciones de riego y fertilización."
+          legend="Moneda principal"
+          helperText="Se usa para los reportes y las conversiones."
           options={options}
           defaultValue="cafe"
         />
       </div>
       <div className="w-[280px]">
-        <RadioGroup legend="Cultivo principal" options={options} defaultValue="cacao" />
+        <RadioGroup legend="Moneda principal" options={options} defaultValue="cacao" />
       </div>
       <div className="w-[280px]">
         <RadioGroup
-          legend="Cultivo principal (deshabilitado)"
+          legend="Moneda principal (deshabilitado)"
           options={options}
           defaultValue="cafe"
           disabled

@@ -21,8 +21,8 @@ export interface CardProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 // bg + border + radius + padding are the shared surface, identical across
-// every state (surface/subtle, border/subtle, radius/lg, spacing/20 in Figma).
-const surface = 'w-full rounded-lg border border-border-subtle bg-surface-subtle p-20px'
+// every state (surface/container, border/subtle, radius/lg, spacing/20 in Figma).
+const surface = 'w-full rounded-lg border border-border-subtle bg-surface-container p-20px'
 // Every non-Default variant is padded to the Default's height (108px) on purpose:
 // swapping a populated card for its Empty state must not collapse the container.
 const statePad = 'min-h-[108px]'
@@ -38,10 +38,10 @@ export function Card({
   if (state === 'loading') {
     return (
       <div className={cn(surface, statePad, 'flex flex-col items-start gap-10px', className)} aria-busy="true" {...props}>
-        {/* Skeleton bars — arbitrary dims (not tokens), fill = border/muted. */}
-        <div className="h-[16px] w-[140px] rounded-sm bg-border-muted" />
-        <div className="h-[12px] w-[260px] rounded-sm bg-border-muted" />
-        <div className="h-[12px] w-[180px] rounded-sm bg-border-muted" />
+        {/* Skeleton bars — arbitrary dims (not tokens), fill = border/subtle. */}
+        <div className="h-[16px] w-[140px] rounded-sm bg-border-subtle" />
+        <div className="h-[12px] w-[260px] rounded-sm bg-border-subtle" />
+        <div className="h-[12px] w-[180px] rounded-sm bg-border-subtle" />
       </div>
     )
   }

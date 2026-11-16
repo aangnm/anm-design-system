@@ -2,9 +2,9 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { ChartTooltip } from './ChartTooltip'
 
 const rows = [
-  { label: 'NDVI', value: '0,86', series: 1 as const },
-  { label: 'GNDVI', value: '0,71', series: 2 as const },
-  { label: 'NDRE', value: '0,34', series: 3 as const },
+  { label: 'Conversión', value: '0,86', series: 1 as const },
+  { label: 'Retención', value: '0,71', series: 2 as const },
+  { label: 'Abandono', value: '0,34', series: 3 as const },
 ]
 
 const meta: Meta<typeof ChartTooltip> = {

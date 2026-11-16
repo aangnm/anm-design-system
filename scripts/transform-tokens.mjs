@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Transforms tokens/figma-export.json (a raw pull from the Iankha-Design-System-New
+// Transforms tokens/figma-export.json (a raw pull from the anm Design System
 // Figma file's variable collections) into the CSS + TS the package actually ships.
 //
 // Re-run after every Figma token pull:

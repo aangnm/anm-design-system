@@ -25,7 +25,7 @@ const values = [
 
 const forced = {
   Default: '',
-  Hover: '[&_input+span]:bg-interactive-hover [&_input:checked+span]:bg-interactive-primary-hover',
+  Hover: '[&_input+span]:state-hover',
   Focus: '[&_input+span]:border-focus-ring!',
   Disabled: '',
 } as const

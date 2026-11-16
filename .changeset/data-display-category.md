@@ -1,5 +1,5 @@
 ---
-"@iankha/design-system": minor
+"@anm/design-system": minor
 ---
 
 Data Display category: Card (with CardTitle/CardDescription), Stat, List, and Table — each with Default/Empty/Loading/Error states — plus the Bar Chart and Sparkline data-viz primitives. All ported from the Data Display page in Figma with matching Storybook stories and Code Connect mappings.

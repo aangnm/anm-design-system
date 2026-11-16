@@ -20,7 +20,7 @@ import { Menu } from '@/components/Menu'
 // (Figma strokes sit inside the frame, CSS borders add to the content box).
 
 const fieldVariants = cva(
-  'flex w-full cursor-pointer flex-wrap items-center gap-6px border bg-surface-subtle text-text-primary outline-none transition-colors ' +
+  'flex w-full cursor-pointer flex-wrap items-center gap-6px border bg-surface-container text-text-primary outline-none transition-colors ' +
     'focus-visible:border-focus-ring aria-expanded:border-focus-ring ' +
     'aria-disabled:cursor-not-allowed aria-disabled:border-border-subtle aria-disabled:bg-interactive-disabled aria-disabled:text-text-disabled',
   {

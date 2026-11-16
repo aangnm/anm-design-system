@@ -49,9 +49,9 @@ export function Stat({
   if (state === 'loading') {
     return (
       <div className={cn(surface, 'flex flex-col items-start gap-8px', className)} aria-busy="true" {...props}>
-        <div className="h-[12px] w-[90px] rounded-sm bg-surface-emphasis" />
-        <div className="h-[24px] w-[120px] rounded-sm bg-surface-emphasis" />
-        <div className="h-[12px] w-[140px] rounded-sm bg-surface-emphasis" />
+        <div className="h-[12px] w-[90px] rounded-sm bg-surface-container-high" />
+        <div className="h-[24px] w-[120px] rounded-sm bg-surface-container-high" />
+        <div className="h-[12px] w-[140px] rounded-sm bg-surface-container-high" />
       </div>
     )
   }

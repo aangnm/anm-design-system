@@ -35,7 +35,7 @@ export function FileUpload({
   return (
     <label
       className={cn(
-        'flex w-[360px] cursor-pointer flex-col items-center justify-center gap-8px rounded-lg border border-dashed bg-surface-subtle px-24px py-28px text-center transition-colors has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-focus-ring',
+        'flex w-[360px] cursor-pointer flex-col items-center justify-center gap-8px rounded-lg border border-dashed bg-surface-container px-24px py-28px text-center transition-colors has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-focus-ring',
         dragging ? 'border-interactive-primary' : 'border-border-default',
         disabled && 'cursor-not-allowed border-border-subtle bg-interactive-disabled opacity-60',
         className,

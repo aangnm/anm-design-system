@@ -12,7 +12,7 @@ import { cn } from '@/lib/utils'
 // Field for label + helper, same as Input.
 
 const textareaVariants = cva(
-  'w-full resize-none rounded-md border bg-surface-subtle px-12px py-8px text-sm text-text-primary outline-none transition-colors ' +
+  'w-full resize-none rounded-md border bg-surface-container px-12px py-8px text-sm text-text-primary outline-none transition-colors ' +
     'placeholder:text-text-secondary ' +
     'disabled:cursor-not-allowed disabled:bg-interactive-disabled disabled:text-text-disabled disabled:placeholder:text-text-disabled disabled:border-border-subtle disabled:hover:border-border-subtle',
   {

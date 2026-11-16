@@ -12,7 +12,7 @@ import { cn } from '@/lib/utils'
 const tagVariants = cva('inline-flex h-24px items-center gap-6px rounded-sm px-10px text-text-xxs font-medium leading-4', {
   variants: {
     color: {
-      neutral: 'bg-surface-emphasis text-text-secondary',
+      neutral: 'bg-surface-container-high text-text-secondary',
       success: 'bg-semantic-success-surface text-semantic-success-foreground',
       warning: 'bg-semantic-warning-surface text-semantic-warning-foreground',
       error: 'bg-semantic-error-surface text-semantic-error-foreground',

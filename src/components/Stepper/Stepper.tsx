@@ -15,7 +15,7 @@ import { cn } from '@/lib/utils'
 // focus ring (`ring-2 ring-focus-ring`, drawn outside the border).
 
 const stepperVariants = cva(
-  'group inline-flex items-center border bg-surface-subtle transition-colors ' +
+  'group inline-flex items-center border bg-surface-container transition-colors ' +
     'has-[:focus-visible]:border-focus-ring',
   {
     variants: {

@@ -38,7 +38,7 @@ export function Toast({ color = 'success', title, description, onDismiss, classN
     <div
       role="status"
       className={cn(
-        'flex w-[360px] items-center gap-12px rounded-md bg-surface-emphasis px-14px py-12px shadow-lg',
+        'flex w-[360px] items-center gap-12px rounded-md bg-surface-container-high px-14px py-12px shadow-lg',
         className,
       )}
       {...props}

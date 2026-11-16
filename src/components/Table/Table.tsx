@@ -54,7 +54,7 @@ export function Table({
     <div
       className={cn(
         'w-full overflow-hidden',
-        bordered && 'rounded-lg border border-border-subtle bg-surface-subtle',
+        bordered && 'rounded-lg border border-border-subtle bg-surface-container',
         // Every non-Default variant is padded to the Default's height (header 36
         // + four 44px rows = 212px) on purpose, so swapping states never makes
         // the container jump.
@@ -63,7 +63,7 @@ export function Table({
     >
       <table className={cn('w-full border-collapse', className)} {...props}>
         <thead>
-          <tr className="bg-surface-emphasis">
+          <tr className="bg-surface-container-high">
             {columns.map((col) => (
               <th
                 key={col.key}
@@ -99,7 +99,7 @@ export function Table({
                 {columns.map((col, c) => (
                   <td key={col.key} className="px-14px">
                     <div
-                      className="h-12px max-w-full rounded-sm bg-border-muted"
+                      className="h-12px max-w-full rounded-sm bg-border-subtle"
                       style={{ width: SKELETON_WIDTHS[c % SKELETON_WIDTHS.length] }}
                     />
                   </td>

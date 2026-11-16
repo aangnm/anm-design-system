@@ -24,7 +24,7 @@ export interface ChartTooltipProps extends HTMLAttributes<HTMLDivElement> {
 export function ChartTooltip({ heading, rows, className, ...props }: ChartTooltipProps) {
   return (
     <div
-      className={cn('flex w-[150px] flex-col items-start gap-6px rounded-md bg-surface-emphasis px-10px py-8px shadow-md', className)}
+      className={cn('flex w-[150px] flex-col items-start gap-6px rounded-md bg-surface-container-high px-10px py-8px shadow-md', className)}
       {...props}
     >
       <p className="text-text-xxs leading-4 text-text-secondary">{heading}</p>

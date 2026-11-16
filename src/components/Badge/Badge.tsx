@@ -13,7 +13,7 @@ import { cn } from '@/lib/utils'
 const badgeVariants = cva('inline-flex h-20px min-w-20px items-center justify-center rounded-pill px-6px text-text-xxs font-medium leading-4', {
   variants: {
     color: {
-      neutral: 'bg-surface-emphasis text-text-primary',
+      neutral: 'bg-surface-container-high text-text-primary',
       success: 'bg-semantic-success text-white',
       warning: 'bg-semantic-warning text-black',
       error: 'bg-semantic-error text-white',

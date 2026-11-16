@@ -1,6 +1,6 @@
-# Iankha Design System
+# anm design system
 
-Tokens and React components generated from [Iankha-Design-System-New](https://www.figma.com/design/OSexn3GQ7oIOo7X2sGVlSb/Iankha-Design-System-New), the canonical Figma file.
+Tokens and React components generated from [anm Design System](https://www.figma.com/design/OSexn3GQ7oIOo7X2sGVlSb/anm-Design-System), the canonical Figma file.
 
 ## Status
 
@@ -13,7 +13,6 @@ Tokens and React components generated from [Iankha-Design-System-New](https://ww
 - [class-variance-authority](https://cva.style/) for variant APIs, [Radix Slot](https://www.radix-ui.com/primitives/docs/utilities/slot) for `asChild`
 - [Storybook](https://storybook.js.org/) for visual QA and as the human-facing doc site
 - [Changesets](https://github.com/changesets/changesets) for versioning
-- [Figma Code Connect](https://www.figma.com/code-connect-docs/) so Figma Dev Mode shows the real component source
 
 ## Getting started
 
@@ -30,7 +29,7 @@ Figma's Variables REST API is Enterprise-only, and this team is on Pro — so th
 
 ### 1. Pull tokens from Figma (`tokens/figma-export.json`)
 
-This step needs live Figma access (the Figma MCP plugin connection, from a Claude Code session with the Iankha-Design-System-New file open). Ask Claude to re-export the file's variable collections — it resolves every variable (including cross-collection aliases) to its final value per mode and writes the result to `tokens/figma-export.json`. This file is checked into git specifically so every token change shows up as a reviewable diff.
+This step needs live Figma access (the Figma MCP plugin connection, from a Claude Code session with the anm Design System file open). Ask Claude to re-export the file's variable collections — it resolves every variable (including cross-collection aliases) to its final value per mode and writes the result to `tokens/figma-export.json`. This file is checked into git specifically so every token change shows up as a reviewable diff.
 
 ### 2. Transform into code (`scripts/transform-tokens.mjs`)
 
@@ -56,18 +55,22 @@ Since this is a manual pull, treat it like any other change: read the diff in `t
 
 ### Components don't auto-sync — that's intentional
 
-Figma can't reliably generate production React from a component; component code stays hand-built to spec. What keeps it from drifting silently is **Code Connect**: every component gets a `ComponentName.figma.tsx` file mapping its props to the Figma component's variant properties (see `src/components/Button/Button.figma.tsx`). Once published (`npm run figma:connect`, needs `FIGMA_ACCESS_TOKEN`), Figma's Dev Mode shows the actual `<Button variant="primary" size="md">` snippet next to the design — so a designer changing a variant in Figma without a matching code change becomes visible there, not a silent gap.
+Figma can't reliably generate production React from a component; component code stays hand-built to spec. Code Connect would show the real snippet in Dev Mode, but it needs an Organization or Enterprise plan and this team is on Pro, so it is not used.
+
+Instead, each component page in Figma carries a **Code handoff** spec (a Figma Spec block beside the frames): the React export and source file for every component, how each Figma property maps to a prop, the page's build rules, and the components that have no code yet. When a component's API changes, update its page's spec in the same change.
+
+The history of the Figma file itself is in [`docs/figma-changelog.md`](docs/figma-changelog.md); add an entry there whenever a Figma change ships.
 
 ## Repo structure
 
 ```
+docs/figma-changelog.md      history of the Figma file
 tokens/figma-export.json     raw pull from Figma (source of truth for token values)
 scripts/transform-tokens.mjs deterministic JSON -> CSS/TS transform
 src/tokens/                  generated — do not hand-edit
 src/components/<Name>/
   <Name>.tsx                 the component
   <Name>.stories.tsx         Storybook states, mirrors the Figma variant grid
-  <Name>.figma.tsx           Code Connect mapping
   index.ts
 src/lib/utils.ts             cn() (clsx + tailwind-merge)
 src/styles.css               entry point: Tailwind + tokens
@@ -82,12 +85,12 @@ When porting a component from Figma:
 2. Build with Tailwind utilities from the generated token classes only — no raw hex, no magic numbers. **For spacing specifically, use the `Npx`-suffixed classes** (`px-16px`, `gap-8px`, `py-6px`) for any value that has to match a real Figma spacing token — bare `p-4`/`gap-2`/etc. are a *different*, unrelated Tailwind scale (see the note in `scripts/transform-tokens.mjs`). Radius (`rounded-md`), breakpoints, and font sizes (`text-sm`) don't have this problem — use them bare.
 3. For a custom control that isn't backed by a real `<input>` visually (Checkbox, Radio, Switch), the pattern is: a visually-hidden native input with the `peer` class, then the visible box/knob/icon elements as its **direct siblings** (not nested inside each other) using `peer-checked:`/`peer-disabled:`/etc. — Tailwind's `peer-*` only reaches true siblings, not a sibling's descendants.
 4. Write a `.stories.tsx` that reproduces the same grid the Figma component page shows, so a visual diff against Figma is a straight comparison.
-5. Add the `.figma.tsx` Code Connect mapping.
+5. Add or update the component's row in its page's Code handoff spec in Figma.
 6. `npm run changeset` to record what shipped.
 
 ## Roadmap
 
-**The roadmap lives in Figma, not here** — the [Roadmap page](https://www.figma.com/design/OSexn3GQ7oIOo7X2sGVlSb/Iankha-Design-System-New?node-id=2357-2) (node `2357:2`, right after About & Guidelines) is the canonical list of open work, grouped Now / Next / Later / Accepted. Design and code both draw from it, and it is kept current as work ships.
+**The roadmap lives in Figma, not here** — the [Roadmap page](https://www.figma.com/design/OSexn3GQ7oIOo7X2sGVlSb/anm-Design-System?node-id=2357-2) (node `2357:2`, right after About & Guidelines) is the canonical list of open work, grouped Now / Next / Later / Accepted. Design and code both draw from it, and it is kept current as work ships.
 
 This section used to duplicate that list and drifted badly out of date, so it no longer tries. What follows is only the **code-side** state, which the Figma page does not track.
 
@@ -103,14 +106,14 @@ This section used to duplicate that list and drifted badly out of date, so it no
 
 ### Designed in Figma, not yet in code
 
-As of the Phase C mapping (Figma changelog v0.72) every component in the file has a code counterpart, including the Scrim (as the `overlay` prop on Modal and Drawer). Nothing is currently known to be missing — but Figma is still the source of truth, so re-check a component against it before assuming the code is current; components can gain states or new siblings between snapshots (Icon Button went from 9 to 36 variants this way once already).
+Each component page's Code handoff spec in Figma lists these too.
+
+- **Core (touch input):** Choice Tile, List Row, Counter, Count Row, PIN Field
+- **Navigation:** Date Indicator, Topbar / Alt, App Bar / Mobile, Action Bar
+- **Data Display:** Stacked Bar Chart, Donut Chart, Line Chart · Detailed
+- **Feedback & Overlays:** Bottom Sheet
 
 ### Not ported, on purpose
 
 - **Sidebar / Alt** — a layout rearrangement (profile on top, brand bar at the bottom) rather than a distinct component. Reachable today by passing different `brand`/`footer` slots to `Sidebar`.
 - **Navbar / Mobile** — the responsive form of Navbar. Best added as a real responsive behaviour on `Navbar` once breakpoint usage is settled, rather than as a second component that callers must swap manually.
-- **Date Indicator / Topbar / Alt** — previously skipped over domain vocabulary (`SEM 32` farm weeks). Resolved in Figma as of v0.9: Date Indicator is now a generic date + optional swappable tag primitive, so both are portable whenever they are wanted.
-
-### Code Connect
-
-Mapping files exist for every ported component, but are **not published** — that is a deliberate choice while the system is still being designed, not a missing prerequisite. Publishing needs `FIGMA_ACCESS_TOKEN` with Code Connect write scope.

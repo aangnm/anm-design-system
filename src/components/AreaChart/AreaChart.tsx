@@ -8,8 +8,8 @@ import { Legend, CHART_SERIES_TEXT, CHART_SERIES_FILL, formatChartNumber, type C
 // areas hide the series behind them). The fill is bound to opacity/chart-fill
 // (18%) rather than a hardcoded value, so the whole chart family shifts
 // together if that reading changes — kept as a real token here, not inlined.
-// Same container as Line Chart (surface/subtle, subtle border), gridlines
-// border/subtle with a border/muted baseline, axis text on the 11px floor with
+// Same container as Line Chart (surface/container, subtle border), gridlines
+// border/subtle, baseline included, axis text on the 11px floor with
 // decimal commas. Not interactive (a labelled image).
 
 export interface AreaChartSeries {
@@ -48,7 +48,7 @@ export function AreaChart({ series, categories, width = 360, height = 160, forma
 
   return (
     <div
-      className={cn('flex w-fit flex-col items-start gap-14px overflow-hidden rounded-lg border border-border-subtle bg-surface-subtle p-16px', className)}
+      className={cn('flex w-fit flex-col items-start gap-14px overflow-hidden rounded-lg border border-border-subtle bg-surface-container p-16px', className)}
       {...props}
     >
       <Legend items={series.map((s) => ({ label: s.label, series: s.series }))} />
@@ -62,7 +62,7 @@ export function AreaChart({ series, categories, width = 360, height = 160, forma
           <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} fill="none" role="img">
             <line x1={0} y1={pad + 0.5} x2={width} y2={pad + 0.5} stroke="var(--border-subtle)" strokeWidth={1} />
             <line x1={0} y1={height / 2} x2={width} y2={height / 2} stroke="var(--border-subtle)" strokeWidth={1} />
-            <line x1={0} y1={height - pad + 0.5} x2={width} y2={height - pad + 0.5} stroke="var(--border-muted)" strokeWidth={1} />
+            <line x1={0} y1={height - pad + 0.5} x2={width} y2={height - pad + 0.5} stroke="var(--border-subtle)" strokeWidth={1} />
             {series.map((s) => {
               const points = toPoints(s.data)
               const linePath = points.map((p, i) => `${i === 0 ? 'M' : 'L'}${p.x.toFixed(2)},${p.y.toFixed(2)}`).join(' ')

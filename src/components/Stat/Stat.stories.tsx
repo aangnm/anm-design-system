@@ -10,8 +10,8 @@ const meta: Meta<typeof Stat> = {
     trend: { control: 'inline-radio', options: ['up', 'down', 'neutral'] },
   },
   args: {
-    label: 'Producción total',
-    value: '1.284 Tallos',
+    label: 'Ingresos totales',
+    value: '$ 128.450',
     delta: '12,5 %',
     trend: 'up',
     deltaCaption: 'vs. mes anterior',
@@ -35,7 +35,7 @@ export const States: Story = {
   render: () => (
     <div className="flex flex-wrap gap-16px bg-surface-page p-24px">
       <div className="w-[260px]">
-        <Stat label="Producción total" value="1.284 Tallos" delta="12,5 %" trend="up" deltaCaption="vs. mes anterior" />
+        <Stat label="Ingresos totales" value="$ 128.450" delta="12,5 %" trend="up" deltaCaption="vs. mes anterior" />
       </div>
       <div className="w-[260px]">
         <Stat state="empty" />
@@ -60,7 +60,7 @@ export const Trends: Story = {
         <Stat label="Mermas" value="3,2 %" delta="4,1 %" trend="down" deltaCaption="vs. mes anterior" />
       </div>
       <div className="w-[260px]">
-        <Stat label="Lotes activos" value="18" delta="0 %" trend="neutral" deltaCaption="sin cambios" />
+        <Stat label="Cuentas activas" value="18" delta="0 %" trend="neutral" deltaCaption="sin cambios" />
       </div>
     </div>
   ),

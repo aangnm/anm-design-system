@@ -10,9 +10,8 @@ import { cn } from '@/lib/utils'
 // generalized here to a real month grid computed from `month`, with
 // Monday-start weekdays (L M M J V S D) matching the design.
 // States (Figma State=Default/Hover/Focus/Disabled): Hover and Focus are real
-// :hover / :focus-visible on the day — Hover = interactive/hover fill plus a 1px
-// border/default outline (interactive/default equals the surface in dark, so a
-// fill alone was invisible); Focus = 2px focus/ring. Disabled days (dates after
+// :hover / :focus-visible on the day — Hover = the 8% text/primary state layer plus a
+// 1px border/default outline (a tint alone is faint on the dark surface); Focus = 2px focus/ring. Disabled days (dates after
 // today with `disableFuture`, or anything `isDateDisabled` rejects) are greyed
 // and can never be selected. Month arrows are 16px visuals with a 24x24 target.
 
@@ -65,7 +64,7 @@ export function DatePicker({ value, onChange, defaultMonth, disableFuture, isDat
   const isDisabled = (day: Date) => Boolean((disableFuture && day > endOfToday) || isDateDisabled?.(day))
 
   return (
-    <div className={cn('flex w-fit flex-col items-start gap-10px rounded-lg bg-surface-emphasis p-12px shadow-md', className)}>
+    <div className={cn('flex w-fit flex-col items-start gap-10px rounded-lg bg-surface-container-high p-12px shadow-md', className)}>
       <div className="flex w-full items-center">
         <button
           type="button"
@@ -120,7 +119,7 @@ export function DatePicker({ value, onChange, defaultMonth, disableFuture, isDat
                     isToday && 'border-interactive-primary',
                     selected
                       ? 'bg-interactive-primary text-interactive-primary-foreground'
-                      : !disabled && 'text-text-primary hover:bg-interactive-hover',
+                      : !disabled && 'text-text-primary state-layer hover:state-hover',
                     !disabled && !selected && !isToday && 'hover:border-border-default',
                   )}
                 >

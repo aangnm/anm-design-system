@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils'
 
 // Mirrors the Drawer component (Feedback & Overlays page): cloned from Modal so
 // header/footer patterns stay identical (a drawer is a modal entering from the
-// side, not a different family). Figma's body shows a fixed "Lote/Actividad/
+// side, not a different family). Figma's body shows a fixed "Cuenta/Categoría/
 // Responsable/Notas" detail list — illustrative sample content for a task-detail
 // use case, not the contract, so it's exposed as a generic label/value `items`
 // list (falls back to arbitrary `children` for other bodies). The footer is
@@ -64,7 +64,7 @@ export function Drawer({
       aria-modal="true"
       aria-labelledby={titleId}
       className={cn(
-        'flex w-[400px] flex-col items-start gap-16px rounded-lg bg-surface-subtle p-24px shadow-xl',
+        'flex w-[400px] flex-col items-start gap-16px rounded-lg bg-surface-container p-24px shadow-xl',
         overlay ? 'h-full rounded-r-none' : 'h-[600px]',
         className,
       )}

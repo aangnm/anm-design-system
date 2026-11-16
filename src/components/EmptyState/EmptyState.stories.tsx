@@ -22,17 +22,17 @@ type Story = StoryObj<typeof EmptyState>
 // Mirrors the Figma component (480 x 320): icon badge, heading, guidance, one action.
 export const Playground: Story = {
   args: {
-    title: 'Aún no hay lotes registrados',
-    description: 'Registra tu primer lote para empezar a monitorear cosechas y rendimiento.',
-    action: <Button>Añadir lote</Button>,
+    title: 'Aún no hay cuentas registradas',
+    description: 'Registra tu primera cuenta para empezar a seguir ingresos y rendimiento.',
+    action: <Button>Añadir cuenta</Button>,
   },
 }
 
 export const CustomIcon: Story = {
   args: {
     icon: <MapPin />,
-    title: 'Aún no hay zonas definidas',
-    description: 'Dibuja la primera zona de la hacienda para asignarle lotes.',
+    title: 'Aún no hay reportes guardados',
+    description: 'Guarda tu primer reporte para compartirlo con el equipo.',
     action: <Button>Añadir zona</Button>,
   },
 }
@@ -40,6 +40,6 @@ export const CustomIcon: Story = {
 export const WithoutAction: Story = {
   args: {
     title: 'Sin resultados',
-    description: 'Prueba con otro lote o quita algún filtro.',
+    description: 'Prueba con otra cuenta o quita algún filtro.',
   },
 }

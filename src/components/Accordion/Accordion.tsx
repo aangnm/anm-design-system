@@ -44,7 +44,7 @@ export function AccordionItem({
   }
 
   return (
-    <div className={cn('border-b border-border-muted', className)} {...props}>
+    <div className={cn('border-b border-border-subtle', className)} {...props}>
       <h3 className="m-0">
         <button
           type="button"

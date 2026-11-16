@@ -15,7 +15,7 @@ import { cn } from '@/lib/utils'
 // Width is up to the caller (Figma shows 260 / 280 / 300).
 
 const selectVariants = cva(
-  'w-full appearance-none border bg-surface-subtle text-text-primary outline-none transition-colors ' +
+  'w-full appearance-none border bg-surface-container text-text-primary outline-none transition-colors ' +
     'disabled:cursor-not-allowed disabled:bg-interactive-disabled disabled:text-text-disabled disabled:border-border-subtle disabled:hover:border-border-subtle',
   {
     variants: {

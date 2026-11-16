@@ -30,12 +30,12 @@ export interface TableToolbarProps extends Omit<HTMLAttributes<HTMLDivElement>, 
   onRemoveFilter?: (id: string) => void
   /** Secondary action — an icon-only control, e.g. `<IconButton variant="secondary" icon={<Download />} aria-label="Exportar" />`. */
   secondaryAction?: ReactNode
-  /** The one primary action, e.g. `<Button>Añadir lote</Button>`. */
+  /** The one primary action, e.g. `<Button>Añadir cuenta</Button>`. */
   primaryAction?: ReactNode
 }
 
 export function TableToolbar({
-  searchPlaceholder = 'Buscar lote…',
+  searchPlaceholder = 'Buscar cuenta…',
   searchValue,
   onSearchChange,
   filters = [],

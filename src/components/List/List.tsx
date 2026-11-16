@@ -29,7 +29,7 @@ export interface ListProps extends HTMLAttributes<HTMLDivElement> {
   loadingRows?: number
 }
 
-const container = 'w-full overflow-hidden rounded-lg border border-border-subtle bg-surface-subtle'
+const container = 'w-full overflow-hidden rounded-lg border border-border-subtle bg-surface-container'
 // Every non-Default variant is padded to the Default's height (198px = three 66px
 // rows) on purpose, so swapping states never makes the container jump.
 const statePad = 'min-h-[198px]'
@@ -38,7 +38,7 @@ const rowLayout = 'flex w-full items-center gap-12px px-16px py-12px'
 export function List({
   items = [],
   state = 'default',
-  emptyMessage = 'Sin registros para este lote.',
+  emptyMessage = 'Sin movimientos para esta cuenta.',
   errorMessage = 'No se pudo cargar el historial.',
   loadingRows = 3,
   className,
@@ -49,12 +49,12 @@ export function List({
       <div className={cn(container, statePad, className)} aria-busy="true" {...props}>
         {Array.from({ length: loadingRows }).map((_, i) => (
           <div key={i} className="flex w-full items-center gap-12px p-16px">
-            <div className="size-5 shrink-0 rounded-full bg-border-muted" />
+            <div className="size-5 shrink-0 rounded-full bg-border-subtle" />
             <div className="flex min-w-0 flex-1 flex-col gap-6px">
-              <div className="h-12px w-[70px] rounded-sm bg-border-muted" />
-              <div className="h-[10px] w-[110px] rounded-sm bg-border-muted" />
+              <div className="h-12px w-[70px] rounded-sm bg-border-subtle" />
+              <div className="h-[10px] w-[110px] rounded-sm bg-border-subtle" />
             </div>
-            <div className="h-12px w-[36px] rounded-sm bg-border-muted" />
+            <div className="h-12px w-[36px] rounded-sm bg-border-subtle" />
           </div>
         ))}
       </div>
@@ -82,7 +82,7 @@ export function List({
             key={i}
             type={interactive ? 'button' : undefined}
             onClick={item.onSelect}
-            className={cn(rowLayout, 'text-left', interactive && 'hover:bg-interactive-hover')}
+            className={cn(rowLayout, 'text-left', interactive && 'state-layer hover:state-hover active:state-pressed')}
           >
             <span className="shrink-0 text-icon-muted" aria-hidden>
               {item.icon ?? <Circle className="size-5" />}
