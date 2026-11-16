@@ -28,7 +28,7 @@ export const Playground: Story = {
 
 export const ItemStates: Story = {
   render: () => (
-    <div className="flex flex-col gap-8px bg-surface-page p-8">
+    <div role="menu" aria-label="Menu item states" className="flex flex-col gap-8px bg-surface-page p-8">
       <MenuItem icon={<Circle />}>Elemento del menú</MenuItem>
       <MenuItem icon={<Circle />} disabled>
         Elemento del menú

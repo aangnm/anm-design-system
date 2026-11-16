@@ -51,6 +51,8 @@ export interface MultiSelectProps extends VariantProps<typeof fieldVariants> {
   value: string[]
   onChange: (value: string[]) => void
   placeholder?: string
+  /** Accessible name when no <label> points at the field; defaults to the placeholder. */
+  'aria-label'?: string
   /** Maps to Figma's State=Disabled. */
   disabled?: boolean
   /** Maps to Figma's State=Open — the initial open state; the component tracks it afterwards. */
@@ -68,6 +70,7 @@ export function MultiSelect({
   disabled = false,
   defaultOpen = false,
   className,
+  'aria-label': ariaLabel,
 }: MultiSelectProps) {
   const [open, setOpen] = useState(defaultOpen && !disabled)
   const rootRef = useRef<HTMLDivElement>(null)
@@ -98,6 +101,7 @@ export function MultiSelect({
     <div ref={rootRef} className={cn('relative', widths[size ?? 'md'], className)}>
       <div
         role="combobox"
+        aria-label={ariaLabel ?? placeholder}
         aria-haspopup="listbox"
         aria-expanded={open}
         aria-controls={open ? menuId : undefined}

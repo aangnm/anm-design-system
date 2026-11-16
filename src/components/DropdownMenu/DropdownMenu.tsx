@@ -107,7 +107,7 @@ export function DropdownMenu({
           // Searchable: the panel is a plain group holding the search field;
           // only the option list inside it is the menu (a menu may contain
           // menu items, not a text field).
-          role={searchable ? 'group' : undefined}
+          role={searchable ? 'group' : 'menu'}
           aria-label={searchable ? label : undefined}
           className="absolute left-0 top-[calc(100%+8px)] z-[var(--z-index-dropdown)]"
         >

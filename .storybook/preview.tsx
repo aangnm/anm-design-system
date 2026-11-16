@@ -29,15 +29,19 @@ const preview: Preview = {
         order: ['Introduction', 'Core', 'Navigation', 'Data Display', 'Feedback & Overlays', 'Product Patterns', 'Templates'],
       },
     },
+    // Every story runs as a test (npm test, and in CI) with an axe check;
+    // an accessibility violation fails the run.
+    a11y: { test: 'error' },
   },
   globalTypes: {
     theme: {
-      description: 'Dark / light mode',
+      description: 'Dark / light / high contrast',
       toolbar: {
         icon: 'circlehollow',
         items: [
           { value: 'dark', title: 'Dark' },
           { value: 'light', title: 'Light' },
+          { value: 'high-contrast', title: 'High contrast' },
         ],
         showName: true,
       },

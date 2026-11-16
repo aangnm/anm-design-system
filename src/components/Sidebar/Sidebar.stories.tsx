@@ -69,6 +69,7 @@ export const Collapsed: Story = {
   render: () => (
     <div className="h-[600px]">
       <Sidebar
+        aria-label="Sidebar, collapsed"
         collapsed
         brand={<SidebarBrand name="Espacio de trabajo" />}
         footer={<Footer collapsed />}
@@ -86,6 +87,7 @@ export const SideBySide: Story = {
         {nav}
       </Sidebar>
       <Sidebar
+        aria-label="Sidebar, collapsed"
         collapsed
         brand={<SidebarBrand name="Espacio de trabajo" />}
         footer={<Footer collapsed />}
@@ -103,6 +105,7 @@ export const WithIcons: Story = {
         {navWithIcons}
       </Sidebar>
       <Sidebar
+        aria-label="Sidebar, collapsed"
         collapsed
         brand={<SidebarBrand name="Espacio de trabajo" />}
         footer={<Footer collapsed />}

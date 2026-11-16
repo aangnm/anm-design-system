@@ -70,10 +70,25 @@ function cssValue(name, v, type) {
 const themes = collections.Themes
 const darkLines = []
 const lightLines = []
+const hcLines = []
+const HC_MODE = 'Light · High contrast'
 for (const v of themes.variables) {
   const name = `--${cssName(v.name)}`
   darkLines.push(`  ${name}: ${v.valuesByMode['Dark Mode']};`)
   lightLines.push(`  ${name}: ${v.valuesByMode['Light Mode']};`)
+  if (v.valuesByMode[HC_MODE] !== undefined) hcLines.push(`  ${name}: ${v.valuesByMode[HC_MODE]};`)
+}
+// High contrast (Figma's "Light · High contrast" Themes mode) also thickens
+// borders and the focus ring: Dimension's "High contrast" mode. Only the
+// values that differ from the default are emitted.
+const dimension = collections.Dimension
+if (dimension?.modes.includes('High contrast')) {
+  for (const v of dimension.variables) {
+    const base = v.valuesByMode[dimension.modes[0]]
+    const hc = v.valuesByMode['High contrast']
+    if (hc === undefined || hc === base) continue
+    hcLines.push(`  --${cssName(v.name)}: ${cssValue(v.name, hc, v.type)};`)
+  }
 }
 
 // radius/, spacing/, and breakpoint/ are deliberately EXCLUDED here — their
@@ -165,6 +180,10 @@ ${compactLines.join('\n')}
 
 [data-theme='light'] {
 ${lightLines.join('\n')}
+}
+
+[data-theme='high-contrast'] {
+${hcLines.join('\n')}
 }
 `
 

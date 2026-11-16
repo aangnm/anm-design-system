@@ -29,6 +29,7 @@ export function Sidebar({ className, collapsed = false, brand, footer, children,
   return (
     <SidebarContext.Provider value={{ collapsed }}>
       <aside
+        aria-label="Sidebar"
         className={cn(
           'flex h-full flex-col gap-8px bg-surface-container px-16px py-20px transition-[width]',
           collapsed ? 'w-[72px]' : 'w-[240px]',

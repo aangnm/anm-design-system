@@ -73,7 +73,7 @@ export function Stepper({
   return (
     // Joined without cn(): tailwind-merge reads text-text-xs as a colour and would
     // drop text-text-primary / text-text-disabled (and vice versa).
-    <div className={[stepperVariants({ size, error, disabled }), className].filter(Boolean).join(' ')} aria-invalid={error || undefined}>
+    <div className={[stepperVariants({ size, error, disabled }), className].filter(Boolean).join(' ')} aria-invalid={error || undefined} aria-disabled={disabled || undefined}>
       <button
         type="button"
         disabled={!canDecrement}

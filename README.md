@@ -65,7 +65,7 @@ Instead, each component page in Figma carries a **Code handoff** spec (a Figma S
 
 The history of the Figma file itself is in [`docs/figma-changelog.md`](docs/figma-changelog.md); add an entry there whenever a Figma change ships.
 
-**Variant-name lint.** [`scripts/figma-lint-variants.js`](scripts/figma-lint-variants.js) is a read-only `use_figma` script that checks every component property name and value in the file against the agreed vocabulary (variant axes and options, Size order, numeric order, boolean and text naming). Run it from a Claude Code session with Figma access before a changelog entry that adds or changes a component; an empty `findings` array is a pass.
+**Variant-name lint.** [`scripts/figma/lint-variants.js`](scripts/figma/lint-variants.js) is a read-only `use_figma` script that checks every component property name and value in the file against the agreed vocabulary (variant axes and options, Size order, numeric order, boolean and text naming). Run it from a Claude Code session with Figma access before a changelog entry that adds or changes a component; an empty `findings` array is a pass.
 
 ## Repo structure
 

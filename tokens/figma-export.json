@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-11-16T15:00:00.000Z",
+  "exportedAt": "2026-11-16T19:49:30.885Z",
   "figmaFileKey": "OSexn3GQ7oIOo7X2sGVlSb",
   "collections": {
     "Themes": {
@@ -219,10 +219,10 @@
     {"role": "Label Default", "fontSize": "font/size/text-xxs", "lineHeight": "font/line-height/xs"}
   ],
   "effectStyles": [
-    {"name": "elevation/shadow-xs", "effects": [{"type": "DROP_SHADOW", "radius": 2, "offsetX": 0, "offsetY": 1, "spread": 0, "color": {"r": 0, "g": 0, "b": 0, "a": 0.05}, "colorVar": "shadow/key"}]},
-    {"name": "elevation/shadow-sm", "effects": [{"type": "DROP_SHADOW", "radius": 3, "offsetX": 0, "offsetY": 1, "spread": 0, "color": {"r": 0, "g": 0, "b": 0, "a": 0.1}, "colorVar": "shadow/key"}, {"type": "DROP_SHADOW", "radius": 2, "offsetX": 0, "offsetY": 1, "spread": 0, "color": {"r": 0, "g": 0, "b": 0, "a": 0.06}, "colorVar": "shadow/ambient"}]},
-    {"name": "elevation/shadow-md", "effects": [{"type": "DROP_SHADOW", "radius": 6, "offsetX": 0, "offsetY": 4, "spread": -1, "color": {"r": 0, "g": 0, "b": 0, "a": 0.07}, "colorVar": "shadow/key"}, {"type": "DROP_SHADOW", "radius": 4, "offsetX": 0, "offsetY": 2, "spread": -1, "color": {"r": 0, "g": 0, "b": 0, "a": 0.06}, "colorVar": "shadow/ambient"}]},
-    {"name": "elevation/shadow-lg", "effects": [{"type": "DROP_SHADOW", "radius": 15, "offsetX": 0, "offsetY": 10, "spread": -3, "color": {"r": 0, "g": 0, "b": 0, "a": 0.1}, "colorVar": "shadow/key"}, {"type": "DROP_SHADOW", "radius": 6, "offsetX": 0, "offsetY": 4, "spread": -2, "color": {"r": 0, "g": 0, "b": 0, "a": 0.05}, "colorVar": "shadow/ambient"}]},
-    {"name": "elevation/shadow-xl", "effects": [{"type": "DROP_SHADOW", "radius": 25, "offsetX": 0, "offsetY": 20, "spread": -5, "color": {"r": 0, "g": 0, "b": 0, "a": 0.1}, "colorVar": "shadow/key"}, {"type": "DROP_SHADOW", "radius": 10, "offsetX": 0, "offsetY": 10, "spread": -5, "color": {"r": 0, "g": 0, "b": 0, "a": 0.04}, "colorVar": "shadow/ambient"}]}
+    {"name": "elevation/shadow-xs", "effects": [{"type": "DROP_SHADOW", "radius": 2, "offsetX": 0, "offsetY": 1, "spread": 0, "color": {"r": 0, "g": 0, "b": 0, "a": 0.6}, "colorVar": "shadow/key"}]},
+    {"name": "elevation/shadow-sm", "effects": [{"type": "DROP_SHADOW", "radius": 3, "offsetX": 0, "offsetY": 1, "spread": 0, "color": {"r": 0, "g": 0, "b": 0, "a": 0.6}, "colorVar": "shadow/key"}, {"type": "DROP_SHADOW", "radius": 2, "offsetX": 0, "offsetY": 1, "spread": 0, "color": {"r": 0, "g": 0, "b": 0, "a": 0.4}, "colorVar": "shadow/ambient"}]},
+    {"name": "elevation/shadow-md", "effects": [{"type": "DROP_SHADOW", "radius": 6, "offsetX": 0, "offsetY": 4, "spread": -1, "color": {"r": 0, "g": 0, "b": 0, "a": 0.6}, "colorVar": "shadow/key"}, {"type": "DROP_SHADOW", "radius": 4, "offsetX": 0, "offsetY": 2, "spread": -1, "color": {"r": 0, "g": 0, "b": 0, "a": 0.4}, "colorVar": "shadow/ambient"}]},
+    {"name": "elevation/shadow-lg", "effects": [{"type": "DROP_SHADOW", "radius": 15, "offsetX": 0, "offsetY": 10, "spread": -3, "color": {"r": 0, "g": 0, "b": 0, "a": 0.6}, "colorVar": "shadow/key"}, {"type": "DROP_SHADOW", "radius": 6, "offsetX": 0, "offsetY": 4, "spread": -2, "color": {"r": 0, "g": 0, "b": 0, "a": 0.4}, "colorVar": "shadow/ambient"}]},
+    {"name": "elevation/shadow-xl", "effects": [{"type": "DROP_SHADOW", "radius": 25, "offsetX": 0, "offsetY": 20, "spread": -5, "color": {"r": 0, "g": 0, "b": 0, "a": 0.6}, "colorVar": "shadow/key"}, {"type": "DROP_SHADOW", "radius": 10, "offsetX": 0, "offsetY": 10, "spread": -5, "color": {"r": 0, "g": 0, "b": 0, "a": 0.4}, "colorVar": "shadow/ambient"}]}
   ]
 }

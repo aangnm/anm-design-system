@@ -23,6 +23,7 @@ export function Progress({ value, label = 'Progreso', showLabel = true, classNam
     <div
       className={cn('flex w-full flex-col items-start gap-8px', className)}
       role="progressbar"
+      aria-label={label}
       aria-valuenow={clamped}
       aria-valuemin={0}
       aria-valuemax={100}

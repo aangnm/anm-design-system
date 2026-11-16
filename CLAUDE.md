@@ -56,7 +56,7 @@ Accumulated API gotchas, each found the hard way:
 - **Pattern fills cannot be written** (`type: 'PATTERN'` fails validation). Chart textures are `IMAGE` fills with `scaleMode: 'TILE'`, made with `figma.createImage(figma.base64Decode(png))`; the Chart Texture set on Data Display holds the canonical tiles, so copy fills from it.
 - **Variant option order is stored separately from child order.** Reordering children does not reorder the instance panel. Rename each option to a temporary value in one call, then back in the next, in the order you want.
 - **Cross-collection aliases resolve in the layer's own mode for the target collection**, not the referencing collection's mode. That is why theme-specific primitives keep -dark / -light suffixes.
-- Run `scripts/figma-lint-variants.js` (read-only, paste as `use_figma` code) after adding or changing a component; extend its vocabulary deliberately.
+- Run `scripts/figma/lint-variants.js` (read-only, paste as `use_figma` code) after adding or changing a component; extend its vocabulary deliberately.
 
 ## Conventions
 
