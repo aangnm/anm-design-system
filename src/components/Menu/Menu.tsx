@@ -48,7 +48,7 @@ export const MenuItem = forwardRef<HTMLButtonElement, MenuItemProps>(
       className={cn(
         'flex w-full items-center gap-10px rounded-sm px-12px py-6px text-left text-sm leading-5 outline-none transition-colors',
         'text-text-primary hover:bg-interactive-default',
-        'focus-visible:bg-interactive-default focus-visible:ring-1 focus-visible:ring-focus-ring',
+        'focus-visible:bg-interactive-default focus-visible:focus-ring',
         'disabled:pointer-events-none disabled:text-text-disabled',
         className,
       )}

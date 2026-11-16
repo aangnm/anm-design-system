@@ -60,7 +60,7 @@ export function Banner({ color = 'info', message, title, action, onDismiss, clas
           <button
             type="button"
             onClick={action.onClick}
-            className="h-24px rounded-xs py-2px text-sm font-medium leading-5 underline outline-none focus-visible:ring-1 focus-visible:ring-focus-ring"
+            className="h-24px rounded-xs py-2px text-sm font-medium leading-5 underline outline-none focus-visible:focus-ring"
           >
             {action.label}
           </button>
@@ -70,7 +70,7 @@ export function Banner({ color = 'info', message, title, action, onDismiss, clas
         <button
           type="button"
           onClick={onDismiss}
-          className="relative flex size-20px shrink-0 items-center justify-center rounded-xs opacity-80 outline-none transition-opacity after:absolute after:left-1/2 after:top-1/2 after:size-24px after:-translate-x-1/2 after:-translate-y-1/2 hover:opacity-100 focus-visible:opacity-100 focus-visible:ring-1 focus-visible:ring-focus-ring"
+          className="relative flex size-20px shrink-0 items-center justify-center rounded-xs opacity-80 outline-none transition-opacity after:absolute after:left-1/2 after:top-1/2 after:size-24px after:-translate-x-1/2 after:-translate-y-1/2 hover:opacity-100 focus-visible:opacity-100 focus-visible:focus-ring"
           aria-label="Cerrar"
         >
           <X className="size-4" />

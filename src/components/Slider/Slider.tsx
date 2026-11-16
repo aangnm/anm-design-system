@@ -39,7 +39,7 @@ export const Slider = forwardRef<HTMLInputElement, SliderProps>(
           '[&::-moz-range-track]:h-6px [&::-moz-range-track]:rounded-pill [&::-moz-range-track]:border [&::-moz-range-track]:border-transparent [&::-moz-range-track]:[background:linear-gradient(to_right,var(--interactive-primary)_var(--slider-pct),var(--interactive-default)_var(--slider-pct))_padding-box,linear-gradient(to_right,var(--interactive-primary)_var(--slider-pct),var(--border-default)_var(--slider-pct))_border-box]',
           '[&::-webkit-slider-thumb]:mt-[-5px] [&::-webkit-slider-thumb]:size-16px [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-interactive-primary [&::-webkit-slider-thumb]:shadow-[0_0_0_2px_var(--surface-container)]',
           '[&::-moz-range-thumb]:size-16px [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:bg-interactive-primary [&::-moz-range-thumb]:shadow-[0_0_0_2px_var(--surface-container)]',
-          'focus-visible:outline-none [&::-webkit-slider-thumb]:focus-visible:ring-1 [&::-webkit-slider-thumb]:focus-visible:ring-focus-ring',
+          'focus-visible:outline-none focus-visible:[&::-webkit-slider-thumb]:focus-ring focus-visible:[&::-moz-range-thumb]:focus-ring',
           className,
         )}
         {...props}

@@ -88,7 +88,7 @@ const bellButton = <IconButton variant="secondary" icon={<Bell />} aria-label="N
 const newRecord = <Button variant="primary">Nuevo registro</Button>
 
 function crumbs(page: string) {
-  return <Breadcrumb items={[{ label: 'Inicio', href: '#' }, { label: 'Espacio de trabajo', href: '#' }, { label: page }]} />
+  return <Breadcrumb items={[{ label: 'Inicio', href: '#' }, { label: 'Cartera principal', href: '#' }, { label: page }]} />
 }
 
 // A ContentPanel hosts a List borderless: strip the nested surface's own edge so
@@ -271,7 +271,7 @@ export const DashboardTopNavbar: Story = {
     <div className="-m-8 flex min-h-[900px] flex-col bg-surface-page">
       <Navbar
         className="px-32px"
-        brand={<Breadcrumb items={[{ label: 'Inicio', href: '#' }, { label: 'Espacio de trabajo', href: '#' }, { label: 'Resumen' }]} />}
+        brand={<Breadcrumb items={[{ label: 'Inicio', href: '#' }, { label: 'Cartera principal', href: '#' }, { label: 'Resumen' }]} />}
         actions={
           <>
             <button type="button" aria-label="Buscar" className={iconAction}>

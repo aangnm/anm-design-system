@@ -35,10 +35,10 @@ const widths = { sm: 'w-[260px]', md: 'w-[280px]', lg: 'w-[300px]' } as const
 const states = [
   { label: 'Default', props: {}, cls: '' },
   { label: 'Hover', props: {}, cls: 'border-border-emphasis' },
-  { label: 'Focus', props: {}, cls: 'border-focus-ring' },
+  { label: 'Focus', props: {}, cls: 'focus-ring!' },
   { label: 'Disabled', props: { disabled: true }, cls: '' },
   { label: 'Error', props: { error: true }, cls: '' },
-  { label: 'Focus + Error', props: { error: true }, cls: 'ring-2 ring-focus-ring' },
+  { label: 'Focus + Error', props: { error: true }, cls: 'focus-ring!' },
 ]
 
 /** Mirrors the Figma grid: Size rows x State columns (Hover/Focus forced with the same tokens). */

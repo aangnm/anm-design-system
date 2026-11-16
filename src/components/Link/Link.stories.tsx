@@ -23,7 +23,7 @@ export const States: Story = {
         [
           ['Default', ''],
           ['Hover', 'text-text-emphasis'],
-          ['Focus', 'ring-1 ring-focus-ring'],
+          ['Focus', 'focus-ring!'],
           ['Visited', 'text-text-secondary'],
         ].map(([state, cls]) => (
           <Link key={`${state}-${external}`} href="#" external={external} standalone className={cls}>

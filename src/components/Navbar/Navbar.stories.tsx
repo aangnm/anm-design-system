@@ -22,7 +22,7 @@ export const Playground: Story = {
           <button
             type="button"
             aria-label="Buscar"
-            className="inline-flex size-24px items-center justify-center rounded-xs text-icon-muted outline-none transition-colors hover:text-text-primary focus-visible:ring-1 focus-visible:ring-focus-ring"
+            className="inline-flex size-24px items-center justify-center rounded-xs text-icon-muted outline-none transition-colors hover:text-text-primary focus-visible:focus-ring"
           >
             <SearchIcon className="size-5" />
           </button>

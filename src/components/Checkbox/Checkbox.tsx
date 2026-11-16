@@ -54,7 +54,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
               'state-layer [--state-on:var(--interactive-primary-foreground)]',
               'peer-checked:border-transparent peer-checked:bg-interactive-primary group-hover:peer-checked:state-hover',
               'peer-indeterminate:border-transparent peer-indeterminate:bg-interactive-primary group-hover:peer-indeterminate:state-hover',
-              'peer-focus-visible:border-focus-ring peer-checked:peer-focus-visible:border-focus-ring peer-indeterminate:peer-focus-visible:border-focus-ring',
+              'peer-focus-visible:focus-ring',
               'peer-disabled:border-border-subtle peer-disabled:bg-interactive-disabled peer-checked:peer-disabled:border-border-subtle peer-checked:peer-disabled:bg-interactive-disabled peer-indeterminate:peer-disabled:border-border-subtle peer-indeterminate:peer-disabled:bg-interactive-disabled',
             )}
           />

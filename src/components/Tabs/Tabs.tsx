@@ -33,7 +33,7 @@ export const Tab = forwardRef<HTMLButtonElement, TabProps>(
       aria-selected={active}
       disabled={disabled}
       className={cn(
-        'group relative flex flex-col items-center rounded-sm outline-none pointer-coarse:after:absolute pointer-coarse:after:left-1/2 pointer-coarse:after:top-1/2 pointer-coarse:after:h-48px pointer-coarse:after:w-full pointer-coarse:after:min-w-48px pointer-coarse:after:-translate-x-1/2 pointer-coarse:after:-translate-y-1/2 focus-visible:ring-1 focus-visible:ring-focus-ring',
+        'group relative flex flex-col items-center rounded-sm outline-none pointer-coarse:after:absolute pointer-coarse:after:left-1/2 pointer-coarse:after:top-1/2 pointer-coarse:after:h-48px pointer-coarse:after:w-full pointer-coarse:after:min-w-48px pointer-coarse:after:-translate-x-1/2 pointer-coarse:after:-translate-y-1/2 focus-visible:focus-ring',
         disabled ? 'cursor-not-allowed' : 'cursor-pointer',
         className,
       )}

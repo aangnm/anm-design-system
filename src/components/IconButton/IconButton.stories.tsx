@@ -47,7 +47,7 @@ export const AllVariants: Story = {
             </span>
             <div><IconButton variant={variant} size={size} icon={<Bell />} aria-label="Notificaciones" /></div>
             <div><IconButton variant={variant} size={size} icon={<Bell />} aria-label="Notificaciones" className={forcedHover[variant]} /></div>
-            <div><IconButton variant={variant} size={size} icon={<Bell />} aria-label="Notificaciones" className="ring-1 ring-focus-ring" /></div>
+            <div><IconButton variant={variant} size={size} icon={<Bell />} aria-label="Notificaciones" className="focus-ring!" /></div>
             <div><IconButton variant={variant} size={size} icon={<Bell />} aria-label="Notificaciones" disabled /></div>
           </div>
         )),

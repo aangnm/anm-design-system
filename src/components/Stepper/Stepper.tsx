@@ -16,7 +16,7 @@ import { cn } from '@/lib/utils'
 
 const stepperVariants = cva(
   'group inline-flex items-center border bg-surface-container transition-colors ' +
-    'has-[:focus-visible]:border-focus-ring',
+    'has-[:focus-visible]:focus-ring',
   {
     variants: {
       size: {
@@ -26,7 +26,7 @@ const stepperVariants = cva(
       },
       error: {
         // Error border wins over hover/focus borders; Focus + Error adds the ring.
-        true: 'border-semantic-error hover:border-semantic-error has-[:focus-visible]:border-semantic-error has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-focus-ring',
+        true: 'border-semantic-error hover:border-semantic-error has-[:focus-visible]:border-semantic-error',
         false: 'border-border-default hover:border-border-emphasis',
       },
       disabled: {

@@ -25,8 +25,8 @@ import { Menu } from '@/components/Menu'
 const comboboxVariants = cva(
   'w-full border bg-surface-container text-text-primary outline-none transition-colors ' +
     'placeholder:text-text-secondary hover:border-border-emphasis ' +
-    'focus-visible:border-focus-ring ' +
-    'aria-invalid:border-semantic-error aria-invalid:focus-visible:ring-2 aria-invalid:focus-visible:ring-focus-ring ' +
+    'focus-visible:focus-ring ' +
+    'aria-invalid:border-semantic-error ' +
     'disabled:cursor-not-allowed disabled:border-border-subtle disabled:bg-interactive-disabled disabled:text-text-disabled disabled:placeholder:text-text-disabled disabled:hover:border-border-subtle',
   {
     variants: {

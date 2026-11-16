@@ -33,7 +33,7 @@ const forcedHover = {
   outline: 'state-hover',
   ghost: 'state-hover',
 } as const
-const forcedFocus = 'ring-1 ring-focus-ring'
+const forcedFocus = 'focus-ring!'
 
 /** Mirrors the Figma grid: Type x Size rows, State columns (Default, Hover, Focus, Disabled, Loading). */
 export const AllVariants: Story = {

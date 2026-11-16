@@ -355,3 +355,15 @@ Audited against the Material 3 Design Kit; the agreed items are on the Roadmap. 
 - Cover: Ink ground, Bone logo and title, Amber marker; version 0.91, themes Dark · Light · High contrast, updated 15 Nov 2026.
 - Decisions card: the Logos rule is rewritten for the single treatment, and a new Brand palette rule says brand colours are for brand surfaces; components use only brand/accent and brand/logo.
 - Repository: tokens re-exported and transformed (--brand-accent, --brand-accent-foreground, --brand-logo). No component reads them yet.
+
+## v0.92 — File review, one focus ring, Button trailing icon
+- **Focus:** one treatment everywhere. border-width/focus goes from 1 to 2 (High contrast stays 3), and a new Dimension token, focus/offset (2), sets the gap. All 75 Focus variants on Core (Button, Icon Button, Link, Input, Textarea, Select, Search, Combobox, Multi-select, Stepper, Checkbox, Radio, Switch, Date Picker, Choice Tile, List Row, Counter and PIN Field) carry a "Focus ring" frame 2px outside the control, instead of recolouring its stroke. Inputs keep their own border on focus. Focus + Error rings follow the same geometry. The Decisions card, the Accessibility page and four descriptions are rewritten, and Button has a Focus "Why —" note.
+- **Button:** a Trailing icon boolean and a Trailing icon · Icon swap (chevron-down by default), the same pattern as Leading.
+- **Review fixes:**
+  - Color page: 391 text layers are bound to text tokens and text styles (they were raw hex, and the hex labels sat at about 1.9:1), and 16 dividers bind to border/subtle. Every hex label was checked against its live value and none had drifted. A brand/logo row is added to both theme frames.
+  - Navigation: the Menu component had collapsed to 36px wide, so its items rendered as vertical text, here and inside the open Dropdown Menu. It is fixed at 232px. App Bar / Mobile and Action Bar sat over the wrong labels and are moved under their own. Sidebar / Alt shows the workspace name instead of a logo. The leftover "IK" initials are now ER, here and in Avatar.
+  - Loose App Bar, Action Bar and Bottom Sheet components are moved into their Dark sections.
+  - Benchmark Table shows bare account numbers, because "Cuenta 4021" was truncated in its 92px column. Template breadcrumbs read Cartera principal.
+  - Stale wording is gone from About & Guidelines (Code Connect, an Archive page that does not exist, the sample-format example) and from Chart Tooltip, Choice Tile and Counter.
+- **Roadmap:** focus, trailing icon, the brand-section item, the "code differs" note (Button and Tag now match) and the Blocked full-file-review item are removed. Now holds the code for the Figma-only components.
+- **Specs:** all five Code handoff specs drop the Code Connect wording. Core adds the trailingIcon mapping and the focus-ring rule.

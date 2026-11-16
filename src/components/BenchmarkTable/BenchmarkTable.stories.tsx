@@ -22,10 +22,10 @@ type Story = StoryObj<typeof BenchmarkTable>
 export const Playground: Story = {
   args: {
     rows: [
-      { label: 'Cuenta 4021', category: 'Ventas', rate: 612 },
-      { label: 'Cuenta 4035', category: 'Ventas', rate: 340 },
-      { label: 'Cuenta 4102', category: 'Ventas', rate: 845 },
-      { label: 'Cuenta 4118', category: 'Ventas', rate: 810 },
+      { label: '4021', category: 'Ventas', rate: 612 },
+      { label: '4035', category: 'Ventas', rate: 340 },
+      { label: '4102', category: 'Ventas', rate: 845 },
+      { label: '4118', category: 'Ventas', rate: 810 },
     ],
   },
 }

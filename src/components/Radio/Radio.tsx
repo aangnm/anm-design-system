@@ -29,7 +29,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
             'absolute inset-0 rounded-full border border-border-emphasis bg-surface-container transition-colors',
             'group-hover:bg-interactive-default',
             'peer-checked:border-interactive-primary',
-            'peer-focus-visible:border-focus-ring peer-checked:peer-focus-visible:border-focus-ring peer-focus-visible:bg-surface-container',
+            'peer-focus-visible:focus-ring peer-focus-visible:bg-surface-container',
             'peer-disabled:border-border-subtle peer-disabled:bg-interactive-disabled peer-checked:peer-disabled:border-border-subtle',
           )}
         />

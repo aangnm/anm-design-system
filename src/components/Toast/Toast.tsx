@@ -52,7 +52,7 @@ export function Toast({ color = 'success', title, description, onDismiss, classN
         <button
           type="button"
           onClick={onDismiss}
-          className="relative shrink-0 rounded-xs text-icon-muted outline-none transition-colors after:absolute after:left-1/2 after:top-1/2 after:size-24px after:-translate-x-1/2 after:-translate-y-1/2 hover:text-text-primary focus-visible:ring-1 focus-visible:ring-focus-ring"
+          className="relative shrink-0 rounded-xs text-icon-muted outline-none transition-colors after:absolute after:left-1/2 after:top-1/2 after:size-24px after:-translate-x-1/2 after:-translate-y-1/2 hover:text-text-primary focus-visible:focus-ring"
           aria-label="Cerrar"
         >
           <X className="size-4" />

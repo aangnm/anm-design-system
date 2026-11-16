@@ -24,8 +24,8 @@ const inputVariants = cva(
         lg: 'h-48px rounded-md px-16px text-base',
       },
       error: {
-        true: 'border-semantic-error focus-visible:ring-2 focus-visible:ring-focus-ring has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-focus-ring',
-        false: 'border-border-default hover:border-border-emphasis focus-visible:border-focus-ring has-[:focus-visible]:border-focus-ring',
+        true: 'border-semantic-error focus-visible:focus-ring has-[:focus-visible]:focus-ring',
+        false: 'border-border-default hover:border-border-emphasis focus-visible:focus-ring has-[:focus-visible]:focus-ring',
       },
     },
     defaultVariants: {

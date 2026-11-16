@@ -67,8 +67,9 @@
   --border-width-lg: 4px;
   --hit-floor: 24px;
   --hit-touch: 48px;
-  --border-width-focus: 1px;
+  --border-width-focus: 2px;
   --border-width-status: 0px;
+  --focus-offset: 2px;
   --duration-fast: 120ms;
   --duration-base: 200ms;
   --duration-slow: 320ms;

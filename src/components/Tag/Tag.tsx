@@ -40,7 +40,7 @@ export function Tag({ children, className, color, dismissible, onDismiss }: TagP
         <button
           type="button"
           onClick={onDismiss}
-          className="relative inline-flex rounded-xs opacity-80 outline-none after:absolute after:left-1/2 after:top-1/2 after:size-24px after:-translate-x-1/2 after:-translate-y-1/2 transition-opacity hover:opacity-100 focus-visible:opacity-100 focus-visible:ring-1 focus-visible:ring-focus-ring"
+          className="relative inline-flex rounded-xs opacity-80 outline-none after:absolute after:left-1/2 after:top-1/2 after:size-24px after:-translate-x-1/2 after:-translate-y-1/2 transition-opacity hover:opacity-100 focus-visible:opacity-100 focus-visible:focus-ring"
           aria-label="Quitar"
         >
           <X className="size-3" />

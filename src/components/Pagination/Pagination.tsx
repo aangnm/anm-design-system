@@ -14,7 +14,7 @@ import { cn } from '@/lib/utils'
 
 const itemClass =
   'relative inline-flex size-32px items-center pointer-coarse:after:absolute pointer-coarse:after:left-1/2 pointer-coarse:after:top-1/2 pointer-coarse:after:size-48px pointer-coarse:after:-translate-x-1/2 pointer-coarse:after:-translate-y-1/2  justify-center rounded-sm text-sm font-medium outline-none transition-colors ' +
-  'focus-visible:ring-1 focus-visible:ring-focus-ring ' +
+  'focus-visible:focus-ring ' +
   'disabled:pointer-events-none disabled:text-text-disabled'
 
 export interface PaginationProps {

@@ -16,7 +16,7 @@ const iconButtonVariants = cva(
   'relative inline-flex shrink-0 items-center justify-center rounded-md transition-colors ' +
     'state-layer hover:state-hover active:state-pressed ' +
     'pointer-coarse:after:absolute pointer-coarse:after:left-1/2 pointer-coarse:after:top-1/2 pointer-coarse:after:size-full pointer-coarse:after:min-h-48px pointer-coarse:after:min-w-48px pointer-coarse:after:-translate-x-1/2 pointer-coarse:after:-translate-y-1/2 ' +
-    'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-focus-ring ' +
+    'focus-visible:focus-ring ' +
     'disabled:pointer-events-none disabled:bg-interactive-disabled disabled:text-text-disabled',
   {
     variants: {

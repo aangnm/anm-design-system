@@ -103,8 +103,9 @@
         {"name": "border-width/lg", "type": "FLOAT", "valuesByMode": {"Value": 4, "High contrast": 4}},
         {"name": "hit/floor", "type": "FLOAT", "valuesByMode": {"Value": 24, "High contrast": 24}},
         {"name": "hit/touch", "type": "FLOAT", "valuesByMode": {"Value": 48, "High contrast": 48}},
-        {"name": "border-width/focus", "type": "FLOAT", "valuesByMode": {"Value": 1, "High contrast": 3}},
-        {"name": "border-width/status", "type": "FLOAT", "valuesByMode": {"Value": 0, "High contrast": 2}}
+        {"name": "border-width/focus", "type": "FLOAT", "valuesByMode": {"Value": 2, "High contrast": 3}},
+        {"name": "border-width/status", "type": "FLOAT", "valuesByMode": {"Value": 0, "High contrast": 2}},
+        {"name": "focus/offset", "type": "FLOAT", "valuesByMode": {"Value": 2, "High contrast": 2}}
       ]
     },
     "Typography": {

@@ -70,7 +70,7 @@ export function DatePicker({ value, onChange, defaultMonth, disableFuture, isDat
           type="button"
           aria-label="Mes anterior"
           onClick={() => setMonth(new Date(month.getFullYear(), month.getMonth() - 1, 1))}
-          className="relative size-16px shrink-0 rounded-xs text-icon-muted outline-none after:absolute after:left-1/2 after:top-1/2 after:size-24px after:-translate-x-1/2 after:-translate-y-1/2 focus-visible:ring-2 focus-visible:ring-focus-ring"
+          className="relative size-16px shrink-0 rounded-xs text-icon-muted outline-none after:absolute after:left-1/2 after:top-1/2 after:size-24px after:-translate-x-1/2 after:-translate-y-1/2 focus-visible:focus-ring"
         >
           <ChevronLeft className="size-full" />
         </button>
@@ -81,7 +81,7 @@ export function DatePicker({ value, onChange, defaultMonth, disableFuture, isDat
           type="button"
           aria-label="Mes siguiente"
           onClick={() => setMonth(new Date(month.getFullYear(), month.getMonth() + 1, 1))}
-          className="relative size-16px shrink-0 rounded-xs text-icon-muted outline-none after:absolute after:left-1/2 after:top-1/2 after:size-24px after:-translate-x-1/2 after:-translate-y-1/2 focus-visible:ring-2 focus-visible:ring-focus-ring"
+          className="relative size-16px shrink-0 rounded-xs text-icon-muted outline-none after:absolute after:left-1/2 after:top-1/2 after:size-24px after:-translate-x-1/2 after:-translate-y-1/2 focus-visible:focus-ring"
         >
           <ChevronRight className="size-full" />
         </button>
@@ -114,7 +114,7 @@ export function DatePicker({ value, onChange, defaultMonth, disableFuture, isDat
                   }}
                   className={cn(
                     'flex size-[30px] items-center justify-center rounded-full border border-transparent outline-none transition-colors',
-                    'focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-focus-ring',
+                    'focus-visible:focus-ring',
                     disabled && 'cursor-not-allowed text-text-disabled',
                     isToday && 'border-interactive-primary',
                     selected

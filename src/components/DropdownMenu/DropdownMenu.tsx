@@ -124,7 +124,7 @@ export function DropdownMenu({
                   setQuery('')
                   onClear?.()
                 }}
-                className="flex w-full items-center rounded-sm px-12px py-6px text-left text-text-xs font-medium leading-5 text-text-primary outline-none transition-colors hover:bg-interactive-default focus-visible:bg-interactive-default focus-visible:ring-1 focus-visible:ring-focus-ring"
+                className="flex w-full items-center rounded-sm px-12px py-6px text-left text-text-xs font-medium leading-5 text-text-primary outline-none transition-colors hover:bg-interactive-default focus-visible:bg-interactive-default focus-visible:focus-ring"
               >
                 Limpiar
               </button>

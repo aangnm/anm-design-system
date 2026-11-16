@@ -32,7 +32,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
           className={cn(
             'absolute inset-0 rounded-full border border-border-default bg-interactive-default transition-colors state-layer group-hover:state-hover',
             'peer-checked:border-transparent peer-checked:bg-interactive-primary peer-checked:[--state-on:var(--interactive-primary-foreground)]',
-            'peer-focus-visible:border-focus-ring peer-checked:peer-focus-visible:border-focus-ring',
+            'peer-focus-visible:focus-ring',
             'peer-disabled:border-transparent peer-disabled:bg-interactive-disabled peer-checked:peer-disabled:bg-interactive-disabled',
           )}
         />

@@ -21,7 +21,7 @@ import { Menu } from '@/components/Menu'
 
 const fieldVariants = cva(
   'flex w-full cursor-pointer flex-wrap items-center gap-6px border bg-surface-container text-text-primary outline-none transition-colors ' +
-    'focus-visible:border-focus-ring aria-expanded:border-focus-ring ' +
+    'focus-visible:focus-ring aria-expanded:border-focus-ring ' +
     'aria-disabled:cursor-not-allowed aria-disabled:border-border-subtle aria-disabled:bg-interactive-disabled aria-disabled:text-text-disabled',
   {
     variants: {
@@ -31,7 +31,7 @@ const fieldVariants = cva(
         lg: 'min-h-48px rounded-md px-12px py-[11px] text-base',
       },
       error: {
-        true: 'border-semantic-error focus-visible:border-semantic-error focus-visible:ring-2 focus-visible:ring-focus-ring aria-expanded:border-semantic-error',
+        true: 'border-semantic-error focus-visible:border-semantic-error aria-expanded:border-semantic-error',
         false: 'border-border-default hover:border-border-emphasis aria-disabled:hover:border-border-subtle',
       },
     },

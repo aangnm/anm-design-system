@@ -45,7 +45,7 @@ export const States: Story = {
             <Combobox options={options} size={size} aria-label="Hover" className="border-border-emphasis" />
           </div>
           <div className={widths[size]}>
-            <Combobox options={options} size={size} aria-label="Focus" className="border-focus-ring" />
+            <Combobox options={options} size={size} aria-label="Focus" className="focus-ring!" />
           </div>
           <div className={widths[size]}>
             <Combobox options={options} size={size} aria-label="Disabled" disabled />
@@ -59,7 +59,7 @@ export const States: Story = {
               size={size}
               aria-label="Focus + Error"
               error
-              className="ring-2 ring-focus-ring"
+              className="focus-ring!"
             />
           </div>
         </div>

@@ -13,7 +13,7 @@ import { cn } from '@/lib/utils'
 
 const searchVariants = cva(
   'flex w-full items-center gap-8px border border-border-default bg-surface-container transition-colors hover:border-border-emphasis ' +
-    'has-[:focus-visible]:border-focus-ring ' +
+    'has-[:focus-visible]:focus-ring ' +
     'has-[:disabled]:cursor-not-allowed has-[:disabled]:bg-interactive-disabled has-[:disabled]:border-border-subtle has-[:disabled]:hover:border-border-subtle',
   {
     variants: {

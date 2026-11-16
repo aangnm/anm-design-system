@@ -42,7 +42,7 @@ export const NavbarLink = forwardRef<HTMLAnchorElement, NavbarLinkProps>(
       ref={ref}
       aria-current={active ? 'page' : undefined}
       className={cn(
-        'relative inline-flex h-24px items-center rounded-xs text-sm font-medium outline-none transition-colors focus-visible:ring-1 focus-visible:ring-focus-ring',
+        'relative inline-flex h-24px items-center rounded-xs text-sm font-medium outline-none transition-colors focus-visible:focus-ring',
         'pointer-coarse:after:absolute pointer-coarse:after:inset-x-0 pointer-coarse:after:top-1/2 pointer-coarse:after:h-48px pointer-coarse:after:-translate-y-1/2',
         active ? 'text-text-primary' : 'text-text-secondary hover:text-text-primary',
         className,

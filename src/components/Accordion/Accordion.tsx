@@ -54,7 +54,7 @@ export function AccordionItem({
           onClick={toggle}
           className={cn(
             'flex h-48px w-full items-center justify-between gap-8px text-left text-sm font-medium text-text-primary outline-none',
-            'focus-visible:ring-2 focus-visible:ring-focus-ring',
+            'focus-visible:focus-ring',
           )}
         >
           <span className="flex-1">{title}</span>

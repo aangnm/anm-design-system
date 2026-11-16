@@ -91,7 +91,7 @@ export const SidebarItem = forwardRef<HTMLButtonElement, SidebarItemProps>(
         className={cn(
           'relative flex w-full items-center gap-10px rounded-sm px-10px py-8px text-sm font-medium outline-none transition-colors',
           'pointer-coarse:after:absolute pointer-coarse:after:inset-x-0 pointer-coarse:after:top-1/2 pointer-coarse:after:h-48px pointer-coarse:after:-translate-y-1/2',
-          'focus-visible:ring-1 focus-visible:ring-focus-ring',
+          'focus-visible:focus-ring',
           collapsed ? 'justify-center' : 'text-left',
           active ? 'bg-interactive-default text-text-primary' : 'text-text-secondary hover:text-text-primary',
           className,
