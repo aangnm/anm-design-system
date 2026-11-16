@@ -4,7 +4,7 @@ Tokens and React components generated from [anm Design System](https://www.figma
 
 ## Status
 
-🚧 In progress. Token pipeline is live (color, spacing, radius, type, motion, breakpoints, elevation, opacity, z-index). Every component category Figma has (Core, Navigation, Data Display, Feedback & Overlays, Product Patterns) is now built. See [Roadmap](#roadmap).
+Token pipeline is live (color, spacing, radius, type, motion, breakpoints, elevation, opacity, z-index, focus). Every component in the Figma file has a code counterpart (Sidebar / Alt and Navbar / Mobile through another component, on purpose), in Storybook for both themes. See [Roadmap](#roadmap).
 
 ## Stack
 
@@ -98,20 +98,16 @@ This section used to duplicate that list and drifted badly out of date, so it no
 
 - [x] Token pipeline (color, spacing, radius, type, motion, breakpoints, elevation, opacity, z-index)
 - [x] Core: Button, Input, Select, Search, Checkbox, Radio, Switch, Tag, Badge, Avatar, Tooltip, Form Field, Divider, Textarea, Segmented Control, Skeleton, Spinner, Icon Button, Slider, Stepper, Multi-select, Date Picker, File Upload, Link, Combobox, Accordion, Radio Group, Rating
-- [x] Navigation: Tabs, Breadcrumb, Pagination, Menu Item, Menu, Dropdown Menu, Navbar, Sidebar
-- [x] Data Display: Card, Stat, List, Table, Bar Chart, Sparkline (each with Empty/Loading/Error states), Legend, Chart Tooltip, Line Chart, Area Chart
-- [x] Feedback & Overlays: Banner, Progress, Toast, Popover, Modal, Drawer
+- [x] Core, touch input: Choice Tile, List Row, Counter, Count Row, PIN Field
+- [x] Navigation: Tabs, Breadcrumb, Pagination, Menu Item, Menu, Dropdown Menu, Navbar, Sidebar, Date Indicator, Topbar, App Bar, Action Bar
+- [x] Data Display: Card, Stat, List, Table, Bar Chart, Sparkline (each with Empty/Loading/Error states), Legend, Chart Tooltip, Line Chart, Area Chart, Stacked Bar Chart, Donut Chart, Detailed Line Chart
+- [x] Feedback & Overlays: Banner, Progress, Toast, Popover, Modal, Drawer, Bottom Sheet
 - [x] Product Patterns: Metric Card, Content Panel, Page Header, Benchmark Table, Table Toolbar, Empty State, Timeline
 - [x] Templates (Storybook only, not exported): Dashboard, Settings, Records (List + Detail), Dashboard · Top navbar
 
 ### Designed in Figma, not yet in code
 
-Each component page's Code handoff spec in Figma lists these too.
-
-- **Core (touch input):** Choice Tile, List Row, Counter, Count Row, PIN Field
-- **Navigation:** Date Indicator, Topbar / Alt, App Bar / Mobile, Action Bar
-- **Data Display:** Stacked Bar Chart, Donut Chart, Line Chart · Detailed
-- **Feedback & Overlays:** Bottom Sheet
+Nothing new. As of Figma v0.93 every component has a code counterpart, mapped in each page's Code handoff spec in Figma. The two below are covered by another component on purpose.
 
 ### Not ported, on purpose
 

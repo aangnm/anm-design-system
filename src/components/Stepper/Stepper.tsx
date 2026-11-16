@@ -11,8 +11,8 @@ import { cn } from '@/lib/utils'
 // a square as tall as the control (that is the pointer hit area).
 // States — Hover / Focus / Disabled are real :hover / :focus-visible / disabled
 // (the `disabled` prop here, since the control is made of two buttons);
-// Error is a prop (`error`); Focus + Error = error border plus an outer 2px
-// focus ring (`ring-2 ring-focus-ring`, drawn outside the border).
+// Error is a prop (`error`); Focus + Error = error border plus the shared
+// focus ring (`focus-ring`, 2px outside the border).
 
 const stepperVariants = cva(
   'group inline-flex items-center border bg-surface-container transition-colors ' +

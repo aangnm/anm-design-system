@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
+import { Wallet } from 'lucide-react'
 import { Accordion, AccordionItem } from './Accordion'
 
 const meta: Meta<typeof AccordionItem> = {
@@ -48,6 +49,22 @@ export const Stacked: Story = {
         </AccordionItem>
         <AccordionItem title="Comisiones">Tarifa plana del 1,2 % por transacción.</AccordionItem>
         <AccordionItem title="Conciliación">Automática cada noche, con revisión manual los viernes.</AccordionItem>
+      </Accordion>
+    </div>
+  ),
+}
+
+// Size=LG (touch) with the Leading icon and Show count slots.
+export const SizeLG: Story = {
+  render: () => (
+    <div className="w-[358px]">
+      <Accordion>
+        <AccordionItem size="lg" title="Cuentas" icon={<Wallet />} count={3} defaultOpen>
+          {body}
+        </AccordionItem>
+        <AccordionItem size="lg" title="Tarjetas" icon={<Wallet />} count={1}>
+          {body}
+        </AccordionItem>
       </Accordion>
     </div>
   ),

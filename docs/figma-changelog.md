@@ -367,3 +367,9 @@ Audited against the Material 3 Design Kit; the agreed items are on the Roadmap. 
   - Stale wording is gone from About & Guidelines (Code Connect, an Archive page that does not exist, the sample-format example) and from Chart Tooltip, Choice Tile and Counter.
 - **Roadmap:** focus, trailing icon, the brand-section item, the "code differs" note (Button and Tag now match) and the Blocked full-file-review item are removed. Now holds the code for the Figma-only components.
 - **Specs:** all five Code handoff specs drop the Code Connect wording. Core adds the trailingIcon mapping and the focus-ring rule.
+
+## v0.93 — Everything in code
+- The 13 components that existed only in Figma now have code and stories: Choice Tile, List Row, Counter, Count Row, PIN Field, Date Indicator, Topbar / Alt (`Topbar`), App Bar / Mobile (`AppBar`), Action Bar, Bottom Sheet, Stacked Bar Chart, Donut Chart and Line Chart · Detailed (`DetailedLineChart`). Accordion gains the Size, Leading icon and Show count props that Figma added in v0.79–v0.80.
+- Code handoff specs on Core, Navigation, Data Display and Feedback & Overlays list them with their prop mappings. No page has a "Not in code yet" section any more.
+- Choice Tile's description drops its last farming examples.
+- Roadmap: the code item is removed, and type by role moves to Now.
