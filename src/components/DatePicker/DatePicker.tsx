@@ -10,9 +10,8 @@ import { cn } from '@/lib/utils'
 // generalized here to a real month grid computed from `month`, with
 // Monday-start weekdays (L M M J V S D) matching the design.
 // States (Figma State=Default/Hover/Focus/Disabled): Hover and Focus are real
-// :hover / :focus-visible on the day — Hover = interactive/hover fill plus a 1px
-// border/default outline (interactive/default equals the surface in dark, so a
-// fill alone was invisible); Focus = 2px focus/ring. Disabled days (dates after
+// :hover / :focus-visible on the day — Hover = the 8% text/primary state layer plus a
+// 1px border/default outline (a tint alone is faint on the dark surface); Focus = 2px focus/ring. Disabled days (dates after
 // today with `disableFuture`, or anything `isDateDisabled` rejects) are greyed
 // and can never be selected. Month arrows are 16px visuals with a 24x24 target.
 
@@ -65,13 +64,13 @@ export function DatePicker({ value, onChange, defaultMonth, disableFuture, isDat
   const isDisabled = (day: Date) => Boolean((disableFuture && day > endOfToday) || isDateDisabled?.(day))
 
   return (
-    <div className={cn('flex w-fit flex-col items-start gap-10px rounded-lg bg-surface-emphasis p-12px shadow-md', className)}>
+    <div className={cn('flex w-fit flex-col items-start gap-10px rounded-lg bg-surface-container-high p-12px shadow-md', className)}>
       <div className="flex w-full items-center">
         <button
           type="button"
           aria-label="Mes anterior"
           onClick={() => setMonth(new Date(month.getFullYear(), month.getMonth() - 1, 1))}
-          className="relative size-16px shrink-0 rounded-xs text-icon-muted outline-none after:absolute after:left-1/2 after:top-1/2 after:size-24px after:-translate-x-1/2 after:-translate-y-1/2 focus-visible:ring-2 focus-visible:ring-focus-ring"
+          className="relative size-16px shrink-0 rounded-xs text-icon-muted outline-none after:absolute after:left-1/2 after:top-1/2 after:size-24px after:-translate-x-1/2 after:-translate-y-1/2 focus-visible:focus-ring"
         >
           <ChevronLeft className="size-full" />
         </button>
@@ -82,7 +81,7 @@ export function DatePicker({ value, onChange, defaultMonth, disableFuture, isDat
           type="button"
           aria-label="Mes siguiente"
           onClick={() => setMonth(new Date(month.getFullYear(), month.getMonth() + 1, 1))}
-          className="relative size-16px shrink-0 rounded-xs text-icon-muted outline-none after:absolute after:left-1/2 after:top-1/2 after:size-24px after:-translate-x-1/2 after:-translate-y-1/2 focus-visible:ring-2 focus-visible:ring-focus-ring"
+          className="relative size-16px shrink-0 rounded-xs text-icon-muted outline-none after:absolute after:left-1/2 after:top-1/2 after:size-24px after:-translate-x-1/2 after:-translate-y-1/2 focus-visible:focus-ring"
         >
           <ChevronRight className="size-full" />
         </button>
@@ -115,12 +114,12 @@ export function DatePicker({ value, onChange, defaultMonth, disableFuture, isDat
                   }}
                   className={cn(
                     'flex size-[30px] items-center justify-center rounded-full border border-transparent outline-none transition-colors',
-                    'focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-focus-ring',
+                    'focus-visible:focus-ring',
                     disabled && 'cursor-not-allowed text-text-disabled',
                     isToday && 'border-interactive-primary',
                     selected
                       ? 'bg-interactive-primary text-interactive-primary-foreground'
-                      : !disabled && 'text-text-primary hover:bg-interactive-hover',
+                      : !disabled && 'text-text-primary state-layer hover:state-hover',
                     !disabled && !selected && !isToday && 'hover:border-border-default',
                   )}
                 >

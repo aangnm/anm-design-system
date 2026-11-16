@@ -29,7 +29,7 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
       className={cn(
         'inline-flex items-center gap-2px rounded-sm text-sm text-text-primary underline underline-offset-2 outline-none transition-colors',
         'hover:text-text-emphasis visited:text-text-secondary visited:hover:text-text-emphasis',
-        'focus-visible:ring-1 focus-visible:ring-focus-ring',
+        'focus-visible:focus-ring',
         standalone &&
           'relative min-h-24px [@media(pointer:coarse)]:after:absolute [@media(pointer:coarse)]:after:left-1/2 [@media(pointer:coarse)]:after:top-1/2 [@media(pointer:coarse)]:after:size-48px [@media(pointer:coarse)]:after:-translate-x-1/2 [@media(pointer:coarse)]:after:-translate-y-1/2',
         className,

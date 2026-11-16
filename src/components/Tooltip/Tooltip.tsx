@@ -16,8 +16,8 @@ export interface TooltipProps {
 export function Tooltip({ children, className }: TooltipProps) {
   return (
     <div className={cn('inline-flex flex-col items-center', className)}>
-      <div className="rounded-md bg-surface-emphasis px-10px py-6px text-text-xs leading-5 text-text-primary">{children}</div>
-      <svg width="12" height="6" viewBox="0 0 12 6" fill="none" aria-hidden className="text-surface-emphasis">
+      <div className="rounded-md bg-surface-container-high px-10px py-6px text-text-xs leading-5 text-text-primary">{children}</div>
+      <svg width="12" height="6" viewBox="0 0 12 6" fill="none" aria-hidden className="text-surface-container-high">
         <path d="M0 0L6 6L12 0H0Z" fill="currentColor" />
       </svg>
     </div>

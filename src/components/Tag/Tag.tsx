@@ -12,7 +12,7 @@ import { cn } from '@/lib/utils'
 const tagVariants = cva('inline-flex h-24px items-center gap-6px rounded-sm px-10px text-text-xxs font-medium leading-4', {
   variants: {
     color: {
-      neutral: 'bg-surface-emphasis text-text-secondary',
+      neutral: 'bg-surface-container-high text-text-secondary',
       success: 'bg-semantic-success-surface text-semantic-success-foreground',
       warning: 'bg-semantic-warning-surface text-semantic-warning-foreground',
       error: 'bg-semantic-error-surface text-semantic-error-foreground',
@@ -40,7 +40,7 @@ export function Tag({ children, className, color, dismissible, onDismiss }: TagP
         <button
           type="button"
           onClick={onDismiss}
-          className="relative inline-flex rounded-xs opacity-80 outline-none after:absolute after:left-1/2 after:top-1/2 after:size-24px after:-translate-x-1/2 after:-translate-y-1/2 transition-opacity hover:opacity-100 focus-visible:opacity-100 focus-visible:ring-1 focus-visible:ring-focus-ring"
+          className="relative inline-flex rounded-xs opacity-80 outline-none after:absolute after:left-1/2 after:top-1/2 after:size-24px after:-translate-x-1/2 after:-translate-y-1/2 transition-opacity hover:opacity-100 focus-visible:opacity-100 focus-visible:focus-ring"
           aria-label="Quitar"
         >
           <X className="size-3" />

@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils'
 // Mirrors the Skeleton component (Core page): Shape=Line/Block/Circle.
 // Why (from Figma) — three shapes cover every loading case in the library
 // (text row, media block, avatar) rather than a bespoke skeleton per
-// component. Filled with border/muted so it reads as absent content, not a
+// component. Filled with border/subtle so it reads as absent content, not a
 // disabled control; animated here via Tailwind's `animate-pulse`, matching
 // the description's "animate opacity 0.5↔1 in code".
 
@@ -21,5 +21,5 @@ export interface SkeletonProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export function Skeleton({ shape = 'line', className, ...props }: SkeletonProps) {
-  return <div aria-hidden className={cn('animate-pulse bg-border-muted', shapes[shape], className)} {...props} />
+  return <div aria-hidden className={cn('animate-pulse bg-border-subtle', shapes[shape], className)} {...props} />
 }

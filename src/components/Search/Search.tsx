@@ -12,15 +12,15 @@ import { cn } from '@/lib/utils'
 // Width is up to the caller (Figma shows 260 / 280 / 300).
 
 const searchVariants = cva(
-  'flex w-full items-center gap-8px border border-border-default bg-surface-subtle transition-colors hover:border-border-emphasis ' +
-    'has-[:focus-visible]:border-focus-ring ' +
+  'flex w-full items-center gap-8px border border-border-default bg-surface-container transition-colors hover:border-border-emphasis ' +
+    'has-[:focus-visible]:focus-ring ' +
     'has-[:disabled]:cursor-not-allowed has-[:disabled]:bg-interactive-disabled has-[:disabled]:border-border-subtle has-[:disabled]:hover:border-border-subtle',
   {
     variants: {
       size: {
-        sm: 'h-32px rounded-sm px-10px text-text-xs leading-5',
-        md: 'h-36px rounded-md px-12px text-sm',
-        lg: 'h-48px rounded-md px-16px text-base',
+        sm: 'h-control-sm rounded-sm px-10px text-text-xs leading-5',
+        md: 'h-control-md rounded-md px-12px text-sm',
+        lg: 'h-control-lg rounded-md px-16px text-base',
       },
     },
     defaultVariants: { size: 'md' },

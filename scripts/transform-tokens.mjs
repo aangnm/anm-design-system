@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Transforms tokens/figma-export.json (a raw pull from the Iankha-Design-System-New
+// Transforms tokens/figma-export.json (a raw pull from the anm Design System
 // Figma file's variable collections) into the CSS + TS the package actually ships.
 //
 // Re-run after every Figma token pull:
@@ -18,7 +18,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 const root = join(__dirname, '..')
 
 const raw = JSON.parse(readFileSync(join(root, 'tokens/figma-export.json'), 'utf-8'))
-const { collections, effectStyles = [] } = raw
+const { collections, effectStyles = [], textStyles = [] } = raw
 
 /** "surface/page" -> "surface-page" (valid CSS custom property segment) */
 function cssName(name) {
@@ -111,8 +111,21 @@ if (collections.Icon) {
   }
 }
 
-// Typography: "Default" mode only for now — Normal/Large exist in Figma as a
-// density switch and aren't wired to a CSS mechanism yet (see README notes).
+// Density (Figma v0.96): Comfortable / Compact control heights and table
+// padding. Its own collection, so it combines with any theme. Comfortable is
+// the :root default; [data-density="compact"] on any ancestor overrides it.
+const densityLines = []
+const compactLines = []
+if (collections.Density) {
+  const [comfortable, compact] = collections.Density.modes
+  for (const v of collections.Density.variables) {
+    densityLines.push(`  --${cssName(v.name)}: ${cssValue(v.name, v.valuesByMode[comfortable], v.type)};`)
+    compactLines.push(`  --${cssName(v.name)}: ${cssValue(v.name, v.valuesByMode[compact], v.type)};`)
+  }
+}
+
+// Typography: one mode ("Default") since Figma v0.94 — the old Normal/Large
+// modes were never wired to anything and were removed.
 // font/weight/* values are Inter style names in Figma ("Semi Bold") — mapped
 // to numeric CSS font-weight here since the style name itself isn't valid CSS.
 const typography = collections.Typography
@@ -141,7 +154,13 @@ ${darkLines.join('\n')}
 
 ${flatLines.join('\n')}
 
+${densityLines.join('\n')}
+
 ${typeLines.join('\n')}
+}
+
+[data-density='compact'] {
+${compactLines.join('\n')}
 }
 
 [data-theme='light'] {
@@ -162,6 +181,19 @@ const fontSizeTheme = typography.variables
   .filter((v) => v.name.startsWith('font/size/'))
   .map((v) => `  --text-${cssName(v.name).replace('font-size-', '')}: var(--${cssName(v.name)});`)
 
+// Type roles (Figma v0.94): one Tailwind text utility per text-style role,
+// carrying size AND line height — `text-body-default`, `text-title-large`,
+// `text-label-default` … — so a component names the role it plays instead of
+// a raw size. Weight stays a separate class (font-medium), matching the
+// Figma styles, which are role/weight (Body Default/Medium).
+const roleTheme = textStyles.flatMap((t) => {
+  const role = cssName(t.role.toLowerCase().replace(/\s+/g, '-'))
+  return [
+    `  --text-${role}: var(--${cssName(t.fontSize)});`,
+    `  --text-${role}--line-height: var(--${cssName(t.lineHeight)});`,
+  ]
+})
+
 // Radius, spacing, breakpoint: defined ONCE here with their real value — see
 // the note next to NAMESPACE_COLLIDES_WITH_TAILWIND above for why these don't
 // also exist in tokens.css.
@@ -181,6 +213,14 @@ const spacingTheme = collections.Dimension.variables
   .filter((v) => v.name.startsWith('spacing/'))
   .map((v) => `  --spacing-${cssName(v.name).replace('spacing-', '')}px: ${cssValue(v.name, v.valuesByMode.Value, v.type)};`)
 
+// Density keys land in the spacing namespace so every sizing utility gets
+// them: h-control-md, size-control-sm, min-h-control-lg, py-table-cell-y.
+// Named keys, so no collision with Tailwind's numeric scale.
+const densityTheme = (collections.Density?.variables ?? []).map((v) => {
+  const key = v.name.startsWith('control/height/') ? `control-${v.name.split('/').pop()}` : 'table-cell-y'
+  return `  --spacing-${key}: var(--${cssName(v.name)});`
+})
+
 const breakpointTheme = collections.Layout.variables
   .filter((v) => v.name.startsWith('breakpoint/'))
   .map((v) => `  --breakpoint-${cssName(v.name).replace('breakpoint-', '')}: ${cssValue(v.name, v.valuesByMode.Value, v.type)};`)
@@ -195,6 +235,9 @@ function shadowCss(effects) {
   return effects
     .filter((e) => e.type === 'DROP_SHADOW')
     .map((e) => {
+      // Figma v0.95: effect colours are bound to shadow/key and shadow/ambient
+      // (Themes), much stronger in dark — so the shadow reads the theme var.
+      if (e.colorVar) return `${e.offsetX}px ${e.offsetY}px ${e.radius}px ${e.spread}px var(--${cssName(e.colorVar)})`
       const { r, g, b, a } = e.color
       const rgb = [r, g, b].map((c) => Math.round(c * 255)).join(' ')
       return `${e.offsetX}px ${e.offsetY}px ${e.radius}px ${e.spread}px rgb(${rgb} / ${a})`
@@ -228,7 +271,11 @@ ${radiusTheme.join('\n')}
 
 ${spacingTheme.join('\n')}
 
+${densityTheme.join('\n')}
+
 ${fontSizeTheme.join('\n')}
+
+${roleTheme.join('\n')}
 
 ${breakpointTheme.join('\n')}
 

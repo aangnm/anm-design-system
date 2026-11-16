@@ -23,10 +23,10 @@ export const Playground: Story = {}
 const states = [
   { label: 'Default', props: {}, cls: '' },
   { label: 'Hover', props: {}, cls: 'border-border-emphasis' },
-  { label: 'Focus', props: {}, cls: 'border-focus-ring' },
+  { label: 'Focus', props: {}, cls: 'focus-ring!' },
   { label: 'Disabled', props: { disabled: true }, cls: '' },
   { label: 'Error', props: { error: true }, cls: '' },
-  { label: 'Focus + Error', props: { error: true }, cls: 'ring-2 ring-focus-ring' },
+  { label: 'Focus + Error', props: { error: true }, cls: 'focus-ring!' },
 ]
 
 /** Mirrors the Figma State column (no Size axis; Hover/Focus forced with the same tokens). */

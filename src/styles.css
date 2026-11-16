@@ -5,3 +5,45 @@
 @theme {
   --font-sans: var(--font-family-base), ui-sans-serif, system-ui, sans-serif;
 }
+
+/*
+ * State layers (Figma: Button's "Why —" note; Material 3 audit, v0.89).
+ * Hover and pressed are not colours of their own: the component's label colour
+ * is laid over its fill at opacity/state-hover (8%) or opacity/state-pressed
+ * (12%). `state-layer` paints the layer as a background-image gradient, so it
+ * sits over background-color without needing ::after, which the touch hit
+ * areas already use. `state-hover` / `state-pressed` only switch the strength,
+ * so they compose with any variant: hover:state-hover, group-hover:…, etc.
+ * The layer colour is currentColor unless a component sets --state-on.
+ */
+@utility state-layer {
+  --state-layer-opacity: 0;
+  /* Guarded: without color-mix the build would fall back to an opaque
+     currentColor layer, painting the control in its own label colour.
+     Browsers without color-mix simply get no hover layer. */
+  @supports (color: color-mix(in srgb, red 50%, transparent)) {
+    background-image: linear-gradient(
+      color-mix(in srgb, var(--state-on, currentColor) calc(var(--state-layer-opacity) * 100%), transparent),
+      color-mix(in srgb, var(--state-on, currentColor) calc(var(--state-layer-opacity) * 100%), transparent)
+    );
+  }
+}
+
+@utility state-hover {
+  --state-layer-opacity: var(--opacity-state-hover);
+}
+
+@utility state-pressed {
+  --state-layer-opacity: var(--opacity-state-pressed);
+}
+
+/* Focus (Figma v0.92): one ring for every control. focus/ring at
+   border-width/focus (2px; 3px in High contrast), focus/offset (2px) outside
+   the control. An outline rather than a box-shadow ring, so the offset is a
+   real gap and the control keeps its own border and fill, inputs included.
+   Use `focus-visible:focus-ring`; on a hidden-input control put
+   `peer-focus-visible:focus-ring` on the visible box. */
+@utility focus-ring {
+  outline: var(--border-width-focus) solid var(--focus-ring);
+  outline-offset: var(--focus-offset);
+}

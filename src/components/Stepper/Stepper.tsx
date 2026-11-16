@@ -11,22 +11,22 @@ import { cn } from '@/lib/utils'
 // a square as tall as the control (that is the pointer hit area).
 // States — Hover / Focus / Disabled are real :hover / :focus-visible / disabled
 // (the `disabled` prop here, since the control is made of two buttons);
-// Error is a prop (`error`); Focus + Error = error border plus an outer 2px
-// focus ring (`ring-2 ring-focus-ring`, drawn outside the border).
+// Error is a prop (`error`); Focus + Error = error border plus the shared
+// focus ring (`focus-ring`, 2px outside the border).
 
 const stepperVariants = cva(
-  'group inline-flex items-center border bg-surface-subtle transition-colors ' +
-    'has-[:focus-visible]:border-focus-ring',
+  'group inline-flex items-center border bg-surface-container transition-colors ' +
+    'has-[:focus-visible]:focus-ring',
   {
     variants: {
       size: {
-        sm: 'h-32px w-[120px] rounded-sm text-text-xs leading-5',
-        md: 'h-36px w-[140px] rounded-md text-sm',
-        lg: 'h-48px w-[160px] rounded-md text-base',
+        sm: 'h-control-sm w-[120px] rounded-sm text-text-xs leading-5',
+        md: 'h-control-md w-[140px] rounded-md text-sm',
+        lg: 'h-control-lg w-[160px] rounded-md text-base',
       },
       error: {
         // Error border wins over hover/focus borders; Focus + Error adds the ring.
-        true: 'border-semantic-error hover:border-semantic-error has-[:focus-visible]:border-semantic-error has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-focus-ring',
+        true: 'border-semantic-error hover:border-semantic-error has-[:focus-visible]:border-semantic-error',
         false: 'border-border-default hover:border-border-emphasis',
       },
       disabled: {

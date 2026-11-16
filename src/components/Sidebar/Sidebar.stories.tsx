@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { ChevronUp, Circle, LayoutDashboard, ClipboardList, ChartLine, Map, Settings } from 'lucide-react'
+import { ChevronUp, Circle, LayoutDashboard, ArrowLeftRight, ChartColumn, Users, Settings } from 'lucide-react'
 import { Sidebar, SidebarBrand, SidebarItem } from './Sidebar'
 import { Avatar } from '@/components/Avatar'
 
@@ -16,37 +16,37 @@ type Story = StoryObj<typeof Sidebar>
 const nav = (
   <>
     <SidebarItem icon={<Circle />} active>
-      Panel
+      Resumen
     </SidebarItem>
-    <SidebarItem icon={<Circle />}>Registros</SidebarItem>
-    <SidebarItem icon={<Circle />}>Análisis</SidebarItem>
-    <SidebarItem icon={<Circle />}>Zonas</SidebarItem>
-    <SidebarItem icon={<Circle />}>Ajustes</SidebarItem>
+    <SidebarItem icon={<Circle />}>Transacciones</SidebarItem>
+    <SidebarItem icon={<Circle />}>Reportes</SidebarItem>
+    <SidebarItem icon={<Circle />}>Clientes</SidebarItem>
+    <SidebarItem icon={<Circle />}>Configuración</SidebarItem>
   </>
 )
 
-// Same rows with a distinct icon each — the per-item icon slot (Figma: Icon · Panel,
-// Registros, Análisis, Zonas, Ajustes).
+// Same rows with a distinct icon each — the per-item icon slot (Figma: Icon · Resumen,
+// Transacciones, Reportes, Clientes, Configuración).
 const navWithIcons = (
   <>
     <SidebarItem icon={<LayoutDashboard />} active>
-      Panel
+      Resumen
     </SidebarItem>
-    <SidebarItem icon={<ClipboardList />}>Registros</SidebarItem>
-    <SidebarItem icon={<ChartLine />}>Análisis</SidebarItem>
-    <SidebarItem icon={<Map />}>Zonas</SidebarItem>
-    <SidebarItem icon={<Settings />}>Ajustes</SidebarItem>
+    <SidebarItem icon={<ArrowLeftRight />}>Transacciones</SidebarItem>
+    <SidebarItem icon={<ChartColumn />}>Reportes</SidebarItem>
+    <SidebarItem icon={<Users />}>Clientes</SidebarItem>
+    <SidebarItem icon={<Settings />}>Configuración</SidebarItem>
   </>
 )
 
 function Footer({ collapsed }: { collapsed?: boolean }) {
-  if (collapsed) return <Avatar initials="OA" size="sm" />
+  if (collapsed) return <Avatar initials="ER" size="sm" />
   return (
     <>
       <div className="flex items-center gap-10px">
-        <Avatar initials="OA" size="sm" />
+        <Avatar initials="ER" size="sm" />
         <div className="flex flex-col">
-          <span className="text-sm text-text-primary">Oscar Andrade</span>
+          <span className="text-sm text-text-primary">Elainy Romero</span>
           <span className="text-text-xxs leading-4 text-text-secondary">Administrador</span>
         </div>
       </div>
@@ -58,7 +58,7 @@ function Footer({ collapsed }: { collapsed?: boolean }) {
 export const Expanded: Story = {
   render: () => (
     <div className="h-[600px]">
-      <Sidebar brand={<SidebarBrand logo={<Circle className="size-6 text-text-primary" />} name="Santa Fe" />} footer={<Footer />}>
+      <Sidebar brand={<SidebarBrand name="Espacio de trabajo" />} footer={<Footer />}>
         {nav}
       </Sidebar>
     </div>
@@ -70,7 +70,7 @@ export const Collapsed: Story = {
     <div className="h-[600px]">
       <Sidebar
         collapsed
-        brand={<SidebarBrand logo={<Circle className="size-6 text-text-primary" />} name="Santa Fe" />}
+        brand={<SidebarBrand name="Espacio de trabajo" />}
         footer={<Footer collapsed />}
       >
         {nav}
@@ -82,12 +82,12 @@ export const Collapsed: Story = {
 export const SideBySide: Story = {
   render: () => (
     <div className="flex h-[600px] gap-24px bg-surface-page">
-      <Sidebar brand={<SidebarBrand logo={<Circle className="size-6 text-text-primary" />} name="Santa Fe" />} footer={<Footer />}>
+      <Sidebar brand={<SidebarBrand name="Espacio de trabajo" />} footer={<Footer />}>
         {nav}
       </Sidebar>
       <Sidebar
         collapsed
-        brand={<SidebarBrand logo={<Circle className="size-6 text-text-primary" />} name="Santa Fe" />}
+        brand={<SidebarBrand name="Espacio de trabajo" />}
         footer={<Footer collapsed />}
       >
         {nav}
@@ -99,12 +99,12 @@ export const SideBySide: Story = {
 export const WithIcons: Story = {
   render: () => (
     <div className="flex h-[600px] gap-24px bg-surface-page">
-      <Sidebar brand={<SidebarBrand logo={<Circle className="size-6 text-text-primary" />} name="Santa Fe" />} footer={<Footer />}>
+      <Sidebar brand={<SidebarBrand name="Espacio de trabajo" />} footer={<Footer />}>
         {navWithIcons}
       </Sidebar>
       <Sidebar
         collapsed
-        brand={<SidebarBrand logo={<Circle className="size-6 text-text-primary" />} name="Santa Fe" />}
+        brand={<SidebarBrand name="Espacio de trabajo" />}
         footer={<Footer collapsed />}
       >
         {navWithIcons}

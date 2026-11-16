@@ -1,17 +1,17 @@
 # Working in this repo
 
-`@iankha/design-system` — React 19 + TypeScript component library and design-token pipeline, generated from a Figma file.
+`@anm/design-system` (the **anm design system**) — React 19 + TypeScript component library and design-token pipeline, generated from a Figma file.
 
 ## Start here
 
 **The Figma file is the source of truth, not this repo.** Tokens and component specs are decided in Figma and flow outward into code. Never "fix" a token value here to match a design; fix it in Figma and re-run the pipeline.
 
-**File:** Iankha Design System Beta (renamed from "Iankha-Design-System-New"; links to the old name still resolve) — [open](https://www.figma.com/design/OSexn3GQ7oIOo7X2sGVlSb/Iankha-Design-System-New) — fileKey `OSexn3GQ7oIOo7X2sGVlSb`
+**File:** anm Design System — [open](https://www.figma.com/design/OSexn3GQ7oIOo7X2sGVlSb/anm-Design-System) — fileKey `OSexn3GQ7oIOo7X2sGVlSb`
 
 **The canonical list of open work is the Roadmap page in Figma** (node `2357:2`, second page, right after About & Guidelines). It carries Now / Next / Later / Accepted, and each item says what it needs. Read it before planning work. It supersedes any task list in this repo.
 
 Two other Figma pages orient you fast:
-- **About & Guidelines** (`2081:2`) — purpose, file organisation, conventions, the **Decisions that apply everywhere** card, and a changelog running v0.1 → v0.70.
+- **About & Guidelines** (`2081:2`) — purpose, file organisation, conventions, the **Decisions that apply everywhere** card. The file's changelog (v0.1 onward) lives in this repo at `docs/figma-changelog.md`, not in Figma.
 - **Elevation** (`2081:3`) — the depth page: shadows, plus the `z-index` stacking contract and `opacity` tokens.
 
 **Design rationale lives in the Figma file, not in this repo.** Every component's description carries a `Why —` note explaining the decision behind it; the rules that belong to no single component are on the Decisions card above. **Read a component's description before changing it** — several treatments that look like inconsistencies are deliberate and say so (Switch's raw knob colour, Badge's literal white label, Toast's neutral surface against Banner's tinted one).
@@ -20,12 +20,12 @@ Two other Figma pages orient you fast:
 
 Two steps, deliberately manual. Figma's Variables REST API is Enterprise-only and this team is on Pro, so there is no webhook.
 
-1. **Pull** — needs a live Figma MCP connection. Walk `figma.variables.getLocalVariableCollectionsAsync()` + `getLocalVariablesAsync()`, resolve `VARIABLE_ALIAS` chains recursively, and write the result to `tokens/figma-export.json`. Effect styles come through `figma.getLocalEffectStylesAsync()` as a top-level `effectStyles` array — **variables cannot hold effects**, so shadows are easy to miss on a re-export.
+1. **Pull** — needs a live Figma MCP connection. Walk `figma.variables.getLocalVariableCollectionsAsync()` + `getLocalVariablesAsync()`, resolve `VARIABLE_ALIAS` chains recursively, and write the result to `tokens/figma-export.json`. Effect styles come through `figma.getLocalEffectStylesAsync()` as a top-level `effectStyles` array — **variables cannot hold effects**, so shadows are easy to miss on a re-export. Each shadow carries `colorVar` (shadow/key or shadow/ambient) because the colours are bound Themes variables. Text styles go in a top-level `textStyles` array (role, size variable, line-height variable), which the transform turns into `text-body-default`-style role utilities. Keep the file's one-variable-per-line layout so diffs stay readable.
 2. **Transform** — `npm run tokens:transform`. Pure Node, no Figma access, deterministic.
 
 `src/tokens/{tokens.css,theme.css,index.ts}` are **generated — never hand-edit them.** `tokens/figma-export.json` is committed on purpose so every token change is a reviewable diff.
 
-Components do **not** auto-sync. Figma cannot generate production React reliably, so component code is hand-built to spec; Code Connect mapping files are what keep it honest.
+Components do **not** auto-sync. Figma cannot generate production React reliably, so component code is hand-built to spec. Code Connect is not used (it needs an Organization plan); each component page in Figma has a **Code handoff** spec instead, listing the React export, source file and property-to-prop mapping. Update it when a component API changes.
 
 ## Traps that cost real time
 
@@ -53,14 +53,23 @@ Accumulated API gotchas, each found the hard way:
 
 **Always verify writes visually.** Two bugs this week were invisible to the returning script and only showed up in a screenshot.
 
+- **Pattern fills cannot be written** (`type: 'PATTERN'` fails validation). Chart textures are `IMAGE` fills with `scaleMode: 'TILE'`, made with `figma.createImage(figma.base64Decode(png))`; the Chart Texture set on Data Display holds the canonical tiles, so copy fills from it.
+- **Variant option order is stored separately from child order.** Reordering children does not reorder the instance panel. Rename each option to a temporary value in one call, then back in the next, in the order you want.
+- **Cross-collection aliases resolve in the layer's own mode for the target collection**, not the referencing collection's mode. That is why theme-specific primitives keep -dark / -light suffixes.
+- Run `scripts/figma-lint-variants.js` (read-only, paste as `use_figma` code) after adding or changing a component; extend its vocabulary deliberately.
+
 ## Conventions
 
 - Identifiers in English; user-facing copy in Spanish (es-EC).
-- Build from token classes only — no raw hex, no magic numbers.
+- Build from token classes only — no raw hex, no magic numbers. Text: prefer the role utilities (`text-body-default`, `text-title-large` …) over raw size classes; add new ones to the font-size group in `src/lib/utils.ts` or tailwind-merge will drop them.
+- Density is `data-density="compact"`; sized controls use `h-control-sm|md|lg` (Button LG `h-control-button-lg`) and table cells `py-table-cell-y`, never a fixed `h-36px`, so they follow it.
+- Status colour by role: `bg-semantic-<status>` solid (Badge, dots), `bg-semantic-<status>-surface` + `text-semantic-<status>-foreground` for tints, `text-text-<status>` for status text or icons on a neutral surface. All are ramp steps; never add a one-off status primitive.
+- Focus is one utility: `focus-visible:focus-ring` (or `peer-focus-visible:focus-ring` on the visible box of a hidden-input control). Never `ring-*` or a border recolour for focus. Forced Focus states in stories need `focus-ring!` to beat a base `outline-none`.
+- Sample copy is generic fintech/analytics in es-EC (Cuenta 4021, Ventas, USD, Conversión). Never farming vocabulary.
 - Figma variant axes map to a real API: `State=Hover/Focus/Disabled` become CSS pseudo-classes, not props. `State=Loading` has no native equivalent, so it becomes a real prop.
 - A component's Storybook grid should mirror the Figma variant grid, so a visual diff is a straight comparison.
 - Large Figma variant sets use a manual grid (`layoutMode = 'NONE'`), matching Button and Icon Button. Growing a set means shifting everything below it on the page.
-- Component status: there are no status labels. Every component in the file has been through a full review pass (Beta tags were retired in changelog v0.68). When work ships, delete the item from the Figma Roadmap page and add a line to the Changelog on About & Guidelines.
+- Component status: there are no status labels. Every component in the file has been through a full review pass (Beta tags were retired in changelog v0.68). When work ships, delete the item from the Figma Roadmap page and add an entry to `docs/figma-changelog.md`.
 - **Record design decisions where the designer will find them** — as a `Why —` note in the Figma component's description, not only in a commit message or a changelog line. If the decision applies system-wide, it belongs on the Decisions card on About & Guidelines instead.
 - When adding text to a Figma documentation page, **bind the fill to a token**. Four changelog entries sat unbound at pure black on a dark card, effectively invisible, until a screenshot caught it.
 
@@ -72,14 +81,10 @@ npm run build              # library build -> dist/
 npm run typecheck
 npm run tokens:transform   # regenerate src/tokens/* from tokens/figma-export.json
 npm run changeset          # record what shipped
-npm run figma:connect      # publish Code Connect (needs FIGMA_ACCESS_TOKEN — not currently set)
 ```
 
-## Project history lives in two places
+## Project history
 
-Session memory for this project is split, which is easy to miss:
-
-- `~/.claude/projects/-Users-andres-Documents-iankha-design-system/memory/` — this repo: scaffold, token pipeline, the Figma Roadmap page, git remote.
-- `~/.claude/projects/-Users-andres-Documents-field-work/memory/project_iankha_design_system_figma.md` — **the long history of the Figma file itself** (~45KB: the four-phase UX audit, every component build, page and node ids). Written from the `field-work` project, so a session started here does not load it automatically. Read it before any substantial Figma work.
+Session memory for this project lives in `~/.claude/projects/-Users-andres-Documents-anm-design-system/memory/`: scaffold, token pipeline, the Figma Roadmap page, git remote, and `project_figma_file_history.md`, **the long history of the Figma file itself** (~45KB: the four-phase UX audit, every component build, page and node ids). Read that one before any substantial Figma work.
 
 `field-work` is a **UI reference only, never a mapping target** — treat any resemblance as coincidental until reconciliation happens deliberately.

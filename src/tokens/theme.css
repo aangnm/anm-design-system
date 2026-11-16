@@ -1,23 +1,15 @@
 /**
  * GENERATED FILE — do not edit by hand.
- * Source: tokens/figma-export.json (exported 2026-10-02T00:00:00.000Z)
+ * Source: tokens/figma-export.json (exported 2026-11-16T15:00:00.000Z)
  * Regenerate: node scripts/transform-tokens.mjs
  */
 
 @theme {
   --color-surface-page: var(--surface-page);
-  --color-surface-default: var(--surface-default);
+  --color-surface-container-high: var(--surface-container-high);
   --color-surface-container: var(--surface-container);
-  --color-surface-emphasis: var(--surface-emphasis);
-  --color-surface-subtle: var(--surface-subtle);
-  --color-surface-muted: var(--surface-muted);
   --color-surface-inverted: var(--surface-inverted);
-  --color-surface-info: var(--surface-info);
-  --color-surface-success: var(--surface-success);
-  --color-surface-warning: var(--surface-warning);
-  --color-surface-error: var(--surface-error);
   --color-border-default: var(--border-default);
-  --color-border-muted: var(--border-muted);
   --color-border-subtle: var(--border-subtle);
   --color-border-emphasis: var(--border-emphasis);
   --color-text-primary: var(--text-primary);
@@ -30,8 +22,6 @@
   --color-text-warning: var(--text-warning);
   --color-text-error: var(--text-error);
   --color-interactive-default: var(--interactive-default);
-  --color-interactive-hover: var(--interactive-hover);
-  --color-interactive-active: var(--interactive-active);
   --color-interactive-disabled: var(--interactive-disabled);
   --color-focus-ring: var(--focus-ring);
   --color-brand-accent: var(--brand-accent);
@@ -53,8 +43,6 @@
   --color-data-low: var(--data-low);
   --color-data-mid: var(--data-mid);
   --color-data-high: var(--data-high);
-  --color-interactive-primary-hover: var(--interactive-primary-hover);
-  --color-interactive-primary-active: var(--interactive-primary-active);
   --color-icon-default: var(--icon-default);
   --color-icon-muted: var(--icon-muted);
   --color-icon-inverse: var(--icon-inverse);
@@ -68,6 +56,9 @@
   --color-chart-series-8: var(--chart-series-8);
   --color-brand-logo: var(--brand-logo);
   --color-surface-scrim: var(--surface-scrim);
+  --color-surface-highlight: var(--surface-highlight);
+  --color-shadow-key: var(--shadow-key);
+  --color-shadow-ambient: var(--shadow-ambient);
 
   --radius-xs: 2px;
   --radius-sm: 4px;
@@ -103,6 +94,12 @@
   --spacing-112px: 112px;
   --spacing-128px: 128px;
 
+  --spacing-control-sm: var(--control-height-sm);
+  --spacing-control-md: var(--control-height-md);
+  --spacing-control-lg: var(--control-height-lg);
+  --spacing-control-button-lg: var(--control-height-button-lg);
+  --spacing-table-cell-y: var(--table-cell-padding-y);
+
   --text-text-xxs: var(--font-size-text-xxs);
   --text-text-xs: var(--font-size-text-xs);
   --text-text-sm: var(--font-size-text-sm);
@@ -111,6 +108,36 @@
   --text-text-xl: var(--font-size-text-xl);
   --text-text-2xl: var(--font-size-text-2xl);
   --text-caption: var(--font-size-caption);
+  --text-text-3xl: var(--font-size-text-3xl);
+  --text-text-4xl: var(--font-size-text-4xl);
+  --text-text-5xl: var(--font-size-text-5xl);
+
+  --text-display-2xl: var(--font-size-text-5xl);
+  --text-display-2xl--line-height: var(--font-line-height-5xl);
+  --text-display-xl: var(--font-size-text-4xl);
+  --text-display-xl--line-height: var(--font-line-height-4xl);
+  --text-headline-large: var(--font-size-text-3xl);
+  --text-headline-large--line-height: var(--font-line-height-3xl);
+  --text-headline-medium: var(--font-size-text-2xl);
+  --text-headline-medium--line-height: var(--font-line-height-2xl);
+  --text-headline-small: var(--font-size-text-lg);
+  --text-headline-small--line-height: var(--font-line-height-lg);
+  --text-title-large: var(--font-size-text-xl);
+  --text-title-large--line-height: var(--font-line-height-lg);
+  --text-title-default: var(--font-size-text-base);
+  --text-title-default--line-height: var(--font-line-height-base);
+  --text-title-small: var(--font-size-text-sm);
+  --text-title-small--line-height: var(--font-line-height-sm);
+  --text-body-large: var(--font-size-text-base);
+  --text-body-large--line-height: var(--font-line-height-base);
+  --text-body-default: var(--font-size-text-sm);
+  --text-body-default--line-height: var(--font-line-height-sm);
+  --text-body-small: var(--font-size-text-xs);
+  --text-body-small--line-height: var(--font-line-height-sm);
+  --text-label-large: var(--font-size-caption);
+  --text-label-large--line-height: var(--font-line-height-xs);
+  --text-label-default: var(--font-size-text-xxs);
+  --text-label-default--line-height: var(--font-line-height-xs);
 
   --breakpoint-sm: 640px;
   --breakpoint-md: 768px;
@@ -118,13 +145,15 @@
   --breakpoint-xl: 1280px;
   --breakpoint-2xl: 1536px;
 
-  --shadow-xs: 0px 1px 2px 0px rgb(0 0 0 / 0.05);
-  --shadow-sm: 0px 1px 3px 0px rgb(0 0 0 / 0.1), 0px 1px 2px 0px rgb(0 0 0 / 0.06);
-  --shadow-md: 0px 4px 6px -1px rgb(0 0 0 / 0.07), 0px 2px 4px -1px rgb(0 0 0 / 0.06);
-  --shadow-lg: 0px 10px 15px -3px rgb(0 0 0 / 0.1), 0px 4px 6px -2px rgb(0 0 0 / 0.05);
-  --shadow-xl: 0px 20px 25px -5px rgb(0 0 0 / 0.1), 0px 10px 10px -5px rgb(0 0 0 / 0.04);
+  --shadow-xs: 0px 1px 2px 0px var(--shadow-key);
+  --shadow-sm: 0px 1px 3px 0px var(--shadow-key), 0px 1px 2px 0px var(--shadow-ambient);
+  --shadow-md: 0px 4px 6px -1px var(--shadow-key), 0px 2px 4px -1px var(--shadow-ambient);
+  --shadow-lg: 0px 10px 15px -3px var(--shadow-key), 0px 4px 6px -2px var(--shadow-ambient);
+  --shadow-xl: 0px 20px 25px -5px var(--shadow-key), 0px 10px 10px -5px var(--shadow-ambient);
 
   --opacity-loading: var(--opacity-loading);
   --opacity-chart-fill: var(--opacity-chart-fill);
   --opacity-scrim: var(--opacity-scrim);
+  --opacity-state-hover: var(--opacity-state-hover);
+  --opacity-state-pressed: var(--opacity-state-pressed);
 }

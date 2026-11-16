@@ -62,7 +62,7 @@ export function Modal({
       role="dialog"
       aria-modal="true"
       aria-labelledby={titleId}
-      className={cn('flex w-[440px] flex-col items-start gap-16px rounded-lg bg-surface-subtle p-24px shadow-xl', className)}
+      className={cn('flex w-[440px] flex-col items-start gap-16px rounded-lg bg-surface-container p-24px shadow-xl', className)}
       {...props}
     >
       <div className="flex w-full items-center justify-between">
@@ -70,7 +70,7 @@ export function Modal({
         <button
           type="button"
           onClick={onClose}
-          className="relative rounded-xs text-icon-muted outline-none transition-colors after:absolute after:left-1/2 after:top-1/2 after:size-24px after:-translate-x-1/2 after:-translate-y-1/2 hover:text-text-primary focus-visible:ring-1 focus-visible:ring-focus-ring"
+          className="relative rounded-xs text-icon-muted outline-none transition-colors after:absolute after:left-1/2 after:top-1/2 after:size-24px after:-translate-x-1/2 after:-translate-y-1/2 hover:text-text-primary focus-visible:focus-ring"
           aria-label="Cerrar"
         >
           <X className="size-5" />

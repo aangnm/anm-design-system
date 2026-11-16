@@ -27,10 +27,15 @@ export interface TableProps extends Omit<HTMLAttributes<HTMLTableElement>, 'chil
   errorMessage?: string
   /** Skeleton rows rendered while loading. */
   loadingRows?: number
+  /**
+   * Card chrome (border, radius, surface). Turn off when the table sits inside
+   * another container that already owns the chrome, e.g. Content Panel.
+   */
+  bordered?: boolean
 }
 
 const alignClass = { left: 'text-left', right: 'text-right', center: 'text-center' } as const
-const cellPad = 'px-14px py-10px'
+const cellPad = 'px-14px py-table-cell-y'
 // Loading keeps the real header and skeletons only the body; widths per column as in Figma.
 const SKELETON_WIDTHS = [24, 112, 72, 42, 42]
 
@@ -41,13 +46,15 @@ export function Table({
   emptyMessage = 'Sin registros que coincidan con el filtro.',
   errorMessage = 'No se pudieron cargar los registros.',
   loadingRows = 3,
+  bordered = true,
   className,
   ...props
 }: TableProps) {
   return (
     <div
       className={cn(
-        'w-full overflow-hidden rounded-lg border border-border-subtle bg-surface-subtle',
+        'w-full overflow-hidden',
+        bordered && 'rounded-lg border border-border-subtle bg-surface-container',
         // Every non-Default variant is padded to the Default's height (header 36
         // + four 44px rows = 212px) on purpose, so swapping states never makes
         // the container jump.
@@ -56,7 +63,7 @@ export function Table({
     >
       <table className={cn('w-full border-collapse', className)} {...props}>
         <thead>
-          <tr className="bg-surface-emphasis">
+          <tr className="bg-surface-container-high">
             {columns.map((col) => (
               <th
                 key={col.key}
@@ -92,7 +99,7 @@ export function Table({
                 {columns.map((col, c) => (
                   <td key={col.key} className="px-14px">
                     <div
-                      className="h-12px max-w-full rounded-sm bg-border-muted"
+                      className="h-12px max-w-full rounded-sm bg-border-subtle"
                       style={{ width: SKELETON_WIDTHS[c % SKELETON_WIDTHS.length] }}
                     />
                   </td>

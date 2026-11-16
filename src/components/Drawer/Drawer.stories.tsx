@@ -10,10 +10,10 @@ const meta: Meta<typeof Drawer> = {
     overlay: false,
     title: 'Detalle de tarea',
     items: [
-      { label: 'Lote', value: 'Lote 07' },
-      { label: 'Actividad', value: 'Cosecha' },
-      { label: 'Responsable', value: 'Oscar Andrade' },
-      { label: 'Notas', value: 'Revisar zona norte antes de iniciar el corte — reporte de plagas Sem 21.' },
+      { label: 'Cuenta', value: 'Cuenta 4021' },
+      { label: 'Categoría', value: 'Ventas' },
+      { label: 'Responsable', value: 'Elainy Romero' },
+      { label: 'Notas', value: 'Revisar la conciliación antes del cierre — diferencia reportada en Sem 21.' },
     ],
   },
   decorators: [

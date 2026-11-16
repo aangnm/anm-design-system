@@ -24,9 +24,9 @@ export const Playground: Story = {
 }
 
 const forcedHover = {
-  primary: 'bg-interactive-primary-hover',
-  secondary: 'bg-interactive-hover',
-  ghost: 'bg-interactive-default',
+  primary: 'state-hover',
+  secondary: 'state-hover',
+  ghost: 'state-hover',
 } as const
 
 /** Mirrors the Figma grid: Type x Size rows, State columns (Hover/Focus forced with the same tokens). */
@@ -47,7 +47,7 @@ export const AllVariants: Story = {
             </span>
             <div><IconButton variant={variant} size={size} icon={<Bell />} aria-label="Notificaciones" /></div>
             <div><IconButton variant={variant} size={size} icon={<Bell />} aria-label="Notificaciones" className={forcedHover[variant]} /></div>
-            <div><IconButton variant={variant} size={size} icon={<Bell />} aria-label="Notificaciones" className="ring-1 ring-focus-ring" /></div>
+            <div><IconButton variant={variant} size={size} icon={<Bell />} aria-label="Notificaciones" className="focus-ring!" /></div>
             <div><IconButton variant={variant} size={size} icon={<Bell />} aria-label="Notificaciones" disabled /></div>
           </div>
         )),

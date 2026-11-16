@@ -80,7 +80,7 @@ export function BarChart({
           {/* gridlines */}
           <div className="absolute inset-x-0 flex flex-col justify-between" style={{ top: EDGE, height }} aria-hidden>
             {tickValues.map((t, i) => (
-              <div key={t} className={cn('h-px w-full', i === tickValues.length - 1 ? 'bg-border-muted' : 'bg-border-subtle')} />
+              <div key={t} className={cn('h-px w-full', i === tickValues.length - 1 ? 'bg-border-subtle' : 'bg-border-subtle')} />
             ))}
           </div>
           {/* bars */}

@@ -15,18 +15,18 @@ import { cn } from '@/lib/utils'
 // Width is up to the caller (Figma shows 260 / 280 / 300).
 
 const selectVariants = cva(
-  'w-full appearance-none border bg-surface-subtle text-text-primary outline-none transition-colors ' +
+  'w-full appearance-none border bg-surface-container text-text-primary outline-none transition-colors ' +
     'disabled:cursor-not-allowed disabled:bg-interactive-disabled disabled:text-text-disabled disabled:border-border-subtle disabled:hover:border-border-subtle',
   {
     variants: {
       size: {
-        sm: 'h-32px rounded-sm pl-10px pr-32px text-text-xs leading-5',
-        md: 'h-36px rounded-md pl-12px pr-32px text-sm',
-        lg: 'h-48px rounded-md pl-16px pr-40px text-base',
+        sm: 'h-control-sm rounded-sm pl-10px pr-32px text-text-xs leading-5',
+        md: 'h-control-md rounded-md pl-12px pr-32px text-sm',
+        lg: 'h-control-lg rounded-md pl-16px pr-40px text-base',
       },
       error: {
-        true: 'border-semantic-error focus-visible:ring-2 focus-visible:ring-focus-ring',
-        false: 'border-border-default hover:border-border-emphasis focus-visible:border-focus-ring',
+        true: 'border-semantic-error focus-visible:focus-ring',
+        false: 'border-border-default hover:border-border-emphasis focus-visible:focus-ring',
       },
     },
     defaultVariants: {

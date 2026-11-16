@@ -26,14 +26,14 @@ const types = ['primary', 'secondary', 'outline', 'ghost'] as const
 const sizes = ['sm', 'md', 'lg'] as const
 
 // Hover/Focus are CSS pseudo-states and can't be triggered from markup, so the
-// grid forces them with the same token classes the pseudo-states resolve to.
+// grid forces them with the same classes the pseudo-states apply.
 const forcedHover = {
-  primary: 'bg-interactive-primary-hover',
-  secondary: 'bg-interactive-hover',
-  outline: 'bg-interactive-default',
-  ghost: 'bg-interactive-default',
+  primary: 'state-hover',
+  secondary: 'state-hover',
+  outline: 'state-hover',
+  ghost: 'state-hover',
 } as const
-const forcedFocus = 'ring-1 ring-focus-ring'
+const forcedFocus = 'focus-ring!'
 
 /** Mirrors the Figma grid: Type x Size rows, State columns (Default, Hover, Focus, Disabled, Loading). */
 export const AllVariants: Story = {

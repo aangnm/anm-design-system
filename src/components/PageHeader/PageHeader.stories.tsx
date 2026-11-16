@@ -22,8 +22,8 @@ type Story = StoryObj<typeof PageHeader>
 
 export const Playground: Story = {
   args: {
-    title: 'Radiometría',
-    subtitle: 'Hacienda Santa Clara · 61,91 ha · Semana 22',
+    title: 'Cartera',
+    subtitle: 'Cartera principal · 1.284 cuentas · Semana 22',
     actions: (
       <>
         <IconButton variant="secondary" icon={<Bell />} aria-label="Notificaciones" />

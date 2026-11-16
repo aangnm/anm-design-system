@@ -5,11 +5,11 @@ import { Legend, CHART_SERIES_TEXT, formatChartNumber, type ChartSeriesIndex } f
 // Mirrors the Line Chart component (Data Display page): trend over time for
 // 1-8 series. Why (from Figma) — series colours are used in fixed order
 // (chart/series-1 upward) so the same series keeps its colour across every
-// chart in a product; the NDVI/GNDVI/NDRE sample data is illustrative only.
+// chart in a product; the Conversión/Retención/Abandono sample data is illustrative only.
 // The axis is embedded chrome, not a standalone component. 2px lines, end
 // markers with a 2px surface ring, recessive gridlines (border/subtle, the
-// baseline border/muted), legend always present, axis text on the 11px floor
-// with decimal commas. Container: surface/subtle + subtle border. Data-driven,
+// baseline border/subtle), legend always present, axis text on the 11px floor
+// with decimal commas. Container: surface/container + subtle border. Data-driven,
 // same "static vector in Figma, real polyline in code" call as Sparkline/Bar
 // Chart. Not interactive (a labelled image).
 
@@ -58,7 +58,7 @@ export function LineChart({
   return (
     <div
       className={cn(
-        'flex w-fit flex-col items-start gap-14px overflow-hidden rounded-lg border border-border-subtle bg-surface-subtle p-16px',
+        'flex w-fit flex-col items-start gap-14px overflow-hidden rounded-lg border border-border-subtle bg-surface-container p-16px',
         className,
       )}
       {...props}
@@ -74,7 +74,7 @@ export function LineChart({
           <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} fill="none" role="img" className="overflow-visible">
             <line x1={0} y1={pad + 0.5} x2={width} y2={pad + 0.5} stroke="var(--border-subtle)" strokeWidth={1} />
             <line x1={0} y1={height / 2} x2={width} y2={height / 2} stroke="var(--border-subtle)" strokeWidth={1} />
-            <line x1={0} y1={height - pad + 0.5} x2={width} y2={height - pad + 0.5} stroke="var(--border-muted)" strokeWidth={1} />
+            <line x1={0} y1={height - pad + 0.5} x2={width} y2={height - pad + 0.5} stroke="var(--border-subtle)" strokeWidth={1} />
             {series.map((s) => {
               const points = toPoints(s.data)
               const last = points[points.length - 1]
@@ -87,7 +87,7 @@ export function LineChart({
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   />
-                  <circle cx={last.x} cy={last.y} r={3.5} fill="currentColor" stroke="var(--surface-subtle)" strokeWidth={2} />
+                  <circle cx={last.x} cy={last.y} r={3.5} fill="currentColor" stroke="var(--surface-container)" strokeWidth={2} />
                 </g>
               )
             })}

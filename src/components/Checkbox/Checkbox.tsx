@@ -5,7 +5,8 @@ import { cn } from '@/lib/utils'
 
 // Mirrors the Checkbox component (Core page): Value (Unchecked/Checked/
 // Indeterminate) x State (Default/Hover/Focus/Disabled) — Value is the real
-// checked/indeterminate state, State is :hover (on the row, box tint),
+// checked/indeterminate state, State is :hover (on the row: box tint when
+// unchecked, the 8% state layer when checked or indeterminate),
 // :focus-visible (focus/ring border) and [disabled]; every combination
 // renders. Row is 24 high (the target). `indeterminate` has no HTML attribute — React
 // requires setting it via a DOM ref, same as vanilla JS — but the resulting
@@ -48,11 +49,12 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           <input ref={setRefs} id={id} type="checkbox" disabled={disabled} className="peer sr-only" {...props} />
           <span
             className={cn(
-              'absolute inset-0 rounded-sm border border-border-emphasis bg-surface-subtle transition-colors',
+              'absolute inset-0 rounded-sm border border-border-emphasis bg-surface-container transition-colors',
               'group-hover:bg-interactive-default',
-              'peer-checked:border-transparent peer-checked:bg-interactive-primary group-hover:peer-checked:bg-interactive-primary-hover',
-              'peer-indeterminate:border-transparent peer-indeterminate:bg-interactive-primary group-hover:peer-indeterminate:bg-interactive-primary-hover',
-              'peer-focus-visible:border-focus-ring peer-checked:peer-focus-visible:border-focus-ring peer-indeterminate:peer-focus-visible:border-focus-ring',
+              'state-layer [--state-on:var(--interactive-primary-foreground)]',
+              'peer-checked:border-transparent peer-checked:bg-interactive-primary group-hover:peer-checked:state-hover',
+              'peer-indeterminate:border-transparent peer-indeterminate:bg-interactive-primary group-hover:peer-indeterminate:state-hover',
+              'peer-focus-visible:focus-ring',
               'peer-disabled:border-border-subtle peer-disabled:bg-interactive-disabled peer-checked:peer-disabled:border-border-subtle peer-checked:peer-disabled:bg-interactive-disabled peer-indeterminate:peer-disabled:border-border-subtle peer-indeterminate:peer-disabled:bg-interactive-disabled',
             )}
           />

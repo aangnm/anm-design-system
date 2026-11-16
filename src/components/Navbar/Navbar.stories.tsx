@@ -16,13 +16,13 @@ type Story = StoryObj<typeof Navbar>
 export const Playground: Story = {
   render: () => (
     <Navbar
-      brand={<span className="text-sm font-semibold text-text-primary">iankha</span>}
+      brand={<span className="text-sm font-semibold text-text-primary">anm</span>}
       actions={
         <>
           <button
             type="button"
             aria-label="Buscar"
-            className="inline-flex size-24px items-center justify-center rounded-xs text-icon-muted outline-none transition-colors hover:text-text-primary focus-visible:ring-1 focus-visible:ring-focus-ring"
+            className="inline-flex size-24px items-center justify-center rounded-xs text-icon-muted outline-none transition-colors hover:text-text-primary focus-visible:focus-ring"
           >
             <SearchIcon className="size-5" />
           </button>
@@ -33,8 +33,8 @@ export const Playground: Story = {
       <NavbarLink href="#" active>
         Panel
       </NavbarLink>
-      <NavbarLink href="#">Registros</NavbarLink>
-      <NavbarLink href="#">Análisis</NavbarLink>
+      <NavbarLink href="#">Transacciones</NavbarLink>
+      <NavbarLink href="#">Reportes</NavbarLink>
     </Navbar>
   ),
 }

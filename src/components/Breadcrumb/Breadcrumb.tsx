@@ -40,7 +40,7 @@ export function Breadcrumb({ items, className }: BreadcrumbProps) {
                 ) : (
                   <a
                     href={item.href}
-                    className="relative inline-flex h-24px items-center rounded-xs text-text-secondary outline-none transition-colors hover:text-text-primary focus-visible:ring-1 focus-visible:ring-focus-ring pointer-coarse:after:absolute pointer-coarse:after:inset-x-0 pointer-coarse:after:top-1/2 pointer-coarse:after:h-48px pointer-coarse:after:-translate-y-1/2"
+                    className="relative inline-flex h-24px items-center rounded-xs text-text-secondary outline-none transition-colors hover:text-text-primary focus-visible:focus-ring pointer-coarse:after:absolute pointer-coarse:after:inset-x-0 pointer-coarse:after:top-1/2 pointer-coarse:after:h-48px pointer-coarse:after:-translate-y-1/2"
                   >
                     {item.label}
                   </a>

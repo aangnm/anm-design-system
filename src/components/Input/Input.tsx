@@ -12,20 +12,20 @@ import { cn } from '@/lib/utils'
 // 2px focus ring. Heights: SM 32 / MD 36 / LG 48; text 13/20, 14/20, 16/24.
 
 const inputVariants = cva(
-  'flex w-full items-center gap-8px border bg-surface-subtle text-text-primary outline-none transition-colors ' +
+  'flex w-full items-center gap-8px border bg-surface-container text-text-primary outline-none transition-colors ' +
     'placeholder:text-text-secondary ' +
     'disabled:cursor-not-allowed disabled:bg-interactive-disabled disabled:text-text-disabled disabled:placeholder:text-text-disabled disabled:border-border-subtle disabled:hover:border-border-subtle ' +
     'has-[:disabled]:cursor-not-allowed has-[:disabled]:bg-interactive-disabled has-[:disabled]:text-text-disabled has-[:disabled]:border-border-subtle has-[:disabled]:hover:border-border-subtle',
   {
     variants: {
       size: {
-        sm: 'h-32px rounded-sm px-10px text-text-xs leading-5',
-        md: 'h-36px rounded-md px-12px text-sm',
-        lg: 'h-48px rounded-md px-16px text-base',
+        sm: 'h-control-sm rounded-sm px-10px text-text-xs leading-5',
+        md: 'h-control-md rounded-md px-12px text-sm',
+        lg: 'h-control-lg rounded-md px-16px text-base',
       },
       error: {
-        true: 'border-semantic-error focus-visible:ring-2 focus-visible:ring-focus-ring has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-focus-ring',
-        false: 'border-border-default hover:border-border-emphasis focus-visible:border-focus-ring has-[:focus-visible]:border-focus-ring',
+        true: 'border-semantic-error focus-visible:focus-ring has-[:focus-visible]:focus-ring',
+        false: 'border-border-default hover:border-border-emphasis focus-visible:focus-ring has-[:focus-visible]:focus-ring',
       },
     },
     defaultVariants: {

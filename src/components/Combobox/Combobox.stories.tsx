@@ -2,10 +2,10 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Combobox } from './Combobox'
 
 const options = [
-  { value: '07', label: 'Lote 07' },
-  { value: '12', label: 'Lote 12' },
-  { value: '15n', label: 'Lote 15N' },
-  { value: '21', label: 'Lote 21' },
+  { value: '07', label: 'Cuenta 4021' },
+  { value: '12', label: 'Cuenta 4035' },
+  { value: '15n', label: 'Cuenta 4102' },
+  { value: '21', label: 'Cuenta 4130' },
 ]
 
 const meta: Meta<typeof Combobox> = {
@@ -45,7 +45,7 @@ export const States: Story = {
             <Combobox options={options} size={size} aria-label="Hover" className="border-border-emphasis" />
           </div>
           <div className={widths[size]}>
-            <Combobox options={options} size={size} aria-label="Focus" className="border-focus-ring" />
+            <Combobox options={options} size={size} aria-label="Focus" className="focus-ring!" />
           </div>
           <div className={widths[size]}>
             <Combobox options={options} size={size} aria-label="Disabled" disabled />
@@ -59,7 +59,7 @@ export const States: Story = {
               size={size}
               aria-label="Focus + Error"
               error
-              className="ring-2 ring-focus-ring"
+              className="focus-ring!"
             />
           </div>
         </div>

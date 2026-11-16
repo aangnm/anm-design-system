@@ -22,8 +22,8 @@ export const Playground: Story = {
 export const InContext: Story = {
   render: () => (
     <div className="flex w-[260px] flex-col gap-6px rounded-lg border border-border-subtle bg-surface-container p-20px">
-      <span className="text-text-xxs font-medium leading-4 text-text-secondary">Producción semanal</span>
-      <span className="text-2xl font-semibold leading-8 text-text-primary">1.284 Tallos</span>
+      <span className="text-text-xxs font-medium leading-4 text-text-secondary">Ingresos semanales</span>
+      <span className="text-2xl font-semibold leading-8 text-text-primary">$ 128.450</span>
       <Sparkline data={[4, 6, 5, 8, 7, 9, 6, 10, 12]} className="mt-6px text-semantic-success" />
     </div>
   ),

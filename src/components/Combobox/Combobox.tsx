@@ -23,17 +23,17 @@ import { Menu } from '@/components/Menu'
 // this component does not depend on their in-flight edits. Fixed heights
 // (box-border) so the stroke counts inside 32/36/48 like Figma.
 const comboboxVariants = cva(
-  'w-full border bg-surface-subtle text-text-primary outline-none transition-colors ' +
+  'w-full border bg-surface-container text-text-primary outline-none transition-colors ' +
     'placeholder:text-text-secondary hover:border-border-emphasis ' +
-    'focus-visible:border-focus-ring ' +
-    'aria-invalid:border-semantic-error aria-invalid:focus-visible:ring-2 aria-invalid:focus-visible:ring-focus-ring ' +
+    'focus-visible:focus-ring ' +
+    'aria-invalid:border-semantic-error ' +
     'disabled:cursor-not-allowed disabled:border-border-subtle disabled:bg-interactive-disabled disabled:text-text-disabled disabled:placeholder:text-text-disabled disabled:hover:border-border-subtle',
   {
     variants: {
       size: {
-        sm: 'h-32px rounded-sm pl-10px pr-32px text-text-xs leading-5',
-        md: 'h-36px rounded-md pl-12px pr-32px text-sm',
-        lg: 'h-48px rounded-md pl-16px pr-40px text-base',
+        sm: 'h-control-sm rounded-sm pl-10px pr-32px text-text-xs leading-5',
+        md: 'h-control-md rounded-md pl-12px pr-32px text-sm',
+        lg: 'h-control-lg rounded-md pl-16px pr-40px text-base',
       },
     },
     defaultVariants: { size: 'md' },
@@ -72,7 +72,7 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
       error,
       defaultOpen = false,
       emptyText = 'Sin resultados',
-      placeholder = 'Buscar lote…',
+      placeholder = 'Buscar cuenta…',
       disabled,
       className,
       wrapperClassName,

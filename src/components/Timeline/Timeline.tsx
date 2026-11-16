@@ -2,7 +2,7 @@ import type { HTMLAttributes, ReactNode } from 'react'
 import { cn } from '@/lib/utils'
 
 // Mirrors the Timeline component (Product Patterns page): an ordered event
-// history per lote — riego, cosecha, tratamiento — a coloured marker per event
+// history per account — payments, reconciliations, transfers — a coloured marker per event
 // type joined by a connecting line, with a relative timestamp and one line of
 // detail per entry. Event colours reuse the semantic palette already
 // established by Benchmark Table's tier chips (success / info / warning), not a

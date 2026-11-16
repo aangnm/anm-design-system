@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils'
 // via a border matching the surrounding surface — same technique as Figma
 // (a 2px stroke bound to surface/page).
 
-const avatarVariants = cva('relative inline-flex shrink-0 items-center justify-center rounded-full bg-surface-emphasis font-medium text-text-primary', {
+const avatarVariants = cva('relative inline-flex shrink-0 items-center justify-center rounded-full bg-surface-container-high font-medium text-text-primary', {
   variants: {
     size: {
       sm: 'size-24px text-text-xxs leading-4',
@@ -28,7 +28,7 @@ const dotSize: Record<NonNullable<AvatarProps['size']>, string> = {
 const dotColor: Record<NonNullable<AvatarProps['status']>, string> = {
   none: '',
   online: 'bg-semantic-success',
-  offline: 'bg-border-muted',
+  offline: 'bg-border-subtle',
 }
 
 export interface AvatarProps extends VariantProps<typeof avatarVariants> {

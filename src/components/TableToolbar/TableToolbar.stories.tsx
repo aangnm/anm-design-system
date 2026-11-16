@@ -24,14 +24,14 @@ type Story = StoryObj<typeof TableToolbar>
 
 const actions = {
   secondaryAction: <IconButton variant="secondary" icon={<Download />} aria-label="Exportar" />,
-  primaryAction: <Button leadingIcon={<Plus />}>Añadir lote</Button>,
+  primaryAction: <Button leadingIcon={<Plus />}>Añadir cuenta</Button>,
 }
 
-// Mirrors the Figma component: search, two active chips (Cosecha, Moderado), export, add.
+// Mirrors the Figma component: search, two active chips (Ventas, Moderado), export, add.
 export const Playground: Story = {
   args: {
     filters: [
-      { id: 'cosecha', label: 'Cosecha' },
+      { id: 'ventas', label: 'Ventas' },
       { id: 'moderado', label: 'Moderado' },
     ],
     ...actions,
@@ -46,7 +46,7 @@ export const NoFilters: Story = {
 export const AboveTable: Story = {
   render: () => {
     const [filters, setFilters] = useState([
-      { id: 'cosecha', label: 'Cosecha' },
+      { id: 'ventas', label: 'Ventas' },
       { id: 'moderado', label: 'Moderado' },
     ])
     return (
@@ -58,13 +58,13 @@ export const AboveTable: Story = {
         />
         <Table
           columns={[
-            { key: 'lote', header: 'Lote', width: 120 },
-            { key: 'actividad', header: 'Actividad' },
-            { key: 'data', header: 'Data', width: 120 },
+            { key: 'cuenta', header: 'Cuenta', width: 120 },
+            { key: 'categoria', header: 'Categoría' },
+            { key: 'data', header: 'Monto', width: 120 },
           ]}
           rows={[
-            { lote: 'Lote 07', actividad: 'Cosecha', data: '250 Tallos' },
-            { lote: 'Lote 12', actividad: 'Cosecha', data: '340 Tallos' },
+            { cuenta: 'Cuenta 4021', categoria: 'Ventas', data: '$ 250' },
+            { cuenta: 'Cuenta 4035', categoria: 'Ventas', data: '$ 340' },
           ]}
         />
       </div>

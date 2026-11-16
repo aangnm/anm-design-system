@@ -12,7 +12,7 @@ import { cn } from '@/lib/utils'
 // the collapsed state easy to get half-applied.
 //
 // Each nav item takes its own `icon` (Figma: one icon swap property per nav
-// item — Panel, Registros, Análisis, Zonas, Ajustes). Collapsed is a 72px
+// item — Resumen, Transacciones, Reportes, Clientes, Configuración). Collapsed is a 72px
 // icon-only rail; labels are hidden, not removed.
 // Hit area — each nav item row is 36 high; on touch the target extends to
 // 48 x 48 without changing the visual.
@@ -30,14 +30,14 @@ export function Sidebar({ className, collapsed = false, brand, footer, children,
     <SidebarContext.Provider value={{ collapsed }}>
       <aside
         className={cn(
-          'flex h-full flex-col gap-8px bg-surface-subtle px-16px py-20px transition-[width]',
+          'flex h-full flex-col gap-8px bg-surface-container px-16px py-20px transition-[width]',
           collapsed ? 'w-[72px]' : 'w-[240px]',
           className,
         )}
         {...props}
       >
         {brand ? (
-          <div className={cn('flex items-center gap-8px pb-12px', collapsed ? 'justify-center' : 'pl-8px')}>
+          <div className={cn('flex h-36px items-center gap-8px pb-12px', collapsed ? 'justify-center' : 'pl-8px')}>
             {brand}
           </div>
         ) : null}
@@ -58,12 +58,17 @@ export function Sidebar({ className, collapsed = false, brand, footer, children,
   )
 }
 
-/** Brand lockup: hides the wordmark when collapsed, keeps the mark. */
-export function SidebarBrand({ logo, name }: { logo: ReactNode; name?: string }) {
+/**
+ * Header row: the workspace name as text. Figma (v0.90) — no logo in the
+ * sidebar header; the product mark belongs to the page, not the nav. When
+ * collapsed the row stays (36 high, empty) so the nav items keep their place.
+ * `logo` is still accepted for products that need a mark, but is optional.
+ */
+export function SidebarBrand({ logo, name }: { logo?: ReactNode; name?: string }) {
   const { collapsed } = useContext(SidebarContext)
   return (
     <>
-      <span className="shrink-0">{logo}</span>
+      {logo ? <span className="shrink-0">{logo}</span> : null}
       {!collapsed && name ? <span className="text-sm font-semibold text-text-primary">{name}</span> : null}
     </>
   )
@@ -86,7 +91,7 @@ export const SidebarItem = forwardRef<HTMLButtonElement, SidebarItemProps>(
         className={cn(
           'relative flex w-full items-center gap-10px rounded-sm px-10px py-8px text-sm font-medium outline-none transition-colors',
           'pointer-coarse:after:absolute pointer-coarse:after:inset-x-0 pointer-coarse:after:top-1/2 pointer-coarse:after:h-48px pointer-coarse:after:-translate-y-1/2',
-          'focus-visible:ring-1 focus-visible:ring-focus-ring',
+          'focus-visible:focus-ring',
           collapsed ? 'justify-center' : 'text-left',
           active ? 'bg-interactive-default text-text-primary' : 'text-text-secondary hover:text-text-primary',
           className,

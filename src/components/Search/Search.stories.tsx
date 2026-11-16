@@ -25,7 +25,7 @@ const widths = { sm: 'w-[260px]', md: 'w-[280px]', lg: 'w-[300px]' } as const
 const states = [
   { label: 'Default', props: {}, cls: '' },
   { label: 'Hover', props: {}, cls: 'border-border-emphasis' },
-  { label: 'Focus', props: {}, cls: 'border-focus-ring' },
+  { label: 'Focus', props: {}, cls: 'focus-ring!' },
   { label: 'Disabled', props: { disabled: true }, cls: '' },
 ]
 

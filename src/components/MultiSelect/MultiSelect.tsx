@@ -20,18 +20,18 @@ import { Menu } from '@/components/Menu'
 // (Figma strokes sit inside the frame, CSS borders add to the content box).
 
 const fieldVariants = cva(
-  'flex w-full cursor-pointer flex-wrap items-center gap-6px border bg-surface-subtle text-text-primary outline-none transition-colors ' +
-    'focus-visible:border-focus-ring aria-expanded:border-focus-ring ' +
+  'flex w-full cursor-pointer flex-wrap items-center gap-6px border bg-surface-container text-text-primary outline-none transition-colors ' +
+    'focus-visible:focus-ring aria-expanded:border-focus-ring ' +
     'aria-disabled:cursor-not-allowed aria-disabled:border-border-subtle aria-disabled:bg-interactive-disabled aria-disabled:text-text-disabled',
   {
     variants: {
       size: {
-        sm: 'min-h-32px rounded-sm px-8px py-[3px] text-text-xs leading-5',
-        md: 'min-h-36px rounded-md px-8px py-[5px] text-sm',
-        lg: 'min-h-48px rounded-md px-12px py-[11px] text-base',
+        sm: 'min-h-control-sm rounded-sm px-8px py-[3px] text-text-xs leading-5',
+        md: 'min-h-control-md rounded-md px-8px py-[5px] text-sm',
+        lg: 'min-h-control-lg rounded-md px-12px py-[11px] text-base',
       },
       error: {
-        true: 'border-semantic-error focus-visible:border-semantic-error focus-visible:ring-2 focus-visible:ring-focus-ring aria-expanded:border-semantic-error',
+        true: 'border-semantic-error focus-visible:border-semantic-error aria-expanded:border-semantic-error',
         false: 'border-border-default hover:border-border-emphasis aria-disabled:hover:border-border-subtle',
       },
     },

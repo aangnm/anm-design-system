@@ -26,10 +26,10 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
         <input ref={ref} id={id} type="radio" disabled={disabled} className="peer sr-only" {...props} />
         <span
           className={cn(
-            'absolute inset-0 rounded-full border border-border-emphasis bg-surface-subtle transition-colors',
+            'absolute inset-0 rounded-full border border-border-emphasis bg-surface-container transition-colors',
             'group-hover:bg-interactive-default',
             'peer-checked:border-interactive-primary',
-            'peer-focus-visible:border-focus-ring peer-checked:peer-focus-visible:border-focus-ring peer-focus-visible:bg-surface-subtle',
+            'peer-focus-visible:focus-ring peer-focus-visible:bg-surface-container',
             'peer-disabled:border-border-subtle peer-disabled:bg-interactive-disabled peer-checked:peer-disabled:border-border-subtle',
           )}
         />
