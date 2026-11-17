@@ -6,8 +6,8 @@ import { useEffect, useId, useRef, useState } from 'react'
  * Escape returns focus to the trigger. The panel is not modal, so focus is
  * not trapped — Tab simply moves on, as in a menu button.
  */
-export function usePopover() {
-  const [open, setOpen] = useState(false)
+export function usePopover(defaultOpen = false) {
+  const [open, setOpen] = useState(defaultOpen)
   const rootRef = useRef<HTMLDivElement>(null)
   const triggerRef = useRef<HTMLButtonElement>(null)
   const panelId = useId()

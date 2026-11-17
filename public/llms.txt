@@ -158,10 +158,17 @@ Every story runs as a test in CI with axe. To pass:
 - [Accordion](https://aangnm.github.io/anm-design-system/components/Accordion.md): 
 - [CardDescription](https://aangnm.github.io/anm-design-system/components/CardDescription.md): 
 - [CardTitle](https://aangnm.github.io/anm-design-system/components/CardTitle.md): 
+- [ChatMessage](https://aangnm.github.io/anm-design-system/components/ChatMessage.md): 
+- [ModelSelector](https://aangnm.github.io/anm-design-system/components/ModelSelector.md): 
 - [NavbarLink](https://aangnm.github.io/anm-design-system/components/NavbarLink.md): 
+- [PromptInput](https://aangnm.github.io/anm-design-system/components/PromptInput.md): 
+- [Reasoning](https://aangnm.github.io/anm-design-system/components/Reasoning.md): 
 - [SidebarBrand](https://aangnm.github.io/anm-design-system/components/SidebarBrand.md): 
 - [SidebarItem](https://aangnm.github.io/anm-design-system/components/SidebarItem.md): 
+- [Sources](https://aangnm.github.io/anm-design-system/components/Sources.md): 
+- [Suggestions](https://aangnm.github.io/anm-design-system/components/Suggestions.md): 
 - [Tabs](https://aangnm.github.io/anm-design-system/components/Tabs.md): 
+- [ToolCall](https://aangnm.github.io/anm-design-system/components/ToolCall.md): 
 
 ### Product Patterns
 

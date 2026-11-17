@@ -659,6 +659,77 @@
     ]
   },
   {
+    "name": "ChatMessage",
+    "dir": "ChatMessage",
+    "file": "src/components/ChatMessage/ChatMessage.tsx",
+    "import": "import { ChatMessage } from '@anm/design-system'",
+    "extends": [
+      "Omit<HTMLAttributes<HTMLDivElement>, 'role'>"
+    ],
+    "props": [
+      {
+        "name": "from",
+        "type": "ChatRole",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "initials",
+        "type": "string",
+        "required": false,
+        "description": "The person's initials for their avatar (user messages)."
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "required": false,
+        "description": "Shown above the message: \"Laura Romero\", \"Assistant\"."
+      },
+      {
+        "name": "time",
+        "type": "string",
+        "required": false,
+        "description": "\"2:14 PM\" — shown next to the name."
+      },
+      {
+        "name": "status",
+        "type": "'done' | 'streaming' | 'error'",
+        "required": false,
+        "description": "`streaming` shows the caret and marks the message busy; `error` shows the error line."
+      },
+      {
+        "name": "errorMessage",
+        "type": "string",
+        "required": false,
+        "description": "Plain-language error, shown when `status=\"error\"`."
+      },
+      {
+        "name": "onRetry",
+        "type": "() => void",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "actions",
+        "type": "ReactNode",
+        "required": false,
+        "description": "Row of actions under an assistant message (copy, regenerate, feedback)."
+      },
+      {
+        "name": "before",
+        "type": "ReactNode",
+        "required": false,
+        "description": "Parts above the answer: Reasoning, Tool Call."
+      },
+      {
+        "name": "after",
+        "type": "ReactNode",
+        "required": false,
+        "description": "Parts below the answer: Sources, Suggestions."
+      }
+    ]
+  },
+  {
     "name": "Checkbox",
     "dir": "Checkbox",
     "file": "src/components/Checkbox/Checkbox.tsx",
@@ -2322,6 +2393,45 @@
     ]
   },
   {
+    "name": "ModelSelector",
+    "dir": "ModelSelector",
+    "file": "src/components/ModelSelector/ModelSelector.tsx",
+    "import": "import { ModelSelector } from '@anm/design-system'",
+    "extends": [],
+    "props": [
+      {
+        "name": "models",
+        "type": "ModelOption[]",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "value",
+        "type": "string",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "onChange",
+        "type": "(value: string) => void",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "defaultOpen",
+        "type": "boolean",
+        "required": false,
+        "description": "Open on mount (stories)."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  {
     "name": "MultiSelect",
     "dir": "MultiSelect",
     "file": "src/components/MultiSelect/MultiSelect.tsx",
@@ -2608,6 +2718,71 @@
     ]
   },
   {
+    "name": "PromptInput",
+    "dir": "PromptInput",
+    "file": "src/components/PromptInput/PromptInput.tsx",
+    "import": "import { PromptInput } from '@anm/design-system'",
+    "extends": [
+      "Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'onSubmit' | 'onChange' | 'value'>"
+    ],
+    "props": [
+      {
+        "name": "value",
+        "type": "string",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "onChange",
+        "type": "(value: string) => void",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "onSubmit",
+        "type": "(value: string) => void",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "status",
+        "type": "'idle' | 'streaming'",
+        "required": false,
+        "description": "`streaming` turns Send into Stop."
+      },
+      {
+        "name": "onStop",
+        "type": "() => void",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "toolbar",
+        "type": "ReactNode",
+        "required": false,
+        "description": "Controls at the bottom left: attach, Model Selector."
+      },
+      {
+        "name": "hint",
+        "type": "ReactNode",
+        "required": false,
+        "description": "One quiet line under the box."
+      },
+      {
+        "name": "maxRows",
+        "type": "number",
+        "required": false,
+        "description": "Rows before the field scrolls (default 8)."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  {
     "name": "Radio",
     "dir": "Radio",
     "file": "src/components/Radio/Radio.tsx",
@@ -2700,6 +2875,45 @@
         "name": "severity",
         "type": "Severity",
         "required": true,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "Reasoning",
+    "dir": "Reasoning",
+    "file": "src/components/Reasoning/Reasoning.tsx",
+    "import": "import { Reasoning } from '@anm/design-system'",
+    "extends": [],
+    "props": [
+      {
+        "name": "status",
+        "type": "'thinking' | 'done'",
+        "required": false,
+        "description": "`thinking` keeps it open and animates the label; `done` folds it."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "required": false,
+        "description": "Seconds spent, for the folded label."
+      },
+      {
+        "name": "defaultOpen",
+        "type": "boolean",
+        "required": false,
+        "description": "Open or closed regardless of status (stories)."
+      },
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
         "description": ""
       }
     ]
@@ -3037,6 +3251,33 @@
     ]
   },
   {
+    "name": "Sources",
+    "dir": "Sources",
+    "file": "src/components/Sources/Sources.tsx",
+    "import": "import { Sources } from '@anm/design-system'",
+    "extends": [],
+    "props": [
+      {
+        "name": "sources",
+        "type": "Source[]",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "defaultOpen",
+        "type": "boolean",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  {
     "name": "Sparkline",
     "dir": "Sparkline",
     "file": "src/components/Sparkline/Sparkline.tsx",
@@ -3266,6 +3507,39 @@
         "type": "(value: number) => void",
         "required": true,
         "description": ""
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "Suggestions",
+    "dir": "Suggestions",
+    "file": "src/components/Suggestions/Suggestions.tsx",
+    "import": "import { Suggestions } from '@anm/design-system'",
+    "extends": [],
+    "props": [
+      {
+        "name": "items",
+        "type": "SuggestionItem[]",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "onSelect",
+        "type": "(prompt: string) => void",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "aria-label",
+        "type": "string",
+        "required": false,
+        "description": "Names the group, e.g. \"Suggested questions\"."
       },
       {
         "name": "className",
@@ -3540,6 +3814,75 @@
     "import": "import { ToggleGroup } from '@anm/design-system'",
     "extends": [],
     "props": []
+  },
+  {
+    "name": "ToolCall",
+    "dir": "ToolCall",
+    "file": "src/components/ToolCall/ToolCall.tsx",
+    "import": "import { ToolCall } from '@anm/design-system'",
+    "extends": [],
+    "props": [
+      {
+        "name": "title",
+        "type": "string",
+        "required": true,
+        "description": "What the agent is doing, in words: \"Query sales for May 2026\"."
+      },
+      {
+        "name": "tool",
+        "type": "string",
+        "required": false,
+        "description": "The tool's technical name, shown small: \"sales.query\"."
+      },
+      {
+        "name": "status",
+        "type": "'running' | 'done' | 'error' | 'approval'",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "input",
+        "type": "unknown",
+        "required": false,
+        "description": "Parameters the agent sent."
+      },
+      {
+        "name": "output",
+        "type": "unknown",
+        "required": false,
+        "description": "What came back (or the error)."
+      },
+      {
+        "name": "approvalMessage",
+        "type": "string",
+        "required": false,
+        "description": "Shown with `approval`: what will happen if approved."
+      },
+      {
+        "name": "onApprove",
+        "type": "() => void",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "onDeny",
+        "type": "() => void",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "defaultOpen",
+        "type": "boolean",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "description": ""
+      }
+    ]
   },
   {
     "name": "Tooltip",

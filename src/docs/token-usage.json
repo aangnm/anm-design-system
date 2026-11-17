@@ -8,6 +8,7 @@
     "BarChart",
     "BenchmarkTable",
     "Card",
+    "ChatMessage",
     "Checkbox",
     "ChoiceTile",
     "Combobox",
@@ -29,21 +30,26 @@
     "LineChart",
     "List",
     "ListRow",
+    "ModelSelector",
     "MultiSelect",
     "Navbar",
     "PageHeader",
     "PinField",
+    "PromptInput",
     "Radio",
+    "Reasoning",
     "ResizablePanels",
     "Search",
     "Select",
     "Skeleton",
     "SmallMultiples",
+    "Sources",
     "StackedBarChart",
     "Stat",
     "Stepper",
     "Table",
     "Textarea",
+    "ToolCall",
     "Topbar"
   ],
   "text-primary": [
@@ -57,6 +63,7 @@
     "Button",
     "Card",
     "ChartTooltip",
+    "ChatMessage",
     "Checkbox",
     "ChoiceTile",
     "Combobox",
@@ -86,6 +93,7 @@
     "Menu",
     "MetricCard",
     "Modal",
+    "ModelSelector",
     "MultiSelect",
     "Navbar",
     "PageHeader",
@@ -93,16 +101,20 @@
     "PinField",
     "Popover",
     "Progress",
+    "PromptInput",
     "Radio",
     "RadioGroup",
+    "Reasoning",
     "Search",
     "SegmentedControl",
     "Select",
     "Sidebar",
     "SmallMultiples",
+    "Sources",
     "StackedBarChart",
     "Stat",
     "Stepper",
+    "Suggestions",
     "Switch",
     "Table",
     "Tabs",
@@ -110,6 +122,7 @@
     "Timeline",
     "Toast",
     "ToggleGroup",
+    "ToolCall",
     "Tooltip",
     "Topbar"
   ],
@@ -123,6 +136,7 @@
     "Breadcrumb",
     "Card",
     "ChartTooltip",
+    "ChatMessage",
     "Combobox",
     "CommandMenu",
     "DataTable",
@@ -148,6 +162,7 @@
     "ListRow",
     "MetricCard",
     "Modal",
+    "ModelSelector",
     "MultiSelect",
     "Navbar",
     "PageHeader",
@@ -155,11 +170,14 @@
     "PinField",
     "Popover",
     "Progress",
+    "PromptInput",
     "RadioGroup",
+    "Reasoning",
     "Search",
     "SegmentedControl",
     "Sidebar",
     "SmallMultiples",
+    "Sources",
     "StackedBarChart",
     "Stat",
     "Table",
@@ -168,14 +186,17 @@
     "Textarea",
     "Timeline",
     "Toast",
-    "ToggleGroup"
+    "ToggleGroup",
+    "ToolCall"
   ],
   "icon-default": [
     "Accordion",
     "AppBar",
+    "ChatMessage",
     "ChoiceTile",
     "Counter",
-    "ListRow"
+    "ListRow",
+    "ModelSelector"
   ],
   "icon-muted": [
     "Accordion",
@@ -206,9 +227,11 @@
     "Select",
     "Sidebar",
     "Stat",
+    "Suggestions",
     "Switch",
     "Table",
     "Toast",
+    "ToolCall",
     "Topbar"
   ],
   "surface-container": [
@@ -240,6 +263,7 @@
     "MultiSelect",
     "Navbar",
     "PinField",
+    "PromptInput",
     "Radio",
     "ScrollArea",
     "Search",
@@ -247,11 +271,13 @@
     "Sidebar",
     "Slider",
     "SmallMultiples",
+    "Sources",
     "StackedBarChart",
     "Stat",
     "Stepper",
     "Table",
     "Textarea",
+    "ToolCall",
     "Topbar"
   ],
   "border-emphasis": [
@@ -265,11 +291,13 @@
     "InputGroup",
     "LineChart",
     "MultiSelect",
+    "PromptInput",
     "Radio",
     "ResizablePanels",
     "Search",
     "Select",
     "Stepper",
+    "Suggestions",
     "Textarea",
     "Timeline"
   ],
@@ -284,6 +312,7 @@
     "BarChart",
     "BenchmarkTable",
     "ChartTooltip",
+    "ChatMessage",
     "CommandMenu",
     "DataTable",
     "DatePicker",
@@ -298,10 +327,12 @@
     "ResizablePanels",
     "ScrollArea",
     "SegmentedControl",
+    "Sources",
     "Stat",
     "Table",
     "Tag",
     "Toast",
+    "ToolCall",
     "Tooltip"
   ],
   "semantic-success": [
@@ -404,16 +435,20 @@
     "MultiSelect",
     "PinField",
     "Progress",
+    "PromptInput",
     "ResizablePanels",
     "ScrollArea",
     "Search",
     "Select",
     "Slider",
     "SmallMultiples",
+    "Sources",
     "Stepper",
+    "Suggestions",
     "Switch",
     "Textarea",
-    "ToggleGroup"
+    "ToggleGroup",
+    "ToolCall"
   ],
   "text-disabled": [
     "Button",
@@ -431,6 +466,7 @@
     "MultiSelect",
     "Pagination",
     "PinField",
+    "PromptInput",
     "Radio",
     "Search",
     "Select",
@@ -450,6 +486,7 @@
     "DropdownMenu",
     "IconButton",
     "Menu",
+    "ModelSelector",
     "MultiSelect",
     "Pagination",
     "Progress",
@@ -472,6 +509,7 @@
     "ListRow",
     "MultiSelect",
     "PinField",
+    "PromptInput",
     "Radio",
     "Search",
     "Select",
@@ -491,6 +529,7 @@
     "ListRow",
     "Pagination",
     "Progress",
+    "PromptInput",
     "Radio",
     "Slider",
     "Sparkline",
@@ -507,7 +546,18 @@
     "FacetedFilter",
     "IconButton",
     "Pagination",
+    "PromptInput",
     "Switch"
+  ],
+  "text-error": [
+    "ChatMessage",
+    "ContextMenu",
+    "FormField",
+    "PinField",
+    "Rating",
+    "Stat",
+    "Toast",
+    "ToolCall"
   ],
   "surface-highlight": [
     "ChoiceTile",
@@ -519,14 +569,6 @@
   "focus-ring": [
     "Combobox",
     "MultiSelect"
-  ],
-  "text-error": [
-    "ContextMenu",
-    "FormField",
-    "PinField",
-    "Rating",
-    "Stat",
-    "Toast"
   ],
   "chart-series-2": [
     "Legend"
@@ -555,11 +597,13 @@
   "text-success": [
     "Rating",
     "Stat",
-    "Toast"
+    "Toast",
+    "ToolCall"
   ],
   "text-warning": [
     "Rating",
-    "Toast"
+    "Toast",
+    "ToolCall"
   ],
   "text-info": [
     "Toast"

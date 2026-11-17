@@ -40,7 +40,7 @@ const preview: Preview = {
     layout: 'fullscreen',
     options: {
       storySort: {
-        order: ['Introduction', 'Start here', 'Foundations', ['Color', 'Typography', 'Spacing & density', 'Radius & elevation', 'Motion'], 'Core', 'Navigation', 'Data Display', 'Feedback & Overlays', 'Product Patterns', 'Templates'],
+        order: ['Introduction', 'Start here', 'Foundations', ['Color', 'Typography', 'Spacing & density', 'Radius & elevation', 'Motion'], 'Core', 'Navigation', 'Data Display', 'Feedback & Overlays', 'AI', 'Product Patterns', 'Templates'],
       },
     },
     // Docs pages carry the Figma design notes under the props table.
