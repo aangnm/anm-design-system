@@ -20,6 +20,8 @@ import '@anm/design-system/styles.css' // once, at the app root
 | `showValues` | `boolean` | no | Prints each value above its bar — Figma's "Show values". |
 | `highlightLatest` | `boolean` | no | Newest bar keeps chart/series-1, the rest turn icon/muted — Figma's "Highlight latest". |
 | `formatValue` | `(value: number) => string` | no | Formats tick and value labels; defaults to en-US numbers (`1,284`). |
+| `tooltip` | `boolean` | no | Hover readout: column tint plus a Chart Tooltip (default on). |
+| `seriesLabel` | `string` | no | Name of the measure in the tooltip row. |
 
 Also accepts every attribute of `HTMLAttributes<HTMLDivElement>` (spread onto the root element).
 
@@ -30,6 +32,8 @@ Why — Bar heights come from data, so in code this is generated rather than a s
 Sample scale: 0–300 (USD thousands), bar height = value ÷ 300 × 150px.
 
 Hit area — not interactive (a labelled image). Interactive bars would need 24 × 24 targets. See Target size on the Accessibility page.
+
+Hover — in code, hovering (or tapping on touch) shows a Chart Tooltip with the exact values; a crosshair snaps to the nearest point on lines and areas, and the hovered column is tinted on bars. Turn it off with tooltip={false}. Chart Tooltip on this page is the readout.
 
 ## Links
 

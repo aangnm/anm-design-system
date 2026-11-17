@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
+import { expect, fireEvent, within } from 'storybook/test'
 import { LineChart } from './LineChart'
 
 const meta: Meta<typeof LineChart> = {
@@ -50,5 +51,16 @@ export const Widths: Story = {
       { label: 'Conversion', series: 1, data: [0.8, 0.82, 0.88, 0.84, 0.86, 0.85, 0.87, 0.9, 0.88, 0.86, 0.89, 0.91] },
       { label: 'Churn', series: 3, data: [0.22, 0.26, 0.3, 0.26, 0.28, 0.27, 0.25, 0.24, 0.26, 0.25, 0.23, 0.22] },
     ],
+  },
+}
+
+/** State=Hover — the readout a pointer gets; checked with axe in every theme. */
+export const Hover: Story = {
+  ...Playground,
+  play: async ({ canvasElement }) => {
+    const plot = canvasElement.querySelector<HTMLElement>('[data-chart-plot]')!
+    const r = plot.getBoundingClientRect()
+    fireEvent.pointerMove(plot, { clientX: r.left + r.width * 0.5, clientY: r.top + r.height / 2 })
+    await expect(await within(canvasElement).findAllByText('Conversion')).toHaveLength(2)
   },
 }

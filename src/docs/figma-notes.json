@@ -1,6 +1,6 @@
 {
   "source": "Figma component descriptions, pulled by scripts/figma/pull-notes.js — do not edit by hand; fix the description in Figma and pull again.",
-  "pulledAt": "2026-11-17T17:11:12.342Z",
+  "pulledAt": "2026-11-17T18:15:47.120Z",
   "notes": {
     "AccordionItem": {
       "figma": "Accordion",
@@ -24,7 +24,7 @@
       "figma": "Area Chart",
       "nodeId": "2310:71",
       "page": "Data Display",
-      "description": "Area chart — magnitude/volume over time. Fills at ~18% opacity with a 2px line on top (chart/series-N). Best for 1–2 non-overlapping series or a stacked total; for 3+ crossing series use Line Chart.\n\nWhy — The area fill is bound to opacity/chart-fill rather than a hardcoded value, so the whole chart family shifts together if that reading changes. Best for one or two series — stacked areas hide the series behind them.\n\nHit area — not interactive (a labelled image). Point targets, if added, need at least 24 × 24. See Target size on the Accessibility page."
+      "description": "Area chart — magnitude/volume over time. Fills at ~18% opacity with a 2px line on top (chart/series-N). Best for 1–2 non-overlapping series or a stacked total; for 3+ crossing series use Line Chart.\n\nWhy — The area fill is bound to opacity/chart-fill rather than a hardcoded value, so the whole chart family shifts together if that reading changes. Best for one or two series — stacked areas hide the series behind them.\n\nHit area — not interactive (a labelled image). Point targets, if added, need at least 24 × 24. See Target size on the Accessibility page.\n\nHover — in code, hovering (or tapping on touch) shows a Chart Tooltip with the exact values; a crosshair snaps to the nearest point on lines and areas, and the hovered column is tinted on bars. Turn it off with tooltip={false}. Chart Tooltip on this page is the readout."
     },
     "Avatar": {
       "figma": "Avatar",
@@ -48,7 +48,7 @@
       "figma": "Bar Chart",
       "nodeId": "2132:11",
       "page": "Data Display",
-      "description": "Data-viz primitive for comparing values across categories. Bars flex to the available width on a fixed 12px gap; a y-axis with gridlines gives the scale, and Show values prints each value above its bar.\n\nWhy — Bar heights come from data, so in code this is generated rather than a static asset. The Figma component documents the chrome and spacing; the geometry is not a token and should not be traced from this file. The axis and value labels exist because a bar chart with no scale cannot be read: the axis shows the range, the labels give exact numbers without judging heights. Bars are capped at 36px wide and stay centred in equal slots, so a wider card adds space between bars instead of making them thicker. They use chart/series-1, not interactive/primary: data marks should carry less visual weight than the figures they show. Highlight latest (on by default) draws every week in muted grey except the newest, which keeps the data blue, so the eye lands on “now”; turn it off when every period matters equally. The context bars use icon/muted rather than a faded blue because graphics must keep 3:1 against the card, which a faded blue cannot.\n\nSample scale: 0–300 (USD thousands), bar height = value ÷ 300 × 150px.\n\nHit area — not interactive (a labelled image). Interactive bars would need 24 × 24 targets. See Target size on the Accessibility page."
+      "description": "Data-viz primitive for comparing values across categories. Bars flex to the available width on a fixed 12px gap; a y-axis with gridlines gives the scale, and Show values prints each value above its bar.\n\nWhy — Bar heights come from data, so in code this is generated rather than a static asset. The Figma component documents the chrome and spacing; the geometry is not a token and should not be traced from this file. The axis and value labels exist because a bar chart with no scale cannot be read: the axis shows the range, the labels give exact numbers without judging heights. Bars are capped at 36px wide and stay centred in equal slots, so a wider card adds space between bars instead of making them thicker. They use chart/series-1, not interactive/primary: data marks should carry less visual weight than the figures they show. Highlight latest (on by default) draws every week in muted grey except the newest, which keeps the data blue, so the eye lands on “now”; turn it off when every period matters equally. The context bars use icon/muted rather than a faded blue because graphics must keep 3:1 against the card, which a faded blue cannot.\n\nSample scale: 0–300 (USD thousands), bar height = value ÷ 300 × 150px.\n\nHit area — not interactive (a labelled image). Interactive bars would need 24 × 24 targets. See Target size on the Accessibility page.\n\nHover — in code, hovering (or tapping on touch) shows a Chart Tooltip with the exact values; a crosshair snaps to the nearest point on lines and areas, and the hovered column is tinted on bars. Turn it off with tooltip={false}. Chart Tooltip on this page is the readout."
     },
     "BenchmarkTable": {
       "figma": "Benchmark Table",
@@ -210,7 +210,7 @@
       "figma": "Line Chart",
       "nodeId": "2308:71",
       "page": "Data Display",
-      "description": "Line Chart — trend over time for 1–8 series (chart/series-N in fixed order). 2px lines, end markers with a 2px surface ring, recessive gridlines/axes, legend always present. Sample series are illustrative.\n\nWhy — Series colours are used in fixed order (chart/series-1 upward) so the same series keeps its colour across every chart in a product. The Conversion/Retention/Churn sample data is illustrative only. The axis is embedded chrome here, not a standalone component.\n\nHit area — not interactive (a labelled image). Point targets, if added, need at least 24 × 24. See Target size on the Accessibility page."
+      "description": "Line Chart — trend over time for 1–8 series (chart/series-N in fixed order). 2px lines, end markers with a 2px surface ring, recessive gridlines/axes, legend always present. Sample series are illustrative.\n\nWhy — Series colours are used in fixed order (chart/series-1 upward) so the same series keeps its colour across every chart in a product. The Conversion/Retention/Churn sample data is illustrative only. The axis is embedded chrome here, not a standalone component.\n\nHit area — not interactive (a labelled image). Point targets, if added, need at least 24 × 24. See Target size on the Accessibility page.\n\nHover — in code, hovering (or tapping on touch) shows a Chart Tooltip with the exact values; a crosshair snaps to the nearest point on lines and areas, and the hovered column is tinted on bars. Turn it off with tooltip={false}. Chart Tooltip on this page is the readout."
     },
     "Link": {
       "figma": "Link",
@@ -463,6 +463,24 @@
       "nodeId": "2822:2646",
       "page": "Core",
       "description": "A trigger showing the active range and a panel with presets on the left and two months on the right. A preset applies at once; a custom range is two clicks (start, then end), with the days between tinted.\n\nWhy — analytics questions are almost always about a period, and most periods are standard ones (last 7 days, this quarter). Presets make the common case one click and name it in the trigger (\"Last 30 days\"), which reads better in a report header than two raw dates. Date Picker stays the single-date control; this is the range one, built from the same day cells. Future days are disabled by default because reports rarely look forward.\n\nAccessibility — every day is a button named with its full date; start and end are pressed, days between say \"in range\". Escape closes and returns focus to the trigger."
+    },
+    "HorizontalBarChart": {
+      "figma": "Horizontal Bar Chart",
+      "nodeId": "2826:1370",
+      "page": "Data Display",
+      "description": "Horizontal bars, one row per category: label, bar, exact value at the bar's end. For rankings and long category names (accounts, campaigns, pages).\n\nWhy — rankings are read top to bottom, so code's sort=\"desc\" puts the largest first; leave it unsorted when the order means something (a funnel, a fixed list of regions). Bars use chart/series-1; Highlight keeps one row in colour and turns the rest icon/muted, the same \"where to look\" rule as Bar Chart's Highlight latest. Values are printed, so there is no axis to read. Bars are 12px high on a 32px row: the label sets the rhythm, not the bar."
+    },
+    "GaugeChart": {
+      "figma": "Gauge Chart",
+      "nodeId": "2826:1434",
+      "page": "Data Display",
+      "description": "One value against its range on a half-circle arc, with the value and its label in the middle and an optional target tick. For a single measure with a known ceiling — quota attainment, budget used, uptime — never to compare categories.\n\nWhy — a gauge earns its space only when the range matters as much as the number. The arc is 12px on a border/subtle track; the fill is chart/series-1, or a status colour (semantic/success, warning, error) when the value has crossed a threshold the product defines — the gauge never decides that by itself. The target is a neutral tick so it reads without colour. The value is the largest text (Title Large) because it is the answer."
+    },
+    "Heatmap": {
+      "figma": "Heatmap",
+      "nodeId": "2826:1460",
+      "page": "Data Display",
+      "description": "A grid of rows × columns where each cell's tint shows its value — sessions by weekday and hour, conversion by channel and week. Hover a cell for its exact value in a Chart Tooltip.\n\nWhy — the eye compares tints well only in a few steps, so values fall into five steps of one hue (chart/series-1 at 20–100% over the surface), never a rainbow. Steps are equal intervals between min and max; the scale under the grid names both ends. Cells sit on a 2px gap so equal neighbours still read as separate cells. An empty cell keeps the bare surface with a border, so \"no data\" never looks like \"low\". Cells carry no text; exact values come from the tooltip and the text alternative."
     }
   }
 }

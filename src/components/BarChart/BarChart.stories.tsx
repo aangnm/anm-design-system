@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
+import { expect, fireEvent, within } from 'storybook/test'
 import { BarChart } from './BarChart'
 
 // Sample scale from the Figma component: 0–300 t, bar height = value ÷ 300 × 150px.
@@ -45,4 +46,15 @@ export const Variants: Story = {
 // A wider card adds space between bars; bars stay capped at 36px.
 export const Wide: Story = {
   render: (args) => <BarChart {...args} className="w-[640px]" />,
+}
+
+/** State=Hover — the readout a pointer gets; checked with axe in every theme. */
+export const Hover: Story = {
+  ...{},
+  play: async ({ canvasElement }) => {
+    const plot = canvasElement.querySelector<HTMLElement>('[data-chart-plot]')!
+    const r = plot.getBoundingClientRect()
+    fireEvent.pointerMove(plot, { clientX: r.left + r.width * 0.6, clientY: r.top + r.height / 2 })
+    await expect(await within(canvasElement).findAllByText('Value')).toHaveLength(1)
+  },
 }

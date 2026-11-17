@@ -450,3 +450,11 @@ Audited against the Material 3 Design Kit; the agreed items are on the Roadmap. 
 - **Data Table** (Data Display): Table with a toolbar (Search, Faceted Filters, Columns, actions), sortable headers, a selection column and a footer with the count and Pagination. Composed only from existing instances.
 - Each has a `Why —` note and a light-mode mirror, and is in its page's Code handoff spec with the property-to-prop mapping. The Core spec's last "Etiqueta" property names now read "Label". The lint is clean (1,599 components).
 - **Code:** `DataTable`, `FacetedFilter`, `DateRangePicker` (plus `DEFAULT_DATE_RANGE_PRESETS` and `formatDateRange`) and a shared `usePopover` hook. Every story passes axe in dark, light and high contrast.
+
+## v1.1 — Chart readouts and three new chart forms
+- **Hover on Bar, Line and Area Chart.** Their descriptions now say what code does on hover: a Chart Tooltip with exact values, a crosshair on lines and areas, a tinted column on bars. "Not interactive" is gone from all three. The Data Display spec maps `tooltip` and `seriesLabel`.
+- **Horizontal Bar Chart** (Data Display): ranked rows with the label, a 12px bar and the value; one row can stay in colour while the rest turn icon/muted.
+- **Gauge Chart** (Data Display): a half-circle arc on a border/subtle track, value and label in the middle, a neutral target tick. Status colours only when the product defines the threshold.
+- **Heatmap** (Data Display): rows × columns in five steps of chart/series-1 over the surface, with the scale under the grid. Empty cells keep a border.
+- Each has a `Why —` note, a light-mode mirror and a row in the Code handoff spec. The Roadmap's Now list is down to Resizable Panels.
+- **Code:** `HorizontalBarChart`, `GaugeChart`, `Heatmap`, and a shared `useChartHover` hook that Detailed Line now uses too. Every story passes axe in dark, light and high contrast (200 per theme).

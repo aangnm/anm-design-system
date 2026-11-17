@@ -181,7 +181,13 @@
         "name": "formatValue",
         "type": "(value: number) => string",
         "required": false,
-        "description": "Formats y-axis labels; defaults to one decimal with a comma (`0,9`)."
+        "description": "Formats y-axis labels and tooltip values; defaults to one decimal (`0.9`)."
+      },
+      {
+        "name": "tooltip",
+        "type": "boolean",
+        "required": false,
+        "description": "Hover readout with a crosshair and Chart Tooltip (default on)."
       }
     ]
   },
@@ -348,6 +354,18 @@
         "type": "(value: number) => string",
         "required": false,
         "description": "Formats tick and value labels; defaults to en-US numbers (`1,284`)."
+      },
+      {
+        "name": "tooltip",
+        "type": "boolean",
+        "required": false,
+        "description": "Hover readout: column tint plus a Chart Tooltip (default on)."
+      },
+      {
+        "name": "seriesLabel",
+        "type": "string",
+        "required": false,
+        "description": "Name of the measure in the tooltip row."
       }
     ]
   },
@@ -1527,6 +1545,165 @@
     ]
   },
   {
+    "name": "GaugeChart",
+    "dir": "GaugeChart",
+    "file": "src/components/GaugeChart/GaugeChart.tsx",
+    "import": "import { GaugeChart } from '@anm/design-system'",
+    "extends": [
+      "HTMLAttributes<HTMLDivElement>"
+    ],
+    "props": [
+      {
+        "name": "value",
+        "type": "number",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "min",
+        "type": "number",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "max",
+        "type": "number",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "required": true,
+        "description": "What the value measures, under the number."
+      },
+      {
+        "name": "target",
+        "type": "number",
+        "required": false,
+        "description": "Optional target, drawn as a tick across the arc."
+      },
+      {
+        "name": "status",
+        "type": "'success' | 'warning' | 'error'",
+        "required": false,
+        "description": "Colours the fill by status instead of chart/series-1."
+      },
+      {
+        "name": "size",
+        "type": "number",
+        "required": false,
+        "description": "Diameter in px."
+      },
+      {
+        "name": "formatValue",
+        "type": "(value: number) => string",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "Heatmap",
+    "dir": "Heatmap",
+    "file": "src/components/Heatmap/Heatmap.tsx",
+    "import": "import { Heatmap } from '@anm/design-system'",
+    "extends": [
+      "HTMLAttributes<HTMLDivElement>"
+    ],
+    "props": [
+      {
+        "name": "rows",
+        "type": "string[]",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "columns",
+        "type": "string[]",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "values",
+        "type": "(number | null)[][]",
+        "required": true,
+        "description": "values[row][column]; null for no data."
+      },
+      {
+        "name": "min",
+        "type": "number",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "max",
+        "type": "number",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "cellSize",
+        "type": "number",
+        "required": false,
+        "description": "Cell size in px."
+      },
+      {
+        "name": "formatValue",
+        "type": "(value: number) => string",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "valueLabel",
+        "type": "string",
+        "required": false,
+        "description": "Name of the measure in the tooltip."
+      }
+    ]
+  },
+  {
+    "name": "HorizontalBarChart",
+    "dir": "HorizontalBarChart",
+    "file": "src/components/HorizontalBarChart/HorizontalBarChart.tsx",
+    "import": "import { HorizontalBarChart } from '@anm/design-system'",
+    "extends": [
+      "HTMLAttributes<HTMLDivElement>"
+    ],
+    "props": [
+      {
+        "name": "data",
+        "type": "HorizontalBarDatum[]",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "sort",
+        "type": "'desc' | 'none'",
+        "required": false,
+        "description": "`desc` ranks largest first; `none` keeps the given order."
+      },
+      {
+        "name": "max",
+        "type": "number",
+        "required": false,
+        "description": "Value at the full bar length; defaults to the largest value."
+      },
+      {
+        "name": "highlight",
+        "type": "string",
+        "required": false,
+        "description": "Label of the row to keep in colour; the rest turn icon/muted."
+      },
+      {
+        "name": "formatValue",
+        "type": "(value: number) => string",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  {
     "name": "IconButton",
     "dir": "IconButton",
     "file": "src/components/IconButton/IconButton.tsx",
@@ -1650,7 +1827,13 @@
         "name": "formatValue",
         "type": "(value: number) => string",
         "required": false,
-        "description": "Formats y-axis labels; defaults to one decimal with a comma (`0,9`)."
+        "description": "Formats y-axis labels and tooltip values; defaults to one decimal (`0.9`)."
+      },
+      {
+        "name": "tooltip",
+        "type": "boolean",
+        "required": false,
+        "description": "Hover readout with a crosshair and Chart Tooltip (default on)."
       }
     ]
   },

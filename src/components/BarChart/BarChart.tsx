@@ -1,6 +1,8 @@
 import type { HTMLAttributes } from 'react'
 import { cn } from '@/lib/utils'
 import { describeChart, formatChartNumber } from '@/components/Legend'
+import { ChartTooltip } from '@/components/ChartTooltip'
+import { useChartHover } from '@/lib/useChartHover'
 
 // Mirrors the Bar Chart component (Data Display page). Why (from Figma) —
 // bar heights come from data, so in code this is generated rather than a
@@ -14,7 +16,9 @@ import { describeChart, formatChartNumber } from '@/components/Legend'
 // icon/muted except the newest, which keeps the data blue so the eye lands on
 // "now"; turn it off when every period matters equally. The context bars use
 // icon/muted rather than a faded blue because graphics must keep 3:1 against
-// the card, which a faded blue cannot. Not interactive (a labelled image).
+// the card, which a faded blue cannot. Hovering (or tapping) a slot tints
+// its column and shows a Chart Tooltip with the exact value; `tooltip={false}`
+// turns it off. The text alternative carries every value either way.
 //
 // Plot geometry: 150px of scale (0 → `max`) inside a 164px plot;
 // slots flex on an 8px gap, y-axis column 32px, 7px of breathing room above
@@ -39,6 +43,10 @@ export interface BarChartProps extends HTMLAttributes<HTMLDivElement> {
   highlightLatest?: boolean
   /** Formats tick and value labels; defaults to en-US numbers (`1,284`). */
   formatValue?: (value: number) => string
+  /** Hover readout: column tint plus a Chart Tooltip (default on). */
+  tooltip?: boolean
+  /** Name of the measure in the tooltip row. */
+  seriesLabel?: string
 }
 
 const MAX_BAR_WIDTH = 36
@@ -59,12 +67,18 @@ export function BarChart({
   showValues = true,
   highlightLatest = true,
   formatValue = (v) => formatChartNumber(v),
+  tooltip = true,
+  seriesLabel = 'Value',
   className,
   ...props
 }: BarChartProps) {
   const top = max ?? niceMax(Math.max(...data.map((d) => d.value), 0))
   const tickValues = Array.from({ length: ticks }, (_, i) => (top * (ticks - 1 - i)) / (ticks - 1))
   const plotHeight = height + EDGE * 2
+  const n = data.length
+  const { hover, handlers } = useChartHover(n, 'slot')
+  // Slots flex on an 8px gap, so slot i's centre is (i + ½)·(W + 8)/n − 4.
+  const centre = (i: number) => `calc(${((i + 0.5) / n) * 100}% + ${((i + 0.5) * 8) / n - 4}px)`
 
   return (
     <div className={cn('flex w-full min-w-[200px] flex-col items-stretch gap-8px', className)} role="img" aria-label={describeChart('Bar chart', [{ label: 'Values', data: data.map((d) => d.value) }], data.map((d) => d.label), formatValue)} {...props}>
@@ -76,7 +90,14 @@ export function BarChart({
           ))}
         </div>
 
-        <div className="relative min-w-0 flex-1">
+        <div data-chart-plot className="relative min-w-0 flex-1" {...(tooltip ? handlers : {})}>
+          {tooltip && hover !== null ? (
+            <div
+              className="absolute rounded-sm bg-surface-container-high"
+              style={{ top: 0, bottom: 0, left: `calc(${(hover / n) * 100}% + ${(hover * 8) / n}px)`, width: `calc((100% - ${8 * (n - 1)}px) / ${n})` }}
+              aria-hidden
+            />
+          ) : null}
           {/* gridlines */}
           <div className="absolute inset-x-0 flex flex-col justify-between" style={{ top: EDGE, height }} aria-hidden>
             {tickValues.map((t, i) => (
@@ -101,6 +122,14 @@ export function BarChart({
               )
             })}
           </div>
+          {tooltip && hover !== null ? (
+            <ChartTooltip
+              className="pointer-events-none absolute top-0 z-[var(--z-index-dropdown)]"
+              style={hover >= n / 2 ? { right: `calc(100% - ${centre(hover)} + 12px)` } : { left: `calc(${centre(hover)} + 12px)` }}
+              heading={data[hover].label}
+              rows={[{ label: seriesLabel, series: 1, value: formatValue(data[hover].value) }]}
+            />
+          ) : null}
         </div>
       </div>
 

@@ -1,9 +1,9 @@
-import { useState } from 'react'
 import type { HTMLAttributes } from 'react'
 import { CHART_SERIES_BG, CHART_SERIES_TEXT, describeChart, formatChartNumber, type ChartSeriesIndex } from '@/components/Legend'
 import { ChartTooltip } from '@/components/ChartTooltip'
 import { cn } from '@/lib/utils'
 import { labelStep, useElementWidth } from '@/lib/useElementWidth'
+import { useChartHover } from '@/lib/useChartHover'
 
 // Mirrors the Line Chart · Detailed component set (Data Display page): several
 // series plus the context that explains them — a target line, an optimal
@@ -66,9 +66,8 @@ export function DetailedLineChart({
   // Fills its container unless `width` is set; geometry is redrawn at the real width.
   const [plotRef, measured] = useElementWidth(560)
   const width = fixedWidth ?? measured
-  const [hover, setHover] = useState<number | null>(null)
-  const [pinned, setPinned] = useState(false)
   const n = categories.length
+  const { hover, handlers } = useChartHover(n)
   const values = series.flatMap((s) => s.data).concat(target ? [target.value] : [], band ? [band.from, band.to] : [])
   const min = minProp ?? Math.floor(Math.min(...values) * 10) / 10
   const max = maxProp ?? Math.ceil(Math.max(...values) * 10) / 10
@@ -77,8 +76,6 @@ export function DetailedLineChart({
   const y = (v: number) => height - ((v - min) / range) * height
   const ticks = Array.from({ length: 6 }, (_, i) => min + (range * (5 - i)) / 5)
   const fc = forecastFrom ?? n
-
-  const locate = (clientX: number, rect: DOMRect) => Math.max(0, Math.min(n - 1, Math.round(((clientX - rect.left) / rect.width) * (n - 1))))
 
   return (
     <div className={cn(fixedWidth ? 'w-fit' : 'w-full', 'flex flex-col gap-14px rounded-lg border border-border-subtle bg-surface-container p-container-sm', className)} {...props}>
@@ -112,13 +109,7 @@ export function DetailedLineChart({
           <div
             className="relative"
             style={{ width, height }}
-            onPointerMove={(e) => !pinned && setHover(locate(e.clientX, e.currentTarget.getBoundingClientRect()))}
-            onPointerLeave={() => !pinned && setHover(null)}
-            onClick={(e) => {
-              if (e.nativeEvent instanceof PointerEvent && e.nativeEvent.pointerType === 'mouse') return
-              setPinned((p) => !p)
-              setHover(locate(e.clientX, e.currentTarget.getBoundingClientRect()))
-            }}
+            {...handlers}
             role="img"
             aria-label={describeChart('Detailed line chart', series, categories, formatValue)}
           >
