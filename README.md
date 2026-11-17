@@ -14,9 +14,11 @@ Token pipeline is live (color, spacing, radius, type, motion, breakpoints, eleva
 
 Every pull request runs `.github/workflows/ci.yml`: typecheck, a check that `src/tokens/*` matches what the transform makes from `tokens/figma-export.json`, the library build, **every Storybook story as a test with an axe accessibility check, in each of the three themes** (`npm test`: dark, light and high contrast, so colour contrast is checked in all of them), and the Storybook build. Visual regression runs through Chromatic once `CHROMATIC_PROJECT_TOKEN` is set as a repository secret.
 
-## For agents
+## Docs for people and agents
 
-Storybook opens on **Start here**, the short rules, and every component's docs page carries its Figma design notes. The hosted Storybook also serves `/llms.txt`, the whole system in one plain-text file (built by `scripts/build-llms.mjs`).
+Storybook opens on **Start here** (the short rules) and **Foundations** (color, type, spacing and density, radius and elevation, motion — generated from the token export, each colour token with the components that use it). Every component's docs page starts with its import line, offers **Copy for AI** and **View as Markdown**, and carries its Figma design notes under the props table.
+
+`npm run docs:build` (`scripts/build-docs.mjs`, also run before every Storybook build) generates the data behind this: `src/docs/component-api.json` (props read from each component's TypeScript), `src/docs/token-usage.json`, one Markdown page per component in `public/components/`, and `public/llms.txt`, which links them. The hosted Storybook serves them at `/components/<Name>.md` and `/llms.txt`. The content is plain Markdown and JSON, so it moves unchanged to a future docs site.
 
 ## Figma scripts
 

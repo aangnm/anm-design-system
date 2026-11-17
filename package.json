@@ -21,8 +21,8 @@
   "scripts": {
     "dev": "storybook dev -p 6006",
     "build": "tsc -p tsconfig.build.json && vite build",
-    "build:storybook": "node scripts/build-llms.mjs && storybook build",
-    "docs:llms": "node scripts/build-llms.mjs",
+    "build:storybook": "node scripts/build-docs.mjs && storybook build",
+    "docs:build": "node scripts/build-docs.mjs",
     "tokens:transform": "node scripts/transform-tokens.mjs",
     "typecheck": "tsc --noEmit",
     "test": "vitest run --project=storybook-dark && vitest run --project=storybook-light && vitest run --project=storybook-high-contrast",

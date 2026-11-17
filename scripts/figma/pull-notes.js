@@ -4,7 +4,7 @@
 // Run it from a Claude Code session with the Figma plugin MCP: pass this
 // file's contents as the `code` of one `use_figma` call, save the returned
 // object to src/docs/figma-notes.json. Storybook shows each note on its
-// component's docs page, and scripts/build-llms.mjs puts them in llms.txt.
+// component's docs page, and scripts/build-docs.mjs puts them in llms.txt and the per-component Markdown.
 //
 // The Figma → React mapping comes from each page's Code handoff spec, the same
 // table a developer reads, so the two can't drift apart silently.

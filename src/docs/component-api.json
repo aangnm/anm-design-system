@@ -1,0 +1,2880 @@
+[
+  {
+    "name": "Accordion",
+    "dir": "Accordion",
+    "file": "src/components/Accordion/Accordion.tsx",
+    "import": "import { Accordion } from '@anm/design-system'",
+    "extends": [
+      "HTMLAttributes<HTMLDivElement>"
+    ],
+    "props": []
+  },
+  {
+    "name": "AccordionItem",
+    "dir": "Accordion",
+    "file": "src/components/Accordion/Accordion.tsx",
+    "import": "import { AccordionItem } from '@anm/design-system'",
+    "extends": [
+      "Omit<HTMLAttributes<HTMLDivElement>, 'title' | 'onChange'>"
+    ],
+    "props": [
+      {
+        "name": "title",
+        "type": "ReactNode",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "open",
+        "type": "boolean",
+        "required": false,
+        "description": "Controlled open state."
+      },
+      {
+        "name": "defaultOpen",
+        "type": "boolean",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "onOpenChange",
+        "type": "(open: boolean) => void",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "size",
+        "type": "'md' | 'lg'",
+        "required": false,
+        "description": "Figma's Size. LG is the touch size."
+      },
+      {
+        "name": "icon",
+        "type": "ReactNode",
+        "required": false,
+        "description": "Figma's \"Leading icon\" + \"Icon\"."
+      },
+      {
+        "name": "count",
+        "type": "number",
+        "required": false,
+        "description": "Figma's \"Show count\": an Info Badge after the title."
+      }
+    ]
+  },
+  {
+    "name": "ActionBar",
+    "dir": "ActionBar",
+    "file": "src/components/ActionBar/ActionBar.tsx",
+    "import": "import { ActionBar } from '@anm/design-system'",
+    "extends": [
+      "HTMLAttributes<HTMLDivElement>"
+    ],
+    "props": [
+      {
+        "name": "summary",
+        "type": "ReactNode",
+        "required": false,
+        "description": "Figma's \"Summary\" + \"Show summary\"."
+      },
+      {
+        "name": "primaryLabel",
+        "type": "string",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "onPrimary",
+        "type": "() => void",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "primaryDisabled",
+        "type": "boolean",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "secondaryLabel",
+        "type": "string",
+        "required": false,
+        "description": "Figma's \"Show secondary\"."
+      },
+      {
+        "name": "onSecondary",
+        "type": "() => void",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "AppBar",
+    "dir": "AppBar",
+    "file": "src/components/AppBar/AppBar.tsx",
+    "import": "import { AppBar } from '@anm/design-system'",
+    "extends": [
+      "HTMLAttributes<HTMLElement>"
+    ],
+    "props": [
+      {
+        "name": "onMenu",
+        "type": "() => void",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "menuLabel",
+        "type": "string",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "center",
+        "type": "ReactNode",
+        "required": false,
+        "description": "Centre slot, usually a DateIndicator. Figma's \"Show date\"."
+      },
+      {
+        "name": "trailing",
+        "type": "ReactNode",
+        "required": false,
+        "description": "Right slot, usually an Avatar (wrap it in a button if it opens a menu)."
+      }
+    ]
+  },
+  {
+    "name": "AreaChart",
+    "dir": "AreaChart",
+    "file": "src/components/AreaChart/AreaChart.tsx",
+    "import": "import { AreaChart } from '@anm/design-system'",
+    "extends": [
+      "HTMLAttributes<HTMLDivElement>"
+    ],
+    "props": [
+      {
+        "name": "series",
+        "type": "AreaChartSeries[]",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "categories",
+        "type": "string[]",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "width",
+        "type": "number",
+        "required": false,
+        "description": "Fixed plot width in px. Leave it out and the chart fills its container."
+      },
+      {
+        "name": "height",
+        "type": "number",
+        "required": false,
+        "description": "Plot height in px."
+      },
+      {
+        "name": "formatValue",
+        "type": "(value: number) => string",
+        "required": false,
+        "description": "Formats y-axis labels; defaults to one decimal with a comma (`0,9`)."
+      }
+    ]
+  },
+  {
+    "name": "Avatar",
+    "dir": "Avatar",
+    "file": "src/components/Avatar/Avatar.tsx",
+    "import": "import { Avatar } from '@anm/design-system'",
+    "extends": [],
+    "props": [
+      {
+        "name": "size",
+        "type": "'sm' | 'md' | 'lg'",
+        "required": false,
+        "description": "Default 'sm'."
+      },
+      {
+        "name": "initials",
+        "type": "string",
+        "required": false,
+        "description": "Initials or short label shown when there's no image."
+      },
+      {
+        "name": "src",
+        "type": "string",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "alt",
+        "type": "string",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "status",
+        "type": "'none' | 'online' | 'offline'",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "Badge",
+    "dir": "Badge",
+    "file": "src/components/Badge/Badge.tsx",
+    "import": "import { Badge } from '@anm/design-system'",
+    "extends": [],
+    "props": [
+      {
+        "name": "color",
+        "type": "'neutral' | 'success' | 'warning' | 'error' | 'info'",
+        "required": false,
+        "description": "Default 'neutral'."
+      },
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "Banner",
+    "dir": "Banner",
+    "file": "src/components/Banner/Banner.tsx",
+    "import": "import { Banner } from '@anm/design-system'",
+    "extends": [
+      "Omit<HTMLAttributes<HTMLDivElement>, 'title'>"
+    ],
+    "props": [
+      {
+        "name": "color",
+        "type": "BannerColor",
+        "required": false,
+        "description": "Maps to Figma's \"Color\" variant."
+      },
+      {
+        "name": "message",
+        "type": "string",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "required": false,
+        "description": "Optional bold first line — Figma's \"Title\" boolean + \"Title text\"."
+      },
+      {
+        "name": "action",
+        "type": "BannerAction",
+        "required": false,
+        "description": "Optional single underlined text action — Figma's \"Action\" boolean + \"Action label\"."
+      },
+      {
+        "name": "onDismiss",
+        "type": "() => void",
+        "required": false,
+        "description": "Called when the close icon is clicked; omit to hide the close affordance."
+      }
+    ]
+  },
+  {
+    "name": "BarChart",
+    "dir": "BarChart",
+    "file": "src/components/BarChart/BarChart.tsx",
+    "import": "import { BarChart } from '@anm/design-system'",
+    "extends": [
+      "HTMLAttributes<HTMLDivElement>"
+    ],
+    "props": [
+      {
+        "name": "data",
+        "type": "BarChartDatum[]",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "height",
+        "type": "number",
+        "required": false,
+        "description": "Scale height in px (value `max` maps to this)."
+      },
+      {
+        "name": "max",
+        "type": "number",
+        "required": false,
+        "description": "Value mapped to full scale height; defaults to the largest datum rounded up to a \"nice\" step."
+      },
+      {
+        "name": "ticks",
+        "type": "number",
+        "required": false,
+        "description": "Number of y-axis ticks / gridlines, including 0 and `max`."
+      },
+      {
+        "name": "showValues",
+        "type": "boolean",
+        "required": false,
+        "description": "Prints each value above its bar — Figma's \"Show values\"."
+      },
+      {
+        "name": "highlightLatest",
+        "type": "boolean",
+        "required": false,
+        "description": "Newest bar keeps chart/series-1, the rest turn icon/muted — Figma's \"Highlight latest\"."
+      },
+      {
+        "name": "formatValue",
+        "type": "(value: number) => string",
+        "required": false,
+        "description": "Formats tick and value labels; defaults to en-US numbers (`1,284`)."
+      }
+    ]
+  },
+  {
+    "name": "BenchmarkTable",
+    "dir": "BenchmarkTable",
+    "file": "src/components/BenchmarkTable/BenchmarkTable.tsx",
+    "import": "import { BenchmarkTable } from '@anm/design-system'",
+    "extends": [
+      "HTMLAttributes<HTMLDivElement>"
+    ],
+    "props": [
+      {
+        "name": "rows",
+        "type": "BenchmarkRow[]",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "labelHeader",
+        "type": "string",
+        "required": false,
+        "description": "Column headers. Defaults follow the Figma sample."
+      },
+      {
+        "name": "categoryHeader",
+        "type": "string",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "rateHeader",
+        "type": "string",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "min",
+        "type": "number",
+        "required": false,
+        "description": "Below `min` is Critical, at or above `ideal` is Healthy."
+      },
+      {
+        "name": "ideal",
+        "type": "number",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "BottomSheet",
+    "dir": "BottomSheet",
+    "file": "src/components/BottomSheet/BottomSheet.tsx",
+    "import": "import { BottomSheet } from '@anm/design-system'",
+    "extends": [
+      "Omit<HTMLAttributes<HTMLDivElement>, 'title'>"
+    ],
+    "props": [
+      {
+        "name": "title",
+        "type": "string",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "context",
+        "type": "string",
+        "required": false,
+        "description": "One-line context under the title. Figma's \"Context\"."
+      },
+      {
+        "name": "showHandle",
+        "type": "boolean",
+        "required": false,
+        "description": "Figma's \"Show handle\"."
+      },
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "cancelLabel",
+        "type": "string",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "confirmLabel",
+        "type": "string",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "onCancel",
+        "type": "() => void",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "onConfirm",
+        "type": "() => void",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "onClose",
+        "type": "() => void",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "overlay",
+        "type": "boolean",
+        "required": false,
+        "description": "Render fixed to the viewport bottom on the Scrim."
+      }
+    ]
+  },
+  {
+    "name": "Breadcrumb",
+    "dir": "Breadcrumb",
+    "file": "src/components/Breadcrumb/Breadcrumb.tsx",
+    "import": "import { Breadcrumb } from '@anm/design-system'",
+    "extends": [],
+    "props": [
+      {
+        "name": "items",
+        "type": "BreadcrumbItem[]",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "Button",
+    "dir": "Button",
+    "file": "src/components/Button/Button.tsx",
+    "import": "import { Button } from '@anm/design-system'",
+    "extends": [
+      "ButtonHTMLAttributes<HTMLButtonElement>"
+    ],
+    "props": [
+      {
+        "name": "variant",
+        "type": "'primary' | 'secondary' | 'outline' | 'ghost'",
+        "required": false,
+        "description": "Default 'primary'."
+      },
+      {
+        "name": "size",
+        "type": "'sm' | 'md' | 'lg'",
+        "required": false,
+        "description": "Default 'md'."
+      },
+      {
+        "name": "asChild",
+        "type": "boolean",
+        "required": false,
+        "description": "Renders as its child (Radix Slot) instead of a <button> — e.g. an <a>."
+      },
+      {
+        "name": "loading",
+        "type": "boolean",
+        "required": false,
+        "description": "Shows a spinner in place of the leading icon and dims the label."
+      },
+      {
+        "name": "leadingIcon",
+        "type": "ReactNode",
+        "required": false,
+        "description": "Icon rendered before the label — maps to Figma's \"Leading icon\" slot."
+      },
+      {
+        "name": "trailingIcon",
+        "type": "ReactNode",
+        "required": false,
+        "description": "Icon rendered after the label. Figma only models a leading slot, but a trailing affordance is required by real triggers (a dropdown chevron), so this is an additive extension rather than something the design contradicts."
+      }
+    ]
+  },
+  {
+    "name": "Card",
+    "dir": "Card",
+    "file": "src/components/Card/Card.tsx",
+    "import": "import { Card } from '@anm/design-system'",
+    "extends": [
+      "HTMLAttributes<HTMLDivElement>"
+    ],
+    "props": [
+      {
+        "name": "state",
+        "type": "CardState",
+        "required": false,
+        "description": "Maps to Figma's \"State\" variant. `default` renders children."
+      },
+      {
+        "name": "emptyMessage",
+        "type": "string",
+        "required": false,
+        "description": "Message shown in the empty state."
+      },
+      {
+        "name": "errorMessage",
+        "type": "string",
+        "required": false,
+        "description": "Message shown in the error state."
+      },
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "CardDescription",
+    "dir": "Card",
+    "file": "src/components/Card/Card.tsx",
+    "import": "import { CardDescription } from '@anm/design-system'",
+    "extends": [],
+    "props": []
+  },
+  {
+    "name": "CardTitle",
+    "dir": "Card",
+    "file": "src/components/Card/Card.tsx",
+    "import": "import { CardTitle } from '@anm/design-system'",
+    "extends": [],
+    "props": []
+  },
+  {
+    "name": "ChartTooltip",
+    "dir": "ChartTooltip",
+    "file": "src/components/ChartTooltip/ChartTooltip.tsx",
+    "import": "import { ChartTooltip } from '@anm/design-system'",
+    "extends": [
+      "HTMLAttributes<HTMLDivElement>"
+    ],
+    "props": [
+      {
+        "name": "heading",
+        "type": "string",
+        "required": true,
+        "description": "Header — the x value being read (e.g. a date)."
+      },
+      {
+        "name": "rows",
+        "type": "ChartTooltipRow[]",
+        "required": true,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "Checkbox",
+    "dir": "Checkbox",
+    "file": "src/components/Checkbox/Checkbox.tsx",
+    "import": "import { Checkbox } from '@anm/design-system'",
+    "extends": [
+      "Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'size'>"
+    ],
+    "props": [
+      {
+        "name": "indeterminate",
+        "type": "boolean",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "ChoiceTile",
+    "dir": "ChoiceTile",
+    "file": "src/components/ChoiceTile/ChoiceTile.tsx",
+    "import": "import { ChoiceTile } from '@anm/design-system'",
+    "extends": [
+      "Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'children'>"
+    ],
+    "props": [
+      {
+        "name": "size",
+        "type": "'md' | 'lg'",
+        "required": false,
+        "description": "Default 'md'."
+      },
+      {
+        "name": "align",
+        "type": "'center' | 'left'",
+        "required": false,
+        "description": "Default 'center'."
+      },
+      {
+        "name": "state",
+        "type": "'default' | 'selected' | 'done' | 'counted'",
+        "required": false,
+        "description": "Default 'default'."
+      },
+      {
+        "name": "label",
+        "type": "ReactNode",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "icon",
+        "type": "ReactNode",
+        "required": false,
+        "description": "Figma's \"Leading icon\" swap. Hidden in Done / Counted, where the check and count take the space."
+      },
+      {
+        "name": "count",
+        "type": "number",
+        "required": false,
+        "description": "Count shown in the Badge for Done / Counted."
+      }
+    ]
+  },
+  {
+    "name": "Combobox",
+    "dir": "Combobox",
+    "file": "src/components/Combobox/Combobox.tsx",
+    "import": "import { Combobox } from '@anm/design-system'",
+    "extends": [
+      "Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'value' | 'defaultValue' | 'onChange'>"
+    ],
+    "props": [
+      {
+        "name": "size",
+        "type": "'sm' | 'md' | 'lg'",
+        "required": false,
+        "description": "Default 'md'."
+      },
+      {
+        "name": "options",
+        "type": "ComboboxOption[]",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "value",
+        "type": "string | null",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "defaultValue",
+        "type": "string | null",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "onValueChange",
+        "type": "(value: string | null) => void",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "error",
+        "type": "boolean",
+        "required": false,
+        "description": "Error is a prop (arbitrary validity has no CSS hook); also sets aria-invalid."
+      },
+      {
+        "name": "defaultOpen",
+        "type": "boolean",
+        "required": false,
+        "description": "Start open — documents Figma's State=Open; not needed in product."
+      },
+      {
+        "name": "emptyText",
+        "type": "string",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "wrapperClassName",
+        "type": "string",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "ContentPanel",
+    "dir": "ContentPanel",
+    "file": "src/components/ContentPanel/ContentPanel.tsx",
+    "import": "import { ContentPanel } from '@anm/design-system'",
+    "extends": [
+      "HTMLAttributes<HTMLDivElement>"
+    ],
+    "props": [
+      {
+        "name": "title",
+        "type": "string",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "controls",
+        "type": "ReactNode",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "required": true,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "Counter",
+    "dir": "Counter",
+    "file": "src/components/Counter/Counter.tsx",
+    "import": "import { Counter } from '@anm/design-system'",
+    "extends": [],
+    "props": [
+      {
+        "name": "value",
+        "type": "number",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "onChange",
+        "type": "(value: number) => void",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "min",
+        "type": "number",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "max",
+        "type": "number",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "step",
+        "type": "number",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "error",
+        "type": "boolean",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "required": false,
+        "description": "Accessible name for the value field."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "CountRow",
+    "dir": "CountRow",
+    "file": "src/components/CountRow/CountRow.tsx",
+    "import": "import { CountRow } from '@anm/design-system'",
+    "extends": [],
+    "props": [
+      {
+        "name": "label",
+        "type": "ReactNode",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "value",
+        "type": "number",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "onChange",
+        "type": "(value: number) => void",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "min",
+        "type": "number",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "max",
+        "type": "number",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "step",
+        "type": "number",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "filled",
+        "type": "boolean",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "DateIndicator",
+    "dir": "DateIndicator",
+    "file": "src/components/DateIndicator/DateIndicator.tsx",
+    "import": "import { DateIndicator } from '@anm/design-system'",
+    "extends": [
+      "HTMLAttributes<HTMLDivElement>"
+    ],
+    "props": [
+      {
+        "name": "date",
+        "type": "ReactNode",
+        "required": true,
+        "description": "The formatted date, e.g. \"Wednesday, May 27, 2026\"."
+      },
+      {
+        "name": "tag",
+        "type": "ReactNode",
+        "required": false,
+        "description": "Optional short context label shown as a Tag, e.g. \"SEM 22\". Figma's \"Show tag\"."
+      }
+    ]
+  },
+  {
+    "name": "DatePicker",
+    "dir": "DatePicker",
+    "file": "src/components/DatePicker/DatePicker.tsx",
+    "import": "import { DatePicker } from '@anm/design-system'",
+    "extends": [],
+    "props": [
+      {
+        "name": "value",
+        "type": "Date",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "onChange",
+        "type": "(date: Date) => void",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "defaultMonth",
+        "type": "Date",
+        "required": false,
+        "description": "Month currently displayed; defaults to `value`'s month or today."
+      },
+      {
+        "name": "disableFuture",
+        "type": "boolean",
+        "required": false,
+        "description": "Disable every date after today (Figma: \"use with disableFuture\")."
+      },
+      {
+        "name": "isDateDisabled",
+        "type": "(date: Date) => boolean",
+        "required": false,
+        "description": "Return true for days that cannot be chosen; they render greyed and never fire onChange."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "DetailedLineChart",
+    "dir": "DetailedLineChart",
+    "file": "src/components/DetailedLineChart/DetailedLineChart.tsx",
+    "import": "import { DetailedLineChart } from '@anm/design-system'",
+    "extends": [
+      "HTMLAttributes<HTMLDivElement>"
+    ],
+    "props": [
+      {
+        "name": "series",
+        "type": "DetailedLineSeries[]",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "categories",
+        "type": "string[]",
+        "required": true,
+        "description": "One label per data point (the x axis)."
+      },
+      {
+        "name": "axisLabels",
+        "type": "string[]",
+        "required": false,
+        "description": "Labels shown under the axis; defaults to every category."
+      },
+      {
+        "name": "forecastFrom",
+        "type": "number",
+        "required": false,
+        "description": "Points from this index onward are the forecast (dashed, shaded)."
+      },
+      {
+        "name": "forecastLabel",
+        "type": "string",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "target",
+        "type": "{ value: number; label: string }",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "band",
+        "type": "{ from: number; to: number; label: string }",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "events",
+        "type": "{ index: number; label: string }[]",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "min",
+        "type": "number",
+        "required": false,
+        "description": "Fixed y range; defaults to the data range padded to nice numbers."
+      },
+      {
+        "name": "max",
+        "type": "number",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "width",
+        "type": "number",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "height",
+        "type": "number",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "formatValue",
+        "type": "(value: number) => string",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "Divider",
+    "dir": "Divider",
+    "file": "src/components/Divider/Divider.tsx",
+    "import": "import { Divider } from '@anm/design-system'",
+    "extends": [
+      "HTMLAttributes<HTMLDivElement>"
+    ],
+    "props": [
+      {
+        "name": "orientation",
+        "type": "DividerOrientation",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "DonutChart",
+    "dir": "DonutChart",
+    "file": "src/components/DonutChart/DonutChart.tsx",
+    "import": "import { DonutChart } from '@anm/design-system'",
+    "extends": [
+      "HTMLAttributes<HTMLDivElement>"
+    ],
+    "props": [
+      {
+        "name": "parts",
+        "type": "DonutPart[]",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "unit",
+        "type": "string",
+        "required": false,
+        "description": "Unit under the centre total, e.g. \"USD\"."
+      },
+      {
+        "name": "centerLabel",
+        "type": "boolean",
+        "required": false,
+        "description": "Figma's \"Center label\"."
+      },
+      {
+        "name": "formatValue",
+        "type": "(value: number) => string",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "texture",
+        "type": "boolean",
+        "required": false,
+        "description": "Give each part its series texture as well as its colour (print, greyscale, colour-blind use)."
+      }
+    ]
+  },
+  {
+    "name": "Drawer",
+    "dir": "Drawer",
+    "file": "src/components/Drawer/Drawer.tsx",
+    "import": "import { Drawer } from '@anm/design-system'",
+    "extends": [
+      "HTMLAttributes<HTMLDivElement>"
+    ],
+    "props": [
+      {
+        "name": "title",
+        "type": "string",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "items",
+        "type": "DrawerItem[]",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "cancelLabel",
+        "type": "string",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "confirmLabel",
+        "type": "string",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "onCancel",
+        "type": "() => void",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "onConfirm",
+        "type": "() => void",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "onClose",
+        "type": "() => void",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "overlay",
+        "type": "boolean",
+        "required": false,
+        "description": "Render on the Scrim, docked right (fixed, full-height). Default false: body only."
+      }
+    ]
+  },
+  {
+    "name": "DropdownMenu",
+    "dir": "DropdownMenu",
+    "file": "src/components/DropdownMenu/DropdownMenu.tsx",
+    "import": "import { DropdownMenu } from '@anm/design-system'",
+    "extends": [],
+    "props": [
+      {
+        "name": "label",
+        "type": "string",
+        "required": false,
+        "description": "Trigger label. Ignored when `trigger` is provided."
+      },
+      {
+        "name": "trigger",
+        "type": "ReactNode",
+        "required": false,
+        "description": "Custom trigger. Receives nothing — wire your own onClick via the wrapper."
+      },
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "defaultOpen",
+        "type": "boolean",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "searchable",
+        "type": "boolean",
+        "required": false,
+        "description": "Maps to Figma's State=Searchable: search field on top, Clear at the bottom."
+      },
+      {
+        "name": "searchPlaceholder",
+        "type": "string",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "onClear",
+        "type": "() => void",
+        "required": false,
+        "description": "Called by Clear (after the query is reset) so the owner can clear its selection."
+      }
+    ]
+  },
+  {
+    "name": "EmptyState",
+    "dir": "EmptyState",
+    "file": "src/components/EmptyState/EmptyState.tsx",
+    "import": "import { EmptyState } from '@anm/design-system'",
+    "extends": [
+      "Omit<HTMLAttributes<HTMLDivElement>, 'title'>"
+    ],
+    "props": [
+      {
+        "name": "icon",
+        "type": "ReactNode",
+        "required": false,
+        "description": "Glyph inside the 56px badge; defaults to the inbox."
+      },
+      {
+        "name": "title",
+        "type": "ReactNode",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "description",
+        "type": "ReactNode",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "action",
+        "type": "ReactNode",
+        "required": false,
+        "description": "The one primary action, e.g. `<Button>Add account</Button>`."
+      }
+    ]
+  },
+  {
+    "name": "FileUpload",
+    "dir": "FileUpload",
+    "file": "src/components/FileUpload/FileUpload.tsx",
+    "import": "import { FileUpload } from '@anm/design-system'",
+    "extends": [
+      "Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'onChange'>"
+    ],
+    "props": [
+      {
+        "name": "hint",
+        "type": "string",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "onFilesSelected",
+        "type": "(files: FileList) => void",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "FormField",
+    "dir": "FormField",
+    "file": "src/components/FormField/FormField.tsx",
+    "import": "import { FormField } from '@anm/design-system'",
+    "extends": [
+      "Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>"
+    ],
+    "props": [
+      {
+        "name": "label",
+        "type": "string",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "helperText",
+        "type": "string",
+        "required": false,
+        "description": "Helper text shown below the field — becomes the error message when `error` is set."
+      },
+      {
+        "name": "error",
+        "type": "boolean",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "leadingIcon",
+        "type": "ReactNode",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "IconButton",
+    "dir": "IconButton",
+    "file": "src/components/IconButton/IconButton.tsx",
+    "import": "import { IconButton } from '@anm/design-system'",
+    "extends": [
+      "ButtonHTMLAttributes<HTMLButtonElement>"
+    ],
+    "props": [
+      {
+        "name": "variant",
+        "type": "'primary' | 'secondary' | 'ghost'",
+        "required": false,
+        "description": "Default 'primary'."
+      },
+      {
+        "name": "size",
+        "type": "'sm' | 'md' | 'lg'",
+        "required": false,
+        "description": "Default 'md'."
+      },
+      {
+        "name": "icon",
+        "type": "ReactNode",
+        "required": true,
+        "description": "Icon glyph — swap for any Lucide icon."
+      },
+      {
+        "name": "aria-label",
+        "type": "string",
+        "required": true,
+        "description": "Required — an icon-only control has no visible label."
+      }
+    ]
+  },
+  {
+    "name": "Input",
+    "dir": "Input",
+    "file": "src/components/Input/Input.tsx",
+    "import": "import { Input } from '@anm/design-system'",
+    "extends": [
+      "Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>"
+    ],
+    "props": [
+      {
+        "name": "size",
+        "type": "'sm' | 'md' | 'lg'",
+        "required": false,
+        "description": "Default 'md'."
+      },
+      {
+        "name": "error",
+        "type": "boolean",
+        "required": false,
+        "description": "Default false."
+      },
+      {
+        "name": "leadingIcon",
+        "type": "ReactNode",
+        "required": false,
+        "description": "Icon rendered before the value — maps to Figma's \"Leading icon\" slot."
+      }
+    ]
+  },
+  {
+    "name": "Legend",
+    "dir": "Legend",
+    "file": "src/components/Legend/Legend.tsx",
+    "import": "import { Legend } from '@anm/design-system'",
+    "extends": [
+      "HTMLAttributes<HTMLDivElement>"
+    ],
+    "props": [
+      {
+        "name": "items",
+        "type": "LegendItem[]",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "texture",
+        "type": "boolean",
+        "required": false,
+        "description": "Show each series' texture in its swatch, to match a textured chart."
+      }
+    ]
+  },
+  {
+    "name": "LineChart",
+    "dir": "LineChart",
+    "file": "src/components/LineChart/LineChart.tsx",
+    "import": "import { LineChart } from '@anm/design-system'",
+    "extends": [
+      "HTMLAttributes<HTMLDivElement>"
+    ],
+    "props": [
+      {
+        "name": "series",
+        "type": "LineChartSeries[]",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "categories",
+        "type": "string[]",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "width",
+        "type": "number",
+        "required": false,
+        "description": "Fixed plot width in px. Leave it out and the chart fills its container."
+      },
+      {
+        "name": "height",
+        "type": "number",
+        "required": false,
+        "description": "Plot height in px."
+      },
+      {
+        "name": "formatValue",
+        "type": "(value: number) => string",
+        "required": false,
+        "description": "Formats y-axis labels; defaults to one decimal with a comma (`0,9`)."
+      }
+    ]
+  },
+  {
+    "name": "Link",
+    "dir": "Link",
+    "file": "src/components/Link/Link.tsx",
+    "import": "import { Link } from '@anm/design-system'",
+    "extends": [
+      "AnchorHTMLAttributes<HTMLAnchorElement>"
+    ],
+    "props": [
+      {
+        "name": "external",
+        "type": "boolean",
+        "required": false,
+        "description": "Figma \"External\": adds the inline arrow suffix and opens in a new tab safely."
+      },
+      {
+        "name": "standalone",
+        "type": "boolean",
+        "required": false,
+        "description": "Standalone (not inside running text): 24px min height, 48px touch target."
+      }
+    ]
+  },
+  {
+    "name": "List",
+    "dir": "List",
+    "file": "src/components/List/List.tsx",
+    "import": "import { List } from '@anm/design-system'",
+    "extends": [
+      "HTMLAttributes<HTMLDivElement>"
+    ],
+    "props": [
+      {
+        "name": "items",
+        "type": "ListItem[]",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "state",
+        "type": "ListState",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "emptyMessage",
+        "type": "string",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "errorMessage",
+        "type": "string",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "loadingRows",
+        "type": "number",
+        "required": false,
+        "description": "Skeleton rows rendered while loading."
+      }
+    ]
+  },
+  {
+    "name": "ListRow",
+    "dir": "ListRow",
+    "file": "src/components/ListRow/ListRow.tsx",
+    "import": "import { ListRow } from '@anm/design-system'",
+    "extends": [
+      "Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'title'>"
+    ],
+    "props": [
+      {
+        "name": "title",
+        "type": "ReactNode",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "subtitle",
+        "type": "ReactNode",
+        "required": false,
+        "description": "Figma's \"Subtitle\" + \"Show subtitle\"."
+      },
+      {
+        "name": "icon",
+        "type": "ReactNode",
+        "required": false,
+        "description": "Figma's \"Icon\" + \"Show icon\"."
+      },
+      {
+        "name": "selected",
+        "type": "boolean",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "Menu",
+    "dir": "Menu",
+    "file": "src/components/Menu/Menu.tsx",
+    "import": "import { Menu } from '@anm/design-system'",
+    "extends": [
+      "HTMLAttributes<HTMLDivElement>"
+    ],
+    "props": []
+  },
+  {
+    "name": "MenuItem",
+    "dir": "Menu",
+    "file": "src/components/Menu/Menu.tsx",
+    "import": "import { MenuItem } from '@anm/design-system'",
+    "extends": [
+      "ButtonHTMLAttributes<HTMLButtonElement>"
+    ],
+    "props": [
+      {
+        "name": "icon",
+        "type": "ReactNode",
+        "required": false,
+        "description": "Icon swap. Falls back to a placeholder circle when `leadingIcon` is on, like Figma."
+      },
+      {
+        "name": "leadingIcon",
+        "type": "boolean",
+        "required": false,
+        "description": "Maps to Figma's \"Leading icon\" boolean. Default true."
+      }
+    ]
+  },
+  {
+    "name": "MetricCard",
+    "dir": "MetricCard",
+    "file": "src/components/MetricCard/MetricCard.tsx",
+    "import": "import { MetricCard } from '@anm/design-system'",
+    "extends": [
+      "HTMLAttributes<HTMLDivElement>"
+    ],
+    "props": [
+      {
+        "name": "title",
+        "type": "string",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "context",
+        "type": "string",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "value",
+        "type": "ReactNode",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "valueContext",
+        "type": "string",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "tagLabel",
+        "type": "string",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "tagColor",
+        "type": "TagProps['color']",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "Modal",
+    "dir": "Modal",
+    "file": "src/components/Modal/Modal.tsx",
+    "import": "import { Modal } from '@anm/design-system'",
+    "extends": [
+      "HTMLAttributes<HTMLDivElement>"
+    ],
+    "props": [
+      {
+        "name": "type",
+        "type": "ModalType",
+        "required": false,
+        "description": "Maps to Figma's \"Type\" variant."
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "cancelLabel",
+        "type": "string",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "confirmLabel",
+        "type": "string",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "onCancel",
+        "type": "() => void",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "onConfirm",
+        "type": "() => void",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "onClose",
+        "type": "() => void",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "overlay",
+        "type": "boolean",
+        "required": false,
+        "description": "Render on the Scrim (fixed, full-viewport). Default false: body only."
+      }
+    ]
+  },
+  {
+    "name": "MultiSelect",
+    "dir": "MultiSelect",
+    "file": "src/components/MultiSelect/MultiSelect.tsx",
+    "import": "import { MultiSelect } from '@anm/design-system'",
+    "extends": [],
+    "props": [
+      {
+        "name": "size",
+        "type": "'sm' | 'md' | 'lg'",
+        "required": false,
+        "description": "Default 'md'."
+      },
+      {
+        "name": "error",
+        "type": "boolean",
+        "required": false,
+        "description": "Default false."
+      },
+      {
+        "name": "options",
+        "type": "MultiSelectOption[]",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "value",
+        "type": "string[]",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "onChange",
+        "type": "(value: string[]) => void",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "placeholder",
+        "type": "string",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "aria-label",
+        "type": "string",
+        "required": false,
+        "description": "Accessible name when no <label> points at the field; defaults to the placeholder."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "required": false,
+        "description": "Maps to Figma's State=Disabled."
+      },
+      {
+        "name": "defaultOpen",
+        "type": "boolean",
+        "required": false,
+        "description": "Maps to Figma's State=Open — the initial open state; the component tracks it afterwards."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "Navbar",
+    "dir": "Navbar",
+    "file": "src/components/Navbar/Navbar.tsx",
+    "import": "import { Navbar } from '@anm/design-system'",
+    "extends": [
+      "HTMLAttributes<HTMLElement>"
+    ],
+    "props": [
+      {
+        "name": "brand",
+        "type": "ReactNode",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "actions",
+        "type": "ReactNode",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "NavbarLink",
+    "dir": "Navbar",
+    "file": "src/components/Navbar/Navbar.tsx",
+    "import": "import { NavbarLink } from '@anm/design-system'",
+    "extends": [
+      "AnchorHTMLAttributes<HTMLAnchorElement>"
+    ],
+    "props": [
+      {
+        "name": "active",
+        "type": "boolean",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "PageHeader",
+    "dir": "PageHeader",
+    "file": "src/components/PageHeader/PageHeader.tsx",
+    "import": "import { PageHeader } from '@anm/design-system'",
+    "extends": [
+      "HTMLAttributes<HTMLDivElement>"
+    ],
+    "props": [
+      {
+        "name": "title",
+        "type": "string",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "subtitle",
+        "type": "string",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "actions",
+        "type": "ReactNode",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "Pagination",
+    "dir": "Pagination",
+    "file": "src/components/Pagination/Pagination.tsx",
+    "import": "import { Pagination } from '@anm/design-system'",
+    "extends": [],
+    "props": [
+      {
+        "name": "page",
+        "type": "number",
+        "required": true,
+        "description": "Current page, 1-indexed."
+      },
+      {
+        "name": "pageCount",
+        "type": "number",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "onPageChange",
+        "type": "(page: number) => void",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "PinField",
+    "dir": "PinField",
+    "file": "src/components/PinField/PinField.tsx",
+    "import": "import { PinField } from '@anm/design-system'",
+    "extends": [],
+    "props": [
+      {
+        "name": "label",
+        "type": "string",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "value",
+        "type": "string",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "onChange",
+        "type": "(value: string) => void",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "length",
+        "type": "number",
+        "required": false,
+        "description": "Number of digits. Figma documents 4."
+      },
+      {
+        "name": "helperText",
+        "type": "string",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "error",
+        "type": "string",
+        "required": false,
+        "description": "Error message; turns every box semantic/error."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "onComplete",
+        "type": "(value: string) => void",
+        "required": false,
+        "description": "Called once all digits are entered."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "Popover",
+    "dir": "Popover",
+    "file": "src/components/Popover/Popover.tsx",
+    "import": "import { Popover } from '@anm/design-system'",
+    "extends": [
+      "HTMLAttributes<HTMLDivElement>"
+    ],
+    "props": [
+      {
+        "name": "title",
+        "type": "string",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "required": true,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "Progress",
+    "dir": "Progress",
+    "file": "src/components/Progress/Progress.tsx",
+    "import": "import { Progress } from '@anm/design-system'",
+    "extends": [
+      "HTMLAttributes<HTMLDivElement>"
+    ],
+    "props": [
+      {
+        "name": "value",
+        "type": "number",
+        "required": true,
+        "description": "0-100."
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "showLabel",
+        "type": "boolean",
+        "required": false,
+        "description": "Hide the \"label / value%\" row and render only the track."
+      }
+    ]
+  },
+  {
+    "name": "Radio",
+    "dir": "Radio",
+    "file": "src/components/Radio/Radio.tsx",
+    "import": "import { Radio } from '@anm/design-system'",
+    "extends": [
+      "Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'size'>"
+    ],
+    "props": [
+      {
+        "name": "label",
+        "type": "string",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "RadioGroup",
+    "dir": "RadioGroup",
+    "file": "src/components/RadioGroup/RadioGroup.tsx",
+    "import": "import { RadioGroup } from '@anm/design-system'",
+    "extends": [],
+    "props": [
+      {
+        "name": "legend",
+        "type": "string",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "helperText",
+        "type": "ReactNode",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "options",
+        "type": "RadioGroupOption[]",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "value",
+        "type": "string",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "defaultValue",
+        "type": "string",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "onValueChange",
+        "type": "(value: string) => void",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "Rating",
+    "dir": "Rating",
+    "file": "src/components/Rating/Rating.tsx",
+    "import": "import { Rating } from '@anm/design-system'",
+    "extends": [
+      "HTMLAttributes<HTMLDivElement>"
+    ],
+    "props": [
+      {
+        "name": "severity",
+        "type": "Severity",
+        "required": true,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "Search",
+    "dir": "Search",
+    "file": "src/components/Search/Search.tsx",
+    "import": "import { Search } from '@anm/design-system'",
+    "extends": [
+      "Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'size'>"
+    ],
+    "props": [
+      {
+        "name": "size",
+        "type": "'sm' | 'md' | 'lg'",
+        "required": false,
+        "description": "Default 'md'."
+      }
+    ]
+  },
+  {
+    "name": "SegmentedControl",
+    "dir": "SegmentedControl",
+    "file": "src/components/SegmentedControl/SegmentedControl.tsx",
+    "import": "import { SegmentedControl } from '@anm/design-system'",
+    "extends": [],
+    "props": [
+      {
+        "name": "options",
+        "type": "SegmentedControlOption[]",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "value",
+        "type": "string",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "onChange",
+        "type": "(value: string) => void",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "Select",
+    "dir": "Select",
+    "file": "src/components/Select/Select.tsx",
+    "import": "import { Select } from '@anm/design-system'",
+    "extends": [
+      "Omit<SelectHTMLAttributes<HTMLSelectElement>, 'size'>"
+    ],
+    "props": [
+      {
+        "name": "size",
+        "type": "'sm' | 'md' | 'lg'",
+        "required": false,
+        "description": "Default 'md'."
+      },
+      {
+        "name": "error",
+        "type": "boolean",
+        "required": false,
+        "description": "Default false."
+      }
+    ]
+  },
+  {
+    "name": "Sidebar",
+    "dir": "Sidebar",
+    "file": "src/components/Sidebar/Sidebar.tsx",
+    "import": "import { Sidebar } from '@anm/design-system'",
+    "extends": [
+      "HTMLAttributes<HTMLElement>"
+    ],
+    "props": [
+      {
+        "name": "collapsed",
+        "type": "boolean",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "brand",
+        "type": "ReactNode",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "footer",
+        "type": "ReactNode",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "SidebarBrand",
+    "dir": "Sidebar",
+    "file": "src/components/Sidebar/Sidebar.tsx",
+    "import": "import { SidebarBrand } from '@anm/design-system'",
+    "extends": [],
+    "props": []
+  },
+  {
+    "name": "SidebarItem",
+    "dir": "Sidebar",
+    "file": "src/components/Sidebar/Sidebar.tsx",
+    "import": "import { SidebarItem } from '@anm/design-system'",
+    "extends": [
+      "ButtonHTMLAttributes<HTMLButtonElement>"
+    ],
+    "props": [
+      {
+        "name": "icon",
+        "type": "ReactNode",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "active",
+        "type": "boolean",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "Skeleton",
+    "dir": "Skeleton",
+    "file": "src/components/Skeleton/Skeleton.tsx",
+    "import": "import { Skeleton } from '@anm/design-system'",
+    "extends": [
+      "HTMLAttributes<HTMLDivElement>"
+    ],
+    "props": [
+      {
+        "name": "shape",
+        "type": "SkeletonShape",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "Slider",
+    "dir": "Slider",
+    "file": "src/components/Slider/Slider.tsx",
+    "import": "import { Slider } from '@anm/design-system'",
+    "extends": [
+      "Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'type'>"
+    ],
+    "props": [
+      {
+        "name": "value",
+        "type": "number",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "min",
+        "type": "number",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "max",
+        "type": "number",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "SmallMultiples",
+    "dir": "SmallMultiples",
+    "file": "src/components/SmallMultiples/SmallMultiples.tsx",
+    "import": "import { SmallMultiples } from '@anm/design-system'",
+    "extends": [
+      "HTMLAttributes<HTMLDivElement>"
+    ],
+    "props": [
+      {
+        "name": "panels",
+        "type": "SmallMultiplesPanel[]",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "range",
+        "type": "[string, string]",
+        "required": false,
+        "description": "First and last x-axis labels, shown under every panel."
+      },
+      {
+        "name": "columns",
+        "type": "2 | 3 | 4",
+        "required": false,
+        "description": "Most panels per row; fewer when the container is narrow."
+      },
+      {
+        "name": "series",
+        "type": "ChartSeriesIndex",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "highlight",
+        "type": "number",
+        "required": false,
+        "description": "Index of one panel to emphasise; the others turn neutral."
+      },
+      {
+        "name": "independentScales",
+        "type": "boolean",
+        "required": false,
+        "description": "Give each panel its own y-scale. Off by default, on purpose."
+      },
+      {
+        "name": "unit",
+        "type": "string",
+        "required": false,
+        "description": "Unit for the shared-scale footer (e.g. \"USD\")."
+      },
+      {
+        "name": "formatValue",
+        "type": "(value: number) => string",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "plotHeight",
+        "type": "number",
+        "required": false,
+        "description": "Plot height of each panel, px."
+      }
+    ]
+  },
+  {
+    "name": "Sparkline",
+    "dir": "Sparkline",
+    "file": "src/components/Sparkline/Sparkline.tsx",
+    "import": "import { Sparkline } from '@anm/design-system'",
+    "extends": [
+      "Omit<SVGAttributes<SVGSVGElement>, 'children'>"
+    ],
+    "props": [
+      {
+        "name": "data",
+        "type": "number[]",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "width",
+        "type": "number",
+        "required": false,
+        "description": "SVG width in px."
+      },
+      {
+        "name": "height",
+        "type": "number",
+        "required": false,
+        "description": "SVG height in px."
+      },
+      {
+        "name": "strokeWidth",
+        "type": "number",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "Spinner",
+    "dir": "Spinner",
+    "file": "src/components/Spinner/Spinner.tsx",
+    "import": "import { Spinner } from '@anm/design-system'",
+    "extends": [],
+    "props": [
+      {
+        "name": "size",
+        "type": "SpinnerSize",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "StackedBarChart",
+    "dir": "StackedBarChart",
+    "file": "src/components/StackedBarChart/StackedBarChart.tsx",
+    "import": "import { StackedBarChart } from '@anm/design-system'",
+    "extends": [
+      "HTMLAttributes<HTMLDivElement>"
+    ],
+    "props": [
+      {
+        "name": "categories",
+        "type": "string[]",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "series",
+        "type": "StackedBarSeries[]",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "type",
+        "type": "'absolute' | 'percent'",
+        "required": false,
+        "description": "Figma's Type."
+      },
+      {
+        "name": "showTotals",
+        "type": "boolean",
+        "required": false,
+        "description": "Total above each bar (Absolute only). Figma's \"Show totals\"."
+      },
+      {
+        "name": "height",
+        "type": "number",
+        "required": false,
+        "description": "Scale height in px."
+      },
+      {
+        "name": "max",
+        "type": "number",
+        "required": false,
+        "description": "Top of the absolute scale; defaults to the largest total rounded up."
+      },
+      {
+        "name": "formatValue",
+        "type": "(value: number) => string",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "texture",
+        "type": "boolean",
+        "required": false,
+        "description": "Figma's Texture = Pattern: each series also gets its texture (print, greyscale, colour-blind use)."
+      }
+    ]
+  },
+  {
+    "name": "Stat",
+    "dir": "Stat",
+    "file": "src/components/Stat/Stat.tsx",
+    "import": "import { Stat } from '@anm/design-system'",
+    "extends": [
+      "HTMLAttributes<HTMLDivElement>"
+    ],
+    "props": [
+      {
+        "name": "label",
+        "type": "ReactNode",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "value",
+        "type": "ReactNode",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "delta",
+        "type": "ReactNode",
+        "required": false,
+        "description": "Delta shown under the value, e.g. \"12,5 %\"."
+      },
+      {
+        "name": "trend",
+        "type": "StatTrend",
+        "required": false,
+        "description": "Colour + arrow for the delta: up = ▲ success, down = ▼ error, neutral = muted (no arrow)."
+      },
+      {
+        "name": "deltaCaption",
+        "type": "ReactNode",
+        "required": false,
+        "description": "Caption after the delta, e.g. \"vs. last month\"."
+      },
+      {
+        "name": "state",
+        "type": "StatState",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "emptyMessage",
+        "type": "string",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "errorMessage",
+        "type": "string",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "Stepper",
+    "dir": "Stepper",
+    "file": "src/components/Stepper/Stepper.tsx",
+    "import": "import { Stepper } from '@anm/design-system'",
+    "extends": [
+      "Omit<VariantProps<typeof stepperVariants>, 'disabled'>"
+    ],
+    "props": [
+      {
+        "name": "size",
+        "type": "'sm' | 'md' | 'lg'",
+        "required": false,
+        "description": "Default 'md'."
+      },
+      {
+        "name": "error",
+        "type": "boolean",
+        "required": false,
+        "description": "Default false."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "required": false,
+        "description": "Default false."
+      },
+      {
+        "name": "value",
+        "type": "number",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "min",
+        "type": "number",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "max",
+        "type": "number",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "step",
+        "type": "number",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "onChange",
+        "type": "(value: number) => void",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "Switch",
+    "dir": "Switch",
+    "file": "src/components/Switch/Switch.tsx",
+    "import": "import { Switch } from '@anm/design-system'",
+    "extends": [
+      "Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'size'>"
+    ],
+    "props": [
+      {
+        "name": "label",
+        "type": "string",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "Tab",
+    "dir": "Tabs",
+    "file": "src/components/Tabs/Tabs.tsx",
+    "import": "import { Tab } from '@anm/design-system'",
+    "extends": [
+      "ButtonHTMLAttributes<HTMLButtonElement>"
+    ],
+    "props": [
+      {
+        "name": "active",
+        "type": "boolean",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "Table",
+    "dir": "Table",
+    "file": "src/components/Table/Table.tsx",
+    "import": "import { Table } from '@anm/design-system'",
+    "extends": [
+      "Omit<HTMLAttributes<HTMLTableElement>, 'children'>"
+    ],
+    "props": [
+      {
+        "name": "columns",
+        "type": "TableColumn[]",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "rows",
+        "type": "Record<string, ReactNode>[]",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "state",
+        "type": "TableState",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "emptyMessage",
+        "type": "string",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "errorMessage",
+        "type": "string",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "loadingRows",
+        "type": "number",
+        "required": false,
+        "description": "Skeleton rows rendered while loading."
+      },
+      {
+        "name": "bordered",
+        "type": "boolean",
+        "required": false,
+        "description": "Card chrome (border, radius, surface). Turn off when the table sits inside another container that already owns the chrome, e.g. Content Panel."
+      }
+    ]
+  },
+  {
+    "name": "TableToolbar",
+    "dir": "TableToolbar",
+    "file": "src/components/TableToolbar/TableToolbar.tsx",
+    "import": "import { TableToolbar } from '@anm/design-system'",
+    "extends": [
+      "Omit<HTMLAttributes<HTMLDivElement>, 'children'>"
+    ],
+    "props": [
+      {
+        "name": "searchPlaceholder",
+        "type": "string",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "searchValue",
+        "type": "string",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "onSearchChange",
+        "type": "(value: string) => void",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "filters",
+        "type": "TableToolbarFilter[]",
+        "required": false,
+        "description": "Active filters, rendered as dismissible chips after the search field."
+      },
+      {
+        "name": "onRemoveFilter",
+        "type": "(id: string) => void",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "secondaryAction",
+        "type": "ReactNode",
+        "required": false,
+        "description": "Secondary action — an icon-only control, e.g. `<IconButton variant=\"secondary\" icon={<Download />} aria-label=\"Export\" />`."
+      },
+      {
+        "name": "primaryAction",
+        "type": "ReactNode",
+        "required": false,
+        "description": "The one primary action, e.g. `<Button>Add account</Button>`."
+      }
+    ]
+  },
+  {
+    "name": "Tabs",
+    "dir": "Tabs",
+    "file": "src/components/Tabs/Tabs.tsx",
+    "import": "import { Tabs } from '@anm/design-system'",
+    "extends": [
+      "HTMLAttributes<HTMLDivElement>"
+    ],
+    "props": []
+  },
+  {
+    "name": "Tag",
+    "dir": "Tag",
+    "file": "src/components/Tag/Tag.tsx",
+    "import": "import { Tag } from '@anm/design-system'",
+    "extends": [],
+    "props": [
+      {
+        "name": "color",
+        "type": "'neutral' | 'success' | 'warning' | 'error' | 'info'",
+        "required": false,
+        "description": "Default 'neutral'."
+      },
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "dismissible",
+        "type": "boolean",
+        "required": false,
+        "description": "Shows a close icon — maps to Figma's \"Dismissible\" boolean prop."
+      },
+      {
+        "name": "onDismiss",
+        "type": "ButtonHTMLAttributes<HTMLButtonElement>['onClick']",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "Textarea",
+    "dir": "Textarea",
+    "file": "src/components/Textarea/Textarea.tsx",
+    "import": "import { Textarea } from '@anm/design-system'",
+    "extends": [
+      "TextareaHTMLAttributes<HTMLTextAreaElement>"
+    ],
+    "props": [
+      {
+        "name": "error",
+        "type": "boolean",
+        "required": false,
+        "description": "Default false."
+      }
+    ]
+  },
+  {
+    "name": "Timeline",
+    "dir": "Timeline",
+    "file": "src/components/Timeline/Timeline.tsx",
+    "import": "import { Timeline } from '@anm/design-system'",
+    "extends": [
+      "HTMLAttributes<HTMLOListElement>"
+    ],
+    "props": [
+      {
+        "name": "entries",
+        "type": "TimelineEntry[]",
+        "required": true,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "Toast",
+    "dir": "Toast",
+    "file": "src/components/Toast/Toast.tsx",
+    "import": "import { Toast } from '@anm/design-system'",
+    "extends": [
+      "HTMLAttributes<HTMLDivElement>"
+    ],
+    "props": [
+      {
+        "name": "color",
+        "type": "ToastColor",
+        "required": false,
+        "description": "Maps to Figma's \"Color\" variant."
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "description",
+        "type": "string",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "onDismiss",
+        "type": "() => void",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "Tooltip",
+    "dir": "Tooltip",
+    "file": "src/components/Tooltip/Tooltip.tsx",
+    "import": "import { Tooltip } from '@anm/design-system'",
+    "extends": [],
+    "props": [
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "Topbar",
+    "dir": "Topbar",
+    "file": "src/components/Topbar/Topbar.tsx",
+    "import": "import { Topbar } from '@anm/design-system'",
+    "extends": [
+      "HTMLAttributes<HTMLElement>"
+    ],
+    "props": [
+      {
+        "name": "breadcrumb",
+        "type": "ReactNode",
+        "required": false,
+        "description": "Left slot, usually a Breadcrumb."
+      },
+      {
+        "name": "center",
+        "type": "ReactNode",
+        "required": false,
+        "description": "Centre slot, usually a DateIndicator."
+      },
+      {
+        "name": "actions",
+        "type": "ReactNode",
+        "required": false,
+        "description": "Right slot, usually TopbarAction buttons."
+      }
+    ]
+  }
+]
