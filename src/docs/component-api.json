@@ -556,6 +556,35 @@
     ]
   },
   {
+    "name": "ButtonGroup",
+    "dir": "ButtonGroup",
+    "file": "src/components/ButtonGroup/ButtonGroup.tsx",
+    "import": "import { ButtonGroup } from '@anm/design-system'",
+    "extends": [
+      "HTMLAttributes<HTMLDivElement>"
+    ],
+    "props": [
+      {
+        "name": "aria-label",
+        "type": "string",
+        "required": true,
+        "description": "What the buttons have in common, read before them."
+      },
+      {
+        "name": "orientation",
+        "type": "'horizontal' | 'vertical'",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "size",
+        "type": "'sm' | 'md'",
+        "required": false,
+        "description": "Corner radius of the outer ends: match the Button size (SM uses sm, MD and LG use md)."
+      }
+    ]
+  },
+  {
     "name": "Card",
     "dir": "Card",
     "file": "src/components/Card/Card.tsx",
@@ -765,6 +794,69 @@
     ]
   },
   {
+    "name": "CommandMenu",
+    "dir": "CommandMenu",
+    "file": "src/components/CommandMenu/CommandMenu.tsx",
+    "import": "import { CommandMenu } from '@anm/design-system'",
+    "extends": [],
+    "props": [
+      {
+        "name": "open",
+        "type": "boolean",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "onOpenChange",
+        "type": "(open: boolean) => void",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "groups",
+        "type": "CommandGroup[]",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "onAsk",
+        "type": "(query: string) => void",
+        "required": false,
+        "description": "Adds an \"Ask AI\" row that receives the typed text."
+      },
+      {
+        "name": "placeholder",
+        "type": "string",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "emptyMessage",
+        "type": "string",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "shortcut",
+        "type": "boolean",
+        "required": false,
+        "description": "Toggle with ⌘K / Ctrl+K anywhere on the page (default on)."
+      },
+      {
+        "name": "inline",
+        "type": "boolean",
+        "required": false,
+        "description": "Render inline instead of in a portal (stories and screenshots)."
+      },
+      {
+        "name": "defaultQuery",
+        "type": "string",
+        "required": false,
+        "description": "Starting text (stories)."
+      }
+    ]
+  },
+  {
     "name": "ContentPanel",
     "dir": "ContentPanel",
     "file": "src/components/ContentPanel/ContentPanel.tsx",
@@ -789,6 +881,39 @@
         "name": "children",
         "type": "ReactNode",
         "required": true,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "ContextMenu",
+    "dir": "ContextMenu",
+    "file": "src/components/ContextMenu/ContextMenu.tsx",
+    "import": "import { ContextMenu } from '@anm/design-system'",
+    "extends": [],
+    "props": [
+      {
+        "name": "items",
+        "type": "ContextMenuItem[]",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "required": true,
+        "description": "The area that opens the menu."
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "required": false,
+        "description": "Accessible name of the menu."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
         "description": ""
       }
     ]
@@ -1704,6 +1829,51 @@
     ]
   },
   {
+    "name": "HoverCard",
+    "dir": "HoverCard",
+    "file": "src/components/HoverCard/HoverCard.tsx",
+    "import": "import { HoverCard } from '@anm/design-system'",
+    "extends": [],
+    "props": [
+      {
+        "name": "trigger",
+        "type": "ReactNode",
+        "required": true,
+        "description": "The element that opens the card: a Link, an Avatar, a button. Must be focusable."
+      },
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "side",
+        "type": "'bottom' | 'top'",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "align",
+        "type": "'start' | 'center' | 'end'",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "defaultOpen",
+        "type": "boolean",
+        "required": false,
+        "description": "Open on mount (stories and screenshots)."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  {
     "name": "IconButton",
     "dir": "IconButton",
     "file": "src/components/IconButton/IconButton.tsx",
@@ -1764,6 +1934,76 @@
         "type": "ReactNode",
         "required": false,
         "description": "Icon rendered before the value — maps to Figma's \"Leading icon\" slot."
+      }
+    ]
+  },
+  {
+    "name": "InputGroup",
+    "dir": "InputGroup",
+    "file": "src/components/InputGroup/InputGroup.tsx",
+    "import": "import { InputGroup } from '@anm/design-system'",
+    "extends": [
+      "Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'prefix'>"
+    ],
+    "props": [
+      {
+        "name": "size",
+        "type": "'sm' | 'md' | 'lg'",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "error",
+        "type": "boolean",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "prefix",
+        "type": "ReactNode",
+        "required": false,
+        "description": "Fixed text before the value, outside the editable area (\"https://\")."
+      },
+      {
+        "name": "suffix",
+        "type": "ReactNode",
+        "required": false,
+        "description": "Fixed text after the value (\"USD\", \"%\")."
+      },
+      {
+        "name": "leadingIcon",
+        "type": "ReactNode",
+        "required": false,
+        "description": "Icon inside the field, before the value."
+      },
+      {
+        "name": "trailing",
+        "type": "ReactNode",
+        "required": false,
+        "description": "A small control inside the field, after the value (Kbd, an Icon Button)."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "description": "Classes for the outer group."
+      }
+    ]
+  },
+  {
+    "name": "Kbd",
+    "dir": "Kbd",
+    "file": "src/components/Kbd/Kbd.tsx",
+    "import": "import { Kbd } from '@anm/design-system'",
+    "extends": [
+      "HTMLAttributes<HTMLElement>"
+    ],
+    "props": [
+      {
+        "name": "keys",
+        "type": "string[]",
+        "required": false,
+        "description": "Several keys pressed together (a chord), e.g. ['⌘', 'K']. Use children for a single key."
       }
     ]
   },
@@ -2518,6 +2758,41 @@
     ]
   },
   {
+    "name": "ScrollArea",
+    "dir": "ScrollArea",
+    "file": "src/components/ScrollArea/ScrollArea.tsx",
+    "import": "import { ScrollArea } from '@anm/design-system'",
+    "extends": [
+      "HTMLAttributes<HTMLDivElement>"
+    ],
+    "props": [
+      {
+        "name": "aria-label",
+        "type": "string",
+        "required": true,
+        "description": "Names the region for assistive tech; required because the region is focusable."
+      },
+      {
+        "name": "orientation",
+        "type": "'vertical' | 'horizontal'",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "maxSize",
+        "type": "number",
+        "required": false,
+        "description": "Max height (vertical) or width (horizontal) in px; or size the area with a class."
+      },
+      {
+        "name": "surface",
+        "type": "'page' | 'container' | 'container-high'",
+        "required": false,
+        "description": "Colour behind the content, for the edge fades."
+      }
+    ]
+  },
+  {
     "name": "Search",
     "dir": "Search",
     "file": "src/components/Search/Search.tsx",
@@ -3257,6 +3532,14 @@
         "description": ""
       }
     ]
+  },
+  {
+    "name": "ToggleGroup",
+    "dir": "ToggleGroup",
+    "file": "src/components/ToggleGroup/ToggleGroup.tsx",
+    "import": "import { ToggleGroup } from '@anm/design-system'",
+    "extends": [],
+    "props": []
   },
   {
     "name": "Tooltip",
