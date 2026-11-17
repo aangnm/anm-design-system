@@ -442,3 +442,11 @@ Audited against the Material 3 Design Kit; the agreed items are on the Roadmap. 
   - Storybook applies the theme before a story renders, so switching themes no longer produces false contrast alerts.
   - `npm test` runs every story in dark, light and high contrast.
 - **Positioning:** "fintech" and "data-heavy products" are gone. The system is described as a design system for building products, by hand in Figma or in code or with AI agents, with a dedicated set for analytics dashboards. This is updated in the About & Guidelines purpose lines, the sample-data rule, the Storybook Introduction and Start here, `llms.txt`, the README and the package description.
+
+## v1.0 — Docs for people and agents, and the analytics set grows
+- **Docs quick wins (code):** Foundations pages in Storybook (Color, Typography, Spacing & density, Radius & elevation, Motion) built from the token export, with what each token controls and which components use it. Every docs page shows its import line and has **Copy for AI** / **View as Markdown**; each component is published as `components/<Name>.md`, and `llms.txt` links them all.
+- **Faceted Filter** (Data Display): a dashed trigger that opens a checklist of one column's values with counts; picked values show as chips. State = Default / Selected / Open.
+- **Date Range Picker** (Core, after PIN Field): presets on the left (Today … Year to date), two months on the right, the range tinted with surface/highlight. State = Closed / Open.
+- **Data Table** (Data Display): Table with a toolbar (Search, Faceted Filters, Columns, actions), sortable headers, a selection column and a footer with the count and Pagination. Composed only from existing instances.
+- Each has a `Why —` note and a light-mode mirror, and is in its page's Code handoff spec with the property-to-prop mapping. The Core spec's last "Etiqueta" property names now read "Label". The lint is clean (1,599 components).
+- **Code:** `DataTable`, `FacetedFilter`, `DateRangePicker` (plus `DEFAULT_DATE_RANGE_PRESETS` and `formatDateRange`) and a shared `usePopover` hook. Every story passes axe in dark, light and high contrast.

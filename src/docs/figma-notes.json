@@ -1,6 +1,6 @@
 {
   "source": "Figma component descriptions, pulled by scripts/figma/pull-notes.js — do not edit by hand; fix the description in Figma and pull again.",
-  "pulledAt": "2026-11-16T21:00:00.000Z",
+  "pulledAt": "2026-11-17T17:11:12.342Z",
   "notes": {
     "AccordionItem": {
       "figma": "Accordion",
@@ -445,6 +445,24 @@
       "nodeId": "2164:44",
       "page": "Navigation",
       "description": "Alternate top bar: breadcrumbs (left), Date Indicator (center), and actions incl. search + alerts (right).\n\nWhy — A composition of parts that already exist — Breadcrumb, Date Indicator, search and alerts. Kept as a component so the arrangement is documented, not because it introduces anything new.\n\nHit area — pointer: search and alerts each carry a 24 × 24 target (marked Hit area). On touch, extend the hit area to 48 × 48 px (hit/touch) without changing the visual. See Target size on the Accessibility page."
+    },
+    "DataTable": {
+      "figma": "Data Table",
+      "nodeId": "2823:1004",
+      "page": "Data Display",
+      "description": "A full analytics table: toolbar (search, faceted filters, Columns menu, actions), sortable and selectable rows, and a footer with the row count and Pagination. Built from Search, Faceted Filter, Button, Icon Button, Checkbox, Tag and Pagination instances.\n\nWhy — Table is the presentational shell; most dashboards also need to narrow, order and act on rows, and every team was rebuilding that toolbar slightly differently. Data Table fixes the order (search, filters, then view controls, then actions on the right) and keeps the count in the footer so a filtered view always says what it hides (\"1–7 of 7 (filtered from 26)\"). Loading, Empty and Error come from Table's state pattern, keeping the header visible.\n\nHit area — rows stay 44 high on desktop; sort controls are full header-cell buttons, never only the arrow. Selected rows use surface/highlight, the same tint as the range in Date Range Picker."
+    },
+    "FacetedFilter": {
+      "figma": "Faceted Filter",
+      "nodeId": "2821:1034",
+      "page": "Data Display",
+      "description": "A dashed trigger that opens a checklist of one column's values, each with its count. Once values are picked, the trigger shows them as chips (or \"3 selected\" past two).\n\nWhy — Table Toolbar showed active filter chips but had no way to choose them; analytics tables are filtered far more often than they are searched. Counts come with each option so the reader knows what a filter will leave before choosing it. The dashed edge marks it as an optional refinement, not a required field."
+    },
+    "DateRangePicker": {
+      "figma": "Date Range Picker",
+      "nodeId": "2822:2646",
+      "page": "Core",
+      "description": "A trigger showing the active range and a panel with presets on the left and two months on the right. A preset applies at once; a custom range is two clicks (start, then end), with the days between tinted.\n\nWhy — analytics questions are almost always about a period, and most periods are standard ones (last 7 days, this quarter). Presets make the common case one click and name it in the trigger (\"Last 30 days\"), which reads better in a report header than two raw dates. Date Picker stays the single-date control; this is the range one, built from the same day cells. Future days are disabled by default because reports rarely look forward.\n\nAccessibility — every day is a button named with its full date; start and end are pressed, days between say \"in range\". Escape closes and returns focus to the trigger."
     }
   }
 }
