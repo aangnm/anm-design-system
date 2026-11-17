@@ -458,3 +458,8 @@ Audited against the Material 3 Design Kit; the agreed items are on the Roadmap. 
 - **Heatmap** (Data Display): rows × columns in five steps of chart/series-1 over the surface, with the scale under the grid. Empty cells keep a border.
 - Each has a `Why —` note, a light-mode mirror and a row in the Code handoff spec. The Roadmap's Now list is down to Resizable Panels.
 - **Code:** `HorizontalBarChart`, `GaugeChart`, `Heatmap`, and a shared `useChartHover` hook that Detailed Line now uses too. Every story passes axe in dark, light and high contrast (200 per theme).
+
+## v1.2 — Resizable Panels; the analytics set is complete
+- **Resizable Panels** (Data Display): Orientation = Horizontal / Vertical, plus a Show grip boolean. The handle is a 1px border/subtle line with a 17px hit area (25px on touch); the grip is for layouts where the affordance must be obvious. `Why —` note, light-mode mirror and spec row added.
+- **Roadmap:** the analytics set (Data Table, Faceted Filter, Date Range Picker, chart readouts, Horizontal Bar, Gauge, Heatmap, Resizable Panels) is done. Now is the general components from the shadcn/ui comparison; Next is the AI elements.
+- **Code:** `ResizablePanels` with keyboard support (arrows 2%, Shift 10%, Home / End, Enter or double click to reset), per-panel minimum sizes and named separators. 204 stories pass axe in each of the three themes.

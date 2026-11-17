@@ -2465,6 +2465,59 @@
     ]
   },
   {
+    "name": "ResizablePanels",
+    "dir": "ResizablePanels",
+    "file": "src/components/ResizablePanels/ResizablePanels.tsx",
+    "import": "import { ResizablePanels } from '@anm/design-system'",
+    "extends": [
+      "Omit<HTMLAttributes<HTMLDivElement>, 'children'>"
+    ],
+    "props": [
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "required": true,
+        "description": "One child per panel; handles go between them."
+      },
+      {
+        "name": "direction",
+        "type": "'horizontal' | 'vertical'",
+        "required": false,
+        "description": "`horizontal` puts panels side by side; `vertical` stacks them."
+      },
+      {
+        "name": "defaultSizes",
+        "type": "number[]",
+        "required": false,
+        "description": "Starting sizes in percent, one per panel; defaults to equal."
+      },
+      {
+        "name": "minSizes",
+        "type": "number[]",
+        "required": false,
+        "description": "Smallest size in percent, one per panel; defaults to 10 each."
+      },
+      {
+        "name": "panelLabels",
+        "type": "string[]",
+        "required": false,
+        "description": "Accessible name of each panel, used to label its handle."
+      },
+      {
+        "name": "withHandle",
+        "type": "boolean",
+        "required": false,
+        "description": "Shows a grip on each handle."
+      },
+      {
+        "name": "onSizesChange",
+        "type": "(sizes: number[]) => void",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  {
     "name": "Search",
     "dir": "Search",
     "file": "src/components/Search/Search.tsx",
