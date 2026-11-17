@@ -17,7 +17,7 @@ export default meta
 
 type Story = StoryObj<typeof BenchmarkTable>
 
-// Sample from the Figma component: Ingresos/mes per account against the 400 min /
+// Sample from the Figma component: Revenue/month per account against the 400 min /
 // 800 ideal benchmarks (Critical < 400 ≤ Moderate < 800 ≤ Healthy).
 export const Playground: Story = {
   args: {

@@ -6,7 +6,7 @@ const meta: Meta<typeof ActionBar> = {
   component: ActionBar,
   tags: ['autodocs'],
   decorators: [(Story) => <div className="w-[390px] bg-surface-page"><Story /></div>],
-  args: { summary: '2 filters applied · 26 results', primaryLabel: 'Continuar' },
+  args: { summary: '2 filters applied · 26 results', primaryLabel: 'Continue' },
 }
 export default meta
 type Story = StoryObj<typeof ActionBar>

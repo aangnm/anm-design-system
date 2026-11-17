@@ -4,7 +4,7 @@ import { formatChartNumber } from '@/components/Legend'
 import { cn } from '@/lib/utils'
 
 // Mirrors the Benchmark Table component (Product Patterns page): a
-// benchmark table — a per-row rate (sample: Ingresos/mes per account) with a
+// benchmark table — a per-row rate (sample: Revenue/month per account) with a
 // tier-coloured Status chip (Critical / Moderate / Healthy against a minimum
 // and an ideal benchmark, 400 / 800 by default). Why (from Figma) — the Estado column uses
 // tier-coloured Tag instances rather than coloured text, so status survives

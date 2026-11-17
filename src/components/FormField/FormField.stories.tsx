@@ -23,7 +23,7 @@ export const States: Story = {
   render: () => (
     <div className="flex flex-col gap-24px bg-surface-page p-8 w-[280px]">
       <FormField label="Label" placeholder="Placeholder" helperText="Optional helper text" />
-      <FormField label="Label" placeholder="Placeholder" error helperText="Este campo es obligatorio" />
+      <FormField label="Label" placeholder="Placeholder" error helperText="This field is required" />
     </div>
   ),
 }

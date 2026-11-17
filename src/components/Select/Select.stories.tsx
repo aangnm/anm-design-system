@@ -3,7 +3,7 @@ import { Select } from './Select'
 
 const options = (
   <>
-    <option value="">Selecciona…</option>
+    <option value="">Select…</option>
     <option value="a">Option A</option>
     <option value="b">Option B</option>
   </>

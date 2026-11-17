@@ -18,7 +18,7 @@ export interface StatProps extends HTMLAttributes<HTMLDivElement> {
   delta?: ReactNode
   /** Colour + arrow for the delta: up = ▲ success, down = ▼ error, neutral = muted (no arrow). */
   trend?: StatTrend
-  /** Caption after the delta, e.g. "vs. mes anterior". */
+  /** Caption after the delta, e.g. "vs. last month". */
   deltaCaption?: ReactNode
   state?: StatState
   emptyMessage?: string
@@ -42,7 +42,7 @@ export function Stat({
   deltaCaption,
   state = 'default',
   emptyMessage = 'No data',
-  errorMessage = 'Error al cargar',
+  errorMessage = 'Couldn’t load',
   className,
   ...props
 }: StatProps) {

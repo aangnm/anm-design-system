@@ -18,7 +18,7 @@ export const Default: Story = {
     const [v, setV] = useState(12)
     return (
       <div className="bg-surface-page p-8">
-        <BottomSheet overlay={false} title="Sheet title" context="Contexto · detalle corto">
+        <BottomSheet overlay={false} title="Sheet title" context="Context · short detail">
           <Counter value={v} onChange={setV} />
         </BottomSheet>
       </div>

@@ -436,3 +436,8 @@ Audited against the Material 3 Design Kit; the agreed items are on the Roadmap. 
   - Charts fill their container and redraw at its width; templates are responsive (App Bar below 1024px, one-column grids on phones); fixed widths became max widths; tables scroll in a focusable region.
   - Storybook Docs are installed: prop tables, each component's Figma design notes, a "Start here" page, and `/llms.txt` with the whole system for agents.
   - `BenchmarkTier` values are English (`'critical' | 'moderate' | 'healthy'`).
+- **Follow-up (after go-live):**
+  - The last Spanish is gone. In Figma: "Selecciona…", "Inicio", "Detalle", "Fecha", "Continuar", "Confirmar", "Nombre completo", the Bottom Sheet Context default, and 186 Spanish or farming layer names (Row · Lote 07, Cell · Tallos/ha·mes, Field · Tallos cosechados, Dígito 1 …). In code: six story strings and Stat's default error message.
+  - A scan of the rendered text of all 173 stories now finds none.
+  - Storybook applies the theme before a story renders, so switching themes no longer produces false contrast alerts.
+  - `npm test` runs every story in dark, light and high contrast.
