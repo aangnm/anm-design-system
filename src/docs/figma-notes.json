@@ -1,6 +1,6 @@
 {
   "source": "Figma component descriptions, pulled by scripts/figma/pull-notes.js — do not edit by hand; fix the description in Figma and pull again.",
-  "pulledAt": "2026-11-17T18:29:05.011Z",
+  "pulledAt": "2026-11-17T19:18:43.355Z",
   "notes": {
     "AccordionItem": {
       "figma": "Accordion",
@@ -487,6 +487,54 @@
       "nodeId": "2828:1521",
       "page": "Data Display",
       "description": "Two or more panels side by side (or stacked) with a handle between each pair that drags to resize — a chart beside its table, a list beside its detail, an AI chat beside the canvas it works on.\n\nWhy — dashboards are read differently by different people, so the split should be theirs to set, inside limits the layout can survive (minSizes in code). The handle is a 1px border/subtle line, the same weight as a card edge, so a resizable layout looks like a normal one until it is touched; hover and drag raise it to border/emphasis. Show grip adds a grip for layouts where the affordance must be obvious (a first-run dashboard, touch screens).\n\nAccessibility — each handle is a focusable separator with its panel's size as its value. Arrow keys move it 2% (Shift: 10%), Home / End go to the limits, Enter or a double click resets the default split, so dragging is never the only way.\n\nHit area — the line is 1px but its hit area is 17px (25px on touch), centred on the line."
+    },
+    "Kbd": {
+      "figma": "Kbd",
+      "nodeId": "2833:2647",
+      "page": "Core",
+      "description": "A keyboard key, shown inline in text, menus, tooltips and the Command Menu footer. In code, keys={['⌘','K']} renders a chord as keys side by side.\n\nWhy — shortcuts help only if they are visible where the action is. One key per Kbd keeps the keycap readable; a chord has no \"+\" between keys, which is how macOS menus show it and reads faster. Keys sit on surface/container-high with a border/default edge so they read as objects, not as code. Text is 11px Medium on text/secondary: a hint, never the most important thing in its row."
+    },
+    "ButtonGroup": {
+      "figma": "Button Group",
+      "nodeId": "2833:2653",
+      "page": "Core",
+      "description": "Related Buttons and Icon Buttons joined into one control — Previous / Today / Next, a split Export button, zoom out / in.\n\nWhy — buttons that act on the same thing should read as one object. The group squares the inner corners and overlaps the 1px borders so the seam is one line. Use Secondary buttons: a Primary in a group competes with the page's one Primary. In code every group needs an aria-label so a screen reader announces what the buttons share."
+    },
+    "InputGroup": {
+      "figma": "Input Group",
+      "nodeId": "2833:2689",
+      "page": "Core",
+      "description": "An Input with add-ons: fixed text before or after the value (\"https://\", \"USD\", \"%\"), an icon inside, or a small control at the end (a Kbd hint, a copy Icon Button).\n\nWhy — values with a unit or fixed prefix are typed more accurately when the fixed part is shown but not editable; in a placeholder it vanishes as soon as typing starts. Prefix and suffix sit on surface/container-high behind a border/subtle seam so they read as part of the field but not the value. The whole group is one field: one border, one focus ring, one error state, at the Input heights."
+    },
+    "ToggleGroup": {
+      "figma": "Toggle Group",
+      "nodeId": "2833:2704",
+      "page": "Core",
+      "description": "A row of toggle buttons where one or several can be on — which series a chart shows, text formatting, view options.\n\nWhy — Segmented Control already covers \"choose exactly one scope\" as a radio group. Toggle Group is for on/off options: multiple lets several be on, and single allows none, which a radio group cannot. Pressed items take surface/highlight, the same selection tint as a Data Table row, so \"on\" means one thing across the system. Icon-only items still carry a label, used as their name and tooltip."
+    },
+    "ScrollArea": {
+      "figma": "Scroll Area",
+      "nodeId": "2833:2720",
+      "page": "Core",
+      "description": "A region that scrolls inside a fixed height or width — a long list, a chat history, a side panel — with a thin token-coloured scrollbar and a soft edge that says there is more.\n\nWhy — native scrollbars can be invisible on macOS until you scroll, so a clipped list can look complete. The 16px edge fade (surface to transparent) appears only on a side that has more content. The scrollbar is the browser's own, thinned and coloured border/default, so it keeps native behaviour. In code the region is focusable and named, so keyboard users can reach and scroll it."
+    },
+    "ContextMenu": {
+      "figma": "Context Menu",
+      "nodeId": "2835:2121",
+      "page": "Navigation",
+      "description": "The menu opened by a right click (or the Menu key / Shift+F10) on an area — a table row, a chart, a canvas — at the point where it was opened.\n\nWhy — context menus are fast for people who know they exist and invisible to everyone else, so they are a shortcut, never the only route: every item must also be reachable from a visible control (a row's ⋯ button, a toolbar). It looks like Menu, with shortcuts in Kbd. Destructive items go last, after a separator, in text/error.\n\nKeyboard — focus moves to the first item; arrows move, Home / End jump, Enter runs, Escape or Tab closes and returns focus."
+    },
+    "HoverCard": {
+      "figma": "Hover Card",
+      "nodeId": "2835:2810",
+      "page": "Feedback & Overlays",
+      "description": "A preview card that opens when a pointer rests on a trigger, or the trigger takes keyboard focus — an account, a person, a linked record, a metric's definition.\n\nWhy — dashboards are dense with references. A Hover Card answers \"what is this?\" without leaving the page; a Tooltip is for a short label, a Popover for something you act on. Touch screens have no hover, so a Hover Card may only preview what the trigger already leads to — never hold the only copy of information or an action. It opens after 400ms so passing over a table does not flash cards, and closes 150ms after leaving or on Escape."
+    },
+    "CommandMenu": {
+      "figma": "Command Menu",
+      "nodeId": "2835:2828",
+      "page": "Feedback & Overlays",
+      "description": "The ⌘K palette: a search field over grouped commands and destinations, run from the keyboard. With an AI handler, the first row hands the typed text to an agent (\"Ask AI\").\n\nWhy — reopened from the Roadmap's Accepted list (2026-11-17): AI elements are the system's focus, and a command entry is the usual way to reach an agent from anywhere; the analytics set now has enough surfaces to need a way to jump between them. A modal dialog over the scrim, 560 wide, placed high so results grow downward without the field moving. The footer teaches the keys with Kbd. \"Ask AI\" comes first whenever there is text, so \"no match\" is never a dead end.\n\nAccessibility — the field is a combobox that owns the listbox; arrows move the active option, Enter runs it, Escape closes and returns focus; ⌘K / Ctrl+K toggles it from anywhere."
     }
   }
 }

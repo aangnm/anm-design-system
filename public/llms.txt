@@ -66,6 +66,7 @@ Every story runs as a test in CI with axe. To pass:
 - [Avatar](https://aangnm.github.io/anm-design-system/components/Avatar.md): User/entity representation with initials. Size for context; Status shows presence (Online/Offline).
 - [Badge](https://aangnm.github.io/anm-design-system/components/Badge.md): Small count or status indicator (e.g. notification counts), in solid semantic colors.
 - [Button](https://aangnm.github.io/anm-design-system/components/Button.md): Action trigger. Type sets emphasis (Primary > Secondary > Outline > Ghost); Size sets density; toggle Leading icon for an optional icon. Use one Primary per view. States: Default/Hover/Focus/Disabled/Loading.
+- [ButtonGroup](https://aangnm.github.io/anm-design-system/components/ButtonGroup.md): Related Buttons and Icon Buttons joined into one control — Previous / Today / Next, a split Export button, zoom out / in.
 - [Checkbox](https://aangnm.github.io/anm-design-system/components/Checkbox.md): Multi-select or indeterminate choice within a group. Two axes: Value (Unchecked, Checked, Indeterminate) × State (Default, Hover, Focus, Disabled), so every combination exists, including Checked + Disabled and Checked + Focus.
 - [ChoiceTile](https://aangnm.github.io/anm-design-system/components/ChoiceTile.md): Selectable tile for picking one option from a short set — a number, a category, a plan, a reason — where the answer must be hit fast with a gloved or wet thumb. Size MD 48 / LG 56 high; Align Center (numbers, chips) or Left (names). States: Default, Hover, Focus (the shared Focus ring, 2px wide, 2px outside), Disabled, Selected (solid interactive/primary fill) and Done (surface/highlight tint with a check and a Badge holding the count: this one already has a value) and Counted (the same tint and Badge without the check, 12px side padding). Properties: Label, Leading icon (swap). Set the count on the nested Badge (its Label property).
 - [Combobox](https://aangnm.github.io/anm-design-system/components/Combobox.md): Searchable single-value picker: type to filter, pick one. State=Default/Hover/Focus/Disabled/Error/Focus + Error mirrors Select's field exactly; State=Open shows the field with its filtered results panel, matching how Dropdown Menu documents its own open state.
@@ -78,6 +79,8 @@ Every story runs as a test in CI with axe. To pass:
 - [FormField](https://aangnm.github.io/anm-design-system/components/FormField.md): Standard form building block: label + control + helper/error. Compose with Input, Select, etc.
 - [IconButton](https://aangnm.github.io/anm-design-system/components/IconButton.md): Icon-only button. Type (Primary / Secondary / Ghost) x Size (SM 32 / MD 36 / LG 48) x State (Default / Hover / Focus / Disabled). State mirrors Button exactly: Hover adds the 8% state layer in the icon colour, Focus adds the shared Focus ring, 2px wide and 2px outside, over the default fill, Disabled uses interactive/disabled with the icon on text/disabled. Swap the icon instance for any Lucide glyph; always give it an accessible label in code.
 - [Input](https://aangnm.github.io/anm-design-system/components/Input.md): Single-line text field. Wrap in a Form Field for label + helper/error. Supports a leading icon. States: Default/Hover/Focus/Disabled/Error/Focus + Error.
+- [InputGroup](https://aangnm.github.io/anm-design-system/components/InputGroup.md): An Input with add-ons: fixed text before or after the value ("https://", "USD", "%"), an icon inside, or a small control at the end (a Kbd hint, a copy Icon Button).
+- [Kbd](https://aangnm.github.io/anm-design-system/components/Kbd.md): A keyboard key, shown inline in text, menus, tooltips and the Command Menu footer. In code, keys={['⌘','K']} renders a chord as keys side by side.
 - [Link](https://aangnm.github.io/anm-design-system/components/Link.md): Inline text link. State=Default/Hover/Focus/Visited; toggle External for an inline arrow suffix on links that leave the product. Underlined by default so the affordance does not depend on color alone.
 - [ListRow](https://aangnm.github.io/anm-design-system/components/ListRow.md): Tappable row for choosing or opening one item from a list: leading icon box, title, optional subtitle, trailing chevron (a check when selected). 64 high. State = Default, Hover, Focus, Disabled, Selected (2px interactive/primary edge plus a check). Properties: Title, Subtitle, Show subtitle, Show icon, Icon (swap).
 - [MultiSelect](https://aangnm.github.io/anm-design-system/components/MultiSelect.md): Multi-select / combobox — a select that holds multiple values as removable chips (Tag, dismissible) with a chevron affordance. Opens the same Menu panel as Dropdown Menu. For a single value use Select.
@@ -85,6 +88,7 @@ Every story runs as a test in CI with axe. To pass:
 - [Radio](https://aangnm.github.io/anm-design-system/components/Radio.md): Single choice within a mutually exclusive group — always use two or more together. Focus state uses the focus/ring token, matching Input/Button.
 - [RadioGroup](https://aangnm.github.io/anm-design-system/components/RadioGroup.md): A legend + optional helper text over a stack of Radio options — the wrapper Form Field never generalized to. Form Field labels one control; this labels a set.
 - [Rating](https://aangnm.github.io/anm-design-system/components/Rating.md): A compact 3-tier scale indicator: three fixed segments (semantic/error, semantic/warning, semantic/success in order), the current tier at full opacity and the other two dimmed to 25%, with a label in the matching text token (text/error, text/warning, text/success), which stays readable in both themes. Severity=Critical/Moderate/Healthy. The labels shown are Critical, Moderate and Healthy, the same words as the property values.
+- [ScrollArea](https://aangnm.github.io/anm-design-system/components/ScrollArea.md): A region that scrolls inside a fixed height or width — a long list, a chat history, a side panel — with a thin token-coloured scrollbar and a soft edge that says there is more.
 - [Search](https://aangnm.github.io/anm-design-system/components/Search.md): Search field with a leading magnifier, for filtering lists or global search.
 - [SegmentedControl](https://aangnm.github.io/anm-design-system/components/SegmentedControl.md): Mutually exclusive view/scope switch (e.g. Day/Week/Month). Active marks which segment is selected. Active segment raised on surface/page + text/primary; inactive text/secondary on a surface/container-high track. Use for 2–4 options; use Tabs for page-level navigation.
 - [Select](https://aangnm.github.io/anm-design-system/components/Select.md): Dropdown to pick one option. Mirrors Input styling with a chevron affordance. States: Default/Hover/Focus/Disabled/Error/Focus + Error.
@@ -95,6 +99,7 @@ Every story runs as a test in CI with axe. To pass:
 - [Switch](https://aangnm.github.io/anm-design-system/components/Switch.md): Immediate on/off toggle for settings that apply instantly (no explicit save). Focus state uses the focus/ring token, matching Input/Button.
 - [Tag](https://aangnm.github.io/anm-design-system/components/Tag.md): Compact category or status label. Set Color by semantic meaning; enable Dismissible for removable filter chips.
 - [Textarea](https://aangnm.github.io/anm-design-system/components/Textarea.md): Multi-line text input for notes and longer entries. States: Default/Hover/Focus/Disabled/Error/Focus + Error. Atomic — pair with Form Field for label + helper.
+- [ToggleGroup](https://aangnm.github.io/anm-design-system/components/ToggleGroup.md): A row of toggle buttons where one or several can be on — which series a chart shows, text formatting, view options.
 - [Tooltip](https://aangnm.github.io/anm-design-system/components/Tooltip.md): Brief helper text on hover/focus. Keep to a short phrase; never place essential-only info here.
 
 ### Data Display
@@ -124,7 +129,9 @@ Every story runs as a test in CI with axe. To pass:
 
 - [Banner](https://aangnm.github.io/anm-design-system/components/Banner.md): Inline contextual message tied to a region or page. Color by semantic meaning (Info/Success/Warning/Error).
 - [BottomSheet](https://aangnm.github.io/anm-design-system/components/BottomSheet.md): Panel that rises from the bottom of a phone screen for one focused task — entering a count, picking from a short list — over a Scrim. Optional handle, a title with a one-line context, a swappable Content slot (Counter by default) and a two-button footer. 390 wide, top corners radius/xl, elevation/shadow-xl. Properties: Title, Context, Show handle, Content (swap).
+- [CommandMenu](https://aangnm.github.io/anm-design-system/components/CommandMenu.md): The ⌘K palette: a search field over grouped commands and destinations, run from the keyboard. With an AI handler, the first row hands the typed text to an agent ("Ask AI").
 - [Drawer](https://aangnm.github.io/anm-design-system/components/Drawer.md): Side panel for secondary flows without leaving the current page.
+- [HoverCard](https://aangnm.github.io/anm-design-system/components/HoverCard.md): A preview card that opens when a pointer rests on a trigger, or the trigger takes keyboard focus — an account, a person, a linked record, a metric's definition.
 - [Modal](https://aangnm.github.io/anm-design-system/components/Modal.md): Blocking dialog for focused tasks or confirmations; header, body, and footer actions.
 - [Popover](https://aangnm.github.io/anm-design-system/components/Popover.md): Contextual floating panel anchored to a trigger.
 - [Progress](https://aangnm.github.io/anm-design-system/components/Progress.md): Determinate progress bar for an ongoing task, with an optional value label.
@@ -135,6 +142,7 @@ Every story runs as a test in CI with axe. To pass:
 - [ActionBar](https://aangnm.github.io/anm-design-system/components/ActionBar.md): Pinned bottom bar for a phone screen: an optional summary line, one Primary Button LG and an optional Secondary. Properties: Summary (text), Show summary, Show secondary. Bottom padding of 32 clears the home indicator.
 - [AppBar](https://aangnm.github.io/anm-design-system/components/AppBar.md): Top bar for a phone-width screen: menu button, Date Indicator (date and week tag) and Avatar, 56 high, on surface/container over a border/subtle hairline. Show date is a boolean property.
 - [Breadcrumb](https://aangnm.github.io/anm-design-system/components/Breadcrumb.md): Shows location in the hierarchy and enables upward navigation.
+- [ContextMenu](https://aangnm.github.io/anm-design-system/components/ContextMenu.md): The menu opened by a right click (or the Menu key / Shift+F10) on an area — a table row, a chart, a canvas — at the point where it was opened.
 - [DateIndicator](https://aangnm.github.io/anm-design-system/components/DateIndicator.md): A date with an optional context tag. Date is a text property; the tag is an optional slot controlled by Show tag. The sample copy shows a week label (WK 32) — illustrative content, not part of the component's contract. Retype or swap the tag for any short context label.
 - [DropdownMenu](https://aangnm.github.io/anm-design-system/components/DropdownMenu.md): Menu opened from a trigger (button/field). Elevated surface with actions or options.
 - [Menu](https://aangnm.github.io/anm-design-system/components/Menu.md): Elevated list of actions or options. Compose from Menu Item.
@@ -148,20 +156,12 @@ Every story runs as a test in CI with axe. To pass:
 ### Other
 
 - [Accordion](https://aangnm.github.io/anm-design-system/components/Accordion.md): 
-- [ButtonGroup](https://aangnm.github.io/anm-design-system/components/ButtonGroup.md): 
 - [CardDescription](https://aangnm.github.io/anm-design-system/components/CardDescription.md): 
 - [CardTitle](https://aangnm.github.io/anm-design-system/components/CardTitle.md): 
-- [CommandMenu](https://aangnm.github.io/anm-design-system/components/CommandMenu.md): 
-- [ContextMenu](https://aangnm.github.io/anm-design-system/components/ContextMenu.md): 
-- [HoverCard](https://aangnm.github.io/anm-design-system/components/HoverCard.md): 
-- [InputGroup](https://aangnm.github.io/anm-design-system/components/InputGroup.md): 
-- [Kbd](https://aangnm.github.io/anm-design-system/components/Kbd.md): 
 - [NavbarLink](https://aangnm.github.io/anm-design-system/components/NavbarLink.md): 
-- [ScrollArea](https://aangnm.github.io/anm-design-system/components/ScrollArea.md): 
 - [SidebarBrand](https://aangnm.github.io/anm-design-system/components/SidebarBrand.md): 
 - [SidebarItem](https://aangnm.github.io/anm-design-system/components/SidebarItem.md): 
 - [Tabs](https://aangnm.github.io/anm-design-system/components/Tabs.md): 
-- [ToggleGroup](https://aangnm.github.io/anm-design-system/components/ToggleGroup.md): 
 
 ### Product Patterns
 

@@ -463,3 +463,11 @@ Audited against the Material 3 Design Kit; the agreed items are on the Roadmap. 
 - **Resizable Panels** (Data Display): Orientation = Horizontal / Vertical, plus a Show grip boolean. The handle is a 1px border/subtle line with a 17px hit area (25px on touch); the grip is for layouts where the affordance must be obvious. `Why —` note, light-mode mirror and spec row added.
 - **Roadmap:** the analytics set (Data Table, Faceted Filter, Date Range Picker, chart readouts, Horizontal Bar, Gauge, Heatmap, Resizable Panels) is done. Now is the general components from the shadcn/ui comparison; Next is the AI elements.
 - **Code:** `ResizablePanels` with keyboard support (arrows 2%, Shift 10%, Home / End, Enter or double click to reset), per-panel minimum sizes and named separators. 204 stories pass axe in each of the three themes.
+
+## v1.3 — General components from the shadcn/ui comparison
+- **Core:** Kbd (Key text property), Button Group (three Secondary Buttons joined, inner corners squared), Input Group (Show prefix / Show suffix booleans, Prefix, Suffix and Value text), Toggle Group (pressed items on surface/highlight), Scroll Area (border/default scrollbar, 16px edge fade bound to the surface). They sit after Date Range Picker.
+- **Navigation:** Context Menu, the Menu look with Kbd shortcuts and a destructive last item after a separator.
+- **Feedback & Overlays:** Hover Card (a Link trigger and a 280-wide preview card) and Command Menu (⌘K: search, grouped results, Kbd footer, and an "Ask AI" first row).
+- Each has a `Why —` note, a light-mode mirror and its row and mapping in the page's Code handoff spec. The lint is clean.
+- **Roadmap:** the Command Menu note left Accepted (it shipped). Now is the AI elements, Next the blocks, Later the anm docs site.
+- **Code:** `Kbd`, `ButtonGroup`, `InputGroup`, `ToggleGroup`, `ScrollArea`, `HoverCard`, `ContextMenu`, `CommandMenu`. 225 stories pass axe in each of the three themes; Command Menu's empty state is a status line, not an empty listbox.
