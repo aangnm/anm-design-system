@@ -20,10 +20,14 @@ const VARIANT_AXES = {
     'Default', 'Hover', 'Focus', 'Disabled', 'Loading', 'Error', 'Focus + Error', 'Empty',
     'Active', 'Visited', 'Open', 'Closed', 'Searchable', 'Expanded', 'Collapsed',
     'Selected', 'Done', 'Counted', 'Filled',
+    // AI elements (v1.4): a message streams, reasoning thinks, a tool call runs or waits for approval.
+    'Streaming', 'Thinking', 'Running', 'Approval',
   ],
   Value: ['Unchecked', 'Checked', 'Indeterminate', 'Unselected', 'Selected', 'Off', 'On'],
   Color: ['Neutral', 'Info', 'Success', 'Warning', 'Error'],
   Status: ['None', 'Online', 'Offline'],
+  // Who wrote a chat turn (Chat Message, v1.4).
+  From: ['User', 'Assistant'],
   Orientation: ['Horizontal', 'Vertical'],
   Shape: ['Line', 'Block', 'Circle'],
   Active: ['Left', 'Center', 'Right'],

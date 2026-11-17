@@ -60,6 +60,16 @@ Every story runs as a test in CI with axe. To pass:
 
 ## Components
 
+### AI
+
+- [ChatMessage](https://aangnm.github.io/anm-design-system/components/ChatMessage.md): One turn in a conversation with an agent: the person's message, or the assistant's answer as it streams in. In code, Chat Thread is the log that holds them.
+- [ModelSelector](https://aangnm.github.io/anm-design-system/components/ModelSelector.md): A compact control in the Prompt Input toolbar that picks which model answers, named by what it is good at, with one line on the trade-off.
+- [PromptInput](https://aangnm.github.io/anm-design-system/components/PromptInput.md): Where a person writes to an agent: a text area that grows with the message, a send button, and a toolbar for attachments and the Model Selector.
+- [Reasoning](https://aangnm.github.io/anm-design-system/components/Reasoning.md): The agent's thinking as a quiet disclosure above its answer: open while it thinks, folded to one line ("Thought for 12 seconds") once the answer starts.
+- [Sources](https://aangnm.github.io/anm-design-system/components/Sources.md): Where an answer came from: a folded list under the answer ("4 sources"), with Citation as the numbered marker inside the text.
+- [Suggestions](https://aangnm.github.io/anm-design-system/components/Suggestions.md): Prompt starters and follow-ups as a row of pills — on an empty chat, or under an answer.
+- [ToolCall](https://aangnm.github.io/anm-design-system/components/ToolCall.md): One action the agent takes — querying data, sending an email, creating a record — with its status, and the input and output one click away. State=Approval asks the person to approve or deny first.
+
 ### Core
 
 - [AccordionItem](https://aangnm.github.io/anm-design-system/components/AccordionItem.md): Disclosure row for grouped content: a header (title + chevron) that reveals a body on expand. State=Collapsed/Expanded. Stack several with a shared bottom hairline for a list of sections — no separate container component, same relationship as Menu Item to Menu.
@@ -158,17 +168,10 @@ Every story runs as a test in CI with axe. To pass:
 - [Accordion](https://aangnm.github.io/anm-design-system/components/Accordion.md): 
 - [CardDescription](https://aangnm.github.io/anm-design-system/components/CardDescription.md): 
 - [CardTitle](https://aangnm.github.io/anm-design-system/components/CardTitle.md): 
-- [ChatMessage](https://aangnm.github.io/anm-design-system/components/ChatMessage.md): 
-- [ModelSelector](https://aangnm.github.io/anm-design-system/components/ModelSelector.md): 
 - [NavbarLink](https://aangnm.github.io/anm-design-system/components/NavbarLink.md): 
-- [PromptInput](https://aangnm.github.io/anm-design-system/components/PromptInput.md): 
-- [Reasoning](https://aangnm.github.io/anm-design-system/components/Reasoning.md): 
 - [SidebarBrand](https://aangnm.github.io/anm-design-system/components/SidebarBrand.md): 
 - [SidebarItem](https://aangnm.github.io/anm-design-system/components/SidebarItem.md): 
-- [Sources](https://aangnm.github.io/anm-design-system/components/Sources.md): 
-- [Suggestions](https://aangnm.github.io/anm-design-system/components/Suggestions.md): 
 - [Tabs](https://aangnm.github.io/anm-design-system/components/Tabs.md): 
-- [ToolCall](https://aangnm.github.io/anm-design-system/components/ToolCall.md): 
 
 ### Product Patterns
 

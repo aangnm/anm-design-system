@@ -471,3 +471,11 @@ Audited against the Material 3 Design Kit; the agreed items are on the Roadmap. 
 - Each has a `Why —` note, a light-mode mirror and its row and mapping in the page's Code handoff spec. The lint is clean.
 - **Roadmap:** the Command Menu note left Accepted (it shipped). Now is the AI elements, Next the blocks, Later the anm docs site.
 - **Code:** `Kbd`, `ButtonGroup`, `InputGroup`, `ToggleGroup`, `ScrollArea`, `HoverCard`, `ContextMenu`, `CommandMenu`. 225 stories pass axe in each of the three themes; Command Menu's empty state is a status line, not an empty listbox.
+
+## v1.4 — AI elements, on a new AI page
+- **New page: AI** (`2838:245`, after Feedback & Overlays), with dark and light sections and its own Code handoff spec.
+- **Chat Message** (From = User / Assistant; State = Default / Streaming / Error), **Prompt Input** (State = Default / Streaming: Send becomes Stop), **Suggestions**, **Reasoning** (Thinking / Done), **Tool Call** (Running / Done / Error / Approval), **Sources** (Collapsed / Expanded), **Citation** and **Model Selector** (Closed / Open).
+- The assistant is marked by Sparkles on a neutral disc, never a face. Copy rules for agent output live in Chat Message's `Why —` note: plain words, a next step, no stack traces, present-tense status.
+- **Lint vocabulary grew on purpose:** a From axis (User, Assistant) and the States Streaming, Thinking, Running and Approval. The lint is clean.
+- **Roadmap:** AI elements are done; Now is the blocks (Login, Analytics Dashboard with Data Table, an AI chat workspace).
+- **Code:** `ChatMessage`, `ChatThread`, `AssistantMark`, `PromptInput`, `Suggestions`, `Reasoning`, `ToolCall`, `Sources`, `Citation`, `ModelSelector`, and a Storybook "AI" section whose Conversation story puts them all together. 247 stories pass axe in each of the three themes.

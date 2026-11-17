@@ -1,6 +1,6 @@
 {
   "source": "Figma component descriptions, pulled by scripts/figma/pull-notes.js — do not edit by hand; fix the description in Figma and pull again.",
-  "pulledAt": "2026-11-17T19:18:43.355Z",
+  "pulledAt": "2026-11-17T19:38:36.893Z",
   "notes": {
     "AccordionItem": {
       "figma": "Accordion",
@@ -535,6 +535,54 @@
       "nodeId": "2835:2828",
       "page": "Feedback & Overlays",
       "description": "The ⌘K palette: a search field over grouped commands and destinations, run from the keyboard. With an AI handler, the first row hands the typed text to an agent (\"Ask AI\").\n\nWhy — reopened from the Roadmap's Accepted list (2026-11-17): AI elements are the system's focus, and a command entry is the usual way to reach an agent from anywhere; the analytics set now has enough surfaces to need a way to jump between them. A modal dialog over the scrim, 560 wide, placed high so results grow downward without the field moving. The footer teaches the keys with Kbd. \"Ask AI\" comes first whenever there is text, so \"no match\" is never a dead end.\n\nAccessibility — the field is a combobox that owns the listbox; arrows move the active option, Enter runs it, Escape closes and returns focus; ⌘K / Ctrl+K toggles it from anywhere."
+    },
+    "ChatMessage": {
+      "figma": "Chat Message",
+      "nodeId": "2839:1635",
+      "page": "AI",
+      "description": "One turn in a conversation with an agent: the person's message, or the assistant's answer as it streams in. In code, Chat Thread is the log that holds them.\n\nWhy — the two sides are told apart by layout, not only colour: the person's turn is a bubble on surface/container-high aligned right; the assistant's answer is unboxed full-width text on the left, because it is often long and holds tables, lists and charts that a bubble would cramp. The assistant is marked by the Sparkles mark, never a face. While streaming, a caret ends the text and the message is busy; the thread is a polite live log, so screen readers hear the answer once it settles.\n\nCopy rules for agent output — say what happened in plain words (\"I couldn't reach the sales data\"), never a code or stack trace; offer the next step (Retry); never apologise twice. Status text is short and present tense: \"Thinking…\", \"Searching 3 sources…\"."
+    },
+    "PromptInput": {
+      "figma": "Prompt Input",
+      "nodeId": "2839:1677",
+      "page": "AI",
+      "description": "Where a person writes to an agent: a text area that grows with the message, a send button, and a toolbar for attachments and the Model Selector.\n\nWhy — prompts range from three words to a pasted brief, so the field starts at one line and grows to eight before it scrolls. Enter sends, Shift+Enter adds a line. Send is the one Primary control and stays disabled while the field is empty; while the agent answers it becomes Stop in the same place, so stopping never needs a hunt. One focus ring for the whole box, like Input Group."
+    },
+    "Suggestions": {
+      "figma": "Suggestions",
+      "nodeId": "2839:1637",
+      "page": "AI",
+      "description": "Prompt starters and follow-ups as a row of pills — on an empty chat, or under an answer.\n\nWhy — a blank prompt box is the hardest screen in an AI product: people do not know what the agent can do. Suggestions show it by example, written in the person's voice as full questions they could have typed, so choosing one sends exactly what it says. Three or four at most. Pills are outlined, not filled, so they never compete with Send; they wrap rather than scroll out of sight."
+    },
+    "Reasoning": {
+      "figma": "Reasoning",
+      "nodeId": "2840:1609",
+      "page": "AI",
+      "description": "The agent's thinking as a quiet disclosure above its answer: open while it thinks, folded to one line (\"Thought for 12 seconds\") once the answer starts.\n\nWhy — showing the steps builds trust and lets people catch a wrong assumption early, but the answer is what they came for. So the trace is open only while there is nothing else to read, then folds away, one click from reopening. It is set in text/secondary behind a border/subtle rule — visibly a side channel. The label carries the state in words, with a pulse only while thinking."
+    },
+    "ToolCall": {
+      "figma": "Tool Call",
+      "nodeId": "2840:1689",
+      "page": "AI",
+      "description": "One action the agent takes — querying data, sending an email, creating a record — with its status, and the input and output one click away. State=Approval asks the person to approve or deny first.\n\nWhy — an agent acting on someone's data must show what it did, in words first (\"Query sales for May 2026\") and the raw call second, folded. Status reads from the icon and the label, not colour alone. Actions with side effects stop at Approval: the card states what will happen, and Deny is never the Primary. Input and output are monospace because they are data, not prose."
+    },
+    "Sources": {
+      "figma": "Sources",
+      "nodeId": "2840:1734",
+      "page": "AI",
+      "description": "Where an answer came from: a folded list under the answer (\"4 sources\"), with Citation as the numbered marker inside the text.\n\nWhy — an agent's claim is only as good as what it read, so every factual sentence can point to its source and every source is one click away. Folded by default: most readers trust the answer, some want to verify it, and the count alone says evidence exists. Your own documents and web pages get different icons, since \"from your data\" and \"from the web\" carry different weight."
+    },
+    "Citation": {
+      "figma": "Citation",
+      "nodeId": "2840:1736",
+      "page": "AI",
+      "description": "The numbered marker inside an answer's text that points to a source. In code, hover or focus previews the source in a Hover Card.\n\nWhy — a number does not break the sentence the way a link text would, and it matches the numbering in Sources."
+    },
+    "ModelSelector": {
+      "figma": "Model Selector",
+      "nodeId": "2840:1773",
+      "page": "AI",
+      "description": "A compact control in the Prompt Input toolbar that picks which model answers, named by what it is good at, with one line on the trade-off.\n\nWhy — people choose between speed, depth and cost, not version numbers. Each option says what it is for and can carry short capability tags. The trigger is a quiet ghost control showing only the current name, because it is set once and rarely changed; it must never compete with Send. The list is a radio group and opens upward from the toolbar."
     }
   }
 }
