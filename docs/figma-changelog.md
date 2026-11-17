@@ -441,3 +441,4 @@ Audited against the Material 3 Design Kit; the agreed items are on the Roadmap. 
   - A scan of the rendered text of all 173 stories now finds none.
   - Storybook applies the theme before a story renders, so switching themes no longer produces false contrast alerts.
   - `npm test` runs every story in dark, light and high contrast.
+- **Positioning:** "fintech" and "data-heavy products" are gone. The system is described as a design system for building products, by hand in Figma or in code or with AI agents, with a dedicated set for analytics dashboards. This is updated in the About & Guidelines purpose lines, the sample-data rule, the Storybook Introduction and Start here, `llms.txt`, the README and the package description.

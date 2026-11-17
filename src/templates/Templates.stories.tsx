@@ -23,7 +23,7 @@ import { Tag } from '@/components/Tag'
 
 // Reference layouts from the Figma Templates page: four pages assembled only
 // from library components, with the same English sample copy and the
-// fintech data story (accounts, revenue categories, USD). This is a story file only — it is not exported from the
+// business-analytics data story (accounts, revenue categories, USD). This is a story file only — it is not exported from the
 // package; it exists so a page-level composition is checked in both themes.
 // The `-m-8` on each root cancels the global story decorator's `p-8`, so the
 // layouts render full-bleed like the Figma frames.

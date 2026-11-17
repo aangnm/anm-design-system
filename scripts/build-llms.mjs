@@ -20,7 +20,7 @@ for (const [react, n] of Object.entries(notes)) (byPage[n.page] ||= []).push([re
 const lines = [
   '# anm design system',
   '',
-  '> Tokens and React components for prototyping data-heavy products (analytics, data visualisation, fintech) with AI agents. Package: @anm/design-system. Figma is the source of truth; each component below carries its Figma design notes.',
+  '> A design system for building products in Figma or in code, by hand or with AI agents, with a dedicated set for analytics dashboards. Package: @anm/design-system. Figma is the source of truth; each component below carries its Figma design notes.',
   '',
   startHere.replace(/^# Start here\n+/, ''),
   '',

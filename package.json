@@ -4,7 +4,7 @@
   "private": false,
   "type": "module",
   "license": "MIT",
-  "description": "anm design system — tokens and React components, generated from the anm Design System Figma file.",
+  "description": "anm design system — tokens and React components for building products in Figma or in code, by hand or with AI agents, with a dedicated set for analytics dashboards.",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
