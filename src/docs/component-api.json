@@ -902,6 +902,99 @@
     ]
   },
   {
+    "name": "DataTable",
+    "dir": "DataTable",
+    "file": "src/components/DataTable/DataTable.tsx",
+    "import": "import { DataTable } from '@anm/design-system'",
+    "extends": [],
+    "props": [
+      {
+        "name": "columns",
+        "type": "DataTableColumn<T>[]",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "data",
+        "type": "T[]",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "getRowId",
+        "type": "(row: T, index: number) => string",
+        "required": false,
+        "description": "Stable id per row; defaults to the row index."
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "required": true,
+        "description": "Accessible name of the table, e.g. \"Recent transactions\"."
+      },
+      {
+        "name": "searchable",
+        "type": "boolean",
+        "required": false,
+        "description": "Search across all text columns (default true)."
+      },
+      {
+        "name": "searchPlaceholder",
+        "type": "string",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "selectable",
+        "type": "boolean",
+        "required": false,
+        "description": "Checkbox column for selecting rows."
+      },
+      {
+        "name": "onSelectionChange",
+        "type": "(ids: string[]) => void",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "pageSize",
+        "type": "number",
+        "required": false,
+        "description": "Rows per page (default 10)."
+      },
+      {
+        "name": "actions",
+        "type": "ReactNode",
+        "required": false,
+        "description": "Right side of the toolbar, e.g. an export Icon Button and one primary Button."
+      },
+      {
+        "name": "state",
+        "type": "'default' | 'loading' | 'error'",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "emptyMessage",
+        "type": "string",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "errorMessage",
+        "type": "string",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  {
     "name": "DateIndicator",
     "dir": "DateIndicator",
     "file": "src/components/DateIndicator/DateIndicator.tsx",
@@ -960,6 +1053,63 @@
         "type": "(date: Date) => boolean",
         "required": false,
         "description": "Return true for days that cannot be chosen; they render greyed and never fire onChange."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "DateRangePicker",
+    "dir": "DateRangePicker",
+    "file": "src/components/DateRangePicker/DateRangePicker.tsx",
+    "import": "import { DateRangePicker } from '@anm/design-system'",
+    "extends": [],
+    "props": [
+      {
+        "name": "value",
+        "type": "DateRange",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "onChange",
+        "type": "(range: DateRange) => void",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "presets",
+        "type": "DateRangePreset[]",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "today",
+        "type": "Date",
+        "required": false,
+        "description": "\"Today\" for presets and the calendar; defaults to the real date (set it for stable stories and tests)."
+      },
+      {
+        "name": "months",
+        "type": "1 | 2",
+        "required": false,
+        "description": "Months shown side by side (1 or 2; default 2)."
+      },
+      {
+        "name": "disableFuture",
+        "type": "boolean",
+        "required": false,
+        "description": "Disable days after today."
+      },
+      {
+        "name": "placeholder",
+        "type": "string",
+        "required": false,
+        "description": ""
       },
       {
         "name": "className",
@@ -1270,6 +1420,51 @@
         "type": "ReactNode",
         "required": false,
         "description": "The one primary action, e.g. `<Button>Add account</Button>`."
+      }
+    ]
+  },
+  {
+    "name": "FacetedFilter",
+    "dir": "FacetedFilter",
+    "file": "src/components/FacetedFilter/FacetedFilter.tsx",
+    "import": "import { FacetedFilter } from '@anm/design-system'",
+    "extends": [],
+    "props": [
+      {
+        "name": "title",
+        "type": "string",
+        "required": true,
+        "description": "Column name, e.g. \"Status\"."
+      },
+      {
+        "name": "options",
+        "type": "FacetedFilterOption[]",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "selected",
+        "type": "string[]",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "onChange",
+        "type": "(selected: string[]) => void",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "searchable",
+        "type": "boolean",
+        "required": false,
+        "description": "Show a search field above the list (on by default past 7 options)."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "description": ""
       }
     ]
   },

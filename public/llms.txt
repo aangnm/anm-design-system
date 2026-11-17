@@ -143,6 +143,9 @@ Every story runs as a test in CI with axe. To pass:
 - [Accordion](https://aangnm.github.io/anm-design-system/components/Accordion.md): 
 - [CardDescription](https://aangnm.github.io/anm-design-system/components/CardDescription.md): 
 - [CardTitle](https://aangnm.github.io/anm-design-system/components/CardTitle.md): 
+- [DataTable](https://aangnm.github.io/anm-design-system/components/DataTable.md): 
+- [DateRangePicker](https://aangnm.github.io/anm-design-system/components/DateRangePicker.md): 
+- [FacetedFilter](https://aangnm.github.io/anm-design-system/components/FacetedFilter.md): 
 - [NavbarLink](https://aangnm.github.io/anm-design-system/components/NavbarLink.md): 
 - [SidebarBrand](https://aangnm.github.io/anm-design-system/components/SidebarBrand.md): 
 - [SidebarItem](https://aangnm.github.io/anm-design-system/components/SidebarItem.md): 
