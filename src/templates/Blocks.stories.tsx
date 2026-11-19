@@ -138,7 +138,7 @@ function DashboardBlock() {
         <Stat label="Conversion" value="4.8%" delta="0.3%" trend="up" deltaCaption="vs. previous 30 days" />
         <Stat label="Active accounts" value="1,284" delta="3.1%" trend="up" deltaCaption="vs. previous 30 days" />
       </div>
-      <div className="grid grid-cols-1 items-start gap-16px xl:grid-cols-[minmax(0,1fr)_320px]">
+      <div className="grid grid-cols-1 items-stretch gap-16px xl:grid-cols-[minmax(0,1fr)_320px]">
         <LineChart
           categories={months}
           formatValue={(v) => `$${v.toFixed(0)}k`}
@@ -147,11 +147,13 @@ function DashboardBlock() {
             { label: 'Subscriptions', series: 2, data: [41, 44, 46, 49, 53, 64] },
           ]}
         />
-        <ContentPanel title="Quarterly target" className="items-center">
-          <GaugeChart value={72} label="Revenue target" target={80} formatValue={(v) => `${v}%`} size={220} />
+        <ContentPanel title="Quarterly target">
+          <div className="flex w-full flex-1 items-center justify-center">
+            <GaugeChart value={72} label="Revenue target" target={80} formatValue={(v) => `${v}%`} size={220} />
+          </div>
         </ContentPanel>
       </div>
-      <div className="grid grid-cols-1 items-start gap-16px xl:grid-cols-2">
+      <div className="grid grid-cols-1 items-stretch gap-16px xl:grid-cols-2">
         <ContentPanel title="Top channels by revenue">
           <HorizontalBarChart
             sort="desc"

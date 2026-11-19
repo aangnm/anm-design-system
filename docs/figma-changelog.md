@@ -487,5 +487,8 @@ Audited against the Material 3 Design Kit; the agreed items are on the Roadmap. 
   - **AI Workspace:** the conversation (Chat Message, an approval Tool Call, Suggestions, Prompt Input) beside the report draft the agent is writing, split by a Resizable Panels handle.
 - **Line Chart and Area Chart stretch:** the plot fills the card and the lines scale with it. The end markers stay pinned to the right edge. Existing instances keep their 417 width until resized.
 - **Fix:** the Sidebar's user role still read "Administrador"; it is "Administrator" in all three variants. A file-wide scan finds no other occurrence.
+- **Even row heights:** cards that share a row are now the same height, in Figma and in code.
+  - In Figma, the cards in Analytics Dashboard's two chart rows fill the row (the Quarterly target card centres its gauge), in both themes.
+  - In code, the card rows in Blocks and Templates stretch instead of aligning to the top.
 - **Roadmap:** the shadcn/ui comparison plan is complete. Now is the anm docs site.
 - **Code:** a Storybook "Blocks" section with Login (and Mobile), Analytics Dashboard (and Mobile) and AI Workspace. The shared app shell moved to `src/templates/shell.tsx` and gained an Assistant item. 252 stories pass axe in each of the three themes.

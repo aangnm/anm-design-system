@@ -78,7 +78,7 @@ function DashboardBody() {
         <Stat label="Transactions this month" value="342" delta="8.2%" trend="up" deltaCaption="vs. last month" />
         <Stat label="Approval rate" value="87%" delta="1.4%" trend="down" deltaCaption="vs. last month" />
       </div>
-      <div className="grid grid-cols-1 items-start gap-16px xl:grid-cols-[368px_minmax(0,1fr)]">
+      <div className="grid grid-cols-1 items-stretch gap-16px xl:grid-cols-[368px_minmax(0,1fr)]">
         <ContentPanel title="Weekly revenue (USD thousands)" className="w-full">
           <BarChart data={productionData} max={300} className="w-full" aria-label="Weekly revenue in USD thousands" />
         </ContentPanel>
@@ -174,7 +174,7 @@ export const Records: Story = {
     <WithSidebar active="transactions">
       {crumbs('Transactions')}
       <PageHeader title="Transactions" subtitle="Main portfolio · Week 22" actions={<>{bellButton}{newRecord}</>} />
-      <div className="grid grid-cols-1 items-start gap-24px lg:grid-cols-2">
+      <div className="grid grid-cols-1 items-stretch gap-24px lg:grid-cols-2">
         <ContentPanel title="Recent transactions" className="w-full">
           <div className="flex w-full flex-col gap-12px">
             <Search placeholder="Search…" aria-label="Search transactions" />
