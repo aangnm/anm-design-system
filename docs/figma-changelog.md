@@ -479,3 +479,13 @@ Audited against the Material 3 Design Kit; the agreed items are on the Roadmap. 
 - **Lint vocabulary grew on purpose:** a From axis (User, Assistant) and the States Streaming, Thinking, Running and Approval. The lint is clean.
 - **Roadmap:** AI elements are done; Now is the blocks (Login, Analytics Dashboard with Data Table, an AI chat workspace).
 - **Code:** `ChatMessage`, `ChatThread`, `AssistantMark`, `PromptInput`, `Suggestions`, `Reasoning`, `ToolCall`, `Sources`, `Citation`, `ModelSelector`, and a Storybook "AI" section whose Conversation story puts them all together. 247 stories pass axe in each of the three themes.
+
+## v1.5 — Blocks
+- **Templates page:** three new screens, each in dark and light, built only from library instances.
+  - **Login:** a 400-wide card with Form Fields, a Checkbox, a Link, an LG Primary button and Continue with SSO.
+  - **Analytics Dashboard:** four Stats, a Line Chart beside a Gauge, Horizontal Bar and Heatmap cards, and the Data Table.
+  - **AI Workspace:** the conversation (Chat Message, an approval Tool Call, Suggestions, Prompt Input) beside the report draft the agent is writing, split by a Resizable Panels handle.
+- **Line Chart and Area Chart stretch:** the plot fills the card and the lines scale with it. The end markers stay pinned to the right edge. Existing instances keep their 417 width until resized.
+- **Fix:** the Sidebar's user role still read "Administrador"; it is "Administrator" in all three variants. A file-wide scan finds no other occurrence.
+- **Roadmap:** the shadcn/ui comparison plan is complete. Now is the anm docs site.
+- **Code:** a Storybook "Blocks" section with Login (and Mobile), Analytics Dashboard (and Mobile) and AI Workspace. The shared app shell moved to `src/templates/shell.tsx` and gained an Assistant item. 252 stories pass axe in each of the three themes.
