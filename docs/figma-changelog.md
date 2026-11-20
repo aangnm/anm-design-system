@@ -492,3 +492,20 @@ Audited against the Material 3 Design Kit; the agreed items are on the Roadmap. 
   - In code, the card rows in Blocks and Templates stretch instead of aligning to the top.
 - **Roadmap:** the shadcn/ui comparison plan is complete. Now is the anm docs site.
 - **Code:** a Storybook "Blocks" section with Login (and Mobile), Analytics Dashboard (and Mobile) and AI Workspace. The shared app shell moved to `src/templates/shell.tsx` and gained an Assistant item. 252 stories pass axe in each of the three themes.
+
+## v1.6 — Review of v1.0–v1.5 (code side)
+- **Mobile pass:** all 71 stories of the new components were loaded at 375px and measured for overflow.
+  - Floating panels now keep a 16px margin from the screen edge. The Date Range Picker spilled 16px off a phone screen; the fix is in `usePopover`, so every anchored panel gets it.
+  - Resizable Panels stack below 640px. The AI Workspace was unreadable as a side-by-side split on a phone.
+  - Command Menu fits its container. The Data Table search is full width on phones.
+- **Keyboard:** the Date Range Picker calendar takes arrow keys (a day or a week, paging months) and Home / End.
+- **API:** Chat Message no longer defaults the user avatar to the sample initials "LR".
+- **Docs:**
+  - Start here covers AI elements, Blocks, the even-row rule and agent copy rules.
+  - The Introduction names the analytics and AI sets, adds a "Readable by agents" principle, has even rows, and reflows on phones.
+- **Still open, for the Figma pass (needs a Figma sign-in):**
+  - Hover variants for Bar, Line and Area.
+  - An Assistant item in the Sidebar.
+  - Resizable Panels' stacking note.
+  - A note in the Figma file for the remaining system-wide finding below.
+- **System-wide finding, not fixed:** 73 `text-sm` and 12 `text-base` uses across 55 components are Tailwind's own sizes rather than the type tokens. They render the same today (14 and 16px) but would not follow a token change. Migrating them needs a line-height decision and visual regression tests first (Chromatic is wired in CI but has no project token yet).

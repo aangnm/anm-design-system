@@ -16,7 +16,10 @@ import { panelClass, usePopover } from '@/lib/usePopover'
 //
 // Accessibility — every day is a button with its full date as its name;
 // start and end are aria-pressed, days in between say "in range". The active
-// preset is aria-pressed. Escape closes and returns focus to the trigger.
+// preset is aria-pressed. Inside the calendar the arrow keys move a day (left
+// and right) or a week (up and down), paging the months when needed; Home and
+// End jump to the start and end of the week. Escape closes and returns focus
+// to the trigger.
 
 export interface DateRange {
   from: Date
@@ -32,6 +35,7 @@ const DAY = 86_400_000
 const startOfDay = (d: Date) => new Date(d.getFullYear(), d.getMonth(), d.getDate())
 const addDays = (d: Date, n: number) => new Date(startOfDay(d).getTime() + n * DAY)
 const sameDay = (a: Date, b: Date) => startOfDay(a).getTime() === startOfDay(b).getTime()
+const dayKey = (d: Date) => `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`
 
 export const DEFAULT_DATE_RANGE_PRESETS: DateRangePreset[] = [
   { label: 'Today', range: (t) => ({ from: startOfDay(t), to: startOfDay(t) }) },
@@ -152,7 +156,29 @@ export function DateRangePicker({
           </ul>
 
           <div className="flex flex-col gap-8px">
-            <div className="flex flex-wrap gap-16px">
+            <div
+              className="flex flex-wrap gap-16px"
+              onKeyDown={(e) => {
+                const key = (e.target as HTMLElement).dataset?.day
+                if (!key) return
+                const [y, m, d] = key.split('-').map(Number)
+                const current = new Date(y, m - 1, d)
+                const weekday = (current.getDay() + 6) % 7
+                const step = { ArrowLeft: -1, ArrowRight: 1, ArrowUp: -7, ArrowDown: 7, Home: -weekday, End: 6 - weekday }[e.key]
+                if (step === undefined) return
+                e.preventDefault()
+                const next = addDays(current, step)
+                const first = new Date(view.getFullYear(), view.getMonth(), 1)
+                const afterLast = new Date(view.getFullYear(), view.getMonth() + months, 1)
+                const root = e.currentTarget
+                const focusNext = () => root.querySelector<HTMLButtonElement>(`[data-day="${dayKey(next)}"]:not(:disabled)`)?.focus()
+                if (next < first) setView(new Date(view.getFullYear(), view.getMonth() - 1, 1))
+                else if (next >= afterLast) setView(new Date(view.getFullYear(), view.getMonth() + 1, 1))
+                else return focusNext()
+                // The month changed: focus once the new days have rendered.
+                requestAnimationFrame(focusNext)
+              }}
+            >
               {Array.from({ length: months }, (_, m) => {
                 const month = new Date(view.getFullYear(), view.getMonth() + m, 1)
                 return (
@@ -187,6 +213,7 @@ export function DateRangePicker({
                               disabled={disabled}
                               aria-label={`${fmtLong.format(day)}${inside ? ', in range' : ''}`}
                               aria-pressed={isStart || isEnd}
+                              data-day={dayKey(day)}
                               onClick={() => pick(day)}
                               onMouseEnter={() => pendingFrom && setHover(day)}
                               className={cn(

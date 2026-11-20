@@ -140,9 +140,9 @@ export function DataTable<T extends Record<string, unknown>>({
   return (
     <div className={cn('flex w-full flex-col gap-12px', className)}>
       <div className="flex w-full flex-wrap items-center justify-between gap-8px">
-        <div className="flex flex-wrap items-center gap-8px">
+        <div className="flex w-full flex-wrap items-center gap-8px sm:w-auto">
           {searchable ? (
-            <Search size="sm" aria-label={searchPlaceholder} placeholder={searchPlaceholder} value={query} onChange={(e) => setQuery(e.target.value)} className="w-[200px]" />
+            <Search size="sm" aria-label={searchPlaceholder} placeholder={searchPlaceholder} value={query} onChange={(e) => setQuery(e.target.value)} className="w-full sm:w-[200px]" />
           ) : null}
           {columns.filter((c) => c.facet).map((c) => (
             <FacetedFilter

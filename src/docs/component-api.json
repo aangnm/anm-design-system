@@ -677,7 +677,7 @@
         "name": "initials",
         "type": "string",
         "required": false,
-        "description": "The person's initials for their avatar (user messages)."
+        "description": "The person's initials; shows their Avatar beside user messages."
       },
       {
         "name": "name",
@@ -2968,6 +2968,12 @@
         "type": "(sizes: number[]) => void",
         "required": false,
         "description": ""
+      },
+      {
+        "name": "stackBelow",
+        "type": "number",
+        "required": false,
+        "description": "Container width (px) below which panels stack and handles hide; 0 never stacks. Default 640."
       }
     ]
   },

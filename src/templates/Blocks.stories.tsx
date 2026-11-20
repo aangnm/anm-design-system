@@ -219,7 +219,7 @@ function WorkspaceBlock() {
           <ScrollArea aria-label="Conversation" className="min-h-0 flex-1" style={{ height: '100%' }}>
             <div className="p-container-sm">
               <ChatThread aria-label="Conversation with the assistant">
-                <ChatMessage from="user" name="Laura Romero" time="2:14 PM">
+                <ChatMessage from="user" initials="LR" name="Laura Romero" time="2:14 PM">
                   <p>Draft the May review for leadership. Start with why Subscriptions grew so fast.</p>
                 </ChatMessage>
                 <ChatMessage

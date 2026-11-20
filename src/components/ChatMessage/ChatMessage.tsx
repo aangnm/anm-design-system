@@ -26,7 +26,7 @@ export type ChatRole = 'user' | 'assistant'
 
 export interface ChatMessageProps extends Omit<HTMLAttributes<HTMLDivElement>, 'role'> {
   from: ChatRole
-  /** The person's initials for their avatar (user messages). */
+  /** The person's initials; shows their Avatar beside user messages. */
   initials?: string
   /** Shown above the message: "Laura Romero", "Assistant". */
   name?: string
@@ -56,7 +56,7 @@ export function AssistantMark({ className }: { className?: string }) {
 
 export function ChatMessage({
   from,
-  initials = 'LR',
+  initials,
   name,
   time,
   status = 'done',
@@ -83,7 +83,7 @@ export function ChatMessage({
           {header}
           <div className="rounded-lg rounded-tr-xs bg-surface-container-high px-14px py-10px text-sm leading-6 text-text-primary [&_p]:m-0 [&_p+p]:mt-8px">{children}</div>
         </div>
-        <Avatar initials={initials} size="md" />
+        {initials ? <Avatar initials={initials} size="md" /> : null}
       </div>
     )
   }

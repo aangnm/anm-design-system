@@ -33,7 +33,7 @@ const actions = (
 export const Playground: Story = {
   render: () => (
     <ChatThread aria-label="Conversation with the assistant">
-      <ChatMessage from="user" name="Laura Romero" time="2:14 PM">
+      <ChatMessage from="user" initials="LR" name="Laura Romero" time="2:14 PM">
         <p>Which accounts grew the most in May?</p>
       </ChatMessage>
       <ChatMessage from="assistant" name="Assistant" time="2:14 PM" actions={actions}>
@@ -78,7 +78,7 @@ function Conversation() {
   return (
     <div className="flex flex-col gap-24px">
       <ChatThread aria-label="Conversation with the assistant">
-        <ChatMessage from="user" name="Laura Romero" time="2:14 PM">
+        <ChatMessage from="user" initials="LR" name="Laura Romero" time="2:14 PM">
           <p>Why did Subscriptions grow so fast in May, and is that normal?</p>
         </ChatMessage>
         <ChatMessage

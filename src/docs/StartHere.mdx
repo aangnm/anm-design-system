@@ -4,13 +4,13 @@ import { Meta } from '@storybook/addon-docs/blocks'
 
 # Start here
 
-The anm design system is for building products: by hand in Figma, by hand in code, or with **AI agents** prototyping in either. All three draw on the same components and tokens, and it includes a dedicated set for **analytics dashboards** (charts, tables, KPIs and dashboard layouts). This page is the short version of the rules, for designers, engineers and agents alike; every component's docs page adds its own **Design notes** from Figma (the "Why —" behind it).
+The anm design system is for building products: by hand in Figma, by hand in code, or with **AI agents** prototyping in either. All three draw on the same components and tokens. Two sets get extra depth: **analytics dashboards** (charts, the Data Table, filters, date ranges, KPIs) and **AI elements** (chat, prompt input, reasoning, tool calls, sources). This page is the short version of the rules, for designers, engineers and agents alike; every component's docs page adds its own **Design notes** from Figma (the "Why —" behind it).
 
 Machine-readable index: [`/llms.txt`](./llms.txt) lists every component with its import and design notes in one plain-text file.
 
 ## Use what exists
 
-- Search this Storybook before building anything. About 70 components cover forms, navigation, data display, charts, feedback and page patterns. The Templates show how they compose into whole pages.
+- Search this Storybook before building anything. About 100 components cover forms, navigation, data display, charts, feedback, AI and page patterns. **Blocks** (Login, Analytics Dashboard, AI Workspace) and **Templates** show how they compose into whole screens: start from one and change the data.
 - Never fork a component to change its look. Compose it, or pass `className` for layout only (width, margin, grid placement).
 - If something is genuinely missing, build it from tokens and existing components, the same way the Product Patterns are built.
 
@@ -41,6 +41,18 @@ Two attributes on any ancestor switch the whole subtree:
 - One Primary Button per view. Secondary page actions are Icon Buttons.
 - Touch targets are at least 48 × 48 (the controls extend their hit area on coarse pointers); pointer targets at least 24 × 24.
 - Charts fill their container and redraw at its width; pass `width` only for a fixed size. Series keep their slot (colour and texture) across every chart. Use Small Multiples instead of a Line Chart with more than four crossing series.
+
+## Layout
+
+- Cards and panels that share a row are the same height: rows stretch (`items-stretch`, the grid default), never `items-start`. Single visuals like a gauge centre in the taller card.
+- Floating panels (filters, date ranges, menus) keep a 16px margin from the screen edge; side-by-side Resizable Panels stack below 640px.
+
+## AI elements
+
+- The person's turn is a right-aligned bubble; the assistant's answer is full-width text marked with Sparkles, never a face.
+- Agent copy: say what happened in plain words, offer the next step (Retry), no error codes or stack traces, status in short present tense ("Thinking…", "Searching 3 sources…").
+- Actions with side effects stop at a Tool Call approval: say what will happen; Deny is never the Primary.
+- Every factual claim can carry a Citation; Sources fold under the answer. Suggestions are full questions in the person's voice, three or four at most.
 
 ## Copy
 

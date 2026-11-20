@@ -13,7 +13,7 @@ const accounts = Array.from({ length: 24 }, (_, i) => ({ id: 4021 + i * 7, amoun
 
 export const Playground: Story = {
   render: () => (
-    <div className="w-[280px] rounded-lg border border-border-subtle bg-surface-container">
+    <div className="w-full max-w-[280px] rounded-lg border border-border-subtle bg-surface-container">
       <p className="m-0 border-b border-border-subtle px-16px py-10px text-sm font-medium leading-5 text-text-primary">Accounts</p>
       <ScrollArea aria-label="Accounts" maxSize={240}>
         <ul className="m-0 list-none p-0">
@@ -32,7 +32,7 @@ export const Playground: Story = {
 /** Horizontal — a row of chips or cards wider than its container. */
 export const Horizontal: Story = {
   render: () => (
-    <div className="w-[360px] rounded-lg border border-border-subtle bg-surface-container p-12px">
+    <div className="w-full max-w-[360px] rounded-lg border border-border-subtle bg-surface-container p-12px">
       <ScrollArea aria-label="Saved views" orientation="horizontal">
         <div className="flex w-max gap-8px pb-6px">
           {['All accounts', 'Pending', 'High value', 'EUR only', 'Refunds this month', 'Subscriptions', 'Blocked'].map((v) => (

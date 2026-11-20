@@ -20,7 +20,7 @@ const items = [
 ]
 
 const area = (
-  <div tabIndex={0} className="flex h-[200px] w-[420px] items-center justify-center rounded-lg border border-dashed border-border-default text-sm text-text-secondary outline-none focus-visible:focus-ring">
+  <div tabIndex={0} className="flex h-[200px] w-full max-w-[420px] items-center justify-center rounded-lg border border-dashed border-border-default text-sm text-text-secondary outline-none focus-visible:focus-ring">
     Right-click here, or focus and press Shift+F10
   </div>
 )

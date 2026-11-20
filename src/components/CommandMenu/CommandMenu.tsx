@@ -157,7 +157,7 @@ export function CommandMenu({
       role="dialog"
       aria-modal={!inline || undefined}
       aria-label="Command menu"
-      className="flex w-[560px] max-w-[calc(100vw-32px)] flex-col overflow-hidden rounded-lg bg-surface-container-high shadow-lg"
+      className="flex w-[560px] max-w-full flex-col overflow-hidden rounded-lg bg-surface-container-high shadow-lg"
       onKeyDown={(e) => {
         if (e.key === "ArrowDown")
           setActive((current + 1) % Math.max(1, flat.length));

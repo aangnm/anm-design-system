@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { userEvent, within } from 'storybook/test'
+import { expect, userEvent, waitFor, within } from 'storybook/test'
 import { DateRangePicker, DEFAULT_DATE_RANGE_PRESETS, type DateRange } from './DateRangePicker'
 
 const meta: Meta<typeof DateRangePicker> = {
@@ -32,5 +32,20 @@ export const Open: Story = {
   render: () => <Demo initial={{ from: new Date(2026, 4, 4), to: new Date(2026, 4, 15) }} />,
   play: async ({ canvasElement }) => {
     await userEvent.click(within(canvasElement).getByRole('button', { name: /May 4/ }))
+  },
+}
+
+/** Arrow keys move a day or a week inside the calendar. */
+export const Keyboard: Story = {
+  render: () => <Demo initial={{ from: new Date(2026, 4, 4), to: new Date(2026, 4, 15) }} />,
+  play: async ({ canvasElement }) => {
+    const c = within(canvasElement)
+    await userEvent.click(c.getByRole('button', { name: /May 4/ }))
+    const start = await c.findByRole('button', { name: /Monday, May 4, 2026/ })
+    start.focus()
+    await userEvent.keyboard('{ArrowRight}')
+    await waitFor(() => expect(c.getByRole('button', { name: /Tuesday, May 5, 2026/ })).toHaveFocus())
+    await userEvent.keyboard('{ArrowDown}')
+    await waitFor(() => expect(c.getByRole('button', { name: /Tuesday, May 12, 2026/ })).toHaveFocus())
   },
 }

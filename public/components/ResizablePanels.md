@@ -20,6 +20,7 @@ import '@anm/design-system/styles.css' // once, at the app root
 | `panelLabels` | `string[]` | no | Accessible name of each panel, used to label its handle. |
 | `withHandle` | `boolean` | no | Shows a grip on each handle. |
 | `onSizesChange` | `(sizes: number[]) => void` | no |  |
+| `stackBelow` | `number` | no | Container width (px) below which panels stack and handles hide; 0 never stacks. Default 640. |
 
 Also accepts every attribute of `Omit<HTMLAttributes<HTMLDivElement>, 'children'>` (spread onto the root element).
 

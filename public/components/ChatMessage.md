@@ -14,7 +14,7 @@ import '@anm/design-system/styles.css' // once, at the app root
 | Prop | Type | Required | Description |
 |---|---|---|---|
 | `from` | `ChatRole` | yes |  |
-| `initials` | `string` | no | The person's initials for their avatar (user messages). |
+| `initials` | `string` | no | The person's initials; shows their Avatar beside user messages. |
 | `name` | `string` | no | Shown above the message: "Laura Romero", "Assistant". |
 | `time` | `string` | no | "2:14 PM" — shown next to the name. |
 | `status` | `'done' \| 'streaming' \| 'error'` | no | `streaming` shows the caret and marks the message busy; `error` shows the error line. |

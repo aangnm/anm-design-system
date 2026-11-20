@@ -20,6 +20,8 @@ const principles = [
   ['By hand or with AI agents', 'Designers and engineers can build a product however they like, by hand in Figma or in code, and AI agents can prototype with the same components. Every component documents why it looks the way it does, how its Figma properties map to props, and every state as a story, so a person or an agent reuses what is here instead of guessing.'],
   ['Figma is the source of truth', 'Tokens and component specs are decided in the anm Design System Figma file and flow into code through a reviewed token pull. Nothing is fixed here first.'],
   ['One rule per concern', 'Hover, Focus and Disabled are real CSS states, not props. One surface order (page < container < container-high), one hover (an 8% state layer), one focus ring (2px, 2px outside), one status palette from the colour ramps.'],
+  ['Analytics and AI, in depth', 'Two sets go further than a general kit: analytics dashboards (Data Table with filters and date ranges, eleven chart types with hover readouts) and AI elements (chat, prompt input, reasoning, tool calls with approval, sources and citations). Blocks put them together as whole screens.'],
+  ['Readable by agents', 'Every component is also published as Markdown with its import, props and design notes, and llms.txt indexes them all. Copy for AI on each docs page hands an agent exactly what a person reads.'],
   ['Accessible by default', 'Text clears AA in both themes and AAA in High contrast; controls clear 3:1; every target is at least 24 × 24 and 48 × 48 on touch; every chart has a text alternative.'],
 ]
 
@@ -27,14 +29,15 @@ const stack = ['React 19', 'TypeScript', 'Tailwind CSS v4', 'class-variance-auth
 
 export const Overview: StoryObj = {
   render: () => (
-    <div className="-m-8 min-h-screen bg-surface-page px-48px py-56px">
+    <div className="-m-8 min-h-screen bg-surface-page px-16px py-32px md:px-48px md:py-56px">
       <div className="mx-auto flex max-w-[960px] flex-col gap-48px">
         <header className="flex flex-col gap-16px">
           <span className="text-text-xxs font-semibold uppercase tracking-wider text-text-secondary">Product design system</span>
           <h1 className="m-0 text-display-2xl font-semibold text-text-primary">anm design system</h1>
           <p className="m-0 max-w-[640px] text-text-lg leading-7 text-text-secondary">
-            Tokens, components and patterns for building products, by hand in Figma or in code, or with AI agents. It includes a
-            dedicated set for analytics dashboards: charts, tables, KPIs and dashboard layouts. Dark and light themes, a high-contrast
+            Tokens, components and patterns for building products, by hand in Figma or in code, or with AI agents. Two sets go
+            deeper: analytics dashboards (charts, the Data Table, KPIs, dashboard layouts) and AI elements (chat, prompt input, reasoning,
+            tool calls, sources). Dark and light themes, a high-contrast
             mode, two densities, and a component library that maps one to one to the Figma file.
           </p>
           <div className="flex flex-wrap gap-8px">
@@ -51,7 +54,7 @@ export const Overview: StoryObj = {
           </div>
         </header>
 
-        <section className="grid grid-cols-2 gap-16px">
+        <section className="grid grid-cols-1 gap-16px md:grid-cols-2">
           {principles.map(([title, body]) => (
             <div key={title} className="flex flex-col gap-8px rounded-lg border border-border-subtle bg-surface-container p-20px">
               <h2 className="m-0 text-text-base font-semibold leading-6 text-text-primary">{title}</h2>
@@ -62,8 +65,8 @@ export const Overview: StoryObj = {
 
         <section className="flex flex-col gap-16px">
           <h2 className="m-0 text-text-xs font-medium uppercase tracking-wider text-text-secondary">Live, in the current theme</h2>
-          <div className="grid grid-cols-[minmax(0,1fr)_320px_auto] items-start gap-16px">
-            <Stat label="Total revenue" value="$128,450" delta="12.5%" trend="up" deltaCaption="vs. last month" />
+          <div className="grid grid-cols-1 items-stretch gap-16px lg:grid-cols-[minmax(0,1fr)_320px_auto]">
+            <Stat label="Total revenue" value="$128,450" delta="12.5%" trend="up" deltaCaption="vs. April" />
             <div className="grid grid-cols-2 gap-8px">
               <ChoiceTile label="Monthly" state="selected" />
               <ChoiceTile label="Yearly" />

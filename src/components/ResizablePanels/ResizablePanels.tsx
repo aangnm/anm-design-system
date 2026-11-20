@@ -1,4 +1,4 @@
-import { Children, Fragment, useId, useRef, useState, type HTMLAttributes, type KeyboardEvent, type PointerEvent, type ReactNode } from 'react'
+import { Children, Fragment, useEffect, useId, useRef, useState, type HTMLAttributes, type KeyboardEvent, type PointerEvent, type ReactNode } from 'react'
 import { GripVertical } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
@@ -21,6 +21,12 @@ import { cn } from '@/lib/utils'
 //
 // Hit area — the line is 1px but its hit area is 17px (25px on touch), centred
 // on the line.
+//
+// Narrow screens — a side-by-side split under about 640px leaves both panels
+// too thin to read, and dragging a 1px line with a thumb is a poor control.
+// Below `stackBelow` (container width) the panels stack at their natural
+// height in source order and the handles go away; the split comes back when
+// there is room.
 
 export interface ResizablePanelsProps extends Omit<HTMLAttributes<HTMLDivElement>, 'children'> {
   /** One child per panel; handles go between them. */
@@ -36,6 +42,8 @@ export interface ResizablePanelsProps extends Omit<HTMLAttributes<HTMLDivElement
   /** Shows a grip on each handle. */
   withHandle?: boolean
   onSizesChange?: (sizes: number[]) => void
+  /** Container width (px) below which panels stack and handles hide; 0 never stacks. Default 640. */
+  stackBelow?: number
 }
 
 const STEP = 2
@@ -49,6 +57,7 @@ export function ResizablePanels({
   panelLabels,
   withHandle = false,
   onSizesChange,
+  stackBelow = 640,
   className,
   ...props
 }: ResizablePanelsProps) {
@@ -59,7 +68,16 @@ export function ResizablePanels({
   const [sizes, setSizes] = useState<number[]>(initial)
   const [dragging, setDragging] = useState<number | null>(null)
   const groupRef = useRef<HTMLDivElement>(null)
+  const [stacked, setStacked] = useState(false)
   const horizontal = direction === 'horizontal'
+
+  useEffect(() => {
+    const el = groupRef.current
+    if (!el || !stackBelow) return
+    const ro = new ResizeObserver(([entry]) => setStacked(entry.contentRect.width < stackBelow))
+    ro.observe(el)
+    return () => ro.disconnect()
+  }, [stackBelow])
 
   const commit = (next: number[]) => {
     setSizes(next)
@@ -111,6 +129,18 @@ export function ResizablePanels({
   }
 
   const id = useId()
+
+  if (stacked) {
+    return (
+      <div ref={groupRef} className={cn('flex w-full flex-col overflow-hidden', className, 'h-auto!')} {...props}>
+        {panels.map((panel, i) => (
+          <div key={i} className={cn('relative min-w-0', i > 0 && 'border-t border-border-subtle')}>
+            {panel}
+          </div>
+        ))}
+      </div>
+    )
+  }
 
   return (
     <div
